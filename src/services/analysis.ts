@@ -2,7 +2,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { AIAnalysisError, type AIAnalysisClient } from '@/lib/ai/gemini';
 import { PROMPT_VERSION } from '@/lib/ai/analysis-prompt';
 import type { AnalysisInput, AnalysisOutput } from '@/lib/ai/analysis-schema';
-import { DAILY_ANALYSIS_LIMIT, IDEMPOTENCY_LOCK_TTL_SECONDS } from '@/config/ai';
+import { DAILY_ANALYSIS_LIMIT, IDEMPOTENCY_LOCK_TTL_SECONDS, type UserAttribution } from '@/config/ai';
 import type { Json, Tables } from '@/types/database.types';
 
 export interface ApiAnalysis {
@@ -11,13 +11,18 @@ export interface ApiAnalysis {
   userAnswer: string;
   correctAnswer: string;
   officialExplanation: string | null;
+  discipline?: string | null;
   probableErrorType: string;
   confidence: number;
   reasoningSummary: string;
+  recommendedAction?: string | null;
   coreConcept: string;
   cardAction: string;
   card: { front: string; back: string } | null;
   modelVersion: string;
+  userAttribution?: string | null;
+  aiUserAgreement?: boolean | null;
+  latencyMs?: number | null;
   createdAt: string;
 }
 
@@ -35,9 +40,11 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
     userAnswer: row.user_answer,
     correctAnswer: row.correct_answer,
     officialExplanation: row.official_explanation,
+    discipline: row.discipline,
     probableErrorType: row.error_type,
     confidence: row.ai_confidence,
     reasoningSummary: row.root_cause_explanation,
+    recommendedAction: row.recommended_action,
     coreConcept: row.learning_gap_concept,
     cardAction: row.card_action,
     card:
@@ -45,6 +52,9 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
         ? { front: row.suggested_flashcard_front, back: row.suggested_flashcard_back }
         : null,
     modelVersion: row.model_version,
+    userAttribution: row.user_attribution,
+    aiUserAgreement: row.ai_user_agreement,
+    latencyMs: row.latency_ms,
     createdAt: row.created_at,
   };
 }
@@ -59,18 +69,18 @@ async function logEvent(
 }
 
 /**
- * Orquestra o fluxo transacional em 2 fases descrito na arquitetura:
+ * Orquestra o fluxo transacional em 2 fases:
  * Fase 1 (reserva atômica, RPC) -> chamada de IA fora de transação -> Fase 2
- * (conclusão ou falha, RPC). Nunca mantém transação de banco aberta durante a
- * chamada ao Gemini.
+ * (conclusão ou falha, RPC).
  */
 export async function runAnalysisEngine(params: {
   userId: string;
   idempotencyKey: string;
   input: AnalysisInput;
+  userAttribution?: UserAttribution;
   aiClient: AIAnalysisClient;
 }): Promise<AnalysisServiceResult> {
-  const { userId, idempotencyKey, input, aiClient } = params;
+  const { userId, idempotencyKey, input, userAttribution, aiClient } = params;
   const admin = createAdminClient();
 
   // ---- Fase 1: reserva atômica ----
@@ -113,16 +123,18 @@ export async function runAnalysisEngine(params: {
     return { kind: 'SUCCESS', replayed: true, analysis: toApiAnalysis(existing) };
   }
 
-  // status === 'RESERVED': prossegue para a chamada de IA, fora de qualquer transação de banco.
+  // status === 'RESERVED': prossegue para a chamada de IA fora de transação
   const lockId = reserve.lockId as string;
   await logEvent(admin, userId, 'analysis_started', { idempotencyKey });
 
   let aiOutput: AnalysisOutput;
   let modelVersion: string;
+  let latencyMs = 0;
   try {
     const result = await aiClient.analyze(input);
     aiOutput = result.output;
     modelVersion = result.modelVersion;
+    latencyMs = result.usage.latencyMs;
   } catch (err) {
     // ---- Fase 2 (falha): estorna a reserva, nunca consome cota ----
     await admin.rpc('fail_analysis', { p_user_id: userId, p_lock_id: lockId });
@@ -141,8 +153,6 @@ export async function runAnalysisEngine(params: {
     p_raw_question: input.question,
     p_user_answer: input.userAnswer,
     p_correct_answer: input.correctAnswer,
-    // O gerador de tipos do Supabase não expressa nulabilidade de parâmetros
-    // TEXT de função (a RPC aceita NULL normalmente em runtime); cast local documentado.
     p_official_explanation: (input.officialExplanation ?? null) as string,
     p_error_type: aiOutput.probableErrorType,
     p_root_cause_explanation: aiOutput.reasoningSummary,
@@ -156,12 +166,31 @@ export async function runAnalysisEngine(params: {
   });
 
   if (completeError || !completeData) {
-    // A análise da IA teve sucesso mas a persistência falhou: trata como falha (estorna e não expõe resultado não-persistido).
     await admin.rpc('fail_analysis', { p_user_id: userId, p_lock_id: lockId });
     return { kind: 'AI_FAILED', code: 'PERSISTENCE_ERROR', message: completeError?.message ?? 'Falha ao persistir análise.' };
   }
 
   const analysisId = (completeData as { analysisId: string }).analysisId;
+
+  // Atualizar colunas aditivas do PRD v1.2
+  const agreement = userAttribution
+    ? (userAttribution === 'NAO_SABIA_CONTEUDO' && aiOutput.probableErrorType === 'KNOWLEDGE_GAP') ||
+      (userAttribution === 'CONFUNDI_CONCEITOS' && aiOutput.probableErrorType === 'CONCEPT_CONFUSION') ||
+      (userAttribution === 'ESQUECI_EXCECAO' && aiOutput.probableErrorType === 'EXCEPTION_MISSED') ||
+      (userAttribution === 'ERRO_APLICACAO' && aiOutput.probableErrorType === 'APPLICATION_ERROR') ||
+      (userAttribution === 'ERRO_LEITURA' && aiOutput.probableErrorType === 'READING_ERROR')
+    : null;
+
+  await admin
+    .from('analyses')
+    .update({
+      discipline: aiOutput.discipline,
+      recommended_action: aiOutput.recommendedAction,
+      user_attribution: userAttribution ?? null,
+      ai_user_agreement: agreement,
+      latency_ms: latencyMs,
+    })
+    .eq('id', analysisId);
 
   await logEvent(admin, userId, 'analysis_completed', {
     idempotencyKey,

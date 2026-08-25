@@ -1,4 +1,4 @@
-export type Json =
+﻿export type Json =
   | string
   | number
   | boolean
@@ -37,65 +37,124 @@ export type Database = {
       analyses: {
         Row: {
           ai_confidence: number
+          ai_user_agreement: boolean | null
           card_action: string
           correct_answer: string
           created_at: string
+          discipline: string | null
+          discipline_confirmed: string | null
           error_type: string
           id: string
           is_flashcard_worthy: boolean
+          latency_ms: number | null
           learning_gap_concept: string
           model_version: string
           official_explanation: string | null
           prompt_version: string
           raw_question: string
+          recommended_action: string | null
           root_cause_explanation: string
           suggested_flashcard_back: string | null
           suggested_flashcard_front: string | null
           user_answer: string
+          user_attribution: string | null
+          user_feedback: string | null
+          user_feedback_attribution: string | null
           user_hypothesis: string | null
           user_id: string
         }
         Insert: {
           ai_confidence: number
+          ai_user_agreement?: boolean | null
           card_action?: string
           correct_answer: string
           created_at?: string
+          discipline?: string | null
+          discipline_confirmed?: string | null
           error_type: string
           id?: string
           is_flashcard_worthy?: boolean
+          latency_ms?: number | null
           learning_gap_concept: string
           model_version: string
           official_explanation?: string | null
           prompt_version: string
           raw_question: string
+          recommended_action?: string | null
           root_cause_explanation: string
           suggested_flashcard_back?: string | null
           suggested_flashcard_front?: string | null
           user_answer: string
+          user_attribution?: string | null
+          user_feedback?: string | null
+          user_feedback_attribution?: string | null
           user_hypothesis?: string | null
           user_id: string
         }
         Update: {
           ai_confidence?: number
+          ai_user_agreement?: boolean | null
           card_action?: string
           correct_answer?: string
           created_at?: string
+          discipline?: string | null
+          discipline_confirmed?: string | null
           error_type?: string
           id?: string
           is_flashcard_worthy?: boolean
+          latency_ms?: number | null
           learning_gap_concept?: string
           model_version?: string
           official_explanation?: string | null
           prompt_version?: string
           raw_question?: string
+          recommended_action?: string | null
           root_cause_explanation?: string
           suggested_flashcard_back?: string | null
           suggested_flashcard_front?: string | null
           user_answer?: string
+          user_attribution?: string | null
+          user_feedback?: string | null
+          user_feedback_attribution?: string | null
           user_hypothesis?: string | null
           user_id?: string
         }
         Relationships: []
+      }
+      anonymous_events: {
+        Row: {
+          anonymous_id: string
+          created_at: string
+          event_name: string
+          id: string
+          pending_analysis_id: string | null
+          properties: Json
+        }
+        Insert: {
+          anonymous_id: string
+          created_at?: string
+          event_name: string
+          id?: string
+          pending_analysis_id?: string | null
+          properties?: Json
+        }
+        Update: {
+          anonymous_id?: string
+          created_at?: string
+          event_name?: string
+          id?: string
+          pending_analysis_id?: string | null
+          properties?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "anonymous_events_pending_analysis_id_fkey"
+            columns: ["pending_analysis_id"]
+            isOneToOne: false
+            referencedRelation: "pending_analyses"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       daily_quotas: {
         Row: {
@@ -256,6 +315,93 @@ export type Database = {
         }
         Relationships: []
       }
+      pending_analyses: {
+        Row: {
+          anonymous_id: string
+          card_action: string
+          claim_token_hash: string
+          claimed_at: string | null
+          claimed_by_user_id: string | null
+          concept: string
+          confidence: number
+          correct_answer: string
+          created_at: string
+          discipline: string
+          expires_at: string
+          id: string
+          ip_hmac: string | null
+          latency_ms: number
+          model_version: string
+          official_explanation: string | null
+          probable_error_type: string
+          prompt_version: string
+          question: string
+          reasoning_summary: string
+          recommended_action: string
+          status: string
+          suggested_flashcard_back: string | null
+          suggested_flashcard_front: string | null
+          user_answer: string
+          user_attribution: string
+        }
+        Insert: {
+          anonymous_id: string
+          card_action?: string
+          claim_token_hash: string
+          claimed_at?: string | null
+          claimed_by_user_id?: string | null
+          concept: string
+          confidence: number
+          correct_answer: string
+          created_at?: string
+          discipline: string
+          expires_at?: string
+          id?: string
+          ip_hmac?: string | null
+          latency_ms: number
+          model_version: string
+          official_explanation?: string | null
+          probable_error_type: string
+          prompt_version: string
+          question: string
+          reasoning_summary: string
+          recommended_action: string
+          status?: string
+          suggested_flashcard_back?: string | null
+          suggested_flashcard_front?: string | null
+          user_answer: string
+          user_attribution: string
+        }
+        Update: {
+          anonymous_id?: string
+          card_action?: string
+          claim_token_hash?: string
+          claimed_at?: string | null
+          claimed_by_user_id?: string | null
+          concept?: string
+          confidence?: number
+          correct_answer?: string
+          created_at?: string
+          discipline?: string
+          expires_at?: string
+          id?: string
+          ip_hmac?: string | null
+          latency_ms?: number
+          model_version?: string
+          official_explanation?: string | null
+          probable_error_type?: string
+          prompt_version?: string
+          question?: string
+          reasoning_summary?: string
+          recommended_action?: string
+          status?: string
+          suggested_flashcard_back?: string | null
+          suggested_flashcard_front?: string | null
+          user_answer?: string
+          user_attribution?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -294,6 +440,11 @@ export type Database = {
       }
     }
     Functions: {
+      claim_pending_analysis: {
+        Args: { p_claim_token_hash: string; p_user_id: string }
+        Returns: Json
+      }
+      cleanup_expired_pending_analyses: { Args: never; Returns: number }
       complete_analysis: {
         Args: {
           p_ai_confidence: number

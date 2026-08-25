@@ -42,9 +42,11 @@ const sampleInput: AnalysisInput = {
 };
 
 const successOutput: AnalysisOutput = {
+  discipline: 'Atualidades',
   probableErrorType: 'KNOWLEDGE_GAP',
   confidence: 0.9,
   reasoningSummary: 'Você não conhecia a capital correta da França.',
+  recommendedAction: 'Revise o quadro de capitais dos países membros da União Europeia.',
   coreConcept: 'Capitais europeias',
   cardAction: 'CREATE_BASIC_CARD',
   card: { front: 'Qual é a capital da França?', back: 'Paris.' },

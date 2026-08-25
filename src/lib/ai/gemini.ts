@@ -1,4 +1,4 @@
-import { AI_MAX_SCHEMA_RETRIES, AI_MODEL, AI_REQUEST_TIMEOUT_MS } from '@/config/ai';
+import { AI_MAX_SCHEMA_RETRIES, AI_MODEL, AI_REQUEST_TIMEOUT_MS, DISCIPLINES } from '@/config/ai';
 import { analysisOutputSchema, applyLowConfidencePolicy, type AnalysisInput, type AnalysisOutput } from './analysis-schema';
 import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt } from './analysis-prompt';
 
@@ -37,6 +37,10 @@ export interface AIAnalysisClient {
 const GEMINI_RESPONSE_SCHEMA = {
   type: 'OBJECT',
   properties: {
+    discipline: {
+      type: 'STRING',
+      enum: DISCIPLINES,
+    },
     probableErrorType: {
       type: 'STRING',
       enum: [
@@ -50,6 +54,7 @@ const GEMINI_RESPONSE_SCHEMA = {
     },
     confidence: { type: 'NUMBER' },
     reasoningSummary: { type: 'STRING' },
+    recommendedAction: { type: 'STRING' },
     coreConcept: { type: 'STRING' },
     cardAction: {
       type: 'STRING',
@@ -70,7 +75,7 @@ const GEMINI_RESPONSE_SCHEMA = {
       },
     },
   },
-  required: ['probableErrorType', 'confidence', 'reasoningSummary', 'coreConcept', 'cardAction', 'card'],
+  required: ['discipline', 'probableErrorType', 'confidence', 'reasoningSummary', 'recommendedAction', 'coreConcept', 'cardAction', 'card'],
 } as const;
 
 interface GeminiGenerateContentResponse {
@@ -221,9 +226,6 @@ export class GeminiAnalysisClient implements AIAnalysisClient {
           err instanceof AIAnalysisError ? err : new AIAnalysisError('UNKNOWN', 'Erro desconhecido no motor de IA.', err);
         lastError = aiErr;
 
-        // Apenas violação de schema justifica retry (a IA pode ter alucinado um formato errado).
-        // Timeout/HTTP/rede não são re-tentados automaticamente aqui — a falha propaga e o
-        // chamador decide (a cota nunca é consumida por uma falha).
         if (aiErr.code !== 'SCHEMA_INVALID') {
           throw aiErr;
         }

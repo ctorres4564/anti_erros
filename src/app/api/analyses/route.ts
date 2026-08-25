@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { isOnboardingComplete } from '@/services/onboarding';
 import { runAnalysisEngine } from '@/services/analysis';
-import { analysisInputSchema, idempotencyKeySchema } from '@/lib/ai/analysis-schema';
+import { authenticatedAnalysisInputSchema, idempotencyKeySchema } from '@/lib/ai/analysis-schema';
 import { resolveAIClient } from '@/lib/ai/resolve-client';
 
 export async function POST(request: NextRequest) {
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Corpo da requisição inválido.' }, { status: 400 });
     }
 
-    const inputResult = analysisInputSchema.safeParse(body);
+    const inputResult = authenticatedAnalysisInputSchema.safeParse(body);
     if (!inputResult.success) {
       return NextResponse.json(
         { error: 'Dados inválidos.', details: inputResult.error.flatten().fieldErrors },
@@ -49,12 +49,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 5-11. Reserva de cota, chamada de IA, persistência (motor completo)
+    const { question, userAnswer, correctAnswer, officialExplanation, userAttribution } = inputResult.data;
+
+    // 5-11. Reserva de cota, chamada de IA (SEM user_attribution no prompt!), persistência
     const aiClient = resolveAIClient(request);
     const result = await runAnalysisEngine({
       userId: user.id,
       idempotencyKey,
-      input: inputResult.data,
+      input: { question, userAnswer, correctAnswer, officialExplanation },
+      userAttribution,
       aiClient,
     });
 

@@ -26,9 +26,11 @@ function geminiPayload(candidateText: string) {
 
 describe('GeminiAnalysisClient', () => {
   const validOutputJson = JSON.stringify({
+    discipline: 'Direito Administrativo',
     probableErrorType: 'CONCEPT_CONFUSION',
     confidence: 0.9,
     reasoningSummary: 'Você confundiu dois conceitos próximos.',
+    recommendedAction: 'Revise a distinção entre os institutos e resolva 3 questões.',
     coreConcept: 'X vs Y',
     cardAction: 'CREATE_DISCRIMINATION_CARD',
     card: { front: 'Qual a diferença entre X e Y?', back: 'X é..., Y é...' },
@@ -50,6 +52,8 @@ describe('GeminiAnalysisClient', () => {
     const result = await client.analyze(input);
 
     expect(result.output.cardAction).toBe('CREATE_DISCRIMINATION_CARD');
+    expect(result.output.discipline).toBe('Direito Administrativo');
+    expect(result.output.recommendedAction).toBe('Revise a distinção entre os institutos e resolva 3 questões.');
     expect(result.modelVersion).toBe('gemini-test');
     expect(result.usage.inputTokens).toBe(120);
     expect(result.usage.outputTokens).toBe(40);
@@ -109,7 +113,7 @@ describe('GeminiAnalysisClient', () => {
 
     const client = new GeminiAnalysisClient({ apiKey: 'test-key', maxSchemaRetries: 1 });
     await expect(client.analyze(input)).rejects.toMatchObject({ code: 'SCHEMA_INVALID' });
-    expect(fetchMock).toHaveBeenCalledTimes(2); // 1 tentativa original + 1 retry, nunca ilimitado
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
   it('não faz retry para erros que não sejam de schema (ex.: HTTP_ERROR)', async () => {

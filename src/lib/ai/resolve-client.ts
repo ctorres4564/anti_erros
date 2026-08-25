@@ -9,8 +9,8 @@ import { AIAnalysisError, createGeminiAnalysisClient, type AIAnalysisClient } fr
  * chamada real ao Gemini para produzir cada tipo de erro. Em produção este
  * header é sempre ignorado e o client real é sempre usado.
  */
-export function resolveAIClient(request: NextRequest): AIAnalysisClient {
-  if (process.env.NODE_ENV !== 'production') {
+export function resolveAIClient(request?: NextRequest): AIAnalysisClient {
+  if (process.env.NODE_ENV !== 'production' && request) {
     const forced = request.headers.get('x-test-ai-failure');
     if (forced === 'timeout') {
       return { analyze: () => Promise.reject(new AIAnalysisError('TIMEOUT', 'Timeout forçado para teste E2E.')) };
