@@ -1,2 +1,1 @@
-// Componentes compartilhados
-export {};
+export * from './ContaView';
