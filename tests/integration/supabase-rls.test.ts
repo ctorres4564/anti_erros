@@ -100,7 +100,7 @@ describe.skipIf(!available)('Sprint 1: validação empírica de RLS, RPC privada
       raw_question: 'Q',
       user_answer: 'A',
       correct_answer: 'C',
-      error_type: 'conceptual',
+      error_type: 'KNOWLEDGE_GAP',
       root_cause_explanation: 'expl',
       learning_gap_concept: 'gap',
       ai_confidence: 0.9,

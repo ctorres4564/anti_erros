@@ -1,4 +1,4 @@
-﻿export type Json =
+export type Json =
   | string
   | number
   | boolean
@@ -37,6 +37,7 @@ export type Database = {
       analyses: {
         Row: {
           ai_confidence: number
+          card_action: string
           correct_answer: string
           created_at: string
           error_type: string
@@ -44,6 +45,7 @@ export type Database = {
           is_flashcard_worthy: boolean
           learning_gap_concept: string
           model_version: string
+          official_explanation: string | null
           prompt_version: string
           raw_question: string
           root_cause_explanation: string
@@ -55,6 +57,7 @@ export type Database = {
         }
         Insert: {
           ai_confidence: number
+          card_action?: string
           correct_answer: string
           created_at?: string
           error_type: string
@@ -62,6 +65,7 @@ export type Database = {
           is_flashcard_worthy?: boolean
           learning_gap_concept: string
           model_version: string
+          official_explanation?: string | null
           prompt_version: string
           raw_question: string
           root_cause_explanation: string
@@ -73,6 +77,7 @@ export type Database = {
         }
         Update: {
           ai_confidence?: number
+          card_action?: string
           correct_answer?: string
           created_at?: string
           error_type?: string
@@ -80,6 +85,7 @@ export type Database = {
           is_flashcard_worthy?: boolean
           learning_gap_concept?: string
           model_version?: string
+          official_explanation?: string | null
           prompt_version?: string
           raw_question?: string
           root_cause_explanation?: string
@@ -288,6 +294,26 @@ export type Database = {
       }
     }
     Functions: {
+      complete_analysis: {
+        Args: {
+          p_ai_confidence: number
+          p_card_action: string
+          p_correct_answer: string
+          p_error_type: string
+          p_learning_gap_concept: string
+          p_lock_id: string
+          p_model_version: string
+          p_official_explanation: string
+          p_prompt_version: string
+          p_raw_question: string
+          p_root_cause_explanation: string
+          p_suggested_flashcard_back: string
+          p_suggested_flashcard_front: string
+          p_user_answer: string
+          p_user_id: string
+        }
+        Returns: Json
+      }
       complete_onboarding: {
         Args: {
           p_email: string
@@ -300,7 +326,19 @@ export type Database = {
         }
         Returns: Json
       }
+      fail_analysis: {
+        Args: { p_lock_id: string; p_user_id: string }
+        Returns: Json
+      }
       is_admin: { Args: never; Returns: boolean }
+      reserve_analysis_slot: {
+        Args: {
+          p_idempotency_key: string
+          p_ttl_seconds?: number
+          p_user_id: string
+        }
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never
