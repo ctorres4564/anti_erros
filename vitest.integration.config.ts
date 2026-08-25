@@ -1,4 +1,4 @@
-import { defineConfig, configDefaults } from "vitest/config";
+import { defineConfig } from "vitest/config";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
@@ -6,6 +6,8 @@ export default defineConfig({
   test: {
     environment: "node",
     globals: true,
-    exclude: [...configDefaults.exclude, "tests/integration/**"],
+    include: ["tests/integration/**/*.test.ts"],
+    testTimeout: 30000,
+    hookTimeout: 30000,
   },
 });
