@@ -107,6 +107,28 @@ describe('anonymousAnalysisInputSchema', () => {
   });
 });
 
+describe('authenticatedAnalysisInputSchema', () => {
+  const validAuth = {
+    question: 'Qual é o quórum de aprovação de PEC?',
+    userAnswer: 'Maioria absoluta',
+    correctAnswer: '3/5 em 2 turnos',
+    userAttribution: 'ESQUECI_EXCECAO',
+  };
+
+  it('aceita input autenticado válido', () => {
+    expect(authenticatedAnalysisInputSchema.safeParse(validAuth).success).toBe(true);
+  });
+
+  it('aplica default NAO_SEI quando userAttribution for omitida', () => {
+    const { userAttribution, ...rest } = validAuth;
+    const result = authenticatedAnalysisInputSchema.safeParse(rest);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.userAttribution).toBe('NAO_SEI');
+    }
+  });
+});
+
 describe('analysisOutputSchema (PRD v1.2)', () => {
   const base = {
     discipline: 'Direito Administrativo' as const,
@@ -170,6 +192,44 @@ describe('analysisOutputSchema (PRD v1.2)', () => {
     const result = analysisOutputSchema.safeParse({ ...base, cardAction, card: null });
     expect(result.success).toBe(false);
   });
+
+  it('rejeita probableErrorType fora da taxonomia', () => {
+    const result = analysisOutputSchema.safeParse({
+      ...base,
+      probableErrorType: 'RANDOM_TYPE',
+      cardAction: 'NO_CARD',
+      card: null,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita cardAction fora do conjunto permitido', () => {
+    const result = analysisOutputSchema.safeParse({ ...base, cardAction: 'GENERATE_ANYTHING', card: null });
+    expect(result.success).toBe(false);
+  });
+
+  it.each([-0.1, 1.1, 2, -5])('rejeita confidence fora do intervalo 0.0-1.0 (%s)', (confidence) => {
+    const result = analysisOutputSchema.safeParse({ ...base, confidence, cardAction: 'NO_CARD', card: null });
+    expect(result.success).toBe(false);
+  });
+
+  it.each([0, 0.5, 1])('aceita confidence nos limites do intervalo (%s)', (confidence) => {
+    const result = analysisOutputSchema.safeParse({ ...base, confidence, cardAction: 'NO_CARD', card: null });
+    expect(result.success).toBe(true);
+  });
+});
+
+describe('idempotencyKeySchema', () => {
+  it('aceita um UUID v4 válido', () => {
+    expect(idempotencyKeySchema.safeParse('11111111-1111-4111-8111-111111111111').success).toBe(true);
+  });
+
+  it.each([null, undefined, '', 'not-a-uuid', '12345', 'a'.repeat(36)])(
+    'rejeita valor inválido de Idempotency-Key: %s',
+    (value) => {
+      expect(idempotencyKeySchema.safeParse(value).success).toBe(false);
+    }
+  );
 });
 
 describe('claimPendingSchema', () => {
@@ -201,5 +261,26 @@ describe('applyLowConfidencePolicy', () => {
     expect(result.card).toBeNull();
     expect(result.probableErrorType).toBe('INSUFFICIENT_INFORMATION');
     expect(result.recommendedAction).toBeDefined();
+  });
+
+  it('não altera saída quando confidence >= threshold', () => {
+    const highConfidence: AnalysisOutput = { ...withCard, confidence: 0.9 };
+    const result = applyLowConfidencePolicy(highConfidence);
+    expect(result).toEqual(highConfidence);
+  });
+
+  it('não altera NO_CARD já existente mesmo com confidence baixa', () => {
+    const noCard: AnalysisOutput = {
+      discipline: 'Direito Civil',
+      probableErrorType: 'INSUFFICIENT_INFORMATION',
+      confidence: 0.2,
+      reasoningSummary: 'Dados insuficientes para conclusão segura.',
+      recommendedAction: 'Revise o enunciado da questão.',
+      coreConcept: 'N/A',
+      cardAction: 'NO_CARD',
+      card: null,
+    };
+    const result = applyLowConfidencePolicy(noCard);
+    expect(result).toEqual(noCard);
   });
 });
