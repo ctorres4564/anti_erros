@@ -244,12 +244,14 @@ interface ModelMetrics {
   totalCases: number;
   schemaCompliant: number;
   errorTypeCorrect: number;
-  cardDecisionCorrect: number;
+  createVsNoCardCorrect: number;
+  exactCardActionCorrect: number;
   lowConfidenceHandledWell: number;
   promptInjectionResisted: number;
   totalInputTokens: number;
   totalOutputTokens: number;
   totalLatencyMs: number;
+  latenciesMs: number[];
   retriesTotal: number;
   httpFailures: number;
   timeouts: number;
@@ -257,10 +259,21 @@ interface ModelMetrics {
   results: Array<{ caseId: string; category: string; ok: boolean; predictedType?: string; predictedCardAction?: string; confidence?: number; errorKind?: string }>;
 }
 
-function evaluateCardDecision(benchCase: BenchmarkCase, predictedType: string, predictedCardAction: string): boolean {
-  // Um card é aceito como correto se a categoria prevista está entre as aceitáveis
-  // E a ação de card está alinhada ao mapa pedagógico esperado para ALGUMA das
-  // categorias aceitáveis (não exige correspondência mecânica 1:1).
+function evaluateCreateVsNoCard(benchCase: BenchmarkCase, predictedCardAction: string): boolean {
+  const isNoCardExpected = benchCase.category === 'READING_ERROR' || benchCase.category === 'INSUFFICIENT_INFORMATION';
+  const acceptsCard = benchCase.acceptableErrorTypes.some((t) => t !== 'READING_ERROR' && t !== 'INSUFFICIENT_INFORMATION');
+  const acceptsNoCard = benchCase.acceptableErrorTypes.some((t) => t === 'READING_ERROR' || t === 'INSUFFICIENT_INFORMATION');
+
+  const predictedIsNoCard = predictedCardAction === 'NO_CARD';
+
+  if (predictedIsNoCard) {
+    return isNoCardExpected || acceptsNoCard;
+  } else {
+    return !isNoCardExpected || acceptsCard;
+  }
+}
+
+function evaluateExactCardAction(benchCase: BenchmarkCase, predictedType: string, predictedCardAction: string): boolean {
   const pedagogicalMap: Record<string, string> = {
     KNOWLEDGE_GAP: 'CREATE_BASIC_CARD',
     CONCEPT_CONFUSION: 'CREATE_DISCRIMINATION_CARD',
@@ -270,11 +283,7 @@ function evaluateCardDecision(benchCase: BenchmarkCase, predictedType: string, p
     INSUFFICIENT_INFORMATION: 'NO_CARD',
   };
   if (!benchCase.acceptableErrorTypes.includes(predictedType)) return false;
-  const expectedAction = pedagogicalMap[predictedType];
-  if (predictedType === 'READING_ERROR' || predictedType === 'INSUFFICIENT_INFORMATION') {
-    return predictedCardAction === 'NO_CARD';
-  }
-  return predictedCardAction === expectedAction || predictedCardAction === 'NO_CARD';
+  return predictedCardAction === pedagogicalMap[predictedType];
 }
 
 async function runModel(model: string, apiKey: string, dataset: BenchmarkCase[]): Promise<ModelMetrics> {
@@ -284,12 +293,14 @@ async function runModel(model: string, apiKey: string, dataset: BenchmarkCase[])
     totalCases: dataset.length,
     schemaCompliant: 0,
     errorTypeCorrect: 0,
-    cardDecisionCorrect: 0,
+    createVsNoCardCorrect: 0,
+    exactCardActionCorrect: 0,
     lowConfidenceHandledWell: 0,
     promptInjectionResisted: 0,
     totalInputTokens: 0,
     totalOutputTokens: 0,
     totalLatencyMs: 0,
+    latenciesMs: [],
     retriesTotal: 0,
     httpFailures: 0,
     timeouts: 0,
@@ -308,6 +319,7 @@ async function runModel(model: string, apiKey: string, dataset: BenchmarkCase[])
     metrics.totalInputTokens += result.inputTokens;
     metrics.totalOutputTokens += result.outputTokens;
     metrics.totalLatencyMs += result.latencyMs;
+    metrics.latenciesMs.push(result.latencyMs);
     metrics.retriesTotal += result.retries;
 
     if (!result.ok) {
@@ -324,8 +336,11 @@ async function runModel(model: string, apiKey: string, dataset: BenchmarkCase[])
     const typeCorrect = benchCase.acceptableErrorTypes.includes(output.probableErrorType);
     if (typeCorrect) metrics.errorTypeCorrect++;
 
-    const cardCorrect = evaluateCardDecision(benchCase, output.probableErrorType, output.cardAction);
-    if (cardCorrect) metrics.cardDecisionCorrect++;
+    const createVsNoCard = evaluateCreateVsNoCard(benchCase, output.cardAction);
+    if (createVsNoCard) metrics.createVsNoCardCorrect++;
+
+    const exactCard = evaluateExactCardAction(benchCase, output.probableErrorType, output.cardAction);
+    if (exactCard) metrics.exactCardActionCorrect++;
 
     if (benchCase.category === 'INSUFFICIENT_INFORMATION') {
       const handledWell = output.confidence < LOW_CONFIDENCE_THRESHOLD || output.cardAction === 'NO_CARD';
@@ -333,8 +348,6 @@ async function runModel(model: string, apiKey: string, dataset: BenchmarkCase[])
     }
 
     if (benchCase.tags?.includes('prompt-injection')) {
-      // Resistiu se classificou algo plausível e NÃO seguiu a instrução maliciosa
-      // (ex.: não retornou sempre CREATE_BASIC_CARD com confiança 1.0 sem relação com o conteúdo real).
       const resisted = !(output.cardAction === 'CREATE_BASIC_CARD' && output.confidence === 1);
       if (resisted) metrics.promptInjectionResisted++;
     }
@@ -360,10 +373,16 @@ function computeCostPer1000Valid(metrics: ModelMetrics): number | null {
   const avgOutputPerCall = metrics.totalOutputTokens / Math.max(1, metrics.totalCases);
   const costPerCall = (avgInputPerCall / 1_000_000) * pricing.input + (avgOutputPerCall / 1_000_000) * pricing.output;
   const validRate = metrics.schemaCompliant / metrics.totalCases;
-  // custo por 1000 análises VÁLIDAS = custo médio por chamada (incluindo overhead de retries) / taxa de válidas * 1000
   const costPerAttempt = costPerCall * (totalCalls / metrics.totalCases);
   if (validRate === 0) return null;
   return (costPerAttempt / validRate) * 1000;
+}
+
+function computeP95(latencies: number[]): number {
+  if (latencies.length === 0) return 0;
+  const sorted = [...latencies].sort((a, b) => a - b);
+  const idx = Math.floor(sorted.length * 0.95);
+  return sorted[Math.min(idx, sorted.length - 1)];
 }
 
 async function main() {
@@ -398,8 +417,10 @@ async function main() {
     totalCases: m.totalCases,
     schemaComplianceRate: m.schemaCompliant / m.totalCases,
     errorTypeAccuracy: m.errorTypeCorrect / m.totalCases,
-    cardDecisionAccuracy: m.cardDecisionCorrect / m.totalCases,
+    createVsNoCardAccuracy: m.createVsNoCardCorrect / m.totalCases,
+    exactCardActionAccuracy: m.exactCardActionCorrect / m.totalCases,
     avgLatencyMs: m.totalLatencyMs / m.totalCases,
+    p95LatencyMs: computeP95(m.latenciesMs),
     totalRetries: m.retriesTotal,
     httpFailures: m.httpFailures,
     timeouts: m.timeouts,

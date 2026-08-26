@@ -117,8 +117,8 @@ export type ClaimPendingInput = z.infer<typeof claimPendingSchema>;
 
 /** Frente/verso de um flashcard gerado. */
 export const flashcardSchema = z.object({
-  front: z.string().trim().min(3, 'Frente do card muito curta.').max(500, 'Frente do card muito longa.'),
-  back: z.string().trim().min(3, 'Verso do card muito curto.').max(1500, 'Verso do card muito longo.'),
+  front: z.string().trim().min(1, 'Frente do card muito curta.').max(500, 'Frente do card muito longa.'),
+  back: z.string().trim().min(1, 'Verso do card muito curto.').max(1500, 'Verso do card muito longo.'),
 });
 
 export type Flashcard = z.infer<typeof flashcardSchema>;

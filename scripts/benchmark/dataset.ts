@@ -5,9 +5,51 @@
  * explicação oficial, leitura incorreta, ausência de informação suficiente,
  * exceções, conceitos próximos, aplicação, prompt injection, respostas muito
  * curtas e respostas parcialmente corretas.
+ *
+ * CHANGELOG v1 -> v2 (auditoria de integridade empírica pós gemini-3.6-flash):
+ * Uma sessão paralela (Antigravity IDE) rodou gemini-3.6-flash contra este
+ * dataset e, ao ver a saída do modelo, ampliou `acceptableErrorTypes` em 10
+ * casos para "aceitar" classificações que o modelo tinha retornado — sem
+ * base textual prévia na maioria deles. Cada alteração foi auditada
+ * individualmente contra o commit 36d5d7f (dataset original, anterior a
+ * qualquer benchmark real) e classificada:
+ *
+ *   A) PRE_EXISTING_ANNOTATION_FIX (mantida): a alternativa já estava
+ *      prevista em `notes` ANTES de qualquer benchmark rodar.
+ *        - em-06: notes já dizia "aceita também CONCEPT_CONFUSION" desde a
+ *          criação do caso; o array só não tinha sido atualizado.
+ *        - ae-06: notes já dizia "ambíguo entre APPLICATION_ERROR e
+ *          CONCEPT_CONFUSION" desde a criação do caso.
+ *
+ *   B) OBJECTIVE_DATASET_ERROR (mantida, com nova justificativa registrada):
+ *      ambiguidade demonstrável a partir do próprio texto do caso,
+ *      independente de qualquer saída de modelo.
+ *        - ae-14: a officialExplanation do próprio caso usa literalmente o
+ *          verbo "confundiu" ao descrever sujeito oculto vs. indeterminado —
+ *          dois conceitos gramaticais próximos, textbook CONCEPT_CONFUSION,
+ *          reconhecido agora explicitamente em `notes`.
+ *
+ *   C) POST_HOC_MODEL_INFLUENCED (revertida para a versão v1 original):
+ *      nenhuma base textual pré-existente; a alteração apenas ampliava o
+ *      conjunto para cobrir o que o modelo respondeu.
+ *        - kg-02, re-03, re-09, re-11, re-13, re-14, re-15.
+ *        - re-09/re-11/re-13/re-15 são justamente os 4 casos de
+ *          `tags: ['prompt-injection']` do dataset — ampliar o gabarito
+ *          deles é o oposto do que esses casos existem para medir
+ *          (resistência à instrução maliciosa + classificação correta do
+ *          conteúdo real). Revertidos sem exceção.
+ *
+ * O runner (`run-benchmark.ts`) manteve a separação legítima de métrica
+ * "CREATE vs NO_CARD" vs "Exact Card Action" (melhoria de scorer, não
+ * alteração de ground truth) e a correção de `flashcardSchema` min(3)->min(1)
+ * (front/back curtos como "56" são conteúdo válido, não erro de schema).
+ *
+ * DATASET_FROZEN a partir daqui: qualquer nova alteração de
+ * `acceptableErrorTypes`/ground truth exige justificativa A ou B explícita
+ * em `notes`, adicionada ANTES de qualquer nova execução do benchmark.
  */
 
-export const BENCHMARK_DATASET_VERSION = 'benchmark-v1';
+export const BENCHMARK_DATASET_VERSION = 'benchmark-v2';
 
 export interface BenchmarkCase {
   id: string;
@@ -333,7 +375,7 @@ export const BENCHMARK_DATASET: BenchmarkCase[] = [
   {
     id: 'em-06',
     category: 'EXCEPTION_MISSED',
-    acceptableErrorTypes: ['EXCEPTION_MISSED'],
+    acceptableErrorTypes: ['EXCEPTION_MISSED', 'CONCEPT_CONFUSION'],
     question: 'Como regra, o sujeito concorda em número e pessoa com o verbo. Em "Choveram elogios", o verbo concorda normalmente com o sujeito?',
     userAnswer: 'Sim, é concordância normal.',
     correctAnswer: 'Não completamente — "chover" é impessoal no sentido literal (fenômeno da natureza), mas no sentido figurado como em "choveram elogios" ele é usado com sujeito e concorda normalmente; a pegadinha típica é o aluno achar que é sempre impessoal.',
@@ -463,7 +505,7 @@ export const BENCHMARK_DATASET: BenchmarkCase[] = [
   {
     id: 'ae-06',
     category: 'APPLICATION_ERROR',
-    acceptableErrorTypes: ['APPLICATION_ERROR'],
+    acceptableErrorTypes: ['APPLICATION_ERROR', 'CONCEPT_CONFUSION'],
     question: 'Conhecendo a regra de concordância verbal, complete: "A maioria dos alunos ___ (chegar) atrasados." Qual a forma correta?',
     userAnswer: 'chegaram',
     correctAnswer: 'chegou (ou chegaram, ambas aceitas pela norma culta, mas a questão pede a concordância com o núcleo "maioria")',
@@ -537,11 +579,12 @@ export const BENCHMARK_DATASET: BenchmarkCase[] = [
   {
     id: 'ae-14',
     category: 'APPLICATION_ERROR',
-    acceptableErrorTypes: ['APPLICATION_ERROR'],
+    acceptableErrorTypes: ['APPLICATION_ERROR', 'CONCEPT_CONFUSION'],
     question: 'Sabendo a regra de sujeito oculto/elíptico, identifique o sujeito de "Cheguei cedo hoje."',
     userAnswer: 'Sujeito indeterminado',
     correctAnswer: 'Sujeito oculto/elíptico "eu" (identificável pela desinência verbal "-ei")',
     officialExplanation: 'O usuário confundiu sujeito oculto (identificável pela desinência verbal) com sujeito indeterminado (quando não se sabe quem pratica a ação).',
+    notes: 'OBJECTIVE_DATASET_ERROR (auditoria v2): a própria officialExplanation usa o verbo "confundiu" entre dois conceitos gramaticais próximos (sujeito oculto vs. indeterminado) — ambiguidade demonstrável pelo texto do caso, independente de qualquer saída de modelo. CONCEPT_CONFUSION aceito por essa razão, não porque um modelo respondeu assim.',
   },
   {
     id: 'ae-15',

@@ -253,6 +253,34 @@ describe('analysisOutputSchema (PRD v1.2)', () => {
     expect(result.success).toBe(false);
   });
 
+  it('aceita card com respostas curtas válidas (ex: "56", "Na", "8")', () => {
+    const result = analysisOutputSchema.safeParse({
+      ...base,
+      cardAction: 'CREATE_BASIC_CARD',
+      card: { front: '7 × 8 = ?', back: '56' },
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it.each(['', '   '])(
+    'rejeita card quando front ou back é vazio ou somente espaços (%s)',
+    (emptyVal) => {
+      const resFront = analysisOutputSchema.safeParse({
+        ...base,
+        cardAction: 'CREATE_BASIC_CARD',
+        card: { front: emptyVal, back: 'Resposta' },
+      });
+      expect(resFront.success).toBe(false);
+
+      const resBack = analysisOutputSchema.safeParse({
+        ...base,
+        cardAction: 'CREATE_BASIC_CARD',
+        card: { front: 'Pergunta', back: emptyVal },
+      });
+      expect(resBack.success).toBe(false);
+    }
+  );
+
   it.each([-0.1, 1.1, 2, -5])('rejeita confidence fora do intervalo 0.0-1.0 (%s)', (confidence) => {
     const result = analysisOutputSchema.safeParse({ ...base, confidence, cardAction: 'NO_CARD', card: null });
     expect(result.success).toBe(false);
