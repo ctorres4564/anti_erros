@@ -34,7 +34,7 @@ export interface AIAnalysisClient {
 }
 
 /** Schema JSON (dialeto OpenAPI/Gemini) espelhando analysisOutputSchema para Structured Output. */
-const GEMINI_RESPONSE_SCHEMA = {
+export const GEMINI_RESPONSE_SCHEMA = {
   type: 'OBJECT',
   properties: {
     discipline: {
@@ -73,6 +73,7 @@ const GEMINI_RESPONSE_SCHEMA = {
         front: { type: 'STRING' },
         back: { type: 'STRING' },
       },
+      required: ['front', 'back'],
     },
   },
   required: ['discipline', 'probableErrorType', 'confidence', 'reasoningSummary', 'recommendedAction', 'coreConcept', 'cardAction', 'card'],

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { AIAnalysisError, GeminiAnalysisClient } from '@/lib/ai/gemini';
+import { AIAnalysisError, GeminiAnalysisClient, GEMINI_RESPONSE_SCHEMA } from '@/lib/ai/gemini';
 import type { AnalysisInput } from '@/lib/ai/analysis-schema';
 
 const input: AnalysisInput = {
@@ -139,6 +139,84 @@ describe('GeminiAnalysisClient', () => {
 
     const client = new GeminiAnalysisClient({ apiKey: 'test-key', timeoutMs: 20 });
     await expect(client.analyze(input)).rejects.toMatchObject({ code: 'TIMEOUT' });
+  });
+
+  it('valida que GEMINI_RESPONSE_SCHEMA define card com required [front, back] e nullable', () => {
+    expect(GEMINI_RESPONSE_SCHEMA.properties.card.required).toEqual(['front', 'back']);
+    expect(GEMINI_RESPONSE_SCHEMA.properties.card.nullable).toBe(true);
+    expect(GEMINI_RESPONSE_SCHEMA.required).toContain('card');
+    expect(GEMINI_RESPONSE_SCHEMA.required).toContain('cardAction');
+  });
+
+  it('faz retry quando o modelo retorna card com back ausente e sucede após retry válido', async () => {
+    const invalidCardJson = JSON.stringify({
+      discipline: 'Direito Administrativo',
+      probableErrorType: 'CONCEPT_CONFUSION',
+      confidence: 0.9,
+      reasoningSummary: 'Você confundiu dois conceitos próximos.',
+      recommendedAction: 'Revise a distinção entre os institutos.',
+      coreConcept: 'X vs Y',
+      cardAction: 'CREATE_BASIC_CARD',
+      card: { front: 'Qual é a capital da Austrália?' }, // back ausente
+    });
+
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => geminiPayload(invalidCardJson),
+        text: async () => '',
+      } as Response)
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => geminiPayload(validOutputJson),
+        text: async () => '',
+      } as Response);
+    vi.stubGlobal('fetch', fetchMock);
+
+    const client = new GeminiAnalysisClient({ apiKey: 'test-key', maxSchemaRetries: 1 });
+    const result = await client.analyze(input);
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(result.usage.retries).toBe(1);
+    expect(result.output.cardAction).toBe('CREATE_DISCRIMINATION_CARD');
+  });
+
+  it('faz retry quando o modelo retorna front > 500 caracteres', async () => {
+    const invalidFrontJson = JSON.stringify({
+      discipline: 'Direito Administrativo',
+      probableErrorType: 'CONCEPT_CONFUSION',
+      confidence: 0.9,
+      reasoningSummary: 'Você confundiu dois conceitos próximos.',
+      recommendedAction: 'Revise a distinção entre os institutos.',
+      coreConcept: 'X vs Y',
+      cardAction: 'CREATE_BASIC_CARD',
+      card: { front: 'a'.repeat(501), back: 'Resposta válida' },
+    });
+
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => geminiPayload(invalidFrontJson),
+        text: async () => '',
+      } as Response)
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => geminiPayload(validOutputJson),
+        text: async () => '',
+      } as Response);
+    vi.stubGlobal('fetch', fetchMock);
+
+    const client = new GeminiAnalysisClient({ apiKey: 'test-key', maxSchemaRetries: 1 });
+    const result = await client.analyze(input);
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(result.usage.retries).toBe(1);
   });
 
   it('rejeita construção sem apiKey', () => {

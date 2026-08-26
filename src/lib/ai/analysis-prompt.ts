@@ -97,6 +97,13 @@ uma lacuna de aprendizagem reutilizável. Escolha exatamente uma ação:
 O mapeamento acima é uma referência inicial, não uma correspondência mecânica
 obrigatória — use julgamento pedagógico para o caso concreto.
 
+## REGRAS ESTRITAS DO CAMPO CARD
+- Se cardAction for NO_CARD: o campo card DEVE ser null.
+- Se cardAction for qualquer CREATE_*: o campo card DEVE ser um objeto completo com front e back (ambos obrigatórios):
+  - front: pergunta ou estímulo curto e atômico (máximo 500 caracteres, preferencialmente 1 a 2 frases). NUNCA copie o enunciado da questão para o front.
+  - back: resposta ou diferenciação concisa e direta (máximo 1500 caracteres). NUNCA omita o back.
+- Nunca retorne card parcial nem texto fora do schema.
+
 ## ANTI-MEMORIZAÇÃO DA QUESTÃO
 Nunca transforme a questão original diretamente em frente do flashcard. Isso
 cria memorização da questão específica, não aprendizagem do conceito

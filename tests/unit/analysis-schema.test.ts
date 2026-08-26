@@ -208,6 +208,51 @@ describe('analysisOutputSchema (PRD v1.2)', () => {
     expect(result.success).toBe(false);
   });
 
+  it('rejeita CREATE_* quando card.back está ausente', () => {
+    const result = analysisOutputSchema.safeParse({
+      ...base,
+      cardAction: 'CREATE_BASIC_CARD',
+      card: { front: 'Qual é a capital da Austrália?' },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita CREATE_* quando card.front está ausente', () => {
+    const result = analysisOutputSchema.safeParse({
+      ...base,
+      cardAction: 'CREATE_BASIC_CARD',
+      card: { back: 'Canberra é a capital.' },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita card.front com mais de 500 caracteres', () => {
+    const result = analysisOutputSchema.safeParse({
+      ...base,
+      cardAction: 'CREATE_BASIC_CARD',
+      card: { front: 'a'.repeat(501), back: 'Resposta válida.' },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('aceita card.front no limite máximo de 500 caracteres', () => {
+    const result = analysisOutputSchema.safeParse({
+      ...base,
+      cardAction: 'CREATE_BASIC_CARD',
+      card: { front: 'a'.repeat(500), back: 'Resposta válida.' },
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it('rejeita card.back com mais de 1500 caracteres', () => {
+    const result = analysisOutputSchema.safeParse({
+      ...base,
+      cardAction: 'CREATE_BASIC_CARD',
+      card: { front: 'Pergunta válida?', back: 'a'.repeat(1501) },
+    });
+    expect(result.success).toBe(false);
+  });
+
   it.each([-0.1, 1.1, 2, -5])('rejeita confidence fora do intervalo 0.0-1.0 (%s)', (confidence) => {
     const result = analysisOutputSchema.safeParse({ ...base, confidence, cardAction: 'NO_CARD', card: null });
     expect(result.success).toBe(false);

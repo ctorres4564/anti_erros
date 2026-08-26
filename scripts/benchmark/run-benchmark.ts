@@ -20,53 +20,8 @@ loadEnv({ path: path.resolve(process.cwd(), '.env.local') });
 import { BENCHMARK_DATASET, BENCHMARK_DATASET_VERSION, type BenchmarkCase } from './dataset';
 import { analysisOutputSchema } from '../../src/lib/ai/analysis-schema';
 import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt } from '../../src/lib/ai/analysis-prompt';
-import { DISCIPLINES, LOW_CONFIDENCE_THRESHOLD } from '../../src/config/ai';
-
-const GEMINI_RESPONSE_SCHEMA = {
-  type: 'OBJECT',
-  properties: {
-    discipline: {
-      type: 'STRING',
-      enum: DISCIPLINES,
-    },
-    probableErrorType: {
-      type: 'STRING',
-      enum: [
-        'KNOWLEDGE_GAP',
-        'CONCEPT_CONFUSION',
-        'EXCEPTION_MISSED',
-        'APPLICATION_ERROR',
-        'READING_ERROR',
-        'INSUFFICIENT_INFORMATION',
-      ],
-    },
-    confidence: { type: 'NUMBER' },
-    reasoningSummary: { type: 'STRING' },
-    recommendedAction: { type: 'STRING' },
-    coreConcept: { type: 'STRING' },
-    cardAction: {
-      type: 'STRING',
-      enum: [
-        'CREATE_BASIC_CARD',
-        'CREATE_DISCRIMINATION_CARD',
-        'CREATE_EXCEPTION_CARD',
-        'CREATE_APPLICATION_CARD',
-        'NO_CARD',
-      ],
-    },
-    card: { type: 'OBJECT', nullable: true, properties: { front: { type: 'STRING' }, back: { type: 'STRING' } } },
-  },
-  required: [
-    'discipline',
-    'probableErrorType',
-    'confidence',
-    'reasoningSummary',
-    'recommendedAction',
-    'coreConcept',
-    'cardAction',
-    'card',
-  ],
-} as const;
+import { GEMINI_RESPONSE_SCHEMA } from '../../src/lib/ai/gemini';
+import { LOW_CONFIDENCE_THRESHOLD } from '../../src/config/ai';
 
 // Preço nominal por 1M tokens (USD), tier "flash" gratuito/pago padrão declarado publicamente pela
 // Google para a família Gemini 3 na época do benchmark. Usado apenas para o cálculo de
@@ -116,7 +71,7 @@ class RateLimiter {
   }
 }
 
-async function callModel(model: string, apiKey: string, benchCase: BenchmarkCase, timeoutMs = 45000): Promise<CallResult> {
+async function callModel(model: string, apiKey: string, benchCase: BenchmarkCase, timeoutMs = 60000): Promise<CallResult> {
   const userPrompt = buildAnalysisUserPrompt({
     question: benchCase.question,
     userAnswer: benchCase.userAnswer,
@@ -202,6 +157,10 @@ async function callModel(model: string, apiKey: string, benchCase: BenchmarkCase
 
     const validation = analysisOutputSchema.safeParse(parsed);
     if (!validation.success) {
+      // Log seguro sem credenciais/headers para depuração de schema inválido
+      process.stderr.write(
+        `\n[DEBUG SCHEMA_INVALID - ${model} - ${benchCase.id}]\nZod issues: ${JSON.stringify(validation.error.issues, null, 2)}\nRaw JSON: ${JSON.stringify(parsed, null, 2)}\n\n`
+      );
       return {
         caseId: benchCase.id,
         ok: false,
@@ -248,19 +207,36 @@ async function callModelWithRetry(
   limiter: RateLimiter
 ): Promise<CallResult> {
   let lastResult: CallResult | null = null;
-  for (let attempt = 0; attempt <= 3; attempt++) {
+  let schemaRetries = 0;
+  const maxSchemaRetries = 1;
+  const maxTransientRetries = 2;
+  let attempt = 0;
+
+  while (attempt <= 3) {
     await limiter.acquire();
-    const result = await callModel(model, apiKey, benchCase);
+    const result = await callModel(model, apiKey, benchCase, 60000);
     if (result.ok) return { ...result, retries: attempt };
     lastResult = result;
-    // Só re-tenta automaticamente em 429/503 (rate limit / sobrecarga transitória do provedor).
-    if (result.httpStatus === 429 || result.httpStatus === 503) {
-      await sleep(5000 * (attempt + 1));
+
+    // Retry em SCHEMA_INVALID (máximo 1 retry controlado)
+    if (result.errorKind === 'SCHEMA_INVALID' && schemaRetries < maxSchemaRetries) {
+      schemaRetries++;
+      attempt++;
+      await sleep(1000);
       continue;
     }
+
+    // Retry em 429/503 (máximo 2 retries com backoff)
+    if ((result.httpStatus === 429 || result.httpStatus === 503) && attempt < maxTransientRetries) {
+      attempt++;
+      await sleep(5000 * attempt);
+      continue;
+    }
+
+    // Para outros erros (ex.: TIMEOUT, EMPTY_RESPONSE) ou retries esgotados, não fazer novos retries
     return { ...result, retries: attempt };
   }
-  return { ...(lastResult as CallResult), retries: 3 };
+  return { ...(lastResult as CallResult), retries: attempt };
 }
 
 interface ModelMetrics {
