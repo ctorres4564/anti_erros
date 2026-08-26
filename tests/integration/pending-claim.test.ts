@@ -301,4 +301,132 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     expect(error).toBeNull();
     expect(typeof cleanedCount).toBe('number');
   });
+
+  it('7. Claim com cota esgotada (5/5) deve recusar sem alterar pending e permitir resgate posterior com cota livre', async () => {
+    // 1. Criar novo usuário de teste com cota cheia (used_count = 5, reserved_count = 0)
+    const quotaFullUser = await createTestUser(`claim_quota_full_${Date.now()}@exemplo.com`);
+    const today = new Date().toISOString().split('T')[0];
+    await admin
+      .from('daily_quotas')
+      .upsert({
+        user_id: quotaFullUser.id,
+        quota_date: today,
+        daily_limit: 5,
+        used_count: 5,
+        reserved_count: 0,
+      });
+
+    // 2. Criar pending_analysis válida
+    const result = await createAnonymousPendingAnalysis({
+      input: {
+        question: 'Questão teste cota cheia',
+        userAnswer: 'Resposta A',
+        correctAnswer: 'Resposta B',
+        userAttribution: 'NAO_SABIA_CONTEUDO',
+      },
+      anonymousId: 'anon_quota_full_' + Date.now(),
+      clientIp: '127.0.0.1',
+      aiClient: spyAiClient,
+    });
+
+    expect(result.kind).toBe('SUCCESS');
+    if (result.kind !== 'SUCCESS') return;
+
+    const claimToken = result.preview.claimToken;
+    const tokenHash = hashClaimToken(claimToken);
+
+    // 3. Executar o claim com cota 5/5
+    const callsBeforeClaim = aiCallCount;
+    const failedClaim = await claimPendingAnalysisForUser({
+      userId: quotaFullUser.id,
+      claimToken,
+    });
+
+    // Validação 1: claim recusado por limite diário
+    expect(failedClaim.kind).toBe('LIMIT_REACHED');
+
+    // Validação 2: NÃO criar linha definitiva em analyses
+    const { data: analysesRows } = await admin
+      .from('analyses')
+      .select('*')
+      .eq('user_id', quotaFullUser.id);
+    expect(analysesRows).toHaveLength(0);
+
+    // Validação 3: used_count continua 5 e reserved_count continua 0
+    const { data: quotaAfterFailed } = await admin
+      .from('daily_quotas')
+      .select('*')
+      .eq('user_id', quotaFullUser.id)
+      .eq('quota_date', today)
+      .single();
+    expect(quotaAfterFailed?.used_count).toBe(5);
+    expect(quotaAfterFailed?.reserved_count).toBe(0);
+
+    // Validação 4: pending_analysis NÃO vira CLAIMED, status é PENDING e claimed_at é null
+    const { data: pendingAfterFailed } = await admin
+      .from('pending_analyses')
+      .select('*')
+      .eq('claim_token_hash', tokenHash)
+      .single();
+    expect(pendingAfterFailed?.status).toBe('PENDING');
+    expect(pendingAfterFailed?.claimed_at).toBeNull();
+    expect(pendingAfterFailed?.claimed_by_user_id).toBeNull();
+
+    // 4. Resetar/reduzir cota para liberar 1 vaga (used_count = 4)
+    await admin
+      .from('daily_quotas')
+      .update({ used_count: 4 })
+      .eq('user_id', quotaFullUser.id)
+      .eq('quota_date', today);
+
+    // 5. Executar NOVAMENTE o claim com o MESMO token
+    const successClaim = await claimPendingAnalysisForUser({
+      userId: quotaFullUser.id,
+      claimToken,
+    });
+
+    // Validação 5: claim agora permitido com sucesso
+    expect(successClaim.kind).toBe('SUCCESS');
+    if (successClaim.kind !== 'SUCCESS') return;
+
+    // Validação 6: exatamente 1 analysis definitiva
+    const { data: analysesAfterSuccess } = await admin
+      .from('analyses')
+      .select('*')
+      .eq('user_id', quotaFullUser.id);
+    expect(analysesAfterSuccess).toHaveLength(1);
+    expect(analysesAfterSuccess?.[0].id).toBe(successClaim.analysis.id);
+
+    // Validação 7: pending marcada CLAIMED
+    const { data: pendingAfterSuccess } = await admin
+      .from('pending_analyses')
+      .select('*')
+      .eq('claim_token_hash', tokenHash)
+      .single();
+    expect(pendingAfterSuccess?.status).toBe('CLAIMED');
+    expect(pendingAfterSuccess?.claimed_by_user_id).toBe(quotaFullUser.id);
+    expect(pendingAfterSuccess?.claimed_at).not.toBeNull();
+
+    // Validação 8: used_count incrementado exatamente uma vez (4 -> 5)
+    const { data: quotaAfterSuccess } = await admin
+      .from('daily_quotas')
+      .select('*')
+      .eq('user_id', quotaFullUser.id)
+      .eq('quota_date', today)
+      .single();
+    expect(quotaAfterSuccess?.used_count).toBe(5);
+
+    // Validação 9: nenhuma segunda chamada ao Gemini durante o claim
+    expect(aiCallCount).toBe(callsBeforeClaim);
+
+    // Validação 10: nova tentativa com o mesmo token não cria duplicata (ALREADY_CLAIMED)
+    const duplicateClaim = await claimPendingAnalysisForUser({
+      userId: quotaFullUser.id,
+      claimToken,
+    });
+    expect(duplicateClaim.kind).toBe('ALREADY_CLAIMED');
+
+    // Cleanup
+    await admin.auth.admin.deleteUser(quotaFullUser.id);
+  });
 });
