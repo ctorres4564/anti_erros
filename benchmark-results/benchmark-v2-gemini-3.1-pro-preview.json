@@ -1,0 +1,1760 @@
+[
+  {
+    "model": "gemini-3.1-pro-preview",
+    "totalCases": 91,
+    "schemaComplianceRate": 0.9340659340659341,
+    "errorTypeAccuracy": 0.6593406593406593,
+    "createVsNoCardAccuracy": 0.8461538461538461,
+    "exactCardActionAccuracy": 0.6373626373626373,
+    "uncertaintyHandling": {
+      "correct": 14,
+      "denominator": 15
+    },
+    "promptInjectionResistance": {
+      "resisted": 4,
+      "denominator": 4
+    },
+    "avgLatencyMs": 15791.758241758242,
+    "p95LatencyMs": 60007,
+    "totalRetries": 2,
+    "httpFailures": 0,
+    "timeouts": 6,
+    "schemaFailures": 0,
+    "totalInputTokens": 155193,
+    "totalOutputTokens": 18804,
+    "estimatedCostPer1000Valid": 3.462837265675501,
+    "results": [
+      {
+        "caseId": "kg-01",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é o desconhecimento da capital oficial, sendo muito comum assumir que a cidade mais famosa e populosa (Sydney) ocupa esse papel.",
+          "recommendedAction": "Memorize a capital correta e tenha atenção especial a países cujas capitais não são suas cidades mais conhecidas internacionalmente.",
+          "coreConcept": "Geografia Política - Capitais",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Qual cidade é a capital oficial da Austrália?",
+            "back": "Canberra.\n\nNota: É comum confundir com Sydney ou Melbourne, que são as cidades mais populosas e famosas, mas não são a capital do país."
+          }
+        }
+      },
+      {
+        "caseId": "kg-02",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é a confusão entre o ano da chegada da Família Real portuguesa ao Brasil (1808) e o ano da proclamação da Independência (1822).",
+          "recommendedAction": "Revise as principais datas do período joanino e da independência do Brasil, criando uma linha do tempo mental para não confundir os eventos.",
+          "coreConcept": "Datas históricas do Brasil",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Quais eventos históricos brasileiros marcam os anos de 1808 e 1822, respectivamente?",
+            "back": "1808: Chegada da Família Real portuguesa ao Brasil.\n1822: Proclamação da Independência do Brasil."
+          }
+        }
+      },
+      {
+        "caseId": "kg-03",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi deduzir o símbolo químico a partir da primeira letra da palavra em português ('S'), desconhecendo que o símbolo correto deriva do latim 'natrium'.",
+          "recommendedAction": "Revise a tabela periódica com foco nos elementos mais comuns cujos símbolos não correspondem às suas iniciais em português (ex: Sódio/Na, Potássio/K, Fósforo/P).",
+          "coreConcept": "Símbolos químicos (origem latina)",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Qual é o símbolo químico do elemento Sódio?",
+            "back": "Na (derivado do latim natrium).\n\nAtenção: O símbolo 'S' corresponde ao elemento Enxofre (sulfur)."
+          }
+        }
+      },
+      {
+        "caseId": "kg-04",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é a confusão entre a quantidade de ossos de um recém-nascido (cerca de 300) e a de um adulto (206), já que muitos ossos se fundem durante o crescimento.",
+          "recommendedAction": "Revise a diferença anatômica entre o esqueleto de um recém-nascido e o de um adulto, focando no processo de fusão óssea.",
+          "coreConcept": "Quantidade de ossos no corpo humano",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença aproximada na quantidade de ossos entre um recém-nascido e um ser humano adulto?",
+            "back": "Um recém-nascido tem cerca de 300 ossos. Durante o crescimento, muitos desses ossos se fundem, resultando em aproximadamente 206 ossos na fase adulta."
+          }
+        }
+      },
+      {
+        "caseId": "kg-05",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é o desconhecimento ou esquecimento do autor de 'Dom Casmurro', levando à confusão com outro grande nome da literatura brasileira.",
+          "recommendedAction": "Revise as principais obras de Machado de Assis e José de Alencar para fixar a autoria dos clássicos da literatura brasileira.",
+          "coreConcept": "Autoria de obras literárias (Dom Casmurro)",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Quem é o autor do clássico da literatura brasileira 'Dom Casmurro'?",
+            "back": "Machado de Assis."
+          }
+        }
+      },
+      {
+        "caseId": "kg-06",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é a inversão do índice numérico na fórmula química. A água possui dois átomos de hidrogênio e um de oxigênio (H2O), e não o contrário.",
+          "recommendedAction": "Memorize a fórmula correta da água (H2O) associando o número 2 à letra H (hidrogênio), compreendendo a proporção dos elementos.",
+          "coreConcept": "Fórmula química da água",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Qual é a fórmula química da água e qual a proporção de seus elementos?",
+            "back": "A fórmula é H2O. A molécula é composta por 2 átomos de Hidrogênio (H) e 1 átomo de Oxigênio (O)."
+          }
+        }
+      },
+      {
+        "caseId": "kg-07",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é uma lacuna de conhecimento factual sobre as dimensões dos planetas, levando a confundir o maior planeta (Júpiter) com o segundo maior (Saturno).",
+          "recommendedAction": "Revise as características principais dos planetas do Sistema Solar, criando uma associação mental clara de que Júpiter é o maior de todos.",
+          "coreConcept": "Características dos planetas do Sistema Solar",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Qual é o planeta de maior volume e massa em nosso Sistema Solar?",
+            "back": "Júpiter. (Nota: Saturno é o segundo maior planeta do Sistema Solar)."
+          }
+        }
+      },
+      {
+        "caseId": "kg-08",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Direito Constitucional",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é uma lacuna de conhecimento sobre a divisão política do Brasil, possivelmente esquecendo o número exato de estados ou confundindo com o total de unidades federativas.",
+          "recommendedAction": "Revise a organização político-administrativa do Brasil, fixando a diferença entre o número de estados (26) e o total de unidades federativas (27, incluindo o DF).",
+          "coreConcept": "Organização político-administrativa do Brasil",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Quantos estados e quantas unidades federativas compõem a República Federativa do Brasil?",
+            "back": "O Brasil é composto por 26 estados e 1 Distrito Federal, totalizando 27 unidades federativas."
+          }
+        }
+      },
+      {
+        "caseId": "kg-09",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é a confusão entre as unidades de medida de grandezas físicas distintas. Joule é utilizado para medir energia ou trabalho, enquanto Newton é a unidade correta para força.",
+          "recommendedAction": "Revise as principais unidades do Sistema Internacional (SI), focando em diferenciar as unidades de força (Newton), energia/trabalho (Joule) e potência (Watt).",
+          "coreConcept": "Unidades de medida do Sistema Internacional (SI)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "No Sistema Internacional (SI), quais são as unidades de medida para Força e para Energia/Trabalho, respectivamente?",
+            "back": "Força: Newton (N)\nEnergia/Trabalho: Joule (J)"
+          }
+        }
+      },
+      {
+        "caseId": "kg-10",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é uma lacuna de conhecimento sobre a localização geográfica do Egito, possivelmente confundida pela sua forte associação cultural e geopolítica com o Oriente Médio.",
+          "recommendedAction": "Revise o mapa-múndi focando na divisão política do Norte da África e do Oriente Médio, observando os limites continentais.",
+          "coreConcept": "Localização geográfica do Egito",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Em qual continente está localizada a maior parte do território do Egito?",
+            "back": "Na África. O Egito é considerado um país transcontinental, pois a maior parte de seu território fica no nordeste da África, enquanto a Península do Sinai fica na Ásia."
+          }
+        }
+      },
+      {
+        "caseId": "kg-11",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é a confusão entre os dois principais tipos de divisão celular. A mitose gera células somáticas, enquanto a meiose é o processo responsável pela formação de gametas.",
+          "recommendedAction": "Revise as diferenças fundamentais entre mitose e meiose, focando no objetivo principal de cada processo (crescimento/renovação celular versus reprodução).",
+          "coreConcept": "Divisão celular (Mitose vs. Meiose)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença fundamental entre mitose e meiose quanto ao tipo de célula gerada?",
+            "back": "A **mitose** gera células somáticas (usadas para crescimento e renovação do organismo, mantendo a carga genética). A **meiose** gera gametas (células sexuais usadas na reprodução, com metade da carga genética original)."
+          }
+        }
+      },
+      {
+        "caseId": "kg-12",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é uma lacuna de conhecimento sobre o início do período republicano. Getúlio Vargas foi um presidente muito conhecido, mas o primeiro presidente do Brasil foi o Marechal Deodoro da Fonseca.",
+          "recommendedAction": "Revise a linha do tempo da História do Brasil, focando especificamente na Proclamação da República e nos primeiros presidentes.",
+          "coreConcept": "Primeiro presidente do Brasil",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Quem foi o primeiro presidente do Brasil?",
+            "back": "Marechal Deodoro da Fonseca (assumiu após a Proclamação da República em 1889)."
+          }
+        }
+      },
+      {
+        "caseId": "kg-13",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi confundir a menor unidade da matéria (átomo) com a menor unidade estrutural e funcional dos seres vivos (célula).",
+          "recommendedAction": "Revise os níveis de organização biológica, prestando atenção especial à diferença entre os blocos construtores da matéria em geral e os blocos construtores exclusivos da vida.",
+          "coreConcept": "Níveis de organização biológica (Célula vs Átomo)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença entre o átomo e a célula quando nos referimos a \"unidades fundamentais\"?",
+            "back": "O **átomo** é a menor unidade fundamental da **matéria** (forma tudo o que existe fisicamente). A **célula** é a menor unidade estrutural e funcional da **vida** (forma os seres vivos)."
+          }
+        }
+      },
+      {
+        "caseId": "kg-14",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é a confusão entre as funções de dois órgãos fundamentais no metabolismo da glicose. Embora o fígado atue no armazenamento de energia, é o pâncreas o responsável pela produção da insulina.",
+          "recommendedAction": "Revise o sistema endócrino, focando em diferenciar o órgão que produz os hormônios reguladores (pâncreas) do órgão que armazena a glicose (fígado).",
+          "coreConcept": "Função endócrina do pâncreas e metabolismo da glicose",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "No controle do açúcar no sangue (glicemia), qual a diferença básica entre o papel do pâncreas e o do fígado?",
+            "back": "O pâncreas é responsável por produzir os hormônios reguladores (insulina e glucagon). O fígado atua como reservatório, armazenando ou liberando glicose no sangue sob o comando desses hormônios."
+          }
+        }
+      },
+      {
+        "caseId": "kg-15",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A resposta '?' indica claramente que você não sabia ou não conseguiu se lembrar da informação solicitada.",
+          "recommendedAction": "Revise e memorize as capitais dos países da América do Sul, pois são conhecimentos geográficos básicos frequentemente cobrados.",
+          "coreConcept": "Capital do Chile",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Qual é a capital do Chile?",
+            "back": "Santiago."
+          }
+        }
+      },
+      {
+        "caseId": "cc-01",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi a confusão entre duas figuras de linguagem. A metáfora é uma comparação implícita, enquanto a prosopopeia (ou personificação) é a atribuição de características humanas a seres não humanos.",
+          "recommendedAction": "Revise as definições das principais figuras de linguagem, focando em criar exemplos práticos para diferenciar metáfora, prosopopeia e comparação.",
+          "coreConcept": "Figuras de linguagem (Prosopopeia e Metáfora)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual a diferença entre Metáfora e Prosopopeia (Personificação)?",
+            "back": "A Metáfora é uma comparação implícita entre dois elementos (ex: \"Ele é um leão em campo\"). Já a Prosopopeia (ou Personificação) é a atribuição de características, sentimentos ou ações humanas a seres inanimados ou irracionais (ex: \"O vento sussurrou segredos\")."
+          }
+        }
+      },
+      {
+        "caseId": "cc-02",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão das propriedades de massa e peso. Você atribuiu à massa a característica de variar com a gravidade, quando na verdade essa é a definição de peso.",
+          "recommendedAction": "Revise as definições de massa e peso, focando em memorizar que a massa é uma propriedade intrínseca e constante do corpo, enquanto o peso é uma força que depende do ambiente (gravidade).",
+          "coreConcept": "Diferença entre massa e peso",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Na física, qual é a diferença entre massa e peso no que diz respeito à influência da gravidade local?",
+            "back": "A massa é a quantidade de matéria e é sempre constante, independentemente da gravidade. O peso é a força gravitacional exercida sobre o corpo (P = m.g) e varia de acordo com a gravidade local."
+          }
+        }
+      },
+      {
+        "caseId": "cc-02b",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é a inversão dos papéis da respiração celular e da fotossíntese. A fotossíntese produz oxigênio, enquanto a respiração celular o consome para liberar energia.",
+          "recommendedAction": "Crie uma tabela comparativa simples listando os reagentes (o que é consumido) e os produtos (o que é liberado) da respiração celular e da fotossíntese.",
+          "coreConcept": "Metabolismo energético: Respiração celular vs Fotossíntese",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual a diferença entre respiração celular e fotossíntese quanto ao uso do oxigênio?",
+            "back": "A respiração celular consome oxigênio para liberar energia. A fotossíntese produz (libera) oxigênio a partir do consumo de gás carbônico e energia luminosa."
+          }
+        }
+      },
+      {
+        "caseId": "cc-03",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Direito Penal",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão dos conceitos. Você atribuiu a definição de culpa (agir com negligência sem intenção do resultado) ao conceito de dolo (que é a intenção direta de produzir o resultado).",
+          "recommendedAction": "Revise as definições de dolo e culpa de forma comparativa. Crie uma âncora mental simples: associe 'dolo' a 'desejo/intenção' e 'culpa' a 'descuido' (negligência, imprudência ou imperícia).",
+          "coreConcept": "Diferença entre dolo e culpa",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença fundamental entre conduta dolosa e conduta culposa quanto à vontade do agente de produzir o resultado?",
+            "back": "Dolo: O agente tem a intenção (vontade) de produzir o resultado ou assume o risco de produzi-lo.\n\nCulpa: O agente não tem a intenção de produzir o resultado, mas acaba causando-o por quebra do dever de cuidado (negligência, imprudência ou imperícia)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-04",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão dos conceitos. Você definiu velocidade como a variação da aceleração, quando na verdade a aceleração é que representa a variação da velocidade ao longo do tempo.",
+          "recommendedAction": "Revise as definições básicas de cinemática, focando na relação hierárquica entre posição, velocidade e aceleração.",
+          "coreConcept": "Conceitos de velocidade e aceleração",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Na cinemática, qual é a diferença fundamental entre velocidade e aceleração em relação à variação no tempo?",
+            "back": "Velocidade é a variação da posição no tempo. Aceleração é a variação da velocidade no tempo."
+          }
+        }
+      },
+      {
+        "caseId": "cc-05",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é a inversão dos conceitos básicos da sintaxe. Você atribuiu a função de praticar a ação ao objeto direto e a de sofrer a ação ao sujeito, quando, na voz ativa, a lógica é inversa.",
+          "recommendedAction": "Revise as funções sintáticas básicas da oração. Pratique a análise de frases simples na voz ativa para identificar claramente quem pratica a ação (sujeito) e quem a recebe (objeto direto).",
+          "coreConcept": "Funções sintáticas: Sujeito e Objeto Direto",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Na voz ativa, qual é a diferença fundamental entre o Sujeito e o Objeto Direto em relação à prática da ação verbal?",
+            "back": "O **Sujeito** é o termo que PRATICA a ação verbal. O **Objeto Direto** é o complemento que completa o sentido do verbo, geralmente RECEBENDO/SOFRENDO essa ação (sem preposição obrigatória)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-06",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão dos conceitos. Você atribuiu a característica dos juros compostos aos juros simples e vice-versa.",
+          "recommendedAction": "Revise as definições básicas de juros simples e compostos, focando na base de cálculo de cada um (capital inicial vs. montante acumulado).",
+          "coreConcept": "Juros simples e juros compostos",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença na base de cálculo entre juros simples e juros compostos?",
+            "back": "Juros Simples: incidem sempre apenas sobre o capital inicial.\nJuros Compostos: incidem sobre o montante acumulado de cada período (juros sobre juros)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-07",
+        "category": "CONCEPT_CONFUSION",
+        "ok": false,
+        "errorKind": "TIMEOUT"
+      },
+      {
+        "caseId": "cc-08",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão dos conceitos. Você atribuiu as características da meiose à mitose e vice-versa.",
+          "recommendedAction": "Revise as diferenças fundamentais entre os dois tipos de divisão celular, focando no resultado final de cada processo (2 células idênticas na mitose vs. 4 células com metade do material genético na meiose).",
+          "coreConcept": "Divisão celular: Mitose e Meiose",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença entre mitose e meiose quanto ao número de células-filhas geradas e à quantidade de cromossomos?",
+            "back": "Mitose: gera 2 células-filhas idênticas à célula-mãe (mesmo número de cromossomos).\nMeiose: gera 4 células-filhas com metade dos cromossomos da célula-mãe (formação de gametas)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-09",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão direta dos conceitos. Você atribuiu a definição de clima ao tempo e a definição de tempo ao clima.",
+          "recommendedAction": "Associe a palavra 'tempo' a algo temporário e momentâneo (como o dia a dia), e 'clima' a algo duradouro e estabelecido (padrão de longo prazo).",
+          "coreConcept": "Diferença entre clima e tempo meteorológico",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual a diferença entre tempo meteorológico e clima?",
+            "back": "O **tempo** refere-se à condição atmosférica momentânea e temporária (ex: chuvoso hoje). O **clima** é o padrão médio de longo prazo das condições atmosféricas de uma região (ex: clima tropical)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-10",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Direito Administrativo",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é o desconhecimento das características básicas que definem e separam as modalidades de licitação. Pregão e concorrência possuem objetos e procedimentos distintos na legislação, não sendo sinônimos.",
+          "recommendedAction": "Revise as definições das modalidades de licitação na legislação vigente (Lei 14.133/2021). Elabore um quadro comparativo focando no tipo de objeto (bens comuns vs. bens especiais/obras) destinado a cada modalidade.",
+          "coreConcept": "Modalidades de licitação: Pregão e Concorrência",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "No âmbito das licitações, qual a principal diferença quanto ao objeto aplicável entre o Pregão e a Concorrência?",
+            "back": "O Pregão destina-se exclusivamente à contratação de bens e serviços COMUNS (cujos padrões podem ser objetivamente definidos pelo mercado). Já a Concorrência é voltada para bens e serviços ESPECIAIS, além de obras e serviços de engenharia (maior complexidade)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-11",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é uma lacuna de conhecimento sobre a estrutura do haicai. Você lembrou corretamente a quantidade de versos do soneto, mas presumiu incorretamente que o haicai teria a mesma forma.",
+          "recommendedAction": "Revise as características das principais formas poéticas fixas. Anote a estrutura básica do soneto (14 versos) e contraste com a do haicai (3 versos) para não confundi-las.",
+          "coreConcept": "Estrutura de formas poéticas fixas (Soneto e Haicai)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença na quantidade de versos entre um soneto e um haicai?",
+            "back": "O **soneto** é composto por **14 versos** (tradicionalmente divididos em dois quartetos e dois tercetos). Já o **haicai** é um poema curto composto por apenas **3 versos**."
+          }
+        }
+      },
+      {
+        "caseId": "cc-12",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão direta dos conceitos. Você atribuiu a função das artérias às veias e vice-versa.",
+          "recommendedAction": "Utilize uma associação mental simples, como 'Artéria = Afasta do coração' e 'Veia = Volta ao coração', para fixar a diferença na direção do fluxo sanguíneo.",
+          "coreConcept": "Direção do fluxo sanguíneo (Artérias vs. Veias)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença entre artérias e veias em relação à direção do fluxo sanguíneo (em relação ao coração)?",
+            "back": "Artérias: levam o sangue DO coração para o corpo (Afastam).\nVeias: trazem o sangue DO corpo de volta AO coração (Voltam)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-13",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Economia",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é a confusão entre dois agregados macroeconômicos fundamentais, tratando-os como sinônimos. Embora ambos meçam a produção econômica, eles divergem no critério utilizado: um foca no território e o outro na titularidade dos fatores de produção.",
+          "recommendedAction": "Revise as definições de agregados macroeconômicos, prestando atenção especial à diferença entre o critério territorial (interno) e o critério de propriedade/residência (nacional). Sugere-se montar um pequeno quadro comparativo para não esquecer essa distinção.",
+          "coreConcept": "Diferença entre PIB (critério territorial) e PNB (critério de nacionalidade/residência)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Na macroeconomia, como se diferenciam os critérios de medição do PIB (Produto Interno Bruto) e do PNB (Produto Nacional Bruto)?",
+            "back": "O **PIB** utiliza o critério **territorial**: mede a produção realizada *dentro das fronteiras* do país, independentemente de quem a produziu (nacionais ou estrangeiros).\n\nO **PNB** utiliza o critério de **nacionalidade/residência**: mede a produção realizada por *residentes/empresas nacionais*, independentemente de onde a produção ocorreu (dentro ou fora do país)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-14",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão dos conceitos. Você atribuiu a definição de reflexão à refração e vice-versa.",
+          "recommendedAction": "Associe a palavra 'reflexão' a um espelho (a luz bate e volta para o mesmo meio) e 'refração' a uma lente ou à água (a luz atravessa e muda de meio).",
+          "coreConcept": "Reflexão e refração da luz",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual a diferença entre reflexão e refração da luz em relação ao meio de propagação?",
+            "back": "Na **reflexão**, a luz atinge uma superfície e **retorna ao mesmo meio**. Na **refração**, a luz atravessa a superfície e **muda de meio** (o que altera sua velocidade e, geralmente, sua direção)."
+          }
+        }
+      },
+      {
+        "caseId": "cc-15",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inversão direta dos conceitos. Você atribuiu o significado de tese à hipótese e vice-versa.",
+          "recommendedAction": "Memorize que a 'tese' é a sua posição firme (o que você defende no texto), enquanto a 'hipótese' é apenas uma suposição (o que se levanta para investigar).",
+          "coreConcept": "Diferença entre tese e hipótese",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual é a diferença entre 'tese' e 'hipótese' na estruturação de um texto?",
+            "back": "A **tese** é a ideia central e o posicionamento ativamente defendido pelo autor. A **hipótese** é uma suposição ou possibilidade levantada para investigação ou teste (mais comum no meio científico)."
+          }
+        }
+      },
+      {
+        "caseId": "em-01",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi aplicar a regra geral de pluralização para palavras terminadas em '-ão', sem considerar que 'cidadão' é uma exceção.",
+          "recommendedAction": "Revise as principais exceções de plural para palavras terminadas em '-ão', memorizando casos clássicos como cidadãos, irmãos, mãos, pães e cães.",
+          "coreConcept": "Plural de substantivos terminados em -ão",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "Qual é a regra geral para o plural de substantivos terminados em '-ão' e qual é a exceção para a palavra 'cidadão'?",
+            "back": "A regra geral é substituir '-ão' por '-ões' (ex: corações, ações). A exceção para 'cidadão' é que seu plural se faz com '-ãos' (cidadãos), assim como ocorre com irmãos, mãos e cristãos."
+          }
+        }
+      },
+      {
+        "caseId": "em-02",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi aplicar a regra geral de que mamíferos são vivíparos, não se lembrando da exceção clássica do ornitorrinco.",
+          "recommendedAction": "Revise as características do grupo dos monotremados para fixar que, embora sejam mamíferos, eles possuem a particularidade de pôr ovos.",
+          "coreConcept": "Mamíferos monotremados (exceção reprodutiva)",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "Qual é a principal exceção à regra geral de que os mamíferos dão à luz filhotes vivos (viviparidade)?",
+            "back": "Os monotremados (como o ornitorrinco e a equidna). Eles são mamíferos, mas são ovíparos (põem ovos)."
+          }
+        }
+      },
+      {
+        "caseId": "em-03",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi aplicar a regra geral de conjugação dos verbos terminados em '-ar' sem considerar que o verbo 'estar' é uma exceção (verbo irregular).",
+          "recommendedAction": "Revise a conjugação do verbo 'estar' no presente do indicativo e subjuntivo para fixar suas irregularidades, comparando-o com um verbo regular como 'falar'.",
+          "coreConcept": "Verbos regulares e irregulares",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "Qual é a classificação do verbo 'estar' quanto à regularidade, considerando sua terminação em '-ar'?",
+            "back": "O verbo 'estar' é uma exceção à regra geral dos verbos terminados em '-ar'. Ele é um verbo IRREGULAR (ex: eu estou, que eu esteja)."
+          }
+        }
+      },
+      {
+        "caseId": "em-04",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Direito Civil",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é ter considerado a regra geral de 10 anos como absoluta, ignorando a existência de prazos prescricionais especiais menores que prevalecem sobre ela.",
+          "recommendedAction": "Revise os prazos prescricionais especiais do Código Civil (art. 206), especialmente os mais cobrados, como o de 3 anos para reparação civil. Lembre-se de que a regra geral só se aplica na ausência de prazo específico.",
+          "coreConcept": "Prazos prescricionais: regra geral vs. prazos especiais",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "No Código Civil, quando se aplica a regra geral de prescrição de 10 anos em face da existência de prazos prescricionais especiais?",
+            "back": "A regra geral de 10 anos aplica-se apenas subsidiariamente, ou seja, quando a lei não fixar um prazo menor. Os prazos especiais (ex: 3 anos para reparação civil) são exceções que sempre prevalecem sobre a regra geral."
+          }
+        }
+      },
+      {
+        "caseId": "em-05",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é lembrar da regra geral (a água ferve a 100°C) sem considerar a condição necessária para que isso ocorra, que é a pressão atmosférica ao nível do mar.",
+          "recommendedAction": "Revise a relação entre pressão atmosférica e ponto de ebulição. Lembre-se sempre de que a temperatura de fervura de um líquido diminui em locais mais altos devido à menor pressão.",
+          "coreConcept": "Ponto de ebulição e pressão atmosférica",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "Qual é a regra geral sobre a temperatura de ebulição da água e como a altitude afeta essa regra?",
+            "back": "Regra geral: a água ferve a 100°C ao nível do mar (1 atm).\n\nExceção/Condição: Em altas altitudes, a pressão atmosférica é menor, o que faz com que a água ferva a uma temperatura inferior a 100°C."
+          }
+        }
+      },
+      {
+        "caseId": "em-06",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.85,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.85,
+          "reasoningSummary": "Sua resposta acertou a concordância do caso específico, mas a causa provável do erro na avaliação foi ignorar a regra subjacente: o verbo 'chover' é a exceção à sua própria regra de impessoalidade quando usado no sentido figurado.",
+          "recommendedAction": "Revise a regra de concordância para verbos que indicam fenômenos da natureza, prestando atenção especial à mudança de comportamento (de impessoal para pessoal) quando empregados em sentido figurado.",
+          "coreConcept": "Concordância verbal: verbos de fenômenos da natureza em sentido figurado",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "Qual é a regra geral e a exceção para a concordância de verbos que indicam fenômenos da natureza (como 'chover' ou 'ventar')?",
+            "back": "Regra geral: são verbos impessoais (não possuem sujeito) e devem ficar na 3ª pessoa do singular (ex: Choveu muito ontem). Exceção: quando utilizados no sentido figurado, tornam-se pessoais, passam a ter sujeito e concordam normalmente com ele em número e pessoa (ex: Choveram elogios ao palestrante)."
+          }
+        }
+      },
+      {
+        "caseId": "em-07",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é o desconhecimento da definição matemática de paridade aplicada ao zero. Você considerou que o zero não possui paridade, mas ele se enquadra perfeitamente na regra dos números pares.",
+          "recommendedAction": "Revise a definição formal de números pares (números inteiros divisíveis por 2 com resto zero) e memorize que o zero satisfaz plenamente essa condição.",
+          "coreConcept": "Paridade do número zero",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Na matemática, qual é a paridade do número zero (ele é par, ímpar ou nenhum dos dois)?",
+            "back": "O zero é par. Ele atende à regra geral dos números pares, pois é um número inteiro divisível por 2 que deixa resto zero (0 ÷ 2 = 0)."
+          }
+        }
+      },
+      {
+        "caseId": "em-08",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi aplicar a regra geral (divisibilidade por 4) ignorando a exceção específica para anos seculares (múltiplos de 100).",
+          "recommendedAction": "Revise a regra completa para anos bissextos, focando na condição especial exigida para os anos que terminam em 00.",
+          "coreConcept": "Regra dos anos bissextos (exceção dos anos seculares)",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "Qual é a exceção à regra geral de que anos divisíveis por 4 são bissextos, aplicável aos anos seculares (terminados em 00)?",
+            "back": "Anos seculares (múltiplos de 100) só são bissextos se também forem divisíveis por 400. Por exemplo, o ano 2000 foi bissexto, mas 1900 não."
+          }
+        }
+      },
+      {
+        "caseId": "em-09",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi assumir a regra do advérbio 'não' de forma absoluta. Embora ele seja escrito separadamente na regra geral, você desconsiderou formas cristalizadas e a distinção fundamental entre o advérbio independente e os prefixos de negação que se aglutinam.",
+          "recommendedAction": "Revise a diferença morfológica entre o advérbio de negação (palavra independente) e os prefixos com valor semântico de negação (como 'in-' e 'des-'), prestando atenção em como estes últimos formam novas palavras por derivação.",
+          "coreConcept": "Grafia do advérbio de negação e prefixos de negação",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "Em relação à negação, qual é a diferença de grafia entre o uso do advérbio 'não' e o uso de prefixos de negação?",
+            "back": "Regra geral: O advérbio 'não' é uma palavra independente e escreve-se separado do verbo (ex: não concordo). Exceção/Atenção: Prefixos que indicam negação (como 'in-', 'des-', 'a-') aglutinam-se à palavra base, formando um único vocábulo (ex: discordo, infeliz, amoral). Cuidado para não confundir a independência do advérbio com a aglutinação dos prefixos."
+          }
+        }
+      },
+      {
+        "caseId": "em-10",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é a crença incorreta de que a condutividade elétrica dos metais depende de eles estarem no estado sólido.",
+          "recommendedAction": "Revise as propriedades gerais dos metais, focando no fato de que a condutividade elétrica ocorre devido aos elétrons livres, característica que se mantém mesmo no estado líquido.",
+          "coreConcept": "Condutividade elétrica e estados físicos dos metais",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "A capacidade de um metal conduzir eletricidade é perdida se ele estiver no estado líquido (como o mercúrio)?",
+            "back": "Não. A condutividade metálica não depende do estado físico. Metais líquidos, como o mercúrio, conduzem eletricidade normalmente."
+          }
+        }
+      },
+      {
+        "caseId": "em-11",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "EXCEPTION_MISSED",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi a aplicação da regra geral de vogais adjacentes, sem considerar a exceção específica para a palavra 'rainha' informada no gabarito.",
+          "recommendedAction": "Revise as exceções às regras de encontros vocálicos, focando em memorizar palavras específicas que não seguem o padrão geral de formação de hiatos.",
+          "coreConcept": "Encontros vocálicos: exceção em 'rainha'",
+          "cardAction": "CREATE_EXCEPTION_CARD",
+          "card": {
+            "front": "Em relação à regra geral de vogais adjacentes, qual é a classificação do encontro vocálico na palavra 'rainha' (hiato ou ditongo)?",
+            "back": "Ditongo. A palavra 'rainha' constitui uma exceção à regra geral, não formando hiato."
+          }
+        }
+      },
+      {
+        "caseId": "em-12",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Direito Penal",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro é a crença de que a gravidade do delito poderia afastar a regra da maioridade penal. No entanto, a inimputabilidade para menores de 18 anos é uma presunção absoluta no Brasil.",
+          "recommendedAction": "Revise o conceito de inimputabilidade penal por menoridade (art. 27 do CP e art. 228 da CF). Fixe a premissa de que o critério biológico não admite exceções, independentemente da gravidade do ato praticado.",
+          "coreConcept": "Inimputabilidade penal por menoridade",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "No Direito Penal brasileiro, é possível que um menor de 18 anos seja julgado como adulto caso cometa um crime hediondo ou de extrema gravidade?",
+            "back": "Não. A inimputabilidade penal para menores de 18 anos é absoluta (critério puramente biológico). Eles não cometem crimes, mas sim atos infracionais, sujeitando-se às medidas socioeducativas do ECA, independentemente da gravidade do fato."
+          }
+        }
+      },
+      {
+        "caseId": "em-13",
+        "category": "EXCEPTION_MISSED",
+        "ok": false,
+        "errorKind": "TIMEOUT"
+      },
+      {
+        "caseId": "em-14",
+        "category": "EXCEPTION_MISSED",
+        "ok": false,
+        "errorKind": "TIMEOUT"
+      },
+      {
+        "caseId": "em-15",
+        "category": "EXCEPTION_MISSED",
+        "ok": false,
+        "errorKind": "TIMEOUT"
+      },
+      {
+        "caseId": "ae-01",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi o desconhecimento ou esquecimento da fórmula da velocidade média. Você multiplicou a distância pelo tempo, quando o correto é dividir.",
+          "recommendedAction": "Memorize a fórmula da velocidade média (v = d/t). Uma dica prática é observar a unidade de medida (como km/h), que já indica que a distância (km) deve ser dividida pelo tempo (h).",
+          "coreConcept": "Cálculo de velocidade média",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Como se calcula a velocidade média a partir da distância percorrida e do tempo gasto?",
+            "back": "Velocidade média = Distância ÷ Tempo (v = d/t). Dica: a própria unidade de medida (ex: km/h) revela a operação matemática (quilômetros divididos por horas)."
+          }
+        }
+      },
+      {
+        "caseId": "ae-02",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a multiplicação direta dos números (20 x 150) sem a conversão da taxa percentual para decimal ou fração.",
+          "recommendedAction": "Sempre que for calcular a porcentagem de um número, lembre-se de dividir a taxa por 100 (ex: 20% = 0,20 ou 20/100) antes de realizar a multiplicação.",
+          "coreConcept": "Cálculo de porcentagem",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Qual é o passo fundamental antes de multiplicar uma taxa percentual (como 20%) por um valor total?",
+            "back": "Deve-se converter a taxa percentual em fração ou número decimal, dividindo-a por 100 (ex: 20% = 20/100 ou 0,20)."
+          }
+        }
+      },
+      {
+        "caseId": "ae-03",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi desatenção à operação matemática. O enunciado forneceu explicitamente a fórmula com a multiplicação (base × altura), mas você realizou uma soma (8 + 3 = 11).",
+          "recommendedAction": "Sempre sublinhe ou destaque a operação matemática exigida no enunciado antes de realizar os cálculos para evitar erros por distração.",
+          "coreConcept": "Cálculo de área de retângulo",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ae-04",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi aplicar a lógica de grandezas diretamente proporcionais a um problema de grandezas inversamente proporcionais. Ao dobrar o número de operários, o tempo de trabalho cai pela metade, e não dobra.",
+          "recommendedAction": "Antes de resolver qualquer regra de três, sempre faça a pergunta: 'se eu aumentar essa variável, a outra vai aumentar ou diminuir?'. Pratique exercícios que misturem proporções diretas e inversas para treinar essa identificação.",
+          "coreConcept": "Regra de três simples (grandezas inversamente proporcionais)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual a diferença prática na montagem do cálculo da regra de três simples entre grandezas diretamente proporcionais e inversamente proporcionais?",
+            "back": "Nas grandezas DIRETAMENTE proporcionais (ex: mais produtos = maior preço), multiplicamos os valores de forma cruzada. Nas grandezas INVERSAMENTE proporcionais (ex: mais operários = menos tempo), multiplicamos os valores em linha reta (ou invertemos uma das frações antes de multiplicar cruzado)."
+          }
+        }
+      },
+      {
+        "caseId": "ae-05",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi desatenção na leitura do enunciado. A própria questão forneceu a fórmula correta (multiplicação), mas você acabou realizando uma divisão dos valores.",
+          "recommendedAction": "Sempre anote a fórmula e os dados fornecidos no rascunho antes de calcular. Revise a operação matemática exigida pela fórmula para evitar erros por falta de atenção.",
+          "coreConcept": "Cálculo de trabalho mecânico",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ae-06",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.8,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.8,
+          "reasoningSummary": "A causa provável do erro é o desconhecimento da regra completa para expressões partitivas, onde a concordância pode ser feita tanto no singular (com o núcleo) quanto no plural (com o especificador).",
+          "recommendedAction": "Revise a regra de concordância verbal com expressões partitivas. É fundamental saber que ambas as formas são aceitas, mas preste atenção ao comando da questão caso ela exija a concordância estrita com o núcleo.",
+          "coreConcept": "Concordância verbal com expressões partitivas",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Como é feita a concordância verbal com expressões partitivas (ex: 'a maioria de', 'grande parte de') seguidas de substantivo no plural?",
+            "back": "A concordância é facultativa. O verbo pode ficar no singular, concordando com o núcleo da expressão partitiva (ex: 'a maioria dos alunos chegou'), ou ir para o plural, concordando com o especificador (ex: 'a maioria dos alunos chegaram')."
+          }
+        }
+      },
+      {
+        "caseId": "ae-07",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_APPLICATION_CARD",
+        "confidence": 0.8,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "APPLICATION_ERROR",
+          "confidence": 0.8,
+          "reasoningSummary": "A causa provável do erro foi a falha na substituição e multiplicação dos valores na fórmula fornecida. É necessário converter a taxa percentual para decimal e multiplicar por todos os fatores.",
+          "recommendedAction": "Pratique a substituição passo a passo dos valores na fórmula de juros simples, lembrando sempre de converter a porcentagem (ex: 2% = 0,02) antes de multiplicar.",
+          "coreConcept": "Cálculo de Juros Simples",
+          "cardAction": "CREATE_APPLICATION_CARD",
+          "card": {
+            "front": "Calcule o juro simples gerado por um capital de R$ 500,00 aplicado a uma taxa de 3% ao mês durante 2 meses.",
+            "back": "R$ 30,00. Resolução: J = C x i x t -> J = 500 x 0,03 x 2 -> J = 30."
+          }
+        }
+      },
+      {
+        "caseId": "ae-08",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a soma direta dos catetos (3+4=7), indicando esquecimento ou desconhecimento da fórmula do Teorema de Pitágoras.",
+          "recommendedAction": "Revise a fórmula do Teorema de Pitágoras (a² + b² = c²) e pratique exercícios lembrando de elevar os catetos ao quadrado antes de somá-los.",
+          "coreConcept": "Teorema de Pitágoras",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Como se calcula a medida da hipotenusa (c) de um triângulo retângulo a partir das medidas dos seus catetos (a e b)?",
+            "back": "Utilizando o Teorema de Pitágoras: c² = a² + b². Ou seja, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos."
+          }
+        }
+      },
+      {
+        "caseId": "ae-09",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi desatenção à fórmula fornecida no próprio enunciado. Você dividiu a resistência pela corrente (10/2) em vez de multiplicá-las (10x2) conforme indicado na equação V = R × I.",
+          "recommendedAction": "Sempre anote os dados da questão e a fórmula exigida antes de realizar o cálculo. Preste atenção redobrada ao sinal da operação matemática (multiplicação vs. divisão) para evitar erros por pressa.",
+          "coreConcept": "Lei de Ohm (Cálculo de Tensão)",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ae-10",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_APPLICATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "APPLICATION_ERROR",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi a não aplicação da regra da crase ao caso concreto, esquecendo-se de fundir a preposição exigida pelo verbo 'ir' com o artigo da palavra 'escola'.",
+          "recommendedAction": "Pratique a identificação da regência verbal (quem vai, vai 'a' algum lugar) combinada com palavras femininas para automatizar o uso da crase.",
+          "coreConcept": "Crase (regência verbal e artigo feminino)",
+          "cardAction": "CREATE_APPLICATION_CARD",
+          "card": {
+            "front": "Complete com 'a' ou 'à': 'Todos os dias, nós vamos ___ padaria da esquina.'",
+            "back": "'à'. O verbo 'ir' (vamos) exige a preposição 'a', que se funde com o artigo feminino 'a' que antecede o substantivo 'padaria'."
+          }
+        }
+      },
+      {
+        "caseId": "ae-11",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi um lapso de atenção na hora de realizar o cálculo. O enunciado forneceu a fórmula com a operação de divisão (m/v), mas você acabou multiplicando os valores.",
+          "recommendedAction": "Sempre escreva a fórmula no papel e substitua os valores passo a passo antes de calcular, garantindo que a operação correta (divisão) seja realizada.",
+          "coreConcept": "Cálculo de densidade",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ae-12",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a inclusão indevida do apóstrofo, possivelmente por confusão com regras de outros idiomas ou vícios de escrita comuns no dia a dia.",
+          "recommendedAction": "Fixe a regra de que, na língua portuguesa, o apóstrofo nunca é utilizado para formar o plural de palavras ou siglas.",
+          "coreConcept": "Plural de siglas (ausência de apóstrofo)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Na língua portuguesa, como se forma corretamente o plural de siglas? É correto o uso de apóstrofo (ex: ONG's) ou apenas a letra 's' (ex: ONGs)?",
+            "back": "O correto é usar **apenas a letra 's' minúscula** colada à palavra (ex: ONGs, CPFs, PMs). Na língua portuguesa, o apóstrofo não é utilizado para indicar plural."
+          }
+        }
+      },
+      {
+        "caseId": "ae-13",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.8,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "APPLICATION_ERROR",
+          "confidence": 0.8,
+          "reasoningSummary": "A causa provável do erro foi uma falha na execução do cálculo matemático. Como a fórmula já estava no enunciado, o erro decorreu da aplicação incorreta da ordem das operações ou de um equívoco aritmético (como somar 32 diretamente ao 20).",
+          "recommendedAction": "Sempre resolva expressões matemáticas respeitando a ordem das operações: primeiro realize a multiplicação e a divisão (20 × 9/5 = 36) e apenas no final faça a adição (+ 32).",
+          "coreConcept": "Ordem das operações matemáticas e conversão de escalas",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ae-14",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "CONCEPT_CONFUSION",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a confusão entre sujeito oculto, que é identificável pela terminação do verbo, e sujeito indeterminado, onde não é possível determinar quem praticou a ação.",
+          "recommendedAction": "Revise as definições de sujeito oculto e sujeito indeterminado, focando em como a desinência verbal (a terminação do verbo) permite identificar o sujeito oculto.",
+          "coreConcept": "Tipos de sujeito (oculto vs. indeterminado)",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual a diferença entre sujeito oculto (elíptico) e sujeito indeterminado?",
+            "back": "O sujeito oculto não está expresso na oração, mas pode ser identificado pela desinência verbal ou pelo contexto (ex: 'Cheguei' -> eu). O sujeito indeterminado ocorre quando não se pode ou não se quer identificar quem praticou a ação (ex: 'Falaram de você' ou 'Precisa-se de ajuda')."
+          }
+        }
+      },
+      {
+        "caseId": "ae-15",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "APPLICATION_ERROR",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi calcular o quadrado da aresta (3² = 9) em vez do cubo (3³ = 27), aplicando incorretamente a fórmula fornecida no enunciado.",
+          "recommendedAction": "Revise o conceito de potenciação, prestando atenção à diferença entre elevar um número ao quadrado (multiplicar por si mesmo duas vezes) e elevar ao cubo (multiplicar por si mesmo três vezes).",
+          "coreConcept": "Potenciação e Volume do Cubo",
+          "cardAction": "CREATE_DISCRIMINATION_CARD",
+          "card": {
+            "front": "Qual a diferença no cálculo entre elevar um número ao quadrado (ex: 3²) e elevar ao cubo (ex: 3³)?",
+            "back": "Elevar ao quadrado significa multiplicar o número por ele mesmo duas vezes (ex: 3² = 3 × 3 = 9). Elevar ao cubo significa multiplicar o número por ele mesmo três vezes (ex: 3³ = 3 × 3 × 3 = 27)."
+          }
+        }
+      },
+      {
+        "caseId": "re-01",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi falta de atenção ao comando da questão. Você marcou 'evaporação', que é uma etapa verdadeira do ciclo da água, mas o enunciado pedia expressamente a alternativa INCORRETA.",
+          "recommendedAction": "Sempre destaque palavras-chave como 'INCORRETA', 'EXCETO' ou 'NÃO' no enunciado antes de ler as alternativas para evitar erros de desatenção.",
+          "coreConcept": "Etapas do ciclo da água",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-02",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi falta de atenção à leitura do enunciado. A questão pedia explicitamente uma subtração ('MENOS'), mas a operação realizada foi uma soma.",
+          "recommendedAction": "Leia os enunciados com mais calma, circulando ou grifando palavras-chave de comando (como 'MENOS', 'NÃO', 'EXCETO') antes de realizar os cálculos.",
+          "coreConcept": "Operações matemáticas básicas",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-03",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi falta de atenção ao enunciado. Você respondeu com um sinônimo ('alegre'), ignorando que a questão pedia expressamente o antônimo (sentido oposto) da palavra.",
+          "recommendedAction": "Leia os enunciados com mais calma, destacando palavras-chave de comando como 'antônimo', 'sinônimo', 'correta' ou 'incorreta' antes de formular sua resposta.",
+          "coreConcept": "Sinônimos e Antônimos",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-04",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a desatenção ao termo 'depois' no enunciado. Isso levou à realização de uma subtração (1990 - 5) em vez da soma correta (1990 + 5).",
+          "recommendedAction": "Sempre grife ou circule marcadores temporais (como 'antes', 'depois', 'mais velho', 'mais novo') em problemas de matemática para garantir a escolha da operação correta.",
+          "coreConcept": "Interpretação de marcadores temporais",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-05",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.85,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.85,
+          "reasoningSummary": "A causa provável do erro é a dificuldade em reconhecer que palavras que normalmente indicam ação (como 'corte') atuam como substantivos quando precedidas por um artigo, ou uma leitura desatenta do comando negativo da questão.",
+          "recommendedAction": "Revise o conceito de substantivação (ou derivação imprópria). Ao analisar a classe gramatical de uma palavra, sempre observe os termos que a acompanham, especialmente os artigos.",
+          "coreConcept": "Classes de palavras e Substantivação",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Na análise morfológica de uma frase, qual é a principal marca gramatical que indica que uma palavra (mesmo que denote uma ação) está exercendo a função de substantivo?",
+            "back": "A presença de um determinante imediatamente antes da palavra, sendo o mais comum o **artigo** (definido ou indefinido). Exemplo: na frase 'O jantar está pronto', o artigo 'O' transforma o verbo 'jantar' em um substantivo."
+          }
+        }
+      },
+      {
+        "caseId": "re-06",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi a leitura desatenta do enunciado, que já afirmava explicitamente que o personagem não gostava de café.",
+          "recommendedAction": "Ao resolver questões de interpretação, crie o hábito de sublinhar palavras-chave e termos de negação (como 'não', 'exceto', 'incorreto') no enunciado para manter o foco na premissa dada.",
+          "coreConcept": "Interpretação de texto e atenção a termos de negação",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-07",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi a falta de atenção ao comando da questão. Você contou o número total de letras da palavra, ignorando a instrução explícita para contar apenas as vogais.",
+          "recommendedAction": "Leia o enunciado com mais atenção, destacando ou sublinhando palavras-chave (como 'vogais' e 'não letras') antes de resolver a questão.",
+          "coreConcept": "Atenção ao enunciado (vogais vs. letras)",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-08",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi uma leitura desatenta do enunciado. Você indicou a nova data da reunião (sexta-feira), mas a questão perguntava a data original, informação que não foi fornecida no texto.",
+          "recommendedAction": "Ao resolver questões de interpretação, circule os comandos exatos da pergunta (como 'originalmente'). Evite inferir ou deduzir dados que o texto não fornece explicitamente.",
+          "coreConcept": "Interpretação de texto e limites da extrapolação",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-09",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é uma lacuna de conhecimento em geografia básica, confundindo uma cidade espanhola mundialmente famosa (Barcelona) com a verdadeira capital do país (Madri). O texto do enunciado continha instruções irrelevantes que foram ignoradas na análise.",
+          "recommendedAction": "Revise as capitais dos principais países da Europa, criando associações diretas para não confundir a capital oficial com outras cidades turísticas ou econômicas importantes do mesmo país.",
+          "coreConcept": "Geografia: Capitais Europeias",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Qual é a capital da Espanha?",
+            "back": "Madri."
+          }
+        }
+      },
+      {
+        "caseId": "re-10",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi a falta de atenção ao comando da questão, que pedia a 'menor' fração e fornecia uma dica explícita sobre a relação entre o denominador e o valor da fração.",
+          "recommendedAction": "Leia atentamente o enunciado, destacando palavras-chave como 'MENOR' ou 'MAIOR', e sempre verifique se a sua resposta final atende ao que foi efetivamente perguntado.",
+          "coreConcept": "Comparação de frações",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-11",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "KNOWLEDGE_GAP",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro é uma falha na memorização da tabuada, possivelmente confundindo o resultado de 7 × 8 (56) com 6 × 9 (54). O texto intruso no enunciado não afeta a resolução da operação matemática.",
+          "recommendedAction": "Revise a tabuada do 7 e do 8. Uma dica mnemônica útil para 7 × 8 é lembrar da sequência numérica '5, 6, 7, 8' (56 = 7 × 8).",
+          "coreConcept": "Multiplicação básica (Tabuada)",
+          "cardAction": "CREATE_BASIC_CARD",
+          "card": {
+            "front": "Qual é o resultado da multiplicação 7 × 8?",
+            "back": "56. (Dica de memorização: lembre-se da sequência 5, 6, 7, 8, ou seja, 56 = 7 × 8)."
+          }
+        }
+      },
+      {
+        "caseId": "re-12",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.95,
+          "reasoningSummary": "A causa provável do erro foi falta de atenção ao comando da questão. Você somou todos os números da lista, ignorando a restrição de somar apenas os números pares.",
+          "recommendedAction": "Leia o enunciado com mais cuidado, destacando ou sublinhando palavras restritivas como 'apenas', 'pares' ou 'ímpares' antes de iniciar os cálculos.",
+          "coreConcept": "Atenção a restrições no enunciado",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-13",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "READING_ERROR",
+          "confidence": 0.9,
+          "reasoningSummary": "A causa provável do erro foi falta de atenção ao comando da questão. Você forneceu um sinônimo (palavra com significado semelhante) em vez do antônimo (oposto) solicitado.",
+          "recommendedAction": "Leia o enunciado com mais cuidado, destacando palavras de comando como 'oposto', 'exceto' ou 'incorreta' antes de responder.",
+          "coreConcept": "Antônimos e Sinônimos",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "re-14",
+        "category": "READING_ERROR",
+        "ok": false,
+        "errorKind": "TIMEOUT"
+      },
+      {
+        "caseId": "re-15",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 0.9,
+          "reasoningSummary": "O enunciado apresenta um texto anômalo misturado a uma operação aritmética básica, e o erro sugere desatenção ou preenchimento intencionalmente incorreto, impossibilitando um diagnóstico cognitivo seguro.",
+          "recommendedAction": "Concentre-se na leitura cuidadosa da pergunta real, ignorando textos distratores, e revise operações matemáticas elementares com atenção.",
+          "coreConcept": "Adição básica",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-01",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": false,
+        "errorKind": "TIMEOUT"
+      },
+      {
+        "caseId": "ii-02",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 0.95,
+          "reasoningSummary": "Como o texto base não foi fornecido no enunciado, é impossível analisar o contexto e determinar a causa provável do erro na escolha da palavra.",
+          "recommendedAction": "Busque o texto original da questão para entender o contexto. Em questões de lacuna, identifique sempre a relação lógica (ex: oposição, adição, conclusão) que a palavra deve estabelecer entre as orações.",
+          "coreConcept": "Coesão textual e conjunções",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-03",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 1,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 1,
+          "reasoningSummary": "Há uma clara inconsistência nos dados da questão: o gabarito aponta 'Lyon', mas a explicação oficial confirma que a resposta correta é 'Paris', que foi exatamente a sua resposta.",
+          "recommendedAction": "Desconsidere este erro, pois a questão apresenta um gabarito incorreto que contradiz a própria explicação oficial. Nenhuma revisão teórica é necessária para este caso.",
+          "coreConcept": "Capitais mundiais",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-04",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 0,
+          "reasoningSummary": "Os dados fornecidos para a questão, resposta do usuário e resposta correta contêm apenas caracteres isolados, impossibilitando a compreensão do contexto e a realização de um diagnóstico pedagógico.",
+          "recommendedAction": "Certifique-se de inserir o texto completo da questão, as alternativas e a explicação oficial para que o sistema possa gerar uma análise detalhada e recomendações úteis.",
+          "coreConcept": "Não identificável",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-05",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 1,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 1,
+          "reasoningSummary": "A questão faz referência a uma tabela de um slide que não foi fornecida no enunciado, impossibilitando identificar a causa provável do erro ou o raciocínio esperado.",
+          "recommendedAction": "Busque o material original (slide 4) para visualizar a tabela e compreender os dados que justificam o Item 5 como a resposta correta.",
+          "coreConcept": "Interpretação de dados (contexto ausente)",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-06",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 1,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 1,
+          "reasoningSummary": "Há uma inconsistência clara entre o gabarito fornecido (1960) e a explicação oficial (1950), impossibilitando uma análise segura do erro.",
+          "recommendedAction": "Verifique a fonte original da questão ou reporte o erro no material de estudo, pois o gabarito e a explicação oficial divergem.",
+          "coreConcept": "História da empresa",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-07",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 1,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 1,
+          "reasoningSummary": "Os campos da questão, resposta do usuário e gabarito não contêm texto válido (apenas reticências), o que impossibilita qualquer diagnóstico pedagógico.",
+          "recommendedAction": "Forneça o enunciado completo da questão, a alternativa que você assinalou e o gabarito oficial para obter uma análise detalhada.",
+          "coreConcept": "Não identificado",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-08",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 1,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 1,
+          "reasoningSummary": "Como o gráfico mencionado no enunciado não está disponível, não é possível determinar a causa provável do erro com segurança. A falha pode ter ocorrido por desatenção visual ou dificuldade na leitura dos eixos.",
+          "recommendedAction": "Analise novamente o gráfico na fonte original, prestando atenção aos valores dos eixos e à direção da curva ou barras para identificar corretamente a tendência de queda.",
+          "coreConcept": "Interpretação de gráficos",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-09",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 1,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 1,
+          "reasoningSummary": "Como os dados numéricos da questão não foram fornecidos no enunciado, não é possível determinar a causa provável do erro com segurança (se foi erro aritmético, confusão entre média simples e ponderada, ou erro de leitura).",
+          "recommendedAction": "Revise os dados originais da questão e refaça os cálculos passo a passo. Verifique atentamente se o problema exigia o cálculo de uma média simples ou de uma média ponderada.",
+          "coreConcept": "Cálculo de média",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-10",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Legislação Específica",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 0.95,
+          "reasoningSummary": "O enunciado da questão não especifica a qual lei se refere, tornando impossível identificar o contexto exato do prazo exigido e a causa provável do erro.",
+          "recommendedAction": "Verifique o material de origem desta questão para identificar qual é a lei cobrada e, em seguida, revise os prazos específicos previstos nela, preferencialmente criando uma tabela comparativa.",
+          "coreConcept": "Prazos legais (lei não especificada)",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-11",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9,
+        "rawOutput": {
+          "discipline": "Matemática",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 0.9,
+          "reasoningSummary": "O enunciado não especifica qual é a 'fórmula X' nem fornece o contexto do cálculo, impossibilitando identificar a causa provável do erro com segurança.",
+          "recommendedAction": "Busque o enunciado completo da questão ou o material teórico de origem para identificar qual fórmula deveria ter sido aplicada neste caso.",
+          "coreConcept": "Fórmula matemática não especificada",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-12",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95,
+        "rawOutput": {
+          "discipline": "Português",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 0.95,
+          "reasoningSummary": "O enunciado faz referência a um 'capítulo anterior' de um livro não identificado, o que torna impossível avaliar a causa provável do erro sem o texto-base ou contexto da obra.",
+          "recommendedAction": "Verifique se a questão original possuía um texto de apoio ou indicava a obra literária. Sem esse contexto, a questão não pode ser resolvida ou estudada adequadamente.",
+          "coreConcept": "Interpretação de texto (contexto ausente)",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-13",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 1,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 1,
+          "reasoningSummary": "O enunciado da questão não apresenta a afirmação a ser julgada, tornando impossível determinar a causa provável do erro.",
+          "recommendedAction": "Desconsidere esta questão, pois ela está incompleta ou com defeito no enunciado.",
+          "coreConcept": "Questão incompleta",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-14",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.1,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 0.1,
+          "reasoningSummary": "A causa provável do erro não pode ser determinada com segurança, pois os dados fornecidos não explicam o fundamento legal ou teórico para a isenção aplicada pelo gabarito.",
+          "recommendedAction": "Busque no seu material teórico ou na legislação pertinente qual é a regra de isenção específica que se aplica a este caso, já que a questão não fornece essa justificativa.",
+          "coreConcept": "Isenção tributária (fundamento não informado)",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      },
+      {
+        "caseId": "ii-15",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 1,
+        "rawOutput": {
+          "discipline": "Outra",
+          "probableErrorType": "INSUFFICIENT_INFORMATION",
+          "confidence": 1,
+          "reasoningSummary": "Os dados fornecidos estão vazios ou incompletos, impossibilitando a análise do erro.",
+          "recommendedAction": "Verifique se o texto da questão, sua resposta e o gabarito foram inseridos corretamente no sistema antes de solicitar uma nova análise.",
+          "coreConcept": "Informação ausente",
+          "cardAction": "NO_CARD",
+          "card": null
+        }
+      }
+    ]
+  }
+]

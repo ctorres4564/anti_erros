@@ -23,13 +23,36 @@ import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt } from '../../src/lib/a
 import { GEMINI_RESPONSE_SCHEMA } from '../../src/lib/ai/gemini';
 import { LOW_CONFIDENCE_THRESHOLD } from '../../src/config/ai';
 
-// Preço nominal por 1M tokens (USD), tier "flash" gratuito/pago padrão declarado publicamente pela
-// Google para a família Gemini 3 na época do benchmark. Usado apenas para o cálculo de
-// custo estimado/1000 análises válidas — NÃO é uma medição de cobrança real desta conta.
+// Preço nominal por 1M tokens (USD), tier "flash"/"pro" gratuito/pago padrão declarado
+// publicamente pela Google para a família Gemini 3 na época do benchmark. Usado apenas
+// para o cálculo de custo estimado/1000 análises válidas — NÃO é uma medição de
+// cobrança real desta conta.
 const PRICING_USD_PER_1M: Record<string, { input: number; output: number }> = {
   'gemini-3.6-flash': { input: 0.2, output: 1.0 },
   'gemini-3.7-flash': { input: 0.2, output: 1.0 },
+  // Mesmo modelo base do 3.7-flash, custo de tokens idêntico por token; o que muda é o
+  // VOLUME de tokens de thinking gerados (billed como output), refletido automaticamente
+  // no cálculo por já usar totalOutputTokens reais retornados pela API.
+  'gemini-3.7-flash-high': { input: 0.2, output: 1.0 },
+  'gemini-3.1-pro-preview': { input: 1.25, output: 5.0 },
 };
+
+/**
+ * Candidatos "virtuais" de benchmark: mapeiam um nome de candidato para o model ID real
+ * aceito pela API + configuração adicional de geração (ex.: thinkingLevel). Não altera o
+ * prompt, o schema estruturado nem o dataset — apenas a configuração de geração enviada
+ * à API para este candidato específico.
+ */
+const MODEL_VARIANTS: Record<string, { apiModel: string; thinkingLevel?: 'low' | 'medium' | 'high' }> = {
+  'gemini-3.6-flash': { apiModel: 'gemini-3.6-flash' },
+  'gemini-3.7-flash': { apiModel: 'gemini-3.7-flash' },
+  'gemini-3.7-flash-high': { apiModel: 'gemini-3.7-flash', thinkingLevel: 'high' },
+  'gemini-3.1-pro-preview': { apiModel: 'gemini-3.1-pro-preview' },
+};
+
+function resolveModelVariant(model: string): { apiModel: string; thinkingLevel?: 'low' | 'medium' | 'high' } {
+  return MODEL_VARIANTS[model] ?? { apiModel: model };
+}
 
 interface CallResult {
   caseId: string;
@@ -83,8 +106,10 @@ async function callModel(model: string, apiKey: string, benchCase: BenchmarkCase
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   const startedAt = Date.now();
 
+  const { apiModel, thinkingLevel } = resolveModelVariant(model);
+
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${apiModel}:generateContent`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
       body: JSON.stringify({
@@ -94,6 +119,7 @@ async function callModel(model: string, apiKey: string, benchCase: BenchmarkCase
           temperature: 0.2,
           responseMimeType: 'application/json',
           responseSchema: GEMINI_RESPONSE_SCHEMA,
+          ...(thinkingLevel ? { thinkingConfig: { thinkingLevel } } : {}),
         },
       }),
       signal: controller.signal,
