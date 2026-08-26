@@ -20,11 +20,15 @@ loadEnv({ path: path.resolve(process.cwd(), '.env.local') });
 import { BENCHMARK_DATASET, BENCHMARK_DATASET_VERSION, type BenchmarkCase } from './dataset';
 import { analysisOutputSchema } from '../../src/lib/ai/analysis-schema';
 import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt } from '../../src/lib/ai/analysis-prompt';
-import { LOW_CONFIDENCE_THRESHOLD } from '../../src/config/ai';
+import { DISCIPLINES, LOW_CONFIDENCE_THRESHOLD } from '../../src/config/ai';
 
 const GEMINI_RESPONSE_SCHEMA = {
   type: 'OBJECT',
   properties: {
+    discipline: {
+      type: 'STRING',
+      enum: DISCIPLINES,
+    },
     probableErrorType: {
       type: 'STRING',
       enum: [
@@ -38,6 +42,7 @@ const GEMINI_RESPONSE_SCHEMA = {
     },
     confidence: { type: 'NUMBER' },
     reasoningSummary: { type: 'STRING' },
+    recommendedAction: { type: 'STRING' },
     coreConcept: { type: 'STRING' },
     cardAction: {
       type: 'STRING',
@@ -51,7 +56,16 @@ const GEMINI_RESPONSE_SCHEMA = {
     },
     card: { type: 'OBJECT', nullable: true, properties: { front: { type: 'STRING' }, back: { type: 'STRING' } } },
   },
-  required: ['probableErrorType', 'confidence', 'reasoningSummary', 'coreConcept', 'cardAction', 'card'],
+  required: [
+    'discipline',
+    'probableErrorType',
+    'confidence',
+    'reasoningSummary',
+    'recommendedAction',
+    'coreConcept',
+    'cardAction',
+    'card',
+  ],
 } as const;
 
 // Preço nominal por 1M tokens (USD), tier "flash" gratuito/pago padrão declarado publicamente pela
@@ -384,7 +398,7 @@ async function main() {
   }
 
   const modelsArg = process.argv.find((a) => a.startsWith('--models='));
-  const models = modelsArg ? modelsArg.replace('--models=', '').split(',') : ['gemini-3.6-flash', 'gemini-3.7-flash'];
+  const models = modelsArg ? modelsArg.replace('--models=', '').split(/[,\s]+/).filter(Boolean) : ['gemini-3.6-flash', 'gemini-3.7-flash'];
   const limitArg = process.argv.find((a) => a.startsWith('--limit='));
   const limit = limitArg ? Number(limitArg.replace('--limit=', '')) : undefined;
   const idsArg = process.argv.find((a) => a.startsWith('--ids='));
