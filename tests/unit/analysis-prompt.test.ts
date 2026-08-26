@@ -62,6 +62,33 @@ describe('ANALYSIS_SYSTEM_PROMPT', () => {
   });
 });
 
+describe('ANALYSIS_SYSTEM_PROMPT — fronteiras entre categorias (analysis-v2)', () => {
+  it('exige estrutura de par comparável para CONCEPT_CONFUSION, não apenas termo real do mesmo domínio', () => {
+    expect(normalizedPrompt).toContain('dois conceitos comparáveis');
+  });
+
+  it('define que regra geral explícita no enunciado pesa a favor de EXCEPTION_MISSED', () => {
+    expect(normalizedPrompt).toContain('pesa a favor de exception_missed');
+  });
+
+  it('define que operação plausível-porém-incorreta é evidência de APPLICATION_ERROR', () => {
+    expect(normalizedPrompt).toContain('operação plausível-porém-incorreta');
+  });
+
+  it('exige gatilho textual explícito para READING_ERROR, não presunção por conteúdo suspeito', () => {
+    expect(normalizedPrompt).toContain('gatilho textual explícito');
+    expect(normalizedPrompt).toContain('nunca presuma reading_error');
+  });
+
+  it('instrui preferir INSUFFICIENT_INFORMATION quando categorias permanecem igualmente plausíveis', () => {
+    expect(normalizedPrompt).toContain('igualmente plausíveis');
+  });
+
+  it('reforça que APPLICATION_ERROR não implica automaticamente CREATE_APPLICATION_CARD', () => {
+    expect(normalizedPrompt).toContain('não implica automaticamente create_application_card');
+  });
+});
+
 describe('buildAnalysisUserPrompt', () => {
   const input: AnalysisInput = {
     question: 'Qual é a capital da França?',

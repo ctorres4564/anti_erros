@@ -1,6 +1,0 @@
-[
-  {"label":"3.6 Flash","reportPath":"benchmark-results/benchmark-v2-gemini-3.6-flash.json","judgmentPath":"benchmark-results/judgment-gemini-3.6-flash.json"},
-  {"label":"3.7 Flash medium","reportPath":"benchmark-results/benchmark-v2-gemini-3.7-flash.json","judgmentPath":"benchmark-results/judgment-gemini-3.7-flash.json"},
-  {"label":"3.7 Flash high","reportPath":"benchmark-results/benchmark-v2-gemini-3.7-flash-high.json","judgmentPath":"benchmark-results/judgment-gemini-3.7-flash-high.json"},
-  {"label":"3.1 Pro Preview","reportPath":"benchmark-results/benchmark-v2-gemini-3.1-pro-preview.json","judgmentPath":"benchmark-results/judgment-gemini-3.1-pro-preview.json"}
-]

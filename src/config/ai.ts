@@ -141,7 +141,7 @@ export const PEDAGOGICAL_MAP: Record<ProbableErrorType, CardAction> = {
 export const AI_MODEL = process.env.GEMINI_MODEL_NAME || 'gemini-3.7-flash';
 
 /** Versão do template de prompt persistida junto de cada análise (rastreabilidade). */
-export const PROMPT_VERSION = 'analysis-v1.2';
+export const PROMPT_VERSION = 'analysis-v2.0';
 
 /** Cota diária de análises por usuário (MVP). Fonte única desta constante. */
 export const DAILY_ANALYSIS_LIMIT = Number(process.env.DAILY_ANALYSIS_QUOTA) || 5;
