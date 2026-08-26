@@ -1,0 +1,10 @@
+{
+  "factual": {
+    "em-09": {
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": "Ressalva de nuance ortográfica: a afirmação de que 'não-violência' se escreve com hífen como prefixo negativo é uma convenção tradicionalmente ensinada, mas o Acordo Ortográfico de 1990 tornou o uso de hífen com 'não' + substantivo um ponto de controvérsia/variação entre gramáticos e obras de referência atuais (muitas fontes atuais preferem sem hífen, ex. 'não violência'). Não é um erro factual claro e inequívoco o suficiente para reprovar; mantido como PASS com esta ressalva registrada."
+    }
+  },
+  "pedagogical": {}
+}

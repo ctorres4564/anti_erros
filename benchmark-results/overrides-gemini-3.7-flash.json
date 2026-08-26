@@ -1,0 +1,10 @@
+{
+  "factual": {
+    "em-09": {
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": "Mesma ressalva de nuance ortográfica aplicada ao caso equivalente do gemini-3.6-flash: a afirmação sobre hífen em 'não' como prefixo negativo é tradicionalmente ensinada, mas é ponto de variação/controvérsia sob o Acordo Ortográfico de 1990. Não é um erro factual claro o suficiente para reprovar; mantido como PASS com ressalva registrada."
+    }
+  },
+  "pedagogical": {}
+}

@@ -1,0 +1,1476 @@
+{
+  "model": "gemini-3.6-flash",
+  "judge": "claude-opus-5 (juiz independente, não candidato do benchmark)",
+  "rubricVersion": "quality-rubric-v1",
+  "reviewMethod": "Revisão manual caso a caso do texto bruto (rawOutput) por Claude Opus 5, mesma rubrica fixa aplicada identicamente a ambos os modelos, sem que nenhum modelo avalie a si mesmo.",
+  "factual": [
+    {
+      "caseId": "kg-01",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-02",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-03",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-04",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-05",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-06",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-07",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-08",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-09",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-10",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-11",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-12",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-13",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-14",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "kg-15",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-01",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-02",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-02b",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-03",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-04",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-05",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-06",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-07",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-08",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-09",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-10",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-11",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-12",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-13",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-14",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "cc-15",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-01",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-02",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-03",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-04",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-05",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-06",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-07",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-08",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-09",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": "Ressalva de nuance ortográfica: a afirmação de que 'não-violência' se escreve com hífen como prefixo negativo é uma convenção tradicionalmente ensinada, mas o Acordo Ortográfico de 1990 tornou o uso de hífen com 'não' + substantivo um ponto de controvérsia/variação entre gramáticos e obras de referência atuais (muitas fontes atuais preferem sem hífen, ex. 'não violência'). Não é um erro factual claro e inequívoco o suficiente para reprovar; mantido como PASS com esta ressalva registrada."
+    },
+    {
+      "caseId": "em-10",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-11",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-12",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-13",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-14",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "em-15",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-01",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-02",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-03",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-04",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-05",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-06",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-07",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-08",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-09",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-10",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-11",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-12",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-13",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-14",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ae-15",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-01",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-02",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-03",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-04",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-05",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-06",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-07",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-08",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-09",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-10",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-11",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-12",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-13",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-14",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "re-15",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-01",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-02",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-04",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-05",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-07",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-08",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-09",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-10",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-11",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-12",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-13",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    },
+    {
+      "caseId": "ii-15",
+      "verdict": "PASS",
+      "hallucination": false,
+      "note": null
+    }
+  ],
+  "pedagogical": [
+    {
+      "caseId": "kg-01",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-02",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-03",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-04",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-05",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-06",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-07",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-08",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-09",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-10",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-11",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-12",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-13",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-14",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "kg-15",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-01",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-02",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-02b",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-03",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-04",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-05",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-06",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-07",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-08",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-09",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-10",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-11",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-12",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-13",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-14",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "cc-15",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-01",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-02",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-03",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-04",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-05",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-06",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-07",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-08",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-09",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-10",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-11",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-12",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-13",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-14",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "em-15",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-01",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-02",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-03",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-04",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-06",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-07",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-08",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-09",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-10",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-11",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-12",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-13",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-14",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "ae-15",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "re-03",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "re-05",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "re-09",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "re-11",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "re-13",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "re-14",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    },
+    {
+      "caseId": "re-15",
+      "cardAction": "CREATE_BASIC_CARD",
+      "scores": {
+        "atomicity": 4,
+        "selfContained": 4,
+        "noMechanicalCopy": 4,
+        "cardActionMatch": 5,
+        "clarity": 5
+      },
+      "overall": 4,
+      "approved": true,
+      "note": null
+    }
+  ]
+}

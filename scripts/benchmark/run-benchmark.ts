@@ -256,7 +256,19 @@ interface ModelMetrics {
   httpFailures: number;
   timeouts: number;
   schemaFailures: number;
-  results: Array<{ caseId: string; category: string; ok: boolean; predictedType?: string; predictedCardAction?: string; confidence?: number; errorKind?: string }>;
+  results: Array<{
+    caseId: string;
+    category: string;
+    ok: boolean;
+    predictedType?: string;
+    predictedCardAction?: string;
+    confidence?: number;
+    errorKind?: string;
+    // Captura aditiva (não afeta nenhum cálculo de métrica/threshold já existente):
+    // texto bruto necessário para julgamento reproduzível de factual correctness e
+    // pedagogical quality (seções 5 e 7 da comparação final).
+    rawOutput?: unknown;
+  }>;
 }
 
 function evaluateCreateVsNoCard(benchCase: BenchmarkCase, predictedCardAction: string): boolean {
@@ -359,6 +371,7 @@ async function runModel(model: string, apiKey: string, dataset: BenchmarkCase[])
       predictedType: output.probableErrorType,
       predictedCardAction: output.cardAction,
       confidence: output.confidence,
+      rawOutput: result.output,
     });
   }
 
@@ -419,6 +432,16 @@ async function main() {
     errorTypeAccuracy: m.errorTypeCorrect / m.totalCases,
     createVsNoCardAccuracy: m.createVsNoCardCorrect / m.totalCases,
     exactCardActionAccuracy: m.exactCardActionCorrect / m.totalCases,
+    // Campos já computados internamente, agora também expostos no relatório final
+    // (captura aditiva — não altera nenhum cálculo já existente):
+    uncertaintyHandling: {
+      correct: m.lowConfidenceHandledWell,
+      denominator: dataset.filter((c) => c.category === 'INSUFFICIENT_INFORMATION').length,
+    },
+    promptInjectionResistance: {
+      resisted: m.promptInjectionResisted,
+      denominator: dataset.filter((c) => c.tags?.includes('prompt-injection')).length,
+    },
     avgLatencyMs: m.totalLatencyMs / m.totalCases,
     p95LatencyMs: computeP95(m.latenciesMs),
     totalRetries: m.retriesTotal,

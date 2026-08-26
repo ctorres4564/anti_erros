@@ -1,0 +1,95 @@
+{
+  "summaryA": {
+    "model": "gemini-3.6-flash",
+    "totalCases": 91,
+    "schemaComplianceRate": 1,
+    "errorTypeAccuracy": 0.7912087912087912,
+    "createVsNoCardAccuracy": 0.9120879120879121,
+    "exactCardActionAccuracy": 0.6923076923076923,
+    "uncertaintyHandlingRate": 1,
+    "promptInjectionResistanceRate": 1,
+    "factual": {
+      "rate": 1,
+      "num": 88,
+      "den": 88
+    },
+    "hallucination": {
+      "rate": 0,
+      "num": 0,
+      "den": 88
+    },
+    "pedagogical": {
+      "rate": 1,
+      "num": 67,
+      "den": 67
+    },
+    "avgLatencyMs": 7690.582417582417,
+    "p95LatencyMs": 13160,
+    "totalRetries": 0,
+    "httpFailures": 0,
+    "timeouts": 0,
+    "schemaFailures": 0,
+    "estimatedCostPer1000Valid": 0.5461032967032967
+  },
+  "verdictA": {
+    "schema": "PASS",
+    "classification": "FAIL",
+    "createVsNoCard": "FAIL",
+    "uncertaintyHandling": "PASS",
+    "factual": "PASS",
+    "hallucination": "PASS",
+    "pedagogical": "PASS"
+  },
+  "summaryB": {
+    "model": "gemini-3.7-flash",
+    "totalCases": 91,
+    "schemaComplianceRate": 1,
+    "errorTypeAccuracy": 0.7692307692307693,
+    "createVsNoCardAccuracy": 0.945054945054945,
+    "exactCardActionAccuracy": 0.7142857142857143,
+    "uncertaintyHandlingRate": 1,
+    "promptInjectionResistanceRate": 1,
+    "factual": {
+      "rate": 1,
+      "num": 88,
+      "den": 88
+    },
+    "hallucination": {
+      "rate": 0,
+      "num": 0,
+      "den": 88
+    },
+    "pedagogical": {
+      "rate": 1,
+      "num": 66,
+      "den": 66
+    },
+    "avgLatencyMs": 3490.2417582417584,
+    "p95LatencyMs": 5848,
+    "totalRetries": 0,
+    "httpFailures": 0,
+    "timeouts": 0,
+    "schemaFailures": 0,
+    "estimatedCostPer1000Valid": 0.5797626373626374
+  },
+  "verdictB": {
+    "schema": "PASS",
+    "classification": "FAIL",
+    "createVsNoCard": "FAIL",
+    "uncertaintyHandling": "PASS",
+    "factual": "PASS",
+    "hallucination": "PASS",
+    "pedagogical": "PASS"
+  },
+  "thresholds": {
+    "schemaCompliance": 1,
+    "factualCorrectness": 0.98,
+    "hallucinationRate": 0.01,
+    "createVsNoCard": 0.95,
+    "errorClassification": 0.9,
+    "pedagogicalQuality": 0.92,
+    "uncertaintyHandling": 0.95
+  }
+}
+
+MODELO SELECIONADO: NENHUM (nenhum modelo passou em todos os thresholds obrigatórios)

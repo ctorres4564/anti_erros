@@ -1,0 +1,749 @@
+[
+  {
+    "model": "gemini-3.7-flash",
+    "totalCases": 91,
+    "schemaComplianceRate": 1,
+    "errorTypeAccuracy": 0.7692307692307693,
+    "createVsNoCardAccuracy": 0.9230769230769231,
+    "exactCardActionAccuracy": 0.6923076923076923,
+    "avgLatencyMs": 3109.120879120879,
+    "p95LatencyMs": 5791,
+    "totalRetries": 0,
+    "httpFailures": 0,
+    "timeouts": 0,
+    "schemaFailures": 0,
+    "totalInputTokens": 166247,
+    "totalOutputTokens": 19595,
+    "estimatedCostPer1000Valid": 0.5807076923076924,
+    "results": [
+      {
+        "caseId": "kg-01",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "kg-02",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "kg-03",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-04",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "kg-05",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-06",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-07",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-08",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-09",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-10",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-11",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-12",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-13",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "kg-14",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "kg-15",
+        "category": "KNOWLEDGE_GAP",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-01",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-02",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-02b",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-03",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-04",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-05",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-06",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-07",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-08",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-09",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-10",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-11",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-12",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-13",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-14",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "cc-15",
+        "category": "CONCEPT_CONFUSION",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-01",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-02",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-03",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-04",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-05",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-06",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.85
+      },
+      {
+        "caseId": "em-07",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-08",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-09",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.85
+      },
+      {
+        "caseId": "em-10",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-11",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.85
+      },
+      {
+        "caseId": "em-12",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-13",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-14",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "em-15",
+        "category": "EXCEPTION_MISSED",
+        "ok": true,
+        "predictedType": "EXCEPTION_MISSED",
+        "predictedCardAction": "CREATE_EXCEPTION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-01",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-02",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-03",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-04",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-05",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-06",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.85
+      },
+      {
+        "caseId": "ae-07",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_APPLICATION_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "ae-08",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-09",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_APPLICATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-10",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_APPLICATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-11",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_APPLICATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-12",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-13",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_APPLICATION_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "ae-14",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ae-15",
+        "category": "APPLICATION_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_APPLICATION_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-01",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-02",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-03",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "re-04",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-05",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.85
+      },
+      {
+        "caseId": "re-06",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-07",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-08",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-09",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-10",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "re-11",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "KNOWLEDGE_GAP",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-12",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "READING_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "re-13",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "CONCEPT_CONFUSION",
+        "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "re-14",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "CREATE_BASIC_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "re-15",
+        "category": "READING_ERROR",
+        "ok": true,
+        "predictedType": "APPLICATION_ERROR",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ii-01",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.1
+      },
+      {
+        "caseId": "ii-02",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.2
+      },
+      {
+        "caseId": "ii-03",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.1
+      },
+      {
+        "caseId": "ii-04",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.1
+      },
+      {
+        "caseId": "ii-05",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ii-06",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.3
+      },
+      {
+        "caseId": "ii-07",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0
+      },
+      {
+        "caseId": "ii-08",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "ii-09",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "ii-10",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.2
+      },
+      {
+        "caseId": "ii-11",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.2
+      },
+      {
+        "caseId": "ii-12",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.3
+      },
+      {
+        "caseId": "ii-13",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.95
+      },
+      {
+        "caseId": "ii-14",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0.9
+      },
+      {
+        "caseId": "ii-15",
+        "category": "INSUFFICIENT_INFORMATION",
+        "ok": true,
+        "predictedType": "INSUFFICIENT_INFORMATION",
+        "predictedCardAction": "NO_CARD",
+        "confidence": 0
+      }
+    ]
+  }
+]
