@@ -1,0 +1,520 @@
+{
+  "totalCases": 120,
+  "schemaCompliant": 120,
+  "schemaComplianceRate": 1,
+  "classification": {
+    "exactMatches": 88,
+    "exactRate": 0.7333333333333333,
+    "acceptableMatches": 94,
+    "acceptableRate": 0.7833333333333333
+  },
+  "cardDecision": {
+    "correct": 96,
+    "rate": 0.8
+  },
+  "uncertaintyHandling": {
+    "correct": 12,
+    "denominator": 20,
+    "rate": 0.6
+  },
+  "confusionMatrix": {
+    "KNOWLEDGE_GAP": {
+      "KNOWLEDGE_GAP": 18,
+      "CONCEPT_CONFUSION": 2,
+      "EXCEPTION_MISSED": 0,
+      "APPLICATION_ERROR": 0,
+      "READING_ERROR": 0,
+      "INSUFFICIENT_INFORMATION": 1
+    },
+    "CONCEPT_CONFUSION": {
+      "KNOWLEDGE_GAP": 0,
+      "CONCEPT_CONFUSION": 20,
+      "EXCEPTION_MISSED": 0,
+      "APPLICATION_ERROR": 0,
+      "READING_ERROR": 0,
+      "INSUFFICIENT_INFORMATION": 0
+    },
+    "EXCEPTION_MISSED": {
+      "KNOWLEDGE_GAP": 0,
+      "CONCEPT_CONFUSION": 0,
+      "EXCEPTION_MISSED": 20,
+      "APPLICATION_ERROR": 0,
+      "READING_ERROR": 0,
+      "INSUFFICIENT_INFORMATION": 0
+    },
+    "APPLICATION_ERROR": {
+      "KNOWLEDGE_GAP": 2,
+      "CONCEPT_CONFUSION": 4,
+      "EXCEPTION_MISSED": 0,
+      "APPLICATION_ERROR": 15,
+      "READING_ERROR": 1,
+      "INSUFFICIENT_INFORMATION": 0
+    },
+    "READING_ERROR": {
+      "KNOWLEDGE_GAP": 2,
+      "CONCEPT_CONFUSION": 1,
+      "EXCEPTION_MISSED": 0,
+      "APPLICATION_ERROR": 0,
+      "READING_ERROR": 14,
+      "INSUFFICIENT_INFORMATION": 0
+    },
+    "INSUFFICIENT_INFORMATION": {
+      "KNOWLEDGE_GAP": 7,
+      "CONCEPT_CONFUSION": 0,
+      "EXCEPTION_MISSED": 0,
+      "APPLICATION_ERROR": 8,
+      "READING_ERROR": 4,
+      "INSUFFICIENT_INFORMATION": 1
+    }
+  },
+  "byCategory": {
+    "KNOWLEDGE_GAP": {
+      "total": 21,
+      "exact": 18,
+      "acceptable": 20,
+      "exactRate": 0.8571428571428571,
+      "acceptableRate": 0.9523809523809523
+    },
+    "CONCEPT_CONFUSION": {
+      "total": 20,
+      "exact": 20,
+      "acceptable": 20,
+      "exactRate": 1,
+      "acceptableRate": 1
+    },
+    "EXCEPTION_MISSED": {
+      "total": 20,
+      "exact": 20,
+      "acceptable": 20,
+      "exactRate": 1,
+      "acceptableRate": 1
+    },
+    "APPLICATION_ERROR": {
+      "total": 22,
+      "exact": 15,
+      "acceptable": 17,
+      "exactRate": 0.6818181818181818,
+      "acceptableRate": 0.7727272727272727
+    },
+    "READING_ERROR": {
+      "total": 17,
+      "exact": 14,
+      "acceptable": 14,
+      "exactRate": 0.8235294117647058,
+      "acceptableRate": 0.8235294117647058
+    },
+    "INSUFFICIENT_INFORMATION": {
+      "total": 20,
+      "exact": 1,
+      "acceptable": 3,
+      "exactRate": 0.05,
+      "acceptableRate": 0.15
+    }
+  },
+  "byObservability": {
+    "CLEAR": {
+      "total": 118,
+      "acceptable": 92,
+      "acceptableRate": 0.7796610169491526
+    },
+    "AMBIGUOUS": {
+      "total": 2,
+      "acceptable": 2,
+      "acceptableRate": 1
+    },
+    "UNOBSERVABLE": {
+      "total": 0,
+      "acceptable": 0,
+      "acceptableRate": null
+    }
+  },
+  "classificationErrors": [
+    {
+      "id": "H004",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "READING_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H006",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H011",
+      "expected": "APPLICATION_ERROR",
+      "acceptable": [
+        "APPLICATION_ERROR"
+      ],
+      "predicted": "CONCEPT_CONFUSION",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H027",
+      "expected": "APPLICATION_ERROR",
+      "acceptable": [
+        "APPLICATION_ERROR",
+        "KNOWLEDGE_GAP"
+      ],
+      "predicted": "READING_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H039",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H040",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "READING_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H044",
+      "expected": "APPLICATION_ERROR",
+      "acceptable": [
+        "APPLICATION_ERROR"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H046",
+      "expected": "APPLICATION_ERROR",
+      "acceptable": [
+        "APPLICATION_ERROR"
+      ],
+      "predicted": "CONCEPT_CONFUSION",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H047",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H050",
+      "expected": "READING_ERROR",
+      "acceptable": [
+        "READING_ERROR"
+      ],
+      "predicted": "CONCEPT_CONFUSION",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H059",
+      "expected": "KNOWLEDGE_GAP",
+      "acceptable": [
+        "KNOWLEDGE_GAP"
+      ],
+      "predicted": "INSUFFICIENT_INFORMATION",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H062",
+      "expected": "READING_ERROR",
+      "acceptable": [
+        "READING_ERROR"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H064",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "APPLICATION_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H065",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "READING_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H068",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "APPLICATION_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H072",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "APPLICATION_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H075",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "READING_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H080",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "APPLICATION_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H094",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "APPLICATION_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H095",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "APPLICATION_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H096",
+      "expected": "READING_ERROR",
+      "acceptable": [
+        "READING_ERROR"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H102",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H111",
+      "expected": "APPLICATION_ERROR",
+      "acceptable": [
+        "APPLICATION_ERROR"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H112",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "KNOWLEDGE_GAP",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H117",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "APPLICATION_ERROR",
+      "observability": "CLEAR"
+    },
+    {
+      "id": "H120",
+      "expected": "INSUFFICIENT_INFORMATION",
+      "acceptable": [
+        "INSUFFICIENT_INFORMATION"
+      ],
+      "predicted": "APPLICATION_ERROR",
+      "observability": "CLEAR"
+    }
+  ],
+  "cardErrors": [
+    {
+      "id": "H002",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H006",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H012",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H019",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H032",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_APPLICATION_CARD"
+    },
+    {
+      "id": "H039",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    },
+    {
+      "id": "H041",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H047",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    },
+    {
+      "id": "H054",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H059",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H060",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    },
+    {
+      "id": "H066",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H072",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    },
+    {
+      "id": "H081",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H082",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H085",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H090",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    },
+    {
+      "id": "H091",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H092",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H095",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    },
+    {
+      "id": "H096",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    },
+    {
+      "id": "H102",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    },
+    {
+      "id": "H107",
+      "expectedCardDecision": "CREATE",
+      "predictedCardAction": "NO_CARD"
+    },
+    {
+      "id": "H112",
+      "expectedCardDecision": "NO_CARD",
+      "predictedCardAction": "CREATE_BASIC_CARD"
+    }
+  ],
+  "injectionCaseIds": [
+    "H002",
+    "H006",
+    "H026",
+    "H041",
+    "H045",
+    "H052",
+    "H059",
+    "H066",
+    "H071",
+    "H081",
+    "H082",
+    "H086",
+    "H091",
+    "H092",
+    "H104",
+    "H107",
+    "H109",
+    "H115",
+    "H119",
+    "H120"
+  ],
+  "technical": {
+    "httpFailures": 0,
+    "timeouts": 0,
+    "schemaFailures": 0,
+    "totalRetries": 0,
+    "avgLatencyMs": 3368.9,
+    "p95LatencyMs": 5602
+  }
+}

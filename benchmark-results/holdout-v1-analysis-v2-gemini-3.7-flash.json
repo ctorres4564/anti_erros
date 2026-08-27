@@ -1,0 +1,2782 @@
+{
+  "holdoutVersion": "holdout-v1",
+  "model": "gemini-3.7-flash",
+  "promptVersion": "analysis-v2.0",
+  "totalCases": 120,
+  "schemaCompliant": 120,
+  "schemaComplianceRate": 1,
+  "avgLatencyMs": 3368.9,
+  "p95LatencyMs": 5602,
+  "totalRetries": 0,
+  "httpFailures": 0,
+  "timeouts": 0,
+  "schemaFailures": 0,
+  "totalInputTokens": 336931,
+  "totalOutputTokens": 24310,
+  "executedAt": "2026-08-27T01:35:36.955Z",
+  "results": [
+    {
+      "caseId": "H001",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3107,
+      "inputTokens": 2816,
+      "outputTokens": 239,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você aplicou o limite da regra geral (3 falhas), desconsiderando a exceção concedida especificamente para contas de administrador (5 tentativas).",
+        "recommendedAction": "Ao resolver questões com regras condicionais, mapeie primeiro se o sujeito se enquadra na regra geral ou na exceção antes de determinar o resultado.",
+        "coreConcept": "Políticas de bloqueio de conta e tratamento de exceções para perfis administrativos",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a regra geral versus a exceção de bloqueio por falhas de login para contas normais e contas de administrador neste cenário?",
+          "back": "Regra geral: bloqueio após 3 falhas consecutivas.\nExceção: contas de administrador possuem tolerância de 5 tentativas (não bloqueando com 4 falhas)."
+        }
+      }
+    },
+    {
+      "caseId": "H002",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 6314,
+      "inputTokens": 2838,
+      "outputTokens": 145,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi calcular a razão entre as partes envolvidas em vez de dividir os casos favoráveis pelo total do espaço amostral.",
+        "recommendedAction": "Ao resolver problemas de probabilidade simples, some sempre todos os elementos para obter o denominador total antes de aplicar a fração de casos favoráveis.",
+        "coreConcept": "Probabilidade simples (casos favoráveis sobre casos possíveis)",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H003",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3045,
+      "inputTokens": 2817,
+      "outputTokens": 232,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você aplicou a regra geral prevista, mas não considerou a cláusula de exceção indicada para casos com mais de 20 pessoas.",
+        "recommendedAction": "Ao analisar enunciados com condições expressas, verifique primeiro se o caso concreto se enquadra em alguma exceção antes de aplicar a regra geral.",
+        "coreConcept": "Aplicação de regra geral versus exceção condicional",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Ao resolver problemas baseados em regras e exceções, o que deve ser checado antes de aplicar a regra geral?",
+          "back": "Deve-se verificar se o caso concreto preenche as condições de alguma exceção; em caso afirmativo, aplica-se a regra de exceção e não a regra geral."
+        }
+      }
+    },
+    {
+      "caseId": "H004",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 4462,
+      "inputTokens": 2804,
+      "outputTokens": 179,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi desconsiderar parte do enunciado que continha premissas mutuamente excludentes (lucro e prejuízo simultâneos sob o mesmo critério), levando à escolha de um dado isolado em vez de reconhecer a contradição.",
+        "recommendedAction": "Ao resolver questões com múltiplos dados quantitativos, verifique se todas as informações são consistentes entre si antes de calcular ou concluir uma resposta.",
+        "coreConcept": "Identificação de premissas contraditórias",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H005",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2339,
+      "inputTokens": 2822,
+      "outputTokens": 244,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão direta entre os conceitos de memória RAM e armazenamento secundário quanto à volatilidade e persistência.",
+        "recommendedAction": "Revise o papel da memória RAM como armazenamento temporário e volátil em contraste com o armazenamento secundário (HD/SSD), que mantém arquivos de forma permanente.",
+        "coreConcept": "Diferença entre memória RAM e armazenamento secundário",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença fundamental entre memória RAM e armazenamento secundário quanto à volatilidade e permanência de dados?",
+          "back": "- Memória RAM: volátil (perde os dados ao desligar o computador), usada para processamento temporário.\n- Armazenamento (HD/SSD): não volátil (mantém os dados sem energia), usado para salvar arquivos e programas permanentemente."
+        }
+      }
+    },
+    {
+      "caseId": "H006",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 5959,
+      "inputTokens": 2817,
+      "outputTokens": 169,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi supor que um triângulo isósceles possui medidas de ângulos fixas ou pré-determinadas, quando a definição exige apenas dois lados congruentes.",
+        "recommendedAction": "Revise a classificação de triângulos e as propriedades dos triângulos isósceles, observando que eles podem ser acutângulos, retângulos ou obtusângulos.",
+        "coreConcept": "Propriedades dos ângulos do triângulo isósceles",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H007",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_APPLICATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 4145,
+      "inputTokens": 2811,
+      "outputTokens": 260,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi subtrair diretamente o número 15 do valor total (200 - 15 = 185), em vez de calcular primeiro 15% de 200 (que resulta em 30) antes de efetuar a subtração.",
+        "recommendedAction": "Ao calcular descontos percentuais, divida o processo em duas etapas: primeiro calcule o valor correspondente à porcentagem sobre o total e, em seguida, subtraia esse valor encontrado.",
+        "coreConcept": "Cálculo de desconto percentual",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Como calcular corretamente a redução de P% sobre um valor V?",
+          "back": "Primeiro calcula-se o valor da porcentagem: (P/100) * V. Em seguida, subtrai-se esse resultado do valor original V. Nunca subtraia o número P diretamente de V."
+        }
+      }
+    },
+    {
+      "caseId": "H008",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2845,
+      "inputTokens": 2786,
+      "outputTokens": 165,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi desatenção à estrutura de negação explícita ('não') contida no texto, levando a uma interpretação oposta ao afirmado.",
+        "recommendedAction": "Adote o hábito de sublinhar ou circular termos de negação e restrição (como 'não', 'exceto', 'apenas') durante a leitura do enunciado antes de marcar a resposta.",
+        "coreConcept": "Interpretação textual de estruturas de negação",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H009",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2341,
+      "inputTokens": 2827,
+      "outputTokens": 224,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca direta entre dois conceitos correlatos (tempo e clima), invertendo as definições de padrão de longo prazo e estado momentâneo.",
+        "recommendedAction": "Revise a distinção conceitual básica entre tempo (condições atmosféricas momentâneas) e clima (padrão histórico observado ao longo de décadas).",
+        "coreConcept": "Diferença entre tempo e clima",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre tempo e clima em relação à escala temporal?",
+          "back": "Tempo: estado momentâneo e variável da atmosfera em um local e instante específicos. Clima: padrão médio das condições atmosféricas observado ao longo de um extenso período (longo prazo)."
+        }
+      }
+    },
+    {
+      "caseId": "H010",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2400,
+      "inputTokens": 2838,
+      "outputTokens": 242,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Você identificou corretamente as duas bases de incidência, mas inverteu a atribuição entre juros simples e juros compostos.",
+        "recommendedAction": "Revise a definição da base de cálculo de cada regime financeiro, fixando que os juros simples incidem sempre sobre o principal inicial e os juros compostos incidem sobre o saldo acumulado.",
+        "coreConcept": "Base de incidência de juros simples vs. compostos",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre juros simples e juros compostos quanto à base de incidência?",
+          "back": "Juros simples incidem exclusivamente sobre o valor principal inicial ao longo de todo o período. Juros compostos incidem sobre o saldo devedor/acumulado do período anterior (juros sobre juros)."
+        }
+      }
+    },
+    {
+      "caseId": "H011",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2379,
+      "inputTokens": 2798,
+      "outputTokens": 239,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi a confusão entre o conceito de área (lado × lado = 49) e o de perímetro (soma dos quatro lados = 28).",
+        "recommendedAction": "Revise a diferença entre área (superfície interna, L²) e perímetro (comprimento do contorno, 4L) de figuras geométricas planas.",
+        "coreConcept": "Diferença entre perímetro e área do quadrado",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre o cálculo do perímetro e o da área de um quadrado de lado L?",
+          "back": "• Perímetro: é o contorno (soma dos 4 lados) -> P = 4 × L\n• Área: é a superfície interna -> A = L²"
+        }
+      }
+    },
+    {
+      "caseId": "H012",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 2994,
+      "inputTokens": 2804,
+      "outputTokens": 200,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "Você identificou a operação correta para calcular a porcentagem, mas cometeu um erro de posicionamento de vírgula ou de ordem de grandeza no cálculo final, obtendo um resultado dez vezes menor que o real.",
+        "recommendedAction": "Revise as operações com números decimais e adquira o hábito de fazer uma estimativa rápida de ordem de grandeza (por exemplo, 10% de 250 é 25, então 18% deve ser próximo de 45 e muito maior que 4,5) para checar o resultado.",
+        "coreConcept": "Cálculo de porcentagem e ordem de grandeza decimal",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H013",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 10045,
+      "inputTokens": 2787,
+      "outputTokens": 214,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna no conhecimento sobre a função fundamental do DNS, atribuindo a ele a tarefa de criptografia de arquivos.",
+        "recommendedAction": "Revise as funções básicas dos principais protocolos de rede da camada de aplicação (DNS, DHCP, HTTP, FTP, etc.) para memorizar a finalidade de cada um.",
+        "coreConcept": "Função do protocolo DNS",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a função principal do protocolo DNS (Domain Name System) em redes de computadores?",
+          "back": "Traduzir (resolver) nomes de domínio (como www.exemplo.com) em endereços IP correspondentes para permitir a comunicação entre dispositivos."
+        }
+      }
+    },
+    {
+      "caseId": "H014",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 2334,
+      "inputTokens": 2786,
+      "outputTokens": 180,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna pontual de conhecimento anatômico/fisiológico sobre o órgão responsável pela síntese de insulina.",
+        "recommendedAction": "Revise as funções endócrinas dos principais órgãos do sistema digestório, fixando a relação direta entre o pâncreas e a produção de insulina.",
+        "coreConcept": "Órgão produtor de insulina",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual órgão do corpo humano é responsável pela produção do hormônio insulina?",
+          "back": "Pâncreas."
+        }
+      }
+    },
+    {
+      "caseId": "H015",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2398,
+      "inputTokens": 2823,
+      "outputTokens": 270,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação da regra geral de expansão térmica, desconsiderando a exceção específica da água no intervalo de 0 °C a 4 °C.",
+        "recommendedAction": "Ao resolver questões de termologia, atente-se para casos de exceção à regra geral, como o comportamento anômalo da água entre 0 °C e 4 °C.",
+        "coreConcept": "Comportamento anômalo da água (0 a 4 °C)",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Em dilatação térmica, qual é a regra geral para substâncias aquecidas e qual é a exceção observada na água entre 0 °C e 4 °C?",
+          "back": "Regra geral: substâncias expandem (volume aumenta) ao serem aquecidas.\nExceção: a água contrai (volume diminui) quando aquecida de 0 °C a 4 °C."
+        }
+      }
+    },
+    {
+      "caseId": "H016",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2074,
+      "inputTokens": 2824,
+      "outputTokens": 231,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca direta entre os conceitos de habitat e nicho ecológico, invertendo a definição de cada termo.",
+        "recommendedAction": "Revise a distinção clássica de ecologia associando habitat ao 'endereço' (onde vive) e nicho à 'profissão' (papel funcional).",
+        "coreConcept": "Diferença entre habitat e nicho ecológico",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em ecologia, qual é a diferença entre habitat e nicho ecológico?",
+          "back": "Habitat: o local físico/ambiente onde uma espécie vive (seu 'endereço'). Nicho ecológico: o papel funcional e o modo de vida da espécie no ecossistema (sua 'profissão')."
+        }
+      }
+    },
+    {
+      "caseId": "H017",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2207,
+      "inputTokens": 2811,
+      "outputTokens": 213,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação da regra geral de que números primos costumam ser ímpares, desconsiderando a exceção do número 2.",
+        "recommendedAction": "Ao estudar conjuntos numéricos e propriedades, atente-se às exceções e casos particulares destacados na teoria.",
+        "coreConcept": "Paridade dos números primos e a exceção do número 2",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Em relação à paridade dos números primos, qual é a regra geral e qual é a única exceção?",
+          "back": "Regra geral: os números primos são ímpares. Exceção: o número 2 é o único número primo par."
+        }
+      }
+    },
+    {
+      "caseId": "H018",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2424,
+      "inputTokens": 2830,
+      "outputTokens": 215,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Estatística",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca direta entre dois conceitos correlatos: você atribuiu a definição de média à mediana e vice-versa.",
+        "recommendedAction": "Revise o quadro comparativo de medidas de tendência central, associando média à soma dividida pela contagem e mediana à posição central do rol.",
+        "coreConcept": "Diferença entre média aritmética e mediana",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença fundamental entre média aritmética e mediana?",
+          "back": "• Média aritmética: soma de todos os valores dividida pela quantidade total de elementos.\n• Mediana: valor central que divide uma sequência de dados ordenados (rol) ao meio."
+        }
+      }
+    },
+    {
+      "caseId": "H019",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3618,
+      "inputTokens": 2814,
+      "outputTokens": 116,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a inversão dos valores finais atribuídos às incógnitas x e y durante a resolução do sistema linear.",
+        "recommendedAction": "Adote o hábito de testar os valores obtidos substituindo-os em ambas as equações originais para conferir se as igualdades se mantêm.",
+        "coreConcept": "Sistemas de equações do 1º grau",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H020",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3033,
+      "inputTokens": 2801,
+      "outputTokens": 231,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a aplicação incorreta do fator de conversão de escala, multiplicando o valor por 10 em vez de 100.",
+        "recommendedAction": "Revise a tabela de prefixos e múltiplos do Sistema Internacional (metro, decímetro, centímetro e milímetro) para fixar as ordens de grandeza na conversão de medidas lineares.",
+        "coreConcept": "Conversão de unidades de medida de comprimento (metros para centímetros)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Quantos centímetros (cm) equivalem a 1 metro (m)?",
+          "back": "1 metro (m) equivale a 100 centímetros (cm) — para converter metros em centímetros, multiplica-se o valor por 100."
+        }
+      }
+    },
+    {
+      "caseId": "H021",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2375,
+      "inputTokens": 2815,
+      "outputTokens": 218,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação da regra proibitiva geral sem considerar a exceção expressamente prevista para ambulâncias em emergência.",
+        "recommendedAction": "Ao resolver questões com regras condicionais, mapeie sempre a regra geral e destaque as exceções antes de validar a situação concreta.",
+        "coreConcept": "Prevalência de exceção expressa sobre regra geral",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Quando uma norma estabelece uma proibição geral e uma ressalva expressa, qual comando prevalece sobre a situação prevista na ressalva?",
+          "back": "Prevalece a ressalva/exceção expressa, afastando a incidência da regra geral proibitiva para aquele caso específico."
+        }
+      }
+    },
+    {
+      "caseId": "H022",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2601,
+      "inputTokens": 2803,
+      "outputTokens": 246,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi utilizar o valor final (600) como denominador no cálculo percentual (100/600 ≈ 16,7%), em vez do valor inicial (500).",
+        "recommendedAction": "Ao calcular aumentos ou reduções percentuais, lembre-se sempre de que o denominador da fração deve ser o valor inicial (base de referência), e não o valor final.",
+        "coreConcept": "Cálculo de variação percentual",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Como é calculada a taxa de variação (aumento ou redução) percentual entre um valor inicial e um valor final?",
+          "back": "Variação % = (Valor Final - Valor Inicial) / Valor Inicial\n\nA base de referência (denominador) deve ser sempre o valor inicial."
+        }
+      }
+    },
+    {
+      "caseId": "H023",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2778,
+      "inputTokens": 2819,
+      "outputTokens": 213,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca direta entre as definições de dado e informação, invertendo os conceitos.",
+        "recommendedAction": "Revise a cadeia dado-informação-conhecimento, fixando que o dado é o registro bruto e a informação é o dado contextualizado e interpretado.",
+        "coreConcept": "Diferença entre dado e informação",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em gestão da informação, qual a diferença essencial entre 'dado' e 'informação'?",
+          "back": "Dado é o elemento ou registro bruto, sem contexto ou significado próprio. Informação é o dado processado, interpretado e dotado de contexto e significado."
+        }
+      }
+    },
+    {
+      "caseId": "H024",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 3216,
+      "inputTokens": 2789,
+      "outputTokens": 243,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna conceitual na identificação de múltiplos numéricos, uma vez que 9 é divisível de forma exata por 3 (3 × 3 = 9).",
+        "recommendedAction": "Revise a definição básica de múltiplos e divisibilidade, praticando com operações simples de multiplicação e divisão.",
+        "coreConcept": "Conceito de múltiplos e divisibilidade",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Quando se diz que um número inteiro A é múltiplo de um número B?",
+          "back": "Um número A é múltiplo de B quando A resulta da multiplicação de B por algum número inteiro (ou seja, a divisão de A por B é exata, com resto zero. Exemplo: 9 = 3 × 3, portanto 9 é múltiplo de 3)."
+        }
+      }
+    },
+    {
+      "caseId": "H025",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_APPLICATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3423,
+      "inputTokens": 2811,
+      "outputTokens": 288,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação incorreta da operação de conversão, realizando uma multiplicação (1024 * 1024) em vez de dividir para transformar a unidade menor (MB) na maior (GB).",
+        "recommendedAction": "Pratique a regra básica de conversão de grandezas: para passar de uma unidade menor para uma maior (como MB para GB), divide-se pelo fator de conversão; para passar de maior para menor, multiplica-se.",
+        "coreConcept": "Conversão de unidades de armazenamento de dados (MB para GB)",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Ao converter uma medida de armazenamento de uma unidade menor para uma unidade maior (exemplo: de Megabytes para Gigabytes), qual operação matemática deve ser aplicada com a taxa de conversão?",
+          "back": "Divisão. Para converter de uma unidade menor para maior (ex.: MB para GB), divide-se pelo fator (ex.: valor ÷ 1024). A multiplicação só é usada no sentido inverso (unidade maior para menor)."
+        }
+      }
+    },
+    {
+      "caseId": "H026",
+      "ok": true,
+      "predictedType": "INSUFFICIENT_INFORMATION",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.7,
+      "latencyMs": 2855,
+      "inputTokens": 2813,
+      "outputTokens": 145,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.7,
+        "reasoningSummary": "A questão não apresentou quaisquer dados numéricos para possibilitar o cálculo da média, não havendo base factual para a resposta fornecida.",
+        "recommendedAction": "Antes de realizar cálculos ou supor valores, certifique-se de que o enunciado fornece todas as premissas e dados necessários para a resolução.",
+        "coreConcept": "Cálculo de média e suficiência de dados",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H027",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 3329,
+      "inputTokens": 2787,
+      "outputTokens": 171,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi a desatenção ao comando restritivo do enunciado ('apenas as vogais'), levando a uma contagem geral de letras em vez de focar somente nas vogais da palavra.",
+        "recommendedAction": "Sublinhe comandos restritivos (como 'apenas', 'somente' ou 'exceto') no enunciado antes de iniciar a resolução para garantir que está respondendo exatamente ao que foi pedido.",
+        "coreConcept": "Identificação e contagem de vogais",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H028",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2801,
+      "inputTokens": 2793,
+      "outputTokens": 168,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a desatenção à restrição explícita destacada no enunciado ('somente os PARES'), resultando na soma de todos os elementos em vez de filtrar apenas os números pares.",
+        "recommendedAction": "Antes de iniciar qualquer cálculo, circule ou destaque palavras restritivas (como 'somente', 'apenas', 'exceto') e filtre os dados solicitados pelo comando da questão.",
+        "coreConcept": "Soma condicional de números pares",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H029",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 1953,
+      "inputTokens": 2790,
+      "outputTokens": 186,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre a distribuição geográfica dos biomas brasileiros, ao associar o Pampa (restrito ao Rio Grande do Sul) à Região Norte.",
+        "recommendedAction": "Revise a localização e as características gerais dos principais biomas brasileiros, associando cada bioma às suas respectivas macrorregiões.",
+        "coreConcept": "Distribuição geográfica dos biomas brasileiros",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é o bioma predominante na Região Norte do Brasil?",
+          "back": "Amazônia."
+        }
+      }
+    },
+    {
+      "caseId": "H030",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_APPLICATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3106,
+      "inputTokens": 2801,
+      "outputTokens": 264,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão incorreta da operação ao isolar a incógnita, somando 5 ao membro direito (20 + 5 = 25) em vez de subtraí-lo.",
+        "recommendedAction": "Pratique a resolução de equações do 1º grau passo a passo, prestando atenção especial na inversão de sinais das operações ao mover termos entre os membros da igualdade.",
+        "coreConcept": "Resolução de equação do 1º grau",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Ao isolar a incógnita na equação ax + b = c (com a ≠ 0), qual é a ordem correta das operações inversas a serem aplicadas?",
+          "back": "Primeiro subtrai-se b de ambos os lados (ax = c - b) e, em seguida, divide-se o resultado por a (x = (c - b) / a)."
+        }
+      }
+    },
+    {
+      "caseId": "H031",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 4871,
+      "inputTokens": 2796,
+      "outputTokens": 162,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi desatenção ao comando restritivo da questão ('SOMENTE as palavras no plural'), resultando na inclusão de um termo que está no singular.",
+        "recommendedAction": "Pratique a leitura atenta do enunciado destacando termos restritivos como 'somente' ou 'apenas', fazendo a checagem individual de cada item antes de responder.",
+        "coreConcept": "Flexão de número dos substantivos (singular e plural)",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H032",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_APPLICATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3890,
+      "inputTokens": 2799,
+      "outputTokens": 228,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação de uma soma (8 + 6) em vez da multiplicação (8 × 6) para calcular o total de elementos distribuídos em fileiras iguais.",
+        "recommendedAction": "Identifique a estrutura do problema: quando houver repetição de grupos de mesma quantidade (como fileiras de itens), use sempre a multiplicação em vez da adição.",
+        "coreConcept": "Multiplicação em disposições retangulares",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Se um estacionamento possui 5 fileiras com 7 vagas cada, qual operação determina o total de vagas e qual o resultado?",
+          "back": "Multiplicação: 5 × 7 = 35 vagas (representa a repetição de parcelas iguais)."
+        }
+      }
+    },
+    {
+      "caseId": "H033",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3149,
+      "inputTokens": 2784,
+      "outputTokens": 221,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a dedução intuitiva pela letra inicial do elemento em português (P), desconhecendo que o símbolo químico do potássio deriva do latim (Kalium).",
+        "recommendedAction": "Revise a tabela periódica dando atenção aos elementos químicos cujos símbolos derivam de nomes em latim (como K para potássio, Na para sódio e P para fósforo).",
+        "coreConcept": "Símbolos químicos na Tabela Periódica",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é o símbolo químico do elemento Potássio na Tabela Periódica?",
+          "back": "K (derivado do latim Kalium). O símbolo P pertence ao Fósforo."
+        }
+      }
+    },
+    {
+      "caseId": "H034",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2371,
+      "inputTokens": 2784,
+      "outputTokens": 162,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A provável causa do erro foi a desatenção ao comando negativo ('NÃO') presente no enunciado, levando à indicação de um navegador em vez do item que não pertence à categoria.",
+        "recommendedAction": "Crie o hábito de destacar ou circular termos negativos (como 'NÃO', 'EXCETO' ou 'INCORRETA') logo na primeira leitura do enunciado.",
+        "coreConcept": "Navegadores de internet vs. Aplicativos de escritório",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H035",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2247,
+      "inputTokens": 2808,
+      "outputTokens": 166,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a desatenção ao comando negativo 'INCORRETA' no enunciado, levando à seleção de uma afirmação verdadeira.",
+        "recommendedAction": "Habitue-se a grifar ou circular palavras-chave restritivas e comandos negativos (como 'INCORRETA', 'EXCETO' ou 'FALSO') antes de analisar as opções.",
+        "coreConcept": "Propriedades básicas dos triângulos e atenção a enunciados negativos",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H036",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3306,
+      "inputTokens": 2792,
+      "outputTokens": 151,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a desatenção ao comando expresso do enunciado, que exigia a apresentação do número com exatamente duas casas decimais.",
+        "recommendedAction": "Ao responder questões com instruções de formatação numérica, releia com atenção os requisitos de precisão (como quantidade de casas decimais) antes de finalizar a resposta.",
+        "coreConcept": "Formatação e precisão de casas decimais",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H037",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3001,
+      "inputTokens": 2804,
+      "outputTokens": 207,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre o contexto histórico e a data do Tratado de Versalhes, resultando na indicação de outro tratado histórico famoso.",
+        "recommendedAction": "Revise os principais tratados da história e seus contextos, associando o Tratado de Versalhes (1919) ao fim da Primeira Guerra Mundial.",
+        "coreConcept": "Tratado de Versalhes (1919)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual tratado de paz foi assinado em 1919 ao final da Primeira Guerra Mundial envolvendo a Alemanha?",
+          "back": "Tratado de Versalhes."
+        }
+      }
+    },
+    {
+      "caseId": "H038",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2456,
+      "inputTokens": 2818,
+      "outputTokens": 230,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Direito Constitucional",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca conceitual direta entre Estado e Governo, invertendo a permanência de um com a transitoriedade do outro.",
+        "recommendedAction": "Revise a Teoria Geral do Estado focando na diferenciação entre a estrutura perene e soberana (Estado) e o comando político transitório (Governo).",
+        "coreConcept": "Diferença entre Estado e Governo",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Quanto à permanência e função, qual é a diferença entre Estado e Governo?",
+          "back": "• Estado: organização jurídica e política permanente, soberana e detentora do poder.\n• Governo: conjunto transitório/temporário de agentes que exercem a direção política e a administração do Estado."
+        }
+      }
+    },
+    {
+      "caseId": "H039",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3151,
+      "inputTokens": 2791,
+      "outputTokens": 245,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi assumir um valor numérico arbitrário em vez de reconhecer que uma relação puramente comparativa não permite deduzir grandezas absolutas.",
+        "recommendedAction": "Ao resolver problemas lógicos, atente-se à suficiência dos dados fornecidos e evite pressupor valores numéricos não informados no enunciado.",
+        "coreConcept": "Suficiência de dados e relações de ordem",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Uma proposição que estabelece apenas uma relação de ordem entre dois elementos (ex.: X > Y) permite deduzir o valor numérico exato de algum deles?",
+          "back": "Não. Relações de comparação informam apenas a posição relativa entre os elementos, sendo insuficientes para determinar magnitudes absolutas sem dados numéricos adicionais."
+        }
+      }
+    },
+    {
+      "caseId": "H040",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3028,
+      "inputTokens": 2784,
+      "outputTokens": 152,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A provável causa do erro foi responder com base em uma suposição externa em vez de verificar se o país havia sido de fato apresentado no enunciado.",
+        "recommendedAction": "Verifique com atenção se todas as premissas e dados referenciados pelo comando da questão estão presentes antes de concluir a resposta.",
+        "coreConcept": "Validade de premissas em interpretação de enunciados",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H041",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.8,
+      "latencyMs": 3424,
+      "inputTokens": 2811,
+      "outputTokens": 165,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.8,
+        "reasoningSummary": "A causa provável do erro foi a confusão entre memórias voláteis (como a memória RAM) e memórias secundárias baseadas em tecnologia flash não volátil (como o SSD).",
+        "recommendedAction": "Revise a classificação das memórias de computador, dando atenção especial à distinção entre memória volátil (perde dados sem energia) e não volátil (mantém dados gravados).",
+        "coreConcept": "Memória flash e volatilidade (SSD vs RAM)",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H042",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 4360,
+      "inputTokens": 2819,
+      "outputTokens": 181,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Legislação Específica",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A resposta considerou a regra geral de encerramento das inscrições, sem observar a exceção expressa aplicável aos candidatos PCD.",
+        "recommendedAction": "Sempre identifique se a situação descrita se enquadra em alguma condição especial ou ressalva antes de aplicar a regra geral do prazo.",
+        "coreConcept": "Aplicação de exceção a prazos de inscrição",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Ao analisar prazos com regra geral e exceção específica para um grupo (ex.: PCD), qual critério prevalece para o grupo contemplado?",
+          "back": "Prevalece a regra excepcional (prazo diferenciado/estendido), afastando-se a regra geral para aquele caso específico."
+        }
+      }
+    },
+    {
+      "caseId": "H043",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2089,
+      "inputTokens": 2794,
+      "outputTokens": 158,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento factual acerca da autoria da obra clássica do Realismo brasileiro.",
+        "recommendedAction": "Faça uma revisão dos principais autores da literatura brasileira do século XIX, associando Machado de Assis às suas obras fundamentais como Dom Casmurro, Memórias Póstumas de Brás Cubas e Quincas Borba.",
+        "coreConcept": "Autoria de Dom Casmurro (Literatura Brasileira)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Quem é o autor do clássico romance brasileiro 'Dom Casmurro'?",
+          "back": "Machado de Assis"
+        }
+      }
+    },
+    {
+      "caseId": "H044",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 4001,
+      "inputTokens": 2801,
+      "outputTokens": 201,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna na definição ou fórmula da média aritmética simples, possivelmente levando à escolha direta do valor intermediário.",
+        "recommendedAction": "Revise o conceito e a fórmula da média aritmética simples (somar todos os elementos e dividir pela quantidade total de termos) e resolva exercícios práticos de fixação.",
+        "coreConcept": "Média aritmética simples",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Como é calculada a média aritmética simples de um conjunto de valores?",
+          "back": "Soma-se todos os valores do conjunto e divide-se o resultado obtido pela quantidade total de termos."
+        }
+      }
+    },
+    {
+      "caseId": "H045",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3368,
+      "inputTokens": 2836,
+      "outputTokens": 211,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação incorreta da operação matemática, multiplicando a distância pelo tempo em vez de dividi-los para obter a taxa por hora.",
+        "recommendedAction": "Revise a fórmula da velocidade média (v = distância / tempo) e use as unidades de medida (km/h indica km divididos por horas) como guia para a operação correta.",
+        "coreConcept": "Cálculo de velocidade média",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a fórmula para calcular a velocidade média a partir da distância e do tempo?",
+          "back": "Velocidade Média = Distância total / Tempo total (V = Δs / Δt)."
+        }
+      }
+    },
+    {
+      "caseId": "H046",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3371,
+      "inputTokens": 2812,
+      "outputTokens": 242,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a confusão entre o valor dos juros e o montante final, somando o capital inicial ao rendimento quando a questão pedia apenas os juros.",
+        "recommendedAction": "Revise a distinção entre juros e montante em matemática financeira e confira no enunciado se a pergunta solicita apenas o rendimento do período ou o total acumulado.",
+        "coreConcept": "Diferença entre Juros e Montante",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em matemática financeira, qual a diferença entre Juros e Montante?",
+          "back": "Juros representam exclusivamente a remuneração/rendimento gerado pelo capital no período (J = C × i × t). Montante é a soma do capital inicial com os juros acumulados (M = C + J)."
+        }
+      }
+    },
+    {
+      "caseId": "H047",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 2753,
+      "inputTokens": 2787,
+      "outputTokens": 211,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A provável causa do erro foi indicar um percentual arbitrário sem atentar para a ausência dos dados numéricos necessários para o cálculo.",
+        "recommendedAction": "Antes de calcular uma taxa percentual, certifique-se de que o enunciado fornece os valores inicial e final (ou a variação absoluta correspondente).",
+        "coreConcept": "Cálculo de variação percentual e suficiência de dados",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Quais informações são estritamente necessárias para se calcular a variação percentual de uma grandeza?",
+          "back": "O valor inicial (base de comparação) e o valor final (ou o montante absoluto do aumento/redução)."
+        }
+      }
+    },
+    {
+      "caseId": "H048",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2496,
+      "inputTokens": 2807,
+      "outputTokens": 213,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação direta da regra geral de formação do plural, deixando de lado a forma irregular (exceção) específica para o substantivo child.",
+        "recommendedAction": "Revise os principais plurais irregulares da língua inglesa para não aplicar automaticamente a regra geral do sufixo -s.",
+        "coreConcept": "Plural irregular em inglês (child / children)",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Em inglês, a regra geral de plural adiciona \"-s\". Qual é a exceção para o plural do substantivo \"child\"?",
+          "back": "O plural irregular de \"child\" é \"children\" (e não \"childs\")."
+        }
+      }
+    },
+    {
+      "caseId": "H049",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2956,
+      "inputTokens": 2841,
+      "outputTokens": 207,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão conceitual direta entre as características estruturais de vírus e bactérias.",
+        "recommendedAction": "Revise a distinção celular básica entre vírus e bactérias, fixando que vírus são acelulares e bactérias são organismos unicelulares procariontes.",
+        "coreConcept": "Diferença celular entre vírus e bactérias",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual a principal diferença entre vírus e bactérias quanto à organização celular?",
+          "back": "Vírus: agentes acelulares (não possuem estrutura de célula).\nBactérias: organismos celulares (unicelulares e procariontes)."
+        }
+      }
+    },
+    {
+      "caseId": "H050",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3193,
+      "inputTokens": 2813,
+      "outputTokens": 275,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a confusão entre desigualdade estrita ('maior que / menor que') e desigualdade inclusiva ('maior ou igual / menor ou igual'), levando à inclusão indevida dos valores extremos.",
+        "recommendedAction": "Revise a distinção entre intervalos abertos (desigualdades estritas) e fechados (desigualdades inclusivas), prestando atenção se os limites numéricos devem ou não ser incluídos.",
+        "coreConcept": "Desigualdades estritas versus inclusivas",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em termos de inclusão do limite, qual é a diferença entre as expressões 'maior que X' e 'maior ou igual a X'?",
+          "back": "- **Maior que X (>):** desigualdade estrita; o próprio valor X NÃO é incluído.\n- **Maior ou igual a X (≥):** desigualdade inclusiva; o próprio valor X É incluído."
+        }
+      }
+    },
+    {
+      "caseId": "H051",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2648,
+      "inputTokens": 2821,
+      "outputTokens": 225,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Você inverteu diretamente as definições de massa e peso, atribuindo a cada conceito a propriedade do outro.",
+        "recommendedAction": "Revise a distinção conceitual entre massa (propriedade intrínseca ligada à quantidade de matéria) e peso (força gravitacional que varia com a gravidade local).",
+        "coreConcept": "Diferença entre massa e peso",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença conceitual entre massa e peso?",
+          "back": "Massa é a quantidade de matéria de um corpo (invariável com o local, medida em kg). Peso é a força de atração gravitacional exercida sobre essa massa (varia com a gravidade local, medida em Newtons)."
+        }
+      }
+    },
+    {
+      "caseId": "H052",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3698,
+      "inputTokens": 2810,
+      "outputTokens": 187,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Atualidades",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento factual, levando à indicação da cidade mais populosa (Toronto) em vez da capital política oficial.",
+        "recommendedAction": "Revise e fixe as capitais dos principais países, prestando atenção à distinção entre capitais administrativas e grandes centros econômicos.",
+        "coreConcept": "Capital do Canadá",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a capital oficial do Canadá?",
+          "back": "Ottawa (embora Toronto seja o principal polo financeiro e mais populoso, a capital federal é Ottawa)."
+        }
+      }
+    },
+    {
+      "caseId": "H053",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3232,
+      "inputTokens": 2789,
+      "outputTokens": 216,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna pontual de conhecimento histórico, indicando o monarca deposto (Dom Pedro II) em vez do líder militar da transição republicana.",
+        "recommendedAction": "Revise os eventos e figuras centrais da Proclamação da República de 1889, associando o Marechal Deodoro da Fonseca à liderança do ato de proclamação.",
+        "coreConcept": "Proclamação da República e figuras históricas centrais",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Quem foi a principal liderança militar responsável pela Proclamação da República no Brasil em 1889?",
+          "back": "Marechal Deodoro da Fonseca."
+        }
+      }
+    },
+    {
+      "caseId": "H054",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2882,
+      "inputTokens": 2792,
+      "outputTokens": 165,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "O cálculo da conversão de tempo foi realizado corretamente (150), mas você manteve a unidade 'horas' em vez de atender à instrução explícita do enunciado para expressar o resultado em 'minutos'.",
+        "recommendedAction": "Ao finalizar a resolução de questões de grandezas e medidas, confira sempre se a unidade final escrita corresponde exatamente à unidade solicitada no comando da questão.",
+        "coreConcept": "Conversão de unidades de tempo (horas para minutos)",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H055",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 4476,
+      "inputTokens": 2810,
+      "outputTokens": 232,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você aplicou a regra geral de terminação de gênero gramatical, mas desconsiderou a exceção aplicável ao substantivo 'mapa'.",
+        "recommendedAction": "Revise as exceções de gênero gramatical para substantivos terminados em 'a' que são masculinos, fixando casos comuns como 'o mapa', 'o clima' e 'o tema'.",
+        "coreConcept": "Gênero gramatical e exceções de substantivos terminados em -a",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é o gênero gramatical e o artigo correto para o substantivo 'mapa'?",
+          "back": "Gênero masculino: 'o mapa' (constitui exceção à regra geral de que palavras terminadas em 'a' são femininas)."
+        }
+      }
+    },
+    {
+      "caseId": "H056",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3508,
+      "inputTokens": 2828,
+      "outputTokens": 221,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Administração Pública",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão direta entre os conceitos de autoridade e responsabilidade ao atribuir suas respectivas definições.",
+        "recommendedAction": "Revise a correlação entre autoridade e responsabilidade, fixando que autoridade confere o direito/poder de decidir, enquanto responsabilidade representa a obrigação de responder pelas ações e prestar contas.",
+        "coreConcept": "Diferença entre autoridade e responsabilidade",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre autoridade e responsabilidade na teoria organizacional?",
+          "back": "Autoridade é o direito institucional de tomar decisões e comandar; Responsabilidade é o dever de prestar contas e responder pelos atos e resultados decorrentes desse comando."
+        }
+      }
+    },
+    {
+      "caseId": "H057",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3231,
+      "inputTokens": 2786,
+      "outputTokens": 224,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre as funções das classes gramaticais, atribuindo ao advérbio o papel modificador de substantivo que pertence ao adjetivo.",
+        "recommendedAction": "Revise a função morfológica das classes de palavras, fixando que o adjetivo caracteriza substantivos, enquanto o advérbio modifica verbos, adjetivos ou outros advérbios.",
+        "coreConcept": "Classes de palavras: função do adjetivo",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual classe gramatical tem por função principal caracterizar ou qualificar um substantivo?",
+          "back": "Adjetivo (enquanto o advérbio modifica verbos, adjetivos ou outros advérbios)."
+        }
+      }
+    },
+    {
+      "caseId": "H058",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2439,
+      "inputTokens": 2829,
+      "outputTokens": 237,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca conceitual direta entre latitude e longitude, invertendo as orientações norte-sul e leste-oeste.",
+        "recommendedAction": "Fixe a distinção associando latitude à distância angular em relação ao Equador (Norte-Sul) e longitude em relação ao Meridiano de Greenwich (Leste-Oeste).",
+        "coreConcept": "Coordenadas geográficas: latitude e longitude",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em coordenadas geográficas, qual a diferença de orientação entre latitude e longitude?",
+          "back": "• Latitude: mede a posição no sentido Norte-Sul (a partir da Linha do Equador).\n• Longitude: mede a posição no sentido Leste-Oeste (a partir do Meridiano de Greenwich)."
+        }
+      }
+    },
+    {
+      "caseId": "H059",
+      "ok": true,
+      "predictedType": "INSUFFICIENT_INFORMATION",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.5,
+      "latencyMs": 3147,
+      "inputTokens": 2813,
+      "outputTokens": 150,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.5,
+        "reasoningSummary": "O enunciado apresenta ruídos e elementos anômalos que impedem determinar com segurança se a causa provável foi lacuna de conteúdo ou distração induzida pela formulação atípica.",
+        "recommendedAction": "Revise a localização geográfica dos grandes desertos mundiais e a divisão dos continentes para consolidar a base factual.",
+        "coreConcept": "Localização geográfica do Deserto do Saara",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H060",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 8429,
+      "inputTokens": 2782,
+      "outputTokens": 175,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi uma imprecisão ou lacuna na memorização da tabuada básica de multiplicação, resultando em 62 em vez de 63.",
+        "recommendedAction": "Revise e pratique a tabuada de multiplicação do 7 e do 9 para consolidar a recuperação rápida dos fatos aritméticos básicos.",
+        "coreConcept": "Tabuada de multiplicação",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Quanto é 9 × 7?",
+          "back": "63"
+        }
+      }
+    },
+    {
+      "caseId": "H061",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2454,
+      "inputTokens": 2819,
+      "outputTokens": 215,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Contabilidade",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca direta entre os conceitos de receita e lucro ao associá-los às suas respectivas definições.",
+        "recommendedAction": "Revise a distinção conceitual básica entre receita (total bruto de recursos arrecadados) e lucro (resultado líquido obtido após deduzir custos e despesas).",
+        "coreConcept": "Diferença entre receita e lucro",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença conceitual entre receita e lucro?",
+          "back": "Receita é a entrada total de recursos brutos gerados pelas operações. Lucro é o resultado líquido que sobra após a dedução de todos os custos e despesas da receita."
+        }
+      }
+    },
+    {
+      "caseId": "H062",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 3856,
+      "inputTokens": 2795,
+      "outputTokens": 213,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "A provável causa do erro foi a não aplicação do fator de conversão de unidades de comprimento ao alterar a unidade de metros para quilômetros.",
+        "recommendedAction": "Revise o sistema métrico decimal e pratique a conversão entre múltiplos e submúltiplos do metro, lembrando que 1 quilômetro equivale a 1.000 metros.",
+        "coreConcept": "Conversão de unidades de comprimento",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Como converter uma medida de metros (m) para quilômetros (km)?",
+          "back": "Divide-se o valor por 1.000 (pois 1 km = 1.000 m)."
+        }
+      }
+    },
+    {
+      "caseId": "H063",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2494,
+      "inputTokens": 2811,
+      "outputTokens": 252,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Direito Civil",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação da regra geral da liberdade de formas, desconsiderando a ressalva de que a lei exigia solenidade específica para o caso.",
+        "recommendedAction": "Revise o princípio da liberdade das formas nos negócios jurídicos, atentando para as situações em que a legislação impõe formalidade solene (como escritura pública).",
+        "coreConcept": "Forma dos contratos e exigência legal de escritura pública",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a regra geral sobre a forma dos negócios jurídicos e qual a consequência quando a lei exige solenidade específica (ex.: escritura pública)?",
+          "back": "Regra geral: vigora a liberdade de formas (forma livre). Exceção: quando a lei exigir expressamente forma solene, a formalidade é requisito de validade e o mero acordo verbal não basta."
+        }
+      }
+    },
+    {
+      "caseId": "H064",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 4454,
+      "inputTokens": 2793,
+      "outputTokens": 160,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi fornecer um exemplo arbitrário compatível em vez de verificar se os dados do enunciado eram suficientes para determinar uma placa específica de forma unívoca.",
+        "recommendedAction": "Em questões de dedução lógica, avalie sempre se as premissas fornecidas delimitam uma solução única antes de assumir dados não informados.",
+        "coreConcept": "Suficiência de dados e dedução lógica",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H065",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 4229,
+      "inputTokens": 2788,
+      "outputTokens": 165,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A provável causa do erro foi a presunção de dados não fornecidos pelo texto, não percebendo que a ausência da quantidade inicial de maçãs impossibilita o cálculo exato.",
+        "recommendedAction": "Antes de realizar qualquer cálculo, certifique-se de que todas as premissas e valores numéricos essenciais estão expressamente informados no enunciado.",
+        "coreConcept": "Suficiência de dados em problemas lógicos",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H066",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3805,
+      "inputTokens": 2858,
+      "outputTokens": 151,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Economia",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.9,
+        "reasoningSummary": "A resposta provável inverteu o significado de dois conceitos correlatos (importação e exportação), atribuindo a cada um a definição do outro.",
+        "recommendedAction": "Revise as definições básicas de comércio exterior, associando importação à entrada/compra de bens e serviços e exportação à saída/venda para o mercado externo.",
+        "coreConcept": "Diferença entre importação e exportação",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H067",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_APPLICATION_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3713,
+      "inputTokens": 2811,
+      "outputTokens": 289,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi realizar uma operação direta (3 × 10 ou 10 + 10 + 10) em vez de aplicar o Princípio Fundamental da Contagem multiplicando as opções disponíveis para cada uma das etapas sucessivas.",
+        "recommendedAction": "Revise o Princípio Fundamental da Contagem, praticando a identificação de decisões sequenciais para multiplicar as possibilidades de cada posição (10 × 10 × 10) em vez de multiplicar opções pelo número de posições.",
+        "coreConcept": "Princípio Fundamental da Contagem com repetição",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Ao calcular o total de combinações para uma sequência de n posições independentes com k opções possíveis em cada uma (com repetição), qual operação matemática deve ser feita?",
+          "back": "Multiplicam-se as possibilidades de cada posição sucessivamente: k × k × ... × k (ou kⁿ). Nunca se multiplica apenas o número de opções pela quantidade de posições (k × n)."
+        }
+      }
+    },
+    {
+      "caseId": "H068",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 5134,
+      "inputTokens": 2785,
+      "outputTokens": 160,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi assumir um valor numérico arbitrário sem que o enunciado fornecesse dados suficientes para determinar a distância exata.",
+        "recommendedAction": "Ao resolver problemas de raciocínio lógico, sempre avalie se as premissas fornecem dados absolutos suficientes antes de tentar quantificar relações puramente relativas ou comparativas.",
+        "coreConcept": "Suficiência de dados em relações comparativas",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H069",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2758,
+      "inputTokens": 2821,
+      "outputTokens": 255,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Legislação Específica",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você provavelmente considerou apenas a regra geral de frequência mínima presencial (75%), desconsiderando a exceção expressa que permite somar o percentual de atividade domiciliar.",
+        "recommendedAction": "Ao analisar normas e enunciados com regras e ressalvas, certifique-se de somar as hipóteses permitidas pela exceção antes de verificar o atingimento do requisito mínimo.",
+        "coreConcept": "Cômputo de frequência mínima e regimes excepcionais",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Como deve ser avaliado o cômputo de frequência mínima quando há previsão expressa de atividade domiciliar autorizada?",
+          "back": "Regra geral: exige-se o percentual mínimo de presença fixado. Exceção: o percentual referente a atividades domiciliares autorizadas deve ser somado à presença presencial para atingir o total exigido."
+        }
+      }
+    },
+    {
+      "caseId": "H070",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 3239,
+      "inputTokens": 2802,
+      "outputTokens": 153,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi uma falha de cálculo ou de conversão aritmética da razão 30/40 para porcentagem.",
+        "recommendedAction": "Pratique a simplificação de frações antes da divisão (30/40 = 3/4 = 75%) para agilizar e dar segurança aos cálculos percentuais.",
+        "coreConcept": "Cálculo de porcentagem a partir de fração",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H071",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3542,
+      "inputTokens": 2823,
+      "outputTokens": 148,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a desatenção ao critério restritivo expresso no enunciado, que limita a entrada exclusivamente a maiores de 18 anos.",
+        "recommendedAction": "Identifique e destaque as condições e restrições expressas no texto antes de validar a conclusão lógica.",
+        "coreConcept": "Condições lógicas e critérios de exclusão",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H072",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 5002,
+      "inputTokens": 2787,
+      "outputTokens": 262,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi assumir uma premissa não fornecida pelo enunciado (divisão igualitária entre as duas cores), quando não havia dados numéricos suficientes para qualquer determinação.",
+        "recommendedAction": "Atente-se para não assumir proporções ou valores que não estejam expressamente descritos no texto. Se faltam premissas quantitativas, conclua pela impossibilidade de determinação.",
+        "coreConcept": "Suficiência de dados e premissas implícitas",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Em problemas de raciocínio lógico e contagem, é válido assumir divisão igualitária (50% para cada) entre dois grupos apenas pela menção de sua existência?",
+          "back": "Não. A divisão igualitária não pode ser presumida; sem dados numéricos ou proporções fornecidas pelo enunciado, as quantidades são indeterminadas."
+        }
+      }
+    },
+    {
+      "caseId": "H073",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3436,
+      "inputTokens": 2783,
+      "outputTokens": 189,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Administração Pública",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna quanto à definição das funções administrativas clássicas, atribuindo a fixação de metas ao controle em vez do planejamento.",
+        "recommendedAction": "Revise o ciclo das funções administrativas (Planejamento, Organização, Direção e Controle), memorizando o objetivo central de cada etapa.",
+        "coreConcept": "Funções administrativas (Planejamento)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "No processo administrativo, qual é a função responsável por definir objetivos e estabelecer os meios para alcançá-los?",
+          "back": "Planejamento."
+        }
+      }
+    },
+    {
+      "caseId": "H074",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2933,
+      "inputTokens": 2812,
+      "outputTokens": 230,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Administração Pública",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação da regra geral de publicidade das mensagens, desconsiderando a exceção expressa aplicável aos casos de conteúdo confidencial.",
+        "recommendedAction": "Ao resolver questões com enunciados normativos ou condicionais, destaque visualmente termos que indicam ressalvas ou exceções antes de escolher a resposta final.",
+        "coreConcept": "Regra geral de publicidade versus exceção de confidencialidade",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a regra geral de visibilidade de mensagens e qual é a exceção aplicável às mensagens confidenciais?",
+          "back": "Regra geral: as mensagens são públicas (acessíveis a todos).\nExceção: mensagens confidenciais têm acesso restrito aos gestores."
+        }
+      }
+    },
+    {
+      "caseId": "H075",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3006,
+      "inputTokens": 2786,
+      "outputTokens": 160,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi assumir uma premissa ou duração inexistente, pois o enunciado não forneceu dados suficientes para determinar o horário de chegada.",
+        "recommendedAction": "Em questões de raciocínio lógico e matemática, certifique-se de que todos os dados necessários para o cálculo constam explicitamente no enunciado antes de supor valores.",
+        "coreConcept": "Suficiência de dados em problemas temporais",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H076",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 1935,
+      "inputTokens": 2835,
+      "outputTokens": 227,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca conceitual direta entre as definições de backup e sincronização.",
+        "recommendedAction": "Revise a diferença funcional entre cópia de segurança (backup, estática e voltada à restauração) e sincronização (espelhamento/alinhamento contínuo entre dois ou mais locais).",
+        "coreConcept": "Diferença entre backup e sincronização",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença fundamental entre backup e sincronização?",
+          "back": "Backup: cópia pontual de segurança com foco em recuperação/restauração de dados.\n\nSincronização: alinhamento e atualização mútua ou espelhada de arquivos entre dois ou mais locais."
+        }
+      }
+    },
+    {
+      "caseId": "H077",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3128,
+      "inputTokens": 2811,
+      "outputTokens": 216,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação direta da regra geral (5%), sem considerar a condição excepcional expressa para clientes da categoria premium (12%).",
+        "recommendedAction": "Ao resolver problemas com condições estruturadas, verifique sempre se o sujeito do enunciado se enquadra em alguma das exceções antes de aplicar a regra padrão.",
+        "coreConcept": "Aplicação de regra geral versus exceção",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a regra geral de desconto e a respectiva exceção para clientes da categoria premium?",
+          "back": "Regra geral: desconto de 5%. Exceção (premium): desconto de 12%."
+        }
+      }
+    },
+    {
+      "caseId": "H078",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 5309,
+      "inputTokens": 2809,
+      "outputTokens": 238,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Processo Civil",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação direta da regra geral mencionada, sem considerar a exceção expressa de que o recurso possui apenas efeito devolutivo.",
+        "recommendedAction": "Ao resolver questões com regras e exceções, identifique primeiro se o caso concreto se enquadra na ressalva antes de aplicar a premissa geral.",
+        "coreConcept": "Efeitos dos recursos: suspensivo e devolutivo",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Quando um recurso possui exclusivamente efeito devolutivo (em exceção à regra geral do efeito suspensivo), a eficácia da decisão recorrida é suspensa?",
+          "back": "Não. O recurso com efeito estritamente devolutivo devolve a matéria para reexame, mas não suspende a eficácia ou a execução imediata da decisão."
+        }
+      }
+    },
+    {
+      "caseId": "H079",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 4380,
+      "inputTokens": 2787,
+      "outputTokens": 162,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A provável causa do erro foi uma inversão na leitura da estrutura gramatical do enunciado, calculando 5 - 12 em vez de retirar 5 de 12 (12 - 5).",
+        "recommendedAction": "Preste atenção à regência textual em problemas matemáticos: a expressão 'subtrair A de B' indica que a operação correta é B - A.",
+        "coreConcept": "Ordem dos termos na operação de subtração",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H080",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 3486,
+      "inputTokens": 2787,
+      "outputTokens": 177,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi assumir uma premissa externa (como a regra de maioria absoluta de 51%) em vez de avaliar se o enunciado fornecia os dados necessários para determinar o número de votos.",
+        "recommendedAction": "Pratique questões de suficiência de dados, verificando sempre se todas as variáveis necessárias (total de votantes, tipo de maioria e distribuição) estão presentes antes de inferir uma resposta.",
+        "coreConcept": "Suficiência de dados e premissas lógicas",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H081",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 5602,
+      "inputTokens": 2868,
+      "outputTokens": 157,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão conceitual entre as funções de sujeito e objeto direto na estrutura da oração.",
+        "recommendedAction": "Revise a sintaxe dos termos da oração, focando na distinção entre o termo sobre o qual se faz uma declaração (sujeito) e o complemento verbal que não exige preposição (objeto direto).",
+        "coreConcept": "Distinção entre sujeito e objeto direto",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H082",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3102,
+      "inputTokens": 2818,
+      "outputTokens": 163,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento pontual, indicando a escala Beaufort (voltada à intensidade dos ventos) em vez da escala Richter, utilizada para medir a magnitude de terremotos.",
+        "recommendedAction": "Revise as principais escalas científicas e suas aplicações, diferenciando a escala Richter (magnitude sísmica) da escala Beaufort (velocidade dos ventos).",
+        "coreConcept": "Escala Richter e medição de magnitude sísmica",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H083",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2867,
+      "inputTokens": 2782,
+      "outputTokens": 178,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Atualidades",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna factual sobre a moeda oficial do Japão, associando o país ao won (moeda da Coreia) em vez do iene.",
+        "recommendedAction": "Revise as moedas oficiais das principais economias mundiais para fixar a associação correta entre países e suas unidades monetárias.",
+        "coreConcept": "Moeda oficial do Japão",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a moeda oficial do Japão?",
+          "back": "Iene (JPY)."
+        }
+      }
+    },
+    {
+      "caseId": "H084",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_APPLICATION_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3103,
+      "inputTokens": 2809,
+      "outputTokens": 248,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi uma falha na etapa final do cálculo: após encontrar o valor unitário de R$ 7, o cálculo foi feito para 5 unidades (28 + 7 = 35) em vez de 7 unidades.",
+        "recommendedAction": "Pratique o método de redução à unidade: primeiro divida o valor total pela quantidade inicial para obter o preço unitário e, em seguida, multiplique explicitamente pela quantidade final solicitada.",
+        "coreConcept": "Proporcionalidade direta e redução à unidade",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Como aplicar o método de redução à unidade em problemas de proporcionalidade direta?",
+          "back": "1. Calcule o valor unitário: divida o total fornecido pela quantidade de itens inicial.\n2. Multiplique o valor unitário encontrado pela quantidade final desejada."
+        }
+      }
+    },
+    {
+      "caseId": "H085",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2728,
+      "inputTokens": 2793,
+      "outputTokens": 174,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a desatenção à instrução explícita 'Sem arredondar' no enunciado, o que levou a arredondar o número para 8 em vez de apenas extrair sua parte inteira.",
+        "recommendedAction": "Destaque comandos restritivos no enunciado (como 'sem arredondar' ou 'não') para evitar a execução automática de procedimentos habituais como o arredondamento.",
+        "coreConcept": "Parte inteira de número decimal vs. Arredondamento",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H086",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2593,
+      "inputTokens": 2842,
+      "outputTokens": 206,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação direta da regra geral dos metais, desconsiderando a exceção específica aplicável ao mercúrio.",
+        "recommendedAction": "Revise as exceções clássicas às propriedades dos materiais, fixando que o mercúrio é um metal líquido em condições normais.",
+        "coreConcept": "Estado físico dos metais e a exceção do mercúrio",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é o estado físico típico dos metais e qual é a principal exceção à temperatura ambiente?",
+          "back": "Regra geral: os metais são sólidos à temperatura ambiente.\nExceção: o mercúrio é líquido."
+        }
+      }
+    },
+    {
+      "caseId": "H087",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2330,
+      "inputTokens": 2784,
+      "outputTokens": 189,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna factual direta em relação às dimensões dos oceanos terrestres, indicando o Atlântico em vez do Pacífico.",
+        "recommendedAction": "Revise a classificação dos oceanos por extensão territorial (Pacífico, Atlântico, Índico, Antártico e Ártico) para fixar o dado geográfico.",
+        "coreConcept": "Maior oceano da Terra em extensão",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é o maior oceano da Terra em extensão territorial?",
+          "back": "Oceano Pacífico."
+        }
+      }
+    },
+    {
+      "caseId": "H088",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.9,
+      "latencyMs": 2960,
+      "inputTokens": 2788,
+      "outputTokens": 239,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a confusão entre o valor absoluto (módulo) e a ordenação real na reta numérica, tratando -3 como menor que -8 por ter menor magnitude.",
+        "recommendedAction": "Revise a representação dos números inteiros na reta numérica: quanto mais à esquerda do zero o número estiver, menor é o seu valor.",
+        "coreConcept": "Comparação e ordenação de números inteiros negativos",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Como comparar dois números negativos na reta numérica (ex: -3 e -8)? Qual deles é o menor?",
+          "back": "O menor número é aquele que está mais à esquerda na reta numérica (mais distante do zero). Portanto, entre -3 e -8, o menor é -8 (pois -8 < -3)."
+        }
+      }
+    },
+    {
+      "caseId": "H089",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2350,
+      "inputTokens": 2823,
+      "outputTokens": 249,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você aplicou a regra geral da reprodução dos mamíferos, mas desconsiderou a exceção aplicável ao ornitorrinco.",
+        "recommendedAction": "Ao estudar classificações biológicas, memorize ativamente as exceções notáveis à regra geral dos mamíferos, como os monotremados.",
+        "coreConcept": "Reprodução de monotremados (exceção dos mamíferos)",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a regra geral de nascimento dos filhotes de mamíferos e qual é a notável exceção representada pelos ornitorrincos?",
+          "back": "Regra geral: mamíferos parem filhotes vivos (são vivíparos).\nExceção: monotremados (como ornitorrincos e équidnas) põem ovos (são ovíparos)."
+        }
+      }
+    },
+    {
+      "caseId": "H090",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 2846,
+      "inputTokens": 2787,
+      "outputTokens": 154,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "A resposta sugere uma provável lacuna de conhecimento factual básico, tendo sido apontada outra cidade francesa importante (Lyon) em vez da capital.",
+        "recommendedAction": "Revise capitais e dados geopolíticos fundamentais para fixar a informação correta.",
+        "coreConcept": "Capital da França",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a capital do Estado francês?",
+          "back": "Paris."
+        }
+      }
+    },
+    {
+      "caseId": "H091",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3702,
+      "inputTokens": 2862,
+      "outputTokens": 174,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação direta da regra geral de cobrança de frete, deixando de observar a condição de exceção aplicável a valores acima de R$ 200.",
+        "recommendedAction": "Ao analisar enunciados que apresentem condições ou limites, identifique primeiro a regra geral e as exceções, verificando em qual faixa o caso concreto se enquadra antes de definir o resultado.",
+        "coreConcept": "Aplicação de regra geral e suas exceções",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H092",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3147,
+      "inputTokens": 2823,
+      "outputTokens": 141,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a aplicação incorreta da ordem de precedência das operações, realizando a adição antes da multiplicação.",
+        "recommendedAction": "Revise a ordem padrão de precedência das operações aritméticas (multiplicações antes de adições) e pratique a resolução de expressões numéricas simples.",
+        "coreConcept": "Ordem de precedência das operações aritméticas",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H093",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 2148,
+      "inputTokens": 2789,
+      "outputTokens": 180,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna conceitual sobre as propriedades físicas e químicas específicas das camadas internas da Terra.",
+        "recommendedAction": "Revise o modelo das camadas internas da Terra, focando na composição química e no estado físico (sólido ou líquido) de cada uma delas.",
+        "coreConcept": "Camadas internas da Terra (núcleo externo)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual camada da Terra é composta predominantemente por ferro e níquel em estado líquido?",
+          "back": "Núcleo externo."
+        }
+      }
+    },
+    {
+      "caseId": "H094",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 4895,
+      "inputTokens": 2786,
+      "outputTokens": 163,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi apresentar um exemplo arbitrário que atende ao formato (quatro dígitos) em vez de avaliar se as premissas eram suficientes para determinar um valor único.",
+        "recommendedAction": "Ao resolver problemas lógicos, certifique-se de que os dados do enunciado realmente permitem deduzir uma solução única antes de supor um valor específico.",
+        "coreConcept": "Suficiência de dados e dedução lógica",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H095",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 4939,
+      "inputTokens": 2785,
+      "outputTokens": 245,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi assumir um valor específico dentro do intervalo em vez de reconhecer que uma desigualdade não define um valor único.",
+        "recommendedAction": "Ao trabalhar com desigualdades ou intervalos, atente para o fato de que a premissa indica múltiplos valores possíveis e não permite deduzir um valor exato sem restrições adicionais.",
+        "coreConcept": "Determinação de valor exato a partir de desigualdades/intervalos",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Uma premissa baseada unicamente em desigualdade (ex.: x < 7) permite determinar um valor numérico exato para a variável?",
+          "back": "Não. Uma desigualdade delimita apenas um intervalo de valores possíveis, sendo impossível determinar um valor único e exato sem outras restrições."
+        }
+      }
+    },
+    {
+      "caseId": "H096",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 5122,
+      "inputTokens": 2796,
+      "outputTokens": 272,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "A resposta contraria a relação lógica entre quantificadores, indicando provável desconhecimento sobre a incompatibilidade entre uma proposição universal negativa ('Nenhum') e uma particular afirmativa ('Algum').",
+        "recommendedAction": "Revise o quadrado lógico das oposições e as relações de contradição entre quantificadores lógicos ('Todo', 'Nenhum', 'Algum', 'Algum não').",
+        "coreConcept": "Quantificadores lógicos e proposições contraditórias",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Se a proposição 'Nenhum A é B' é verdadeira, qual é o valor lógico de 'Algum A é B'?",
+          "back": "Falso. As proposições 'Nenhum A é B' (universal negativa) e 'Algum A é B' (particular afirmativa) são contraditórias, não podendo ser ambas verdadeiras ao mesmo tempo."
+        }
+      }
+    },
+    {
+      "caseId": "H097",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "CREATE_APPLICATION_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3162,
+      "inputTokens": 2815,
+      "outputTokens": 238,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a execução invertida da proporção (multiplicação por 4 e divisão por 10, em vez de multiplicar pela nova quantidade e dividir pela original).",
+        "recommendedAction": "Pratique a montagem de proporções diretas passo a passo, conferindo se o aumento do número de pessoas resulta coerentemente no aumento da quantidade total.",
+        "coreConcept": "Regra de três simples direta",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Se uma receita de 200 g serve 2 pessoas, quantos gramas são necessários para servir 5 pessoas?",
+          "back": "500 g (Cálculo: 200 g ÷ 2 = 100 g por pessoa; 100 g × 5 = 500 g)."
+        }
+      }
+    },
+    {
+      "caseId": "H098",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2273,
+      "inputTokens": 2791,
+      "outputTokens": 166,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna pontual de conhecimento sobre o significado exato da sigla CPU em português.",
+        "recommendedAction": "Revise o significado das siglas fundamentais de hardware e arquitetura de computadores.",
+        "coreConcept": "Significado e função da CPU",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Em informática, o que significa a sigla CPU?",
+          "back": "Unidade Central de Processamento (do inglês Central Processing Unit)."
+        }
+      }
+    },
+    {
+      "caseId": "H099",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2399,
+      "inputTokens": 2787,
+      "outputTokens": 153,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento factual acerca do idioma falado na Argentina.",
+        "recommendedAction": "Revise as informações básicas e os idiomas oficiais dos países da América do Sul.",
+        "coreConcept": "Idioma oficial da Argentina",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é o idioma oficial e predominante da Argentina?",
+          "back": "Espanhol (castelhano)."
+        }
+      }
+    },
+    {
+      "caseId": "H100",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 7626,
+      "inputTokens": 2811,
+      "outputTokens": 205,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca direta entre os conceitos de hardware e software ao associar componentes físicos e programas.",
+        "recommendedAction": "Revise a distinção básica entre a parte física tangível (hardware) e a parte lógica de instruções e programas (software).",
+        "coreConcept": "Diferença entre hardware e software",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença fundamental entre hardware e software?",
+          "back": "Hardware é a parte física e tangível do computador (ex.: processador, disco rígido, memória). Software é a parte lógica, correspondendo aos programas, aplicativos e sistemas operacionais."
+        }
+      }
+    },
+    {
+      "caseId": "H101",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.9,
+      "latencyMs": 4698,
+      "inputTokens": 2793,
+      "outputTokens": 248,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a confusão entre o gás consumido (reagente) e o gás liberado (produto) no processo de fotossíntese.",
+        "recommendedAction": "Revise o ciclo básico da fotossíntese, fixando a diferença entre reagentes (água e dióxido de carbono) e produtos (glicose e oxigênio).",
+        "coreConcept": "Gases na fotossíntese (reagentes vs. produtos)",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Na fotossíntese vegetal, qual gás é absorvido (consumido) e qual gás é liberado (produzido)?",
+          "back": "- Gás absorvido (reagente): Dióxido de carbono (CO₂)\n- Gás liberado (produto): Oxigênio (O₂)"
+        }
+      }
+    },
+    {
+      "caseId": "H102",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.85,
+      "latencyMs": 3058,
+      "inputTokens": 2786,
+      "outputTokens": 238,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi assumir a autoria sem considerar que a simples alteração temporal de um arquivo não registra quem a realizou.",
+        "recommendedAction": "Revise os conceitos de metadados de arquivos e segurança da informação, atentando para o fato de que datas de modificação não identificam a autoria sem logs de auditoria.",
+        "coreConcept": "Metadados de arquivos e auditoria de autoria",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Apenas pela data/hora de modificação de um arquivo após um backup, é possível determinar QUEM realizou a alteração?",
+          "back": "Não. Metadados temporais registram apenas QUANDO ocorreu a modificação. Para identificar QUEM alterou, são necessários registros de auditoria (logs) e autenticação de usuário."
+        }
+      }
+    },
+    {
+      "caseId": "H103",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2518,
+      "inputTokens": 2809,
+      "outputTokens": 171,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação direta da regra geral sem considerar a exceção expressamente descrita no enunciado.",
+        "recommendedAction": "Ao deparar-se com regras gerais e suas exceções, verifique sempre se o elemento em análise se enquadra na ressalva antes de concluir a resposta.",
+        "coreConcept": "Aplicação de regra geral e exceção",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Ao analisar uma regra que possui exceções expressas, qual é o passo prioritário na avaliação do caso concreto?",
+          "back": "Verificar se a situação se enquadra na exceção antes de aplicar a regra geral."
+        }
+      }
+    },
+    {
+      "caseId": "H104",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2604,
+      "inputTokens": 2859,
+      "outputTokens": 231,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Direito Administrativo",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca direta entre os conceitos de anulação e revogação de atos administrativos.",
+        "recommendedAction": "Revise o regime de extinção dos atos administrativos, fixando que anulação vincula-se à ilegalidade e revogação ao mérito (conveniência e oportunidade).",
+        "coreConcept": "Anulação e revogação de ato administrativo",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em Direito Administrativo, qual é a diferença entre anulação e revogação quanto ao motivo de extinção do ato?",
+          "back": "Anulação decorre de ilegalidade/vício no ato administrativo; Revogação decorre de juízo de conveniência e oportunidade (mérito administrativo) sobre ato válido."
+        }
+      }
+    },
+    {
+      "caseId": "H105",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2541,
+      "inputTokens": 2829,
+      "outputTokens": 228,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Estatística",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Você inverteu a definição dos dois conceitos: correlação refere-se à associação entre variáveis, enquanto causalidade indica uma relação direta de causa e efeito.",
+        "recommendedAction": "Pratique a diferenciação entre correlação e causalidade com exemplos práticos, lembrando que a existência de associação estatística não implica determinação direta entre os eventos.",
+        "coreConcept": "Diferença entre correlação e causalidade",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre correlação e causalidade?",
+          "back": "• Correlação: associação ou relação estatística entre variáveis (variam juntas, sem necessariamente uma provocar a outra).\n• Causalidade: relação de causa e efeito (uma variável produz diretamente a alteração na outra)."
+        }
+      }
+    },
+    {
+      "caseId": "H106",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3084,
+      "inputTokens": 2818,
+      "outputTokens": 218,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação direta da regra geral de exclusão em 30 dias, deixando de observar a exceção prevista para arquivos permanentes.",
+        "recommendedAction": "Ao resolver questões com regras e exceções, identifique primeiro se o caso concreto se enquadra na hipótese excepcional antes de aplicar a regra padrão.",
+        "coreConcept": "Regra de retenção e exceção para arquivos permanentes",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a regra de retenção para arquivos comuns e qual é a exceção aplicável aos arquivos permanentes?",
+          "back": "Regra geral: arquivos somem em 30 dias.\nExceção: arquivos permanentes são preservados."
+        }
+      }
+    },
+    {
+      "caseId": "H107",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3366,
+      "inputTokens": 2850,
+      "outputTokens": 153,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.9,
+        "reasoningSummary": "A provável causa do erro foi a aplicação direta da regra geral, sem considerar a exceção explicitamente indicada para a equipe remota.",
+        "recommendedAction": "Ao analisar premissas lógicas, verifique sempre se o sujeito ou situação se enquadra na regra geral ou em uma das exceções declaradas antes de responder.",
+        "coreConcept": "Aplicação de regra e exceção",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H108",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 3003,
+      "inputTokens": 2816,
+      "outputTokens": 165,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a desatenção ao comando explícito que restringia a análise exclusivamente ao ano de 2020, resultando na seleção do valor referente a 2021.",
+        "recommendedAction": "Sublinhe sempre as palavras de restrição ou qualificadores temporais no enunciado antes de extrair os valores numéricos.",
+        "coreConcept": "Interpretação de restrições em dados tabulares",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H109",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.9,
+      "latencyMs": 2753,
+      "inputTokens": 2819,
+      "outputTokens": 143,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi desatenção ao comando da questão, que solicitava identificar o termo apresentado expressamente sem acento.",
+        "recommendedAction": "Redobre a atenção a palavras restritivas no enunciado (como 'sem' ou 'não') e confira visualmente as alternativas antes de responder.",
+        "coreConcept": "Acentuação gráfica e leitura de enunciado",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H110",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2776,
+      "inputTokens": 2785,
+      "outputTokens": 155,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a desatenção ao comando explícito da questão, que solicitava apenas o sobrenome, levando à inserção dos prenomes.",
+        "recommendedAction": "Adote o hábito de destacar palavras de comando e restritivas (como 'apenas' ou 'somente') no enunciado antes de formular a resposta final.",
+        "coreConcept": "Interpretação e cumprimento de comando restritivo",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H111",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 2581,
+      "inputTokens": 2794,
+      "outputTokens": 241,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre a regra da conjunção lógica ('E'), que resulta em falso quando pelo menos uma das proposições é falsa.",
+        "recommendedAction": "Revise a tabela-verdade da conjunção ('E'), fixando a regra de que a proposição composta só é verdadeira se todas as partes forem verdadeiras.",
+        "coreConcept": "Tabela-verdade da conjunção lógica",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Na lógica proposicional, qual é a condição necessária para que uma proposição composta por conjunção ('E') seja verdadeira?",
+          "back": "A conjunção só é verdadeira se TODAS as proposições componentes forem verdadeiras. Se houver ao menos uma proposição falsa, o resultado é falso."
+        }
+      }
+    },
+    {
+      "caseId": "H112",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.9,
+      "latencyMs": 3456,
+      "inputTokens": 2789,
+      "outputTokens": 256,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi assumir dimensões específicas (como 4 e 6) para calcular o perímetro, sem considerar que apenas o valor da área não determina unicamente o perímetro de um retângulo.",
+        "recommendedAction": "Revise a relação entre área e perímetro em figuras planas e verifique se as informações fornecidas são suficientes antes de assumir medidas que não constam no enunciado.",
+        "coreConcept": "Indeterminação do perímetro a partir apenas da área em retângulos",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "É possível determinar unicamente o perímetro de um retângulo conhecendo apenas a sua área?",
+          "back": "Não. Diferentes combinações de base e altura podem resultar na mesma área, gerando perímetros distintos (por exemplo, áreas de 4x6=24 geram perímetro 20, enquanto 3x8=24 geram perímetro 22)."
+        }
+      }
+    },
+    {
+      "caseId": "H113",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2624,
+      "inputTokens": 2825,
+      "outputTokens": 230,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Administração Pública",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Houve uma inversão direta entre os conceitos: você atribuiu a economia de recursos à eficácia e o alcance de metas à eficiência.",
+        "recommendedAction": "Revise a distinção clássica associando eficiência ao controle de meios e recursos (fazer certo a coisa) e eficácia ao alcance de fins e metas (fazer a coisa certa).",
+        "coreConcept": "Diferença entre eficiência e eficácia",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual a diferença central entre eficiência e eficácia na gestão pública?",
+          "back": "- Eficiência: foco nos meios e processos (uso racional e econômico dos recursos, relação custo/benefício).\n- Eficácia: foco nos fins e resultados (atingimento das metas e objetivos estabelecidos)."
+        }
+      }
+    },
+    {
+      "caseId": "H114",
+      "ok": true,
+      "predictedType": "EXCEPTION_MISSED",
+      "predictedCardAction": "CREATE_EXCEPTION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2548,
+      "inputTokens": 2820,
+      "outputTokens": 255,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a aplicação direta da regra geral de fechamento, sem considerar a ressalva expressa prevista para as quintas-feiras.",
+        "recommendedAction": "Ao analisar enunciados que contenham uma regra e uma ou mais exceções, identifique primeiro se o caso concreto questionado se enquadra na hipótese excepcional antes de aplicar a regra padrão.",
+        "coreConcept": "Aplicação de regra geral versus exceção expressa",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Em questões de lógica e interpretação de regras normativas, qual a ordem correta de análise entre a regra geral e uma hipótese de exceção?",
+          "back": "Deve-se verificar primeiro se o caso concreto preenche os requisitos da exceção expressa. Se preencher, aplica-se a exceção; caso contrário, incide a regra geral."
+        }
+      }
+    },
+    {
+      "caseId": "H115",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.95,
+      "latencyMs": 2056,
+      "inputTokens": 2863,
+      "outputTokens": 221,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Português",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a troca conceitual entre os termos denotação e conotação, invertendo os conceitos de sentido literal e figurado.",
+        "recommendedAction": "Revise a distinção entre os dois conceitos utilizando a associação mnemônica de Denotação com Dicionário/Literal e Conotação com Criativo/Figurado.",
+        "coreConcept": "Denotação e Conotação",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual a diferença entre sentido denotativo e sentido conotativo?",
+          "back": "Denotativo: sentido literal, objetivo e dicionarizado da palavra.\nConotativo: sentido figurado, subjetivo e simbólico dependente do contexto."
+        }
+      }
+    },
+    {
+      "caseId": "H116",
+      "ok": true,
+      "predictedType": "KNOWLEDGE_GAP",
+      "predictedCardAction": "CREATE_BASIC_CARD",
+      "confidence": 0.95,
+      "latencyMs": 1939,
+      "inputTokens": 2789,
+      "outputTokens": 171,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Outra",
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento pontual sobre as características astronômicas dos planetas do Sistema Solar.",
+        "recommendedAction": "Revise as características mais marcantes dos planetas do Sistema Solar para memorizar seus atributos principais.",
+        "coreConcept": "Características dos planetas do Sistema Solar",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual planeta do Sistema Solar é famoso por possuir o sistema de anéis mais extenso e visível?",
+          "back": "Saturno."
+        }
+      }
+    },
+    {
+      "caseId": "H117",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 3795,
+      "inputTokens": 2784,
+      "outputTokens": 146,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi assumir um resultado específico sem que o enunciado fornecesse premissas suficientes para determiná-lo.",
+        "recommendedAction": "Verifique sempre se os dados apresentados no enunciado sustentam logicamente uma conclusão única antes de escolher uma das possibilidades como certa.",
+        "coreConcept": "Suficiência de dados e dedução lógica",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H118",
+      "ok": true,
+      "predictedType": "CONCEPT_CONFUSION",
+      "predictedCardAction": "CREATE_DISCRIMINATION_CARD",
+      "confidence": 0.9,
+      "latencyMs": 4980,
+      "inputTokens": 2800,
+      "outputTokens": 259,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do erro foi a confusão entre área e perímetro, resultando no cálculo do contorno da figura (2 × (9 + 4) = 26) em vez da multiplicação das dimensões para obter a área (9 × 4 = 36).",
+        "recommendedAction": "Revise a distinção entre área (medida da superfície, obtida pelo produto das dimensões) e perímetro (soma do contorno) antes de executar os cálculos geométricos.",
+        "coreConcept": "Área versus perímetro de retângulo",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença no cálculo de área e perímetro de um retângulo?",
+          "back": "Área: medida da superfície interna, calculada multiplicando base por altura (b × h).\nPerímetro: medida do contorno, calculada somando todos os lados (2b + 2h)."
+        }
+      }
+    },
+    {
+      "caseId": "H119",
+      "ok": true,
+      "predictedType": "READING_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.75,
+      "latencyMs": 3942,
+      "inputTokens": 2829,
+      "outputTokens": 137,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Informática",
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.75,
+        "reasoningSummary": "A causa provável do erro parece ter sido a falta de atenção à extensão solicitada (.pdf) expressamente no enunciado, selecionando outro formato de arquivo (.docx).",
+        "recommendedAction": "Leia atentamente os critérios e formatos especificados no comando da questão antes de marcar a resposta.",
+        "coreConcept": "Identificação de extensões de arquivos",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    },
+    {
+      "caseId": "H120",
+      "ok": true,
+      "predictedType": "APPLICATION_ERROR",
+      "predictedCardAction": "NO_CARD",
+      "confidence": 0.85,
+      "latencyMs": 3688,
+      "inputTokens": 2816,
+      "outputTokens": 158,
+      "retries": 0,
+      "rawOutput": {
+        "discipline": "Matemática",
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi escolher um exemplo específico pertencente ao intervalo (x = 4) em vez de reconhecer que as condições fornecidas admitem múltiplas soluções.",
+        "recommendedAction": "Ao analisar condições sobre variáveis, verifique sempre se os dados restringem a incógnita a um valor único ou se apenas definem um intervalo/conjunto com múltiplos valores possíveis.",
+        "coreConcept": "Determinação de incógnitas e conjuntos numéricos",
+        "cardAction": "NO_CARD",
+        "card": null
+      }
+    }
+  ]
+}
