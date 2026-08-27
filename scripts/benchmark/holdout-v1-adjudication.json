@@ -1,0 +1,575 @@
+[
+  {
+    "id": "H002",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["APPLICATION_ERROR","KNOWLEDGE_GAP"], "B": ["APPLICATION_ERROR"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["APPLICATION_ERROR"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: 'a resposta numérica/factual é reconstituível a partir de uma operação plausível-porém-errada'. §7 Card: procedimento de probabilidade é generalizável.",
+    "adjudicationReason": "2/3 reconstitui-se como 2 favoráveis em 5 (em vez de 3). O cálculo errado é rastreável. KNOWLEDGE_GAP não é defensável pois o erro é puramente procedimental. CLEAR. CREATE pois probabilidade é conteúdo estável e generalizável."
+  },
+  {
+    "id": "H004",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["INSUFFICIENT_INFORMATION","KNOWLEDGE_GAP"], "B": ["INSUFFICIENT_INFORMATION"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["INSUFFICIENT_INFORMATION"],
+      "observability": "CLEAR"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: 'os dados estão mutuamente contraditórios de forma textualmente verificável'.",
+    "adjudicationReason": "Dados contraditórios (lucro e prejuízo no mesmo critério) é verificável textualmente. KNOWLEDGE_GAP não é defensável: não há lacuna factual, há contradição lógica. CLEAR."
+  },
+  {
+    "id": "H006",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: 'conteúdo estável, generalizável, recuperável, útil em revisão futura'. A propriedade 'isósceles não determina ângulos' é um conceito geométrico generalizável.",
+    "adjudicationReason": "B está correto: a lição 'triângulo isósceles não fixa ângulos internos' é um conceito geométrico estável e generalizável, adequado para flashcard. CREATE."
+  },
+  {
+    "id": "H008",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["READING_ERROR","APPLICATION_ERROR"], "B": ["READING_ERROR"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["READING_ERROR"],
+      "observability": "CLEAR"
+    },
+    "protocolBasis": "Protocolo §5 READING_ERROR: 'negação explícita ignorada pela resposta'. §3 CLEAR: quando há negação explícita e nenhum critério concorrente se aplica com força equivalente.",
+    "adjudicationReason": "A negação 'não viajou' é explícita e ignorada. Não há operação aritmética nem procedimento que sustente APPLICATION_ERROR. CLEAR com READING_ERROR único."
+  },
+  {
+    "id": "H011",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: procedimento de perímetro vs área é generalizável e útil.",
+    "adjudicationReason": "B está correto: a confusão perímetro/área (4×lado vs lado²) é um erro procedural clássico e generalizável. O conceito é estável e recuperável. CREATE."
+  },
+  {
+    "id": "H019",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["APPLICATION_ERROR","KNOWLEDGE_GAP"], "B": ["APPLICATION_ERROR"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["APPLICATION_ERROR"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: resposta reconstituível como operação plausível-porém-errada. Os valores corretos (4 e 6) estão presentes mas invertidos.",
+    "adjudicationReason": "O aluno encontrou os valores certos mas atribuiu a x e y invertidamente. Erro de atribuição/procedimento reconstituível. KNOWLEDGE_GAP não é defensável: o aluno demonstrou conhecimento do método ao encontrar 4 e 6. CLEAR, CREATE."
+  },
+  {
+    "id": "H022",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["APPLICATION_ERROR","KNOWLEDGE_GAP"], "B": ["APPLICATION_ERROR"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["APPLICATION_ERROR"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: 16,7% = 100/600 é reconstituível (dividiu pelo final em vez do inicial).",
+    "adjudicationReason": "O procedimento errado é rastreável: dividiu pelo valor final 600 em vez do inicial 500. KNOWLEDGE_GAP não é defensável pois há operação reconstituível. Conceito de variação percentual é generalizável. CLEAR, CREATE."
+  },
+  {
+    "id": "H024",
+    "differences": {
+      "expectedErrorType": { "A": "READING_ERROR", "B": "KNOWLEDGE_GAP" },
+      "acceptableErrorTypes": { "A": ["READING_ERROR"], "B": ["KNOWLEDGE_GAP","APPLICATION_ERROR"] },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedErrorType": "KNOWLEDGE_GAP",
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP", "APPLICATION_ERROR"],
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §5: READING_ERROR exige sinal observável (negação, comando, restrição ignorada). Protocolo §3: o caso não contém negação explícita nem comando violado.",
+    "adjudicationReason": "O enunciado pede 'SIM se 9 é múltiplo de 3'. Não há negação explícita nem restrição textual violada. O aluno respondeu NÃO, indicando que não sabe/confundiu o conceito de múltiplo, não que ignorou uma instrução. KNOWLEDGE_GAP é mais sustentado. APPLICATION_ERROR (procedimento de teste de divisibilidade) é defensável como alternativa. CREATE pois conceito de múltiplo é generalizável."
+  },
+  {
+    "id": "H025",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: procedimento de conversão MB↔GB é generalizável.",
+    "adjudicationReason": "B está correto: o aluno multiplicou em vez de dividir (1024×1024 vs 1024÷1024). Procedimento de conversão de unidades é conteúdo estável e generalizável. CREATE."
+  },
+  {
+    "id": "H026",
+    "differences": {
+      "expectedCardDecision": { "A": "CREATE", "B": "NO_CARD" }
+    },
+    "decision": {
+      "expectedCardDecision": "NO_CARD"
+    },
+    "protocolBasis": "Protocolo §7 Card: NO_CARD quando 'informação insuficiente' e 'ausência de conteúdo apropriado para flashcard'.",
+    "adjudicationReason": "B está correto: o erro é meta-cognitivo (aluno inventou um número sem dados). Não há conteúdo de domínio estável para flashcard — a lição é 'não invente dados', que não se presta a flashcard de conteúdo. NO_CARD."
+  },
+  {
+    "id": "H027",
+    "differences": {
+      "expectedErrorType": { "A": "READING_ERROR", "B": "APPLICATION_ERROR" },
+      "acceptableErrorTypes": { "A": ["READING_ERROR"], "B": ["APPLICATION_ERROR","KNOWLEDGE_GAP"] },
+      "expectedCardDecision": { "A": "CREATE", "B": "NO_CARD" }
+    },
+    "decision": {
+      "expectedErrorType": "APPLICATION_ERROR",
+      "acceptableErrorTypes": ["APPLICATION_ERROR", "KNOWLEDGE_GAP"],
+      "expectedCardDecision": "NO_CARD"
+    },
+    "protocolBasis": "Protocolo §5: READING_ERROR exige sinal observável. A instrução 'conte apenas as vogais' não foi violada no sentido de ignorar a instrução — o aluno tentou contar vogais mas incluiu consoantes ou errou na identificação. §3: é um procedimento de contagem/identificação reconstituível.",
+    "adjudicationReason": "O aluno respondeu 7 em vez de 5: contou letras extras (provavelmente incluiu consoantes como vogais). Isso é um erro de identificação/procedimento, não de leitura do enunciado. KNOWLEDGE_GAP (não saber quais letras são vogais, incluindo ã) é defensável. Cartão sobre palavra específica não é generalizável. NO_CARD."
+  },
+  {
+    "id": "H032",
+    "differences": {
+      "expectedCardDecision": { "A": "CREATE", "B": "NO_CARD" }
+    },
+    "decision": {
+      "expectedCardDecision": "NO_CARD"
+    },
+    "protocolBasis": "Protocolo §7 Card: NO_CARD quando 'erro mecânico sem aprendizado generalizável'.",
+    "adjudicationReason": "B está correto: 14 = 8+6 (somou em vez de multiplicar). Erro aritmético mecânico específico. Um flashcard sobre '8×6=48' não é generalizável. NO_CARD."
+  },
+  {
+    "id": "H033",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP"], "B": ["KNOWLEDGE_GAP","CONCEPT_CONFUSION"] }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP", "CONCEPT_CONFUSION"]
+    },
+    "protocolBasis": "Protocolo §4: acceptableErrorTypes inclui alternativas realmente defensáveis por escrito.",
+    "adjudicationReason": "B argumenta que P é o símbolo do fósforo e também a inicial de potássio em português: a confusão símbolo-nome-inicial é um eixo conceitual documentado. CONCEPT_CONFUSION é defensável como alternativa."
+  },
+  {
+    "id": "H035",
+    "differences": {
+      "expectedCardDecision": { "A": "CREATE", "B": "NO_CARD" }
+    },
+    "decision": {
+      "expectedCardDecision": "NO_CARD"
+    },
+    "protocolBasis": "Protocolo §7 Card: NO_CARD para 'erro pontual de leitura' e 'erro mecânico sem aprendizado generalizável'.",
+    "adjudicationReason": "B está correto: o aluno escolheu a primeira alternativa (correta) em vez da terceira (falsa). Isso é um erro de leitura da instrução 'INCORRETA'. Não há conteúdo de domínio estável para flashcard — a lição seria 'leia a palavra INCORRETA', que não é conteúdo recuperável. NO_CARD."
+  },
+  {
+    "id": "H038",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["CONCEPT_CONFUSION","KNOWLEDGE_GAP"], "B": ["CONCEPT_CONFUSION"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["CONCEPT_CONFUSION"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: par comparável explícito Estado vs governo com troca observável. Critério de CONCEPT_CONFUSION se aplica sem ambiguidade.",
+    "adjudicationReason": "A pergunta apresenta estrutura de par comparável (Estado vs governo) e a resposta troca os dois. Isso satisfaz o critério CLEAR para CONCEPT_CONFUSION. KNOWLEDGE_GAP não é defensável como alternativa quando há par comparável estruturado. CREATE pois distinção Estado/governo é generalizável."
+  },
+  {
+    "id": "H040",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["INSUFFICIENT_INFORMATION","KNOWLEDGE_GAP"], "B": ["INSUFFICIENT_INFORMATION"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["INSUFFICIENT_INFORMATION"],
+      "observability": "CLEAR"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: 'os dados estão ausentes de forma textualmente verificável'. Nenhum país mencionado = dado ausente.",
+    "adjudicationReason": "O enunciado diz 'país mencionado' mas nenhum país é mencionado. A ausência é textualmente verificável e objetiva. KNOWLEDGE_GAP não é defensável: o erro não é de conteúdo (o aluno pode saber que Brasília é capital do Brasil), mas de responder a algo que não foi perguntado. CLEAR."
+  },
+  {
+    "id": "H041",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP"], "B": ["KNOWLEDGE_GAP","CONCEPT_CONFUSION"] }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP", "CONCEPT_CONFUSION"]
+    },
+    "protocolBasis": "Protocolo §4: acceptableErrorTypes inclui alternativas realmente defensáveis.",
+    "adjudicationReason": "B argumenta que a oposição volátil/não-volátil (RAM vs SSD) é um eixo conceitual real. A pergunta menciona 'flash não volátil' e o aluno respondeu RAM (volátil). CONCEPT_CONFUSION é defensável como alternativa."
+  },
+  {
+    "id": "H046",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: procedimento de juros simples é generalizável.",
+    "adjudicationReason": "B está correto: o aluno calculou montante (1000+60=1060) em vez de apenas juro (60). Distinção juro/montante é um conceito estável e generalizável. CREATE."
+  },
+  {
+    "id": "H050",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["READING_ERROR","APPLICATION_ERROR"], "B": ["READING_ERROR"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["READING_ERROR"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §5 READING_ERROR: 'restrição textual explícita ignorada'. §3 CLEAR: quando a restrição é textual e verificável.",
+    "adjudicationReason": "Os qualificadores 'maiores que' e 'menores que' (estritos) foram tratados como inclusivos. A restrição textual é explícita e observável. APPLICATION_ERROR não é igualmente defensável: o aluno não errou um cálculo, ignorou um qualificador textual. CLEAR. CREATE pois o conceito de desigualdade estrita vs inclusiva é generalizável."
+  },
+  {
+    "id": "H052",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP"], "B": ["KNOWLEDGE_GAP","CONCEPT_CONFUSION"] }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP", "CONCEPT_CONFUSION"]
+    },
+    "protocolBasis": "Protocolo §4: CONCEPT_CONFUSION defensável quando a confusão capital/maior-cidade é um eixo conceitual real.",
+    "adjudicationReason": "B argumenta que Toronto é a maior cidade canadense e a confusão capital/maior-cidade é um eixo conceitual real. CONCEPT_CONFUSION é defensável como alternativa."
+  },
+  {
+    "id": "H053",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP","INSUFFICIENT_INFORMATION"], "B": ["KNOWLEDGE_GAP"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: 'nenhum dos critérios concorrentes se aplica' — KNOWLEDGE_GAP como residual.",
+    "adjudicationReason": "Fato histórico: Deodoro proclamou a República. O aluno respondeu Dom Pedro II. Há evidência clara de lacuna factual. INSUFFICIENT_INFORMATION não é defensável: os dados para responder estão disponíveis, o aluno simplesmente não sabia. CLEAR, CREATE pois fato histórico é estável."
+  },
+  {
+    "id": "H054",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: conceito de conversão de unidades de tempo é generalizável.",
+    "adjudicationReason": "B está correto: o aluno escreveu '150 horas' quando o correto é '150 minutos'. A unidade foi ignorada. Conceito de conversão de tempo é generalizável e recuperável. CREATE."
+  },
+  {
+    "id": "H057",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP"], "B": ["KNOWLEDGE_GAP","CONCEPT_CONFUSION"] }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP", "CONCEPT_CONFUSION"]
+    },
+    "protocolBasis": "Protocolo §4: a confusão adjetivo/advérbio é um equívoco conceitual clássico e documentado.",
+    "adjudicationReason": "B argumenta que a confusão adjetivo/advérbio é um eixo conceitual clássico. CONCEPT_CONFUSION é defensável como alternativa."
+  },
+  {
+    "id": "H060",
+    "differences": {
+      "expectedErrorType": { "A": "INSUFFICIENT_INFORMATION", "B": "APPLICATION_ERROR" },
+      "acceptableErrorTypes": { "A": ["INSUFFICIENT_INFORMATION","KNOWLEDGE_GAP"], "B": ["APPLICATION_ERROR","KNOWLEDGE_GAP"] },
+      "observability": { "A": "UNOBSERVABLE", "B": "AMBIGUOUS" }
+    },
+    "decision": {
+      "expectedErrorType": "INSUFFICIENT_INFORMATION",
+      "acceptableErrorTypes": ["INSUFFICIENT_INFORMATION", "KNOWLEDGE_GAP"],
+      "observability": "AMBIGUOUS"
+    },
+    "protocolBasis": "Protocolo §4.1: UNOBSERVABLE → expectedErrorType = INSUFFICIENT_INFORMATION. Mas B classifica como AMBIGUOUS, não UNOBSERVABLE. A própria officialExplanation diz 'O resultado errado não revela a causa'.",
+    "adjudicationReason": "9×7=63, aluno respondeu 62. A diferença de 1 não permite reconstituir nenhuma operação plausível-porém-errada (APPLICATION_ERROR fraco). Também não há par comparável (sem CONCEPT_CONFUSION). A officialExplanation confirma que a causa não é inferível. Porém, tanto KNOWLEDGE_GAP (não saber tabuada) quanto INSUFFICIENT_INFORMATION são defensáveis. Não é estritamente UNOBSERVABLE (não exige estado mental — duas categorias são defensáveis). AMBIGUOUS é o nível correto. expectedErrorType = INSUFFICIENT_INFORMATION pois a causa genuinamente não é inferível dos dados."
+  },
+  {
+    "id": "H062",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: conceito de conversão métrica é generalizável.",
+    "adjudicationReason": "B está correto: o aluno não converteu 3500m para 3,5km. O conceito de conversão m→km é estável e generalizável. CREATE."
+  },
+  {
+    "id": "H064",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["INSUFFICIENT_INFORMATION","KNOWLEDGE_GAP"], "B": ["INSUFFICIENT_INFORMATION"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["INSUFFICIENT_INFORMATION"],
+      "observability": "CLEAR"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: dados ausentes de forma textualmente verificável.",
+    "adjudicationReason": "Apenas caracteres inicial e final estão dados. A ausência de dados intermediários é textualmente verificável. KNOWLEDGE_GAP não é defensável: não é falta de conhecimento, é falta de dado. CLEAR."
+  },
+  {
+    "id": "H067",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: procedimento de contagem com repetição é generalizável.",
+    "adjudicationReason": "B está correto: 30 = 3×10 (tratou como combinação linear em vez de 10³ = 1000). Conceito de análise combinatória com repetição é estável e generalizável. CREATE."
+  },
+  {
+    "id": "H069",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["EXCEPTION_MISSED","APPLICATION_ERROR"], "B": ["EXCEPTION_MISSED"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["EXCEPTION_MISSED"],
+      "observability": "CLEAR"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: regra geral + exceção declarada explicitamente. §2: EXCEPTION_MISSED exige regra geral + exceção + erro compatível.",
+    "adjudicationReason": "Regra (75% presença) e exceção (atividade domiciliar conta) explícitas. O aluno ignorou a exceção. APPLICATION_ERROR não é igualmente defensável: não é um erro de cálculo, é a não consideração da exceção. CLEAR."
+  },
+  {
+    "id": "H073",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP","INSUFFICIENT_INFORMATION"], "B": ["KNOWLEDGE_GAP"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP"],
+      "observability": "CLEAR"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: KNOWLEDGE_GAP como residual quando nenhum critério concorrente se aplica.",
+    "adjudicationReason": "Fato administrativo: planejamento define objetivos. O aluno respondeu controle. Não há dados ausentes nem contraditórios no enunciado. INSUFFICIENT_INFORMATION não é defensável: a pergunta é clara e respondível. CLEAR."
+  },
+  {
+    "id": "H074",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["EXCEPTION_MISSED","APPLICATION_ERROR"], "B": ["EXCEPTION_MISSED"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["EXCEPTION_MISSED"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: regra e exceção explícitas. §7 Card: distinção público/confidencial é generalizável.",
+    "adjudicationReason": "Regra (mensagens públicas) e exceção (confidenciais só gestores) explícitas. O aluno aplicou a regra geral. APPLICATION_ERROR não é igualmente defensável. CLEAR. CREATE pois a lição é generalizável."
+  },
+  {
+    "id": "H077",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["EXCEPTION_MISSED","APPLICATION_ERROR"], "B": ["EXCEPTION_MISSED"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["EXCEPTION_MISSED"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: regra e exceção explícitas.",
+    "adjudicationReason": "Regra (5% desconto) e exceção (premium 12%) explícitas. APPLICATION_ERROR não é igualmente defensável: não há operação aritmética errada. CLEAR. CREATE pois distinção de nível de desconto é generalizável."
+  },
+  {
+    "id": "H081",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["CONCEPT_CONFUSION","KNOWLEDGE_GAP"], "B": ["CONCEPT_CONFUSION"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["CONCEPT_CONFUSION"],
+      "observability": "CLEAR"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: par comparável explícito com troca observável.",
+    "adjudicationReason": "Par comparável sujeito vs objeto direto com troca explícita. KNOWLEDGE_GAP não é defensável quando há par comparável estruturado e troca observável. CLEAR."
+  },
+  {
+    "id": "H082",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP"], "B": ["KNOWLEDGE_GAP","CONCEPT_CONFUSION"] }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP", "CONCEPT_CONFUSION"]
+    },
+    "protocolBasis": "Protocolo §4: a confusão Richter/Beaufort (domínios de escala) é defensável.",
+    "adjudicationReason": "B argumenta que a confusão entre escalas de fenômenos naturais (terremotos vs vento) é um eixo conceitual real. CONCEPT_CONFUSION é defensável como alternativa."
+  },
+  {
+    "id": "H085",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: conceito de floor vs round é generalizável.",
+    "adjudicationReason": "B está correto: o aluno arredondou 7,9 para 8 em vez de tomar a parte inteira 7. A distinção floor/round/ceiling é um conceito estável e generalizável. CREATE."
+  },
+  {
+    "id": "H088",
+    "differences": {
+      "expectedErrorType": { "A": "READING_ERROR", "B": "APPLICATION_ERROR" },
+      "acceptableErrorTypes": { "A": ["READING_ERROR"], "B": ["APPLICATION_ERROR","CONCEPT_CONFUSION"] },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedErrorType": "APPLICATION_ERROR",
+      "acceptableErrorTypes": ["APPLICATION_ERROR", "CONCEPT_CONFUSION"],
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §5: READING_ERROR exige sinal observável. O enunciado pede 'o menor'. Protocolo §3: a comparação de negativos é um procedimento reconstituível.",
+    "adjudicationReason": "A pergunta pede 'o menor'. O aluno escolheu -3 (o menor em valor absoluto) em vez de -8 (o menor numericamente). Não há negação ignorada nem restrição textual violada — o aluno leu 'menor' corretamente, mas errou o conceito de ordem em números negativos. Isso é APPLICATION_ERROR (procedimento de comparação reconstituível) ou CONCEPT_CONFUSION (confusão menor-valor vs menor-magnitude). READING_ERROR não é sustentado pelo protocolo §5. CREATE pois comparação de negativos é generalizável."
+  },
+  {
+    "id": "H090",
+    "differences": {
+      "expectedErrorType": { "A": "INSUFFICIENT_INFORMATION", "B": "KNOWLEDGE_GAP" },
+      "acceptableErrorTypes": { "A": ["INSUFFICIENT_INFORMATION","KNOWLEDGE_GAP"], "B": ["KNOWLEDGE_GAP","CONCEPT_CONFUSION"] },
+      "observability": { "A": "UNOBSERVABLE", "B": "AMBIGUOUS" }
+    },
+    "decision": {
+      "expectedErrorType": "INSUFFICIENT_INFORMATION",
+      "acceptableErrorTypes": ["INSUFFICIENT_INFORMATION", "KNOWLEDGE_GAP"],
+      "observability": "AMBIGUOUS"
+    },
+    "protocolBasis": "Protocolo §4.1: UNOBSERVABLE → INSUFFICIENT_INFORMATION. A officialExplanation diz 'sem raciocínio, não se distingue lacuna de troca pontual'. Protocolo §3 AMBIGUOUS: duas categorias plausíveis.",
+    "adjudicationReason": "Capital da França: Paris. Aluno respondeu Lyon (outra cidade francesa). A officialExplanation confirma a indistinguibilidade. Não é estritamente UNOBSERVABLE (B argumenta AMBIGUOUS), pois ambos KNOWLEDGE_GAP e CONCEPT_CONFUSION são categorias reais que um anotador poderia justificar. Porém como há genuína indistinguibilidade, INSUFFICIENT_INFORMATION (que reconhece a incerteza) é a escolha mais conservadora. AMBIGUOUS é correto pois KNOWLEDGE_GAP é genuinamente defensável."
+  },
+  {
+    "id": "H092",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: precedência de operadores é generalizável.",
+    "adjudicationReason": "B está correto: o aluno somou antes de multiplicar (5×4=20 em vez de 2+12=14). Conceito de precedência de operadores é estável e generalizável. CREATE."
+  },
+  {
+    "id": "H097",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: regra de três é generalizável.",
+    "adjudicationReason": "B está correto: o aluno inverteu a proporção (300×4/10=120 em vez de 300×10/4=750). Procedimento de regra de três é estável e generalizável. CREATE."
+  },
+  {
+    "id": "H099",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP","INSUFFICIENT_INFORMATION"], "B": ["KNOWLEDGE_GAP"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: KNOWLEDGE_GAP residual. A pergunta é clara, respondível, e o erro é factual.",
+    "adjudicationReason": "Fato estável: espanhol predomina na Argentina. O aluno respondeu português. Não há dados ausentes. INSUFFICIENT_INFORMATION não é defensável: a pergunta é objetivamente respondível. CLEAR. CREATE pois fato geográfico/linguístico é estável."
+  },
+  {
+    "id": "H101",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["KNOWLEDGE_GAP"], "B": ["KNOWLEDGE_GAP","CONCEPT_CONFUSION"] }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["KNOWLEDGE_GAP", "CONCEPT_CONFUSION"]
+    },
+    "protocolBasis": "Protocolo §4: a confusão absorvido/liberado (CO2/O2) é um eixo conceitual clássico.",
+    "adjudicationReason": "B argumenta que a confusão CO2 absorvido vs O2 liberado na fotossíntese é um eixo conceitual clássico. CONCEPT_CONFUSION é defensável como alternativa."
+  },
+  {
+    "id": "H105",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["CONCEPT_CONFUSION","KNOWLEDGE_GAP"], "B": ["CONCEPT_CONFUSION"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["CONCEPT_CONFUSION"],
+      "observability": "CLEAR",
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §3 CLEAR: par comparável explícito correlação vs causalidade com troca observável.",
+    "adjudicationReason": "Par comparável explícito com troca observável. KNOWLEDGE_GAP não é defensável quando há par comparável estruturado. CLEAR. CREATE pois distinção correlação/causalidade é generalizável."
+  },
+  {
+    "id": "H111",
+    "differences": {
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §7 Card: tabela-verdade da conjunção é generalizável.",
+    "adjudicationReason": "B está correto: A∧B com A=V e B=F resulta em F. A tabela-verdade da conjunção é um conceito estável e generalizável. CREATE."
+  },
+  {
+    "id": "H112",
+    "differences": {
+      "expectedCardDecision": { "A": "CREATE", "B": "NO_CARD" }
+    },
+    "decision": {
+      "expectedCardDecision": "NO_CARD"
+    },
+    "protocolBasis": "Protocolo §7 Card: NO_CARD quando 'informação insuficiente' e erro meta-cognitivo.",
+    "adjudicationReason": "B está correto: a lição é que área não determina perímetro sem as dimensões. Isso é uma lição meta-cognitiva ('dados insuficientes para resolver') que não tem conteúdo de domínio estável para flashcard. NO_CARD."
+  },
+  {
+    "id": "H118",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["APPLICATION_ERROR"], "B": ["APPLICATION_ERROR","CONCEPT_CONFUSION"] },
+      "expectedCardDecision": { "A": "NO_CARD", "B": "CREATE" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["APPLICATION_ERROR", "CONCEPT_CONFUSION"],
+      "expectedCardDecision": "CREATE"
+    },
+    "protocolBasis": "Protocolo §4 e §7. A confusão área/perímetro é um eixo conceitual real.",
+    "adjudicationReason": "B argumenta que 26 = 2×(9+4) = perímetro em vez de área 9×4 = 36. CONCEPT_CONFUSION (confusão área/perímetro) é defensável como alternativa. CREATE pois procedimento de área é generalizável."
+  },
+  {
+    "id": "H119",
+    "differences": {
+      "acceptableErrorTypes": { "A": ["READING_ERROR","APPLICATION_ERROR"], "B": ["READING_ERROR"] },
+      "observability": { "A": "AMBIGUOUS", "B": "CLEAR" }
+    },
+    "decision": {
+      "acceptableErrorTypes": ["READING_ERROR"],
+      "observability": "CLEAR"
+    },
+    "protocolBasis": "Protocolo §5 READING_ERROR: 'restrição textual explícita ignorada'. O qualificador '.pdf' é explícito.",
+    "adjudicationReason": "A extensão '.pdf' é explícita no enunciado e a resposta escolheu '.docx'. Isso é uma restrição textual violada. APPLICATION_ERROR não é igualmente defensável: não há procedimento/cálculo errado. CLEAR."
+  }
+]

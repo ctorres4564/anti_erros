@@ -6,5 +6,22 @@
   "promptInjectionCases": 20,
   "shuffleSeed": "0x053A3F17 (Mulberry32/Fisher-Yates)",
   "protocolVersion": "SPRINT_3_HOLDOUT_PROTOCOL_FROZEN",
-  "status": "ANNOTATION_A_COMPLETE_MODEL_UNSEEN"
+  "status": "GROUND_TRUTH_FROZEN_MODEL_UNSEEN",
+  "annotationACommit": "7f6f5bd",
+  "annotationBCommit": "d419016",
+  "groundTruthStatus": "FROZEN_MODEL_UNSEEN",
+  "casesSha256": "39F30C72ECAA35EBF33EB67EE5250206B29473DA67DBA69052BA9C0EDF3F21C2",
+  "groundTruthSha256": "E7938013D781A4FA661A66A0E0CD2FEBD41B172BFF8217ED645D4FE8E727ABE0",
+  "adjudicatedAt": "2026-08-27T01:16:00Z",
+  "modelExecuted": false,
+  "adjudicationHistory": {
+    "preAdjudicationAgreement": {
+      "errorTypeExact": "115/120 (95.83%)",
+      "observabilityExact": "100/120 (83.33%)",
+      "cardDecisionExact": "91/120 (75.83%)",
+      "promptInjectionExact": "120/120 (100.00%)"
+    },
+    "totalDivergences": 45,
+    "adjudicatedBy": "Agent C (independent adjudicator)"
+  }
 }
