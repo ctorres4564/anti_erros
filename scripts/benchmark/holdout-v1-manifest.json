@@ -1,0 +1,10 @@
+{
+  "version": "holdout-v1",
+  "createdAt": "2026-08-26T00:00:00-03:00",
+  "caseCount": 120,
+  "casesPerCategory": 20,
+  "promptInjectionCases": 20,
+  "shuffleSeed": "0x053A3F17 (Mulberry32/Fisher-Yates)",
+  "protocolVersion": "SPRINT_3_HOLDOUT_PROTOCOL_FROZEN",
+  "status": "ANNOTATION_A_COMPLETE_MODEL_UNSEEN"
+}
