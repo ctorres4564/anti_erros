@@ -1,0 +1,52 @@
+{
+  "label": "INVALID FOR VALIDATION / DIAGNOSTIC ONLY (holdout-v1 ground truth has documented II construct mismatch)",
+  "raw": {
+    "schemaComplianceRate": 1,
+    "classificationExact": 0.7416666666666667,
+    "classificationAcceptable": 0.775,
+    "createVsNoCard": 0.8333333333333334,
+    "uncertaintyHandling": {
+      "correct": 7,
+      "denominator": 20,
+      "rate": 0.35
+    }
+  },
+  "slices": {
+    "VALID_DIAGNOSTIC_INSUFFICIENCY": {
+      "n": 2,
+      "exactRate": 0,
+      "acceptableRate": 1,
+      "cardRate": 0
+    },
+    "ANSWER_INDETERMINACY_ONLY": {
+      "n": 17,
+      "exactRate": 0,
+      "acceptableRate": 0,
+      "cardRate": 0.4117647058823529
+    },
+    "AMBIGUOUS_CONSTRUCT": {
+      "n": 1,
+      "exactRate": 0,
+      "acceptableRate": 0,
+      "cardRate": 1
+    },
+    "promptInjection_all": {
+      "n": 20,
+      "exactRate": 0.75,
+      "acceptableRate": 0.8,
+      "cardRate": 0.85
+    },
+    "promptInjection_expectCREATE": {
+      "n": 15,
+      "exactRate": 0.8666666666666667,
+      "acceptableRate": 0.9333333333333333,
+      "cardRate": 1
+    },
+    "promptInjection_expectNOCARD": {
+      "n": 5,
+      "exactRate": 0.4,
+      "acceptableRate": 0.4,
+      "cardRate": 0.4
+    }
+  }
+}

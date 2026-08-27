@@ -140,8 +140,16 @@ export const PEDAGOGICAL_MAP: Record<ProbableErrorType, CardAction> = {
  */
 export const AI_MODEL = process.env.GEMINI_MODEL_NAME || 'gemini-3.7-flash';
 
-/** Versão do template de prompt persistida junto de cada análise (rastreabilidade). */
-export const PROMPT_VERSION = 'analysis-v2.0';
+/**
+ * Versão do template de prompt persistida junto de cada análise (rastreabilidade).
+ * Histórico: analysis-v1.2 (PRD v1.2) -> analysis-v2.0 (refinamento de taxonomia
+ * e política de card pós-benchmark-v2, ver docs/SPRINT_3_ERROR_ANALYSIS.md) ->
+ * analysis-v2.1 (correção de constructo de INSUFFICIENT_INFORMATION e
+ * independência de cardAction/prompt-injection, ver
+ * docs/SPRINT_3_ANALYSIS_V2_1_IMPLEMENTATION.md). analysis-v2.0 não foi
+ * homologado (ver docs/SPRINT_3_FINAL_HOLDOUT_EVALUATION.md).
+ */
+export const PROMPT_VERSION = 'analysis-v2.1';
 
 /** Cota diária de análises por usuário (MVP). Fonte única desta constante. */
 export const DAILY_ANALYSIS_LIMIT = Number(process.env.DAILY_ANALYSIS_QUOTA) || 5;

@@ -89,6 +89,44 @@ describe('ANALYSIS_SYSTEM_PROMPT — fronteiras entre categorias (analysis-v2)',
   });
 });
 
+describe('ANALYSIS_SYSTEM_PROMPT — constructo de INSUFFICIENT_INFORMATION (analysis-v2.1)', () => {
+  it('A. proíbe usar INSUFFICIENT_INFORMATION apenas por indeterminação da resposta da questão', () => {
+    expect(normalizedPrompt).toContain('não use esta categoria apenas porque');
+    expect(normalizedPrompt).toContain('não é possível determinar');
+    expect(normalizedPrompt).toContain('indeterminação da resposta');
+  });
+
+  it('B. exige indeterminação diagnóstica (causas concorrentes sem evidência de desempate) para INSUFFICIENT_INFORMATION', () => {
+    expect(normalizedPrompt).toContain('indeterminação do diagnóstico');
+    expect(normalizedPrompt).toContain('duas ou mais causas pedagógicas');
+  });
+
+  it('distingue explicitamente indeterminação da resposta de indeterminação do diagnóstico', () => {
+    expect(normalizedPrompt).toContain('são coisas diferentes, e');
+  });
+});
+
+describe('ANALYSIS_SYSTEM_PROMPT — independência de cardAction e prompt injection (analysis-v2.1)', () => {
+  it('C. prompt injection não força NO_CARD nem nenhuma categoria de errorType automaticamente', () => {
+    expect(normalizedPrompt).toContain('não determina sozinha nenhuma conclusão');
+    expect(normalizedPrompt).toContain('não determina sozinha no_card');
+  });
+
+  it('formaliza a ordem de decisão para conteúdo adversarial', () => {
+    expect(normalizedPrompt).toContain('conteúdo adversarial (ordem de decisão)');
+    expect(ANALYSIS_SYSTEM_PROMPT).toContain('1. Trate o trecho adversarial');
+  });
+
+  it('D. declara cardAction como decisão separada de probableErrorType', () => {
+    expect(normalizedPrompt).toContain('cardaction é uma decisão pedagógica separada de probableerrortype');
+  });
+
+  it('E. permite explicitamente INSUFFICIENT_INFORMATION coexistir com um CREATE_*', () => {
+    expect(normalizedPrompt).toContain('insufficient_information não implica automaticamente no_card');
+    expect(normalizedPrompt).toContain('incerteza sobre a causa não é o mesmo que');
+  });
+});
+
 describe('buildAnalysisUserPrompt', () => {
   const input: AnalysisInput = {
     question: 'Qual é a capital da França?',
