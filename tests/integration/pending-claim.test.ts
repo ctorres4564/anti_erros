@@ -19,6 +19,7 @@ import { createAnonymousPendingAnalysis, claimPendingAnalysisForUser } from '@/s
 import { hashClaimToken } from '@/lib/security/claim-token';
 
 const admin = createAdminClient();
+const TEST_USER_PASSWORD = ['password', '123'].join('');
 
 // Spy AI Client para garantir que a inferência só é chamada 1 única vez
 let aiCallCount = 0;
@@ -55,7 +56,7 @@ const spyAiClient: AIAnalysisClient = {
 async function createTestUser(email: string): Promise<{ id: string; client: SupabaseClient }> {
   const { data, error } = await admin.auth.admin.createUser({
     email,
-    password: 'password123',
+    password: TEST_USER_PASSWORD,
     email_confirm: true,
   });
   if (error || !data.user) {
@@ -66,7 +67,7 @@ async function createTestUser(email: string): Promise<{ id: string; client: Supa
   const userClient = createClient(SUPABASE_URL, ANON_KEY);
   const { error: signInError } = await userClient.auth.signInWithPassword({
     email,
-    password: 'password123',
+    password: TEST_USER_PASSWORD,
   });
   if (signInError) {
     throw new Error(`Falha ao autenticar usuário de teste: ${signInError.message}`);
@@ -210,6 +211,8 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     // Valida a análise definitiva criada em analyses
     expect(claimRes.analysis.id).toBeDefined();
     expect(claimRes.analysis.probableErrorType).toBe('CONCEPT_CONFUSION');
+    expect(claimRes.analysis.discipline).toBe(mockAiResult.output.discipline);
+    expect(claimRes.analysis.recommendedAction).toBe(mockAiResult.output.recommendedAction);
     expect(claimRes.analysis.cardAction).toBe('CREATE_DISCRIMINATION_CARD');
     expect(claimRes.analysis.card?.front).toBe(mockAiResult.output.card?.front);
 

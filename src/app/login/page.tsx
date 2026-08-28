@@ -10,6 +10,7 @@ import { Mail, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 function LoginForm() {
   const searchParams = useSearchParams();
   const initialError = searchParams.get('error');
+  const isContinuingAnalysis = searchParams.get('continue') === 'analysis';
 
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(initialError);
@@ -63,6 +64,11 @@ function LoginForm() {
           <p className="text-sm text-muted-foreground leading-relaxed">
             Se o endereço informado puder receber acesso, enviamos um link para <strong className="text-foreground">{email}</strong>.
           </p>
+          {isContinuingAnalysis ? (
+            <p className="text-sm text-muted-foreground">
+              Abra o link neste navegador para recuperar a análise já processada, sem uma nova inferência.
+            </p>
+          ) : null}
         </div>
         <p className="text-xs text-muted-foreground">
           Não recebeu? Verifique a caixa de spam ou{' '}
@@ -84,9 +90,13 @@ function LoginForm() {
   return (
     <div className="w-full max-w-md mx-auto p-6 sm:p-8 bg-card border rounded-xl shadow-sm space-y-6">
       <div className="space-y-2 text-center">
-        <h1 className="text-2xl font-bold tracking-tight text-foreground">Acessar a Plataforma</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">
+          {isContinuingAnalysis ? 'Ver sua análise completa' : 'Acessar a plataforma'}
+        </h1>
         <p className="text-sm text-muted-foreground">
-          Informe seu e-mail para receber um link de acesso instantâneo sem senha.
+          {isContinuingAnalysis
+            ? 'Informe seu e-mail. A análise pendente será vinculada à sua conta depois da autenticação.'
+            : 'Informe seu e-mail para receber um link de acesso instantâneo sem senha.'}
         </p>
       </div>
 

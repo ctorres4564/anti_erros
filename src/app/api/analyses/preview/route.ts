@@ -73,7 +73,6 @@ export async function POST(request: NextRequest) {
         divergenceMessage: result.preview.divergenceMessage,
         isAligned: result.preview.isAligned,
       },
-      claimToken: result.preview.claimToken,
     });
 
     // Armazenar anonymous_id e claim_token em cookies protegidos

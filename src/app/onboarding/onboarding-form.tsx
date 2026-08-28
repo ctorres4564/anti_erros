@@ -72,6 +72,9 @@ export function OnboardingForm() {
           <p className="text-sm text-muted-foreground">
             Precisamos apenas do seu nome e dos seus consentimentos legais para liberar seu acesso.
           </p>
+          <p className="text-xs text-muted-foreground">
+            Se você chegou por uma análise pendente, ela será recuperada após esta etapa sem novo processamento.
+          </p>
         </div>
 
         {errorMessage && (

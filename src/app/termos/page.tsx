@@ -17,7 +17,7 @@ export default function TermosPage() {
         <section className="space-y-2">
           <h2 className="text-base font-semibold text-foreground">1. Objeto e Aceite</h2>
           <p>
-            O serviço <strong>Anti-Erros | Método Aprender</strong> oferece ferramentas de diagnóstico pedagógico e geração de revisões personalizadas. Ao se cadastrar ou utilizar a plataforma, o usuário declara ter lido, compreendido e aceito integralmente as presentes condições.
+            O serviço <strong>Anti-Erros | Método Aprender</strong> oferece ferramentas de análise pedagógica e geração de revisões personalizadas. Ao se cadastrar ou utilizar a plataforma, o usuário declara ter lido, compreendido e aceito integralmente as presentes condições.
           </p>
         </section>
 

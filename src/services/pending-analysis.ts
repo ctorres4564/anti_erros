@@ -41,9 +41,11 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
     userAnswer: row.user_answer,
     correctAnswer: row.correct_answer,
     officialExplanation: row.official_explanation,
+    discipline: row.discipline,
     probableErrorType: row.error_type,
     confidence: row.ai_confidence,
     reasoningSummary: row.root_cause_explanation,
+    recommendedAction: row.recommended_action,
     coreConcept: row.learning_gap_concept,
     cardAction: row.card_action,
     card:
@@ -51,6 +53,9 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
         ? { front: row.suggested_flashcard_front, back: row.suggested_flashcard_back }
         : null,
     modelVersion: row.model_version,
+    userAttribution: row.user_attribution,
+    aiUserAgreement: row.ai_user_agreement,
+    latencyMs: row.latency_ms,
     createdAt: row.created_at,
   };
 }
