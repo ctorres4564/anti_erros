@@ -1,0 +1,119 @@
+{
+  "version": "3.0.0-candidate-pool-annotation-a",
+  "createdAt": "2026-08-28T01:58:41Z",
+  "phase": "CANDIDATE_POOL_ANNOTATION_A",
+  "protocolVersion": "3.0.0",
+  "protocolFile": "docs/SPRINT_3_HOLDOUT_V3_PROTOCOL.md",
+  "protocolCommit": "e36fca8a64c48e9f36c9d3b8187d0c0f76bfdf3b",
+  "repositoryHeadAtCreation": "e36fca8a64c48e9f36c9d3b8187d0c0f76bfdf3b",
+  "caseCount": 180,
+  "casesPerCategory": 30,
+  "idRange": {
+    "first": "P001",
+    "last": "P180"
+  },
+  "shuffle": {
+    "algorithm": "Fisher-Yates",
+    "seed": 1511506897,
+    "scope": "P013-P180",
+    "preservedPilotIds": "P001-P012"
+  },
+  "categoryDistribution": {
+    "KNOWLEDGE_GAP": 30,
+    "CONCEPT_CONFUSION": 30,
+    "EXCEPTION_MISSED": 30,
+    "APPLICATION_ERROR": 30,
+    "READING_ERROR": 30,
+    "INSUFFICIENT_INFORMATION": 30
+  },
+  "observabilityDistribution": {
+    "CLEAR": 150,
+    "AMBIGUOUS": 10,
+    "UNOBSERVABLE": 20
+  },
+  "quadrantDistribution": {
+    "answerYesDiagnosticYes": 15,
+    "answerYesDiagnosticNo": 9,
+    "answerNoDiagnosticYes": 15,
+    "answerNoDiagnosticNo": 141
+  },
+  "cardDecisionDistribution": {
+    "CREATE": 134,
+    "NO_CARD": 46,
+    "insufficientInformationCreate": 18,
+    "insufficientInformationNoCard": 12
+  },
+  "promptInjection": {
+    "totalCases": 29,
+    "create": 18,
+    "noCard": 11,
+    "categoriesCovered": 6,
+    "maximumPerCategory": 5,
+    "distribution": {
+      "KNOWLEDGE_GAP": 4,
+      "CONCEPT_CONFUSION": 5,
+      "EXCEPTION_MISSED": 5,
+      "APPLICATION_ERROR": 5,
+      "READING_ERROR": 5,
+      "INSUFFICIENT_INFORMATION": 5
+    }
+  },
+  "qualityControls": {
+    "manuallyAuthoredAndIndividuallyReviewed": true,
+    "combinatorialSentenceGenerationUsed": false,
+    "structuralValidation": "PASS",
+    "approvedControlSample": true,
+    "p002KnowledgeGapAmbiguityRemoved": true,
+    "p041ReplacedAfterHumanReview": true,
+    "insufficientInformationStructuredJustifications": 30
+  },
+  "files": {
+    "scripts/benchmark/holdout-v3-candidate-pool.ts": {
+      "sha256": "3bf2d10275d4093d78a0d5bbc7e2f85229515fe79ee29df538bc1188f3f1f7ae",
+      "bytes": 62244,
+      "visibility": "PUBLIC_OBSERVABLE",
+      "fields": [
+        "id",
+        "question",
+        "userAnswer",
+        "correctAnswer",
+        "officialExplanation"
+      ]
+    },
+    "scripts/benchmark/holdout-v3-annotation-a.json": {
+      "sha256": "c4fc3573bf6b10e152c8b2337dea4a0b60975cb6af8fe9666bb67fce441e59a3",
+      "bytes": 141399,
+      "visibility": "PRIVATE_ANNOTATION_A",
+      "annotator": "ANNOTATOR_A"
+    },
+    "scripts/benchmark/validate-holdout-v3-annotation-a.ts": {
+      "sha256": "6c3a09636e5d223ab00bc3fbea0594abcc1e37c7d7ed44be3f6153fea50610de",
+      "bytes": 11958,
+      "purpose": "STRUCTURAL_VALIDATION_ONLY"
+    },
+    "docs/SPRINT_3_HOLDOUT_V3_PROTOCOL.md": {
+      "sha256": "ae4cf791cb9b9baf967247851f6ab5321488c7bec0d93da08e3a991049bc873f",
+      "bytes": 15149,
+      "visibility": "PROTOCOL"
+    }
+  },
+  "processAudit": {
+    "benchmarkV2CasesConsulted": false,
+    "modelOutputsConsulted": false,
+    "modelExecuted": false,
+    "scoreCalculated": false,
+    "previousReportsUsedForArtifactFormatOnly": true,
+    "rejectedProceduralPoolSemanticsReused": false,
+    "status": "PASS"
+  },
+  "secretScan": {
+    "scope": "INTENDED_ANNOTATOR_A_ARTIFACTS",
+    "filesScanned": 5,
+    "rules": 9,
+    "findings": 0,
+    "status": "PASS"
+  },
+  "groundTruthFrozen": false,
+  "readyForIndependentAnnotatorB": true,
+  "status": "CANDIDATE_POOL_A_COMPLETE_MODEL_UNSEEN"
+}
