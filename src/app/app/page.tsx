@@ -1,8 +1,9 @@
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
+import { AuthenticatedAnalysisExperience } from '@/components/analysis/AuthenticatedAnalysisExperience';
 import { createClient } from '@/lib/supabase/server';
 import { isOnboardingComplete, getUserProfileData } from '@/services/onboarding';
-import { User, Settings, CheckCircle } from 'lucide-react';
+import type { AnalysisHistoryItem } from '@/types/analysis';
 
 export default async function AppPage() {
   const supabase = await createClient();
@@ -15,61 +16,38 @@ export default async function AppPage() {
     redirect('/login');
   }
 
-  const isComplete = await isOnboardingComplete(user.id);
-  if (!isComplete) {
-    redirect('/onboarding');
-  }
+  const [isComplete, profile, historyResult, cookieStore] = await Promise.all([
+    isOnboardingComplete(user.id),
+    getUserProfileData(user.id),
+    supabase
+      .from('analyses')
+      .select('id, raw_question, error_type, recommended_action, card_action, discipline, created_at')
+      .order('created_at', { ascending: false })
+      .limit(25),
+    cookies(),
+  ]);
 
-  const profile = await getUserProfileData(user.id);
+  if (!isComplete) redirect('/onboarding');
+
+  const initialHistory: AnalysisHistoryItem[] = (historyResult.data ?? []).map((row) => ({
+    id: row.id,
+    question: row.raw_question,
+    probableErrorType: row.error_type,
+    recommendedAction: row.recommended_action,
+    cardAction: row.card_action,
+    discipline: row.discipline,
+    createdAt: row.created_at,
+  }));
+
+  const displayName = profile?.fullName?.trim() || user.email || 'Estudante';
+  const firstName = displayName.split(/\s+/)[0] || 'Estudante';
 
   return (
-    <div className="max-w-4xl mx-auto py-10 space-y-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b">
-        <div className="space-y-1">
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">
-            Olá, {profile?.fullName || 'Estudante'}.
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Seu acesso está configurado.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <Link
-            href="/conta"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border bg-card text-sm font-medium hover:bg-accent transition-colors"
-          >
-            <Settings className="w-4 h-4 text-muted-foreground" />
-            <span>Minha Conta</span>
-          </Link>
-        </div>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="p-6 bg-card border rounded-xl shadow-sm space-y-4">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-            <CheckCircle className="w-5 h-5" />
-          </div>
-          <div className="space-y-1">
-            <h2 className="text-base font-semibold text-foreground">Ambiente Pronto</h2>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Sua conta foi autenticada e os consentimentos foram registrados com sucesso.
-            </p>
-          </div>
-        </div>
-
-        <div className="p-6 bg-card border rounded-xl shadow-sm space-y-4">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-            <User className="w-5 h-5" />
-          </div>
-          <div className="space-y-1">
-            <h2 className="text-base font-semibold text-foreground">Identidade & Conformidade</h2>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              E-mail autenticado: <strong className="text-foreground">{profile?.email}</strong>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <AuthenticatedAnalysisExperience
+      firstName={firstName}
+      hasPendingClaim={cookieStore.has('claim_token')}
+      initialHistory={initialHistory}
+      historyUnavailable={Boolean(historyResult.error)}
+    />
   );
 }

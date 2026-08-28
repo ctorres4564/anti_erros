@@ -48,15 +48,21 @@ export async function POST(request: NextRequest) {
     });
 
     if (result.kind === 'NOT_FOUND') {
-      return NextResponse.json({ error: result.message }, { status: 404 });
+      const response = NextResponse.json({ error: result.message }, { status: 404 });
+      response.cookies.delete('claim_token');
+      return response;
     }
 
     if (result.kind === 'ALREADY_CLAIMED') {
-      return NextResponse.json({ error: result.message }, { status: 409 });
+      const response = NextResponse.json({ error: result.message }, { status: 409 });
+      response.cookies.delete('claim_token');
+      return response;
     }
 
     if (result.kind === 'EXPIRED') {
-      return NextResponse.json({ error: result.message }, { status: 410 });
+      const response = NextResponse.json({ error: result.message }, { status: 410 });
+      response.cookies.delete('claim_token');
+      return response;
     }
 
     if (result.kind === 'LIMIT_REACHED') {
