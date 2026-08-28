@@ -30,6 +30,7 @@ function toHistoryItem(analysis: AnalysisView): AnalysisHistoryItem {
     recommendedAction: analysis.recommendedAction ?? null,
     cardAction: analysis.cardAction,
     discipline: analysis.discipline ?? null,
+    confirmedDiscipline: analysis.confirmedDiscipline ?? null,
     createdAt: analysis.createdAt,
   };
 }

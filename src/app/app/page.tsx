@@ -21,7 +21,7 @@ export default async function AppPage() {
     getUserProfileData(user.id),
     supabase
       .from('analyses')
-      .select('id, raw_question, error_type, recommended_action, card_action, discipline, created_at')
+      .select('id, raw_question, error_type, recommended_action, card_action, discipline, discipline_confirmed, created_at')
       .order('created_at', { ascending: false })
       .limit(25),
     cookies(),
@@ -36,6 +36,7 @@ export default async function AppPage() {
     recommendedAction: row.recommended_action,
     cardAction: row.card_action,
     discipline: row.discipline,
+    confirmedDiscipline: row.discipline_confirmed,
     createdAt: row.created_at,
   }));
 

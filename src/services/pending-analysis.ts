@@ -8,6 +8,7 @@ import { validateTurnstileToken } from '@/lib/security/turnstile';
 import { checkRateLimit } from '@/lib/security/rate-limit';
 import type { ApiAnalysis } from './analysis';
 import type { Tables } from '@/types/database.types';
+import { recordActivationEvent } from './activation';
 
 export interface AnonymousPreviewResult {
   anonymousId: string;
@@ -42,6 +43,8 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
     correctAnswer: row.correct_answer,
     officialExplanation: row.official_explanation,
     discipline: row.discipline,
+    confirmedDiscipline: row.discipline_confirmed,
+    disciplineConfirmedAt: row.discipline_confirmed_at,
     probableErrorType: row.error_type,
     confidence: row.ai_confidence,
     reasoningSummary: row.root_cause_explanation,
@@ -65,7 +68,7 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
  * 1. Valida Turnstile e Rate Limit.
  * 2. Chama IA com 1 ÚNICA INFERÊNCIA completa (userAttribution é EXCLUÍDA do prompt!).
  * 3. Persiste o resultado completo em pending_analyses com claim_token_hash.
- * 4. Retorna a projeção parcial para exibição pré-cadastro e o claimToken.
+ * 4. Retorna a projeção parcial e mantém o claimToken apenas para transporte em cookie HttpOnly.
  */
 export async function createAnonymousPendingAnalysis(params: {
   input: AnonymousAnalysisInput;
@@ -108,8 +111,8 @@ export async function createAnonymousPendingAnalysis(params: {
   // Registrar evento de início
   await admin.from('anonymous_events').insert({
     anonymous_id: anonymousId,
-    event_name: 'partial_analysis_started',
-    properties: { userAttribution: input.userAttribution },
+    event_name: 'analysis_form_started',
+    properties: {},
   });
 
   // 3. Chamada de IA (userAttribution é EXCLUÍDA do payload da IA!)
@@ -167,14 +170,9 @@ export async function createAnonymousPendingAnalysis(params: {
   // 5. Telemetria
   await admin.from('anonymous_events').insert({
     anonymous_id: anonymousId,
-    event_name: 'partial_analysis_completed',
+    event_name: 'analysis_preview_completed',
     pending_analysis_id: pending.id,
-    properties: {
-      probableErrorType: output.probableErrorType,
-      discipline: output.discipline,
-      cardAction: output.cardAction,
-      latencyMs: usage.latencyMs,
-    },
+    properties: {},
   });
 
   // 6. Cálculo de divergência com a autopercepção
@@ -249,6 +247,8 @@ export async function claimPendingAnalysisForUser(params: {
   if (fetchErr || !analysis) {
     throw new Error('Análise resgatada com sucesso mas não pôde ser recuperada.');
   }
+
+  await recordActivationEvent(userId, 'analysis_claimed', { analysisId: analysis.id });
 
   return {
     kind: 'SUCCESS',

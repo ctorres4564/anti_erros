@@ -43,6 +43,7 @@ export type Database = {
           created_at: string
           discipline: string | null
           discipline_confirmed: string | null
+          discipline_confirmed_at: string | null
           error_type: string
           id: string
           is_flashcard_worthy: boolean
@@ -71,6 +72,7 @@ export type Database = {
           created_at?: string
           discipline?: string | null
           discipline_confirmed?: string | null
+          discipline_confirmed_at?: string | null
           error_type: string
           id?: string
           is_flashcard_worthy?: boolean
@@ -99,6 +101,7 @@ export type Database = {
           created_at?: string
           discipline?: string | null
           discipline_confirmed?: string | null
+          discipline_confirmed_at?: string | null
           error_type?: string
           id?: string
           is_flashcard_worthy?: boolean
@@ -120,6 +123,44 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      analysis_feedback: {
+        Row: {
+          analysis_id: string
+          comment: string | null
+          created_at: string
+          id: string
+          rating: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          analysis_id: string
+          comment?: string | null
+          created_at?: string
+          id?: string
+          rating: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          analysis_id?: string
+          comment?: string | null
+          created_at?: string
+          id?: string
+          rating?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "analysis_feedback_analysis_id_fkey"
+            columns: ["analysis_id"]
+            isOneToOne: true
+            referencedRelation: "analyses"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       anonymous_events: {
         Row: {

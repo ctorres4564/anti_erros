@@ -41,7 +41,7 @@ export function AnalysisHistory({ items, unavailable = false }: AnalysisHistoryP
                   <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
                     <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
                     {formatAnalysisDate(item.createdAt)}
-                    {item.discipline ? ` · ${item.discipline}` : ''}
+                    {item.confirmedDiscipline || item.discipline ? ` · ${item.confirmedDiscipline || item.discipline}` : ''}
                   </p>
                   <h3 className="font-bold leading-snug">{truncateQuestion(item.question)}</h3>
                   <p className="text-sm text-muted-foreground">

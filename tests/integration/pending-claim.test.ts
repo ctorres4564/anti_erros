@@ -106,6 +106,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
       userAnswer: 'Anulação',
       correctAnswer: 'Revogação',
       userAttribution: 'CONFUNDI_CONCEITOS' as const,
+      turnstileToken: 'test-turnstile-valid',
       officialExplanation: 'A anulação extingue atos ilegais; a revogação extingue atos válidos e discricionários.',
     };
 
@@ -157,8 +158,9 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
 
     expect(events?.length).toBeGreaterThanOrEqual(2);
     const eventNames = events?.map((e) => e.event_name);
-    expect(eventNames).toContain('partial_analysis_started');
-    expect(eventNames).toContain('partial_analysis_completed');
+    expect(eventNames).toContain('analysis_form_started');
+    expect(eventNames).toContain('analysis_preview_completed');
+    expect(events?.every((event) => JSON.stringify(event.properties) === '{}')).toBe(true);
   });
 
   it('2. Garante que pending_analyses e anonymous_events são inacessíveis diretamente por anon e authenticated (RLS)', async () => {
@@ -186,6 +188,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
         userAnswer: 'Minha resposta',
         correctAnswer: 'Gabarito oficial',
         userAttribution: 'NAO_SABIA_CONTEUDO',
+        turnstileToken: 'test-turnstile-valid',
       },
       anonymousId: 'anon_claim_' + Date.now(),
       clientIp: '127.0.0.1',
@@ -228,6 +231,14 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     expect(pendingRow?.claimed_by_user_id).toBe(testUser.id);
     expect(pendingRow?.claimed_at).not.toBeNull();
 
+    const { data: claimedEvent } = await admin
+      .from('anonymous_events')
+      .select('properties')
+      .eq('pending_analysis_id', pendingRow?.id as string)
+      .eq('event_name', 'pending_claimed')
+      .single();
+    expect(claimedEvent?.properties).toEqual({});
+
     // Valida débito na cota diária do usuário
     const { data: quota } = await admin
       .from('daily_quotas')
@@ -245,6 +256,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
         userAnswer: 'X',
         correctAnswer: 'Y',
         userAttribution: 'ERRO_LEITURA',
+        turnstileToken: 'test-turnstile-valid',
       },
       anonymousId: 'anon_dup_' + Date.now(),
       clientIp: '127.0.0.1',
@@ -275,6 +287,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
         userAnswer: 'A',
         correctAnswer: 'B',
         userAttribution: 'ESQUECI_EXCECAO',
+        turnstileToken: 'test-turnstile-valid',
       },
       anonymousId: 'anon_exp_' + Date.now(),
       clientIp: '127.0.0.1',
@@ -326,6 +339,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
         userAnswer: 'Resposta A',
         correctAnswer: 'Resposta B',
         userAttribution: 'NAO_SABIA_CONTEUDO',
+        turnstileToken: 'test-turnstile-valid',
       },
       anonymousId: 'anon_quota_full_' + Date.now(),
       clientIp: '127.0.0.1',

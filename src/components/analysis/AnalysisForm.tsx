@@ -258,6 +258,11 @@ export function AnalysisForm({ mode, onPreview, onAnalysis }: AnalysisFormProps)
         <TurnstileWidget onChange={handleTurnstileChange} resetSignal={turnstileResetSignal} />
       ) : null}
 
+      <p className="rounded-lg bg-muted/50 p-3 text-xs leading-relaxed text-muted-foreground">
+        A análise indica uma causa provável com base no texto fornecido; não é um diagnóstico definitivo.
+        Evite incluir nome, documento, contato ou outros dados pessoais desnecessários.
+      </p>
+
       <button
         type="submit"
         disabled={isSubmitting || (mode === 'anonymous' && !turnstileReady)}

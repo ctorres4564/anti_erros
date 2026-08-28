@@ -8,6 +8,13 @@ const analysisViewSchema: z.ZodType<AnalysisView> = z.object({
   correctAnswer: z.string(),
   officialExplanation: z.string().nullable(),
   discipline: z.string().nullable().optional(),
+  confirmedDiscipline: z.string().nullable().optional(),
+  disciplineConfirmedAt: z.string().nullable().optional(),
+  feedback: z.object({
+    rating: z.enum(['YES', 'PARTIALLY', 'NO']),
+    comment: z.string().nullable(),
+    updatedAt: z.string(),
+  }).nullable().optional(),
   probableErrorType: z.string(),
   confidence: z.number().min(0).max(1),
   reasoningSummary: z.string(),
@@ -142,11 +149,54 @@ export async function claimPendingAnalysis(): Promise<AnalysisView> {
     '/api/pending-analyses/claim',
     {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({}),
     },
     claimResponseSchema
   );
 
   return result.analysis;
+}
+
+export async function confirmAnalysisDiscipline(analysisId: string, discipline: string) {
+  return requestJson(
+    `/api/analyses/${analysisId}/discipline`,
+    {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ discipline }),
+    },
+    z.object({
+      discipline: z.string().nullable(),
+      confirmedDiscipline: z.string(),
+      confirmedAt: z.string(),
+    })
+  );
+}
+
+export async function submitAnalysisFeedback(
+  analysisId: string,
+  rating: 'YES' | 'PARTIALLY' | 'NO',
+  comment?: string
+) {
+  return requestJson(
+    `/api/analyses/${analysisId}/feedback`,
+    {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ rating, comment }),
+    },
+    z.object({
+      rating: z.enum(['YES', 'PARTIALLY', 'NO']),
+      comment: z.string().nullable(),
+      updatedAt: z.string(),
+    })
+  );
+}
+
+export function trackActivationEvent(eventName: 'auth_gate_shown' | 'full_result_viewed', analysisId?: string) {
+  void fetch('/api/activation-events', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ eventName, analysisId }),
+    keepalive: true,
+  }).catch(() => undefined);
 }

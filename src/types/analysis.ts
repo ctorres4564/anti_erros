@@ -21,6 +21,9 @@ export interface AnalysisView {
   correctAnswer: string;
   officialExplanation: string | null;
   discipline?: string | null;
+  confirmedDiscipline?: string | null;
+  disciplineConfirmedAt?: string | null;
+  feedback?: AnalysisFeedback | null;
   probableErrorType: string;
   confidence: number;
   reasoningSummary: string;
@@ -31,6 +34,12 @@ export interface AnalysisView {
   createdAt: string;
 }
 
+export interface AnalysisFeedback {
+  rating: 'YES' | 'PARTIALLY' | 'NO';
+  comment: string | null;
+  updatedAt: string;
+}
+
 export interface AnalysisHistoryItem {
   id: string;
   question: string;
@@ -38,5 +47,6 @@ export interface AnalysisHistoryItem {
   recommendedAction: string | null;
   cardAction: string;
   discipline: string | null;
+  confirmedDiscipline?: string | null;
   createdAt: string;
 }

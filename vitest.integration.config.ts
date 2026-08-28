@@ -9,5 +9,9 @@ export default defineConfig({
     include: ["tests/integration/**/*.test.ts"],
     testTimeout: 30000,
     hookTimeout: 30000,
+    env: {
+      TURNSTILE_TEST_BYPASS: 'true',
+      TURNSTILE_SECRET_KEY: 'integration-test-only',
+    },
   },
 });

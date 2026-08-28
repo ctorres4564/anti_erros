@@ -8,18 +8,11 @@ export interface TurnstileVerifyResult {
 }
 
 export async function validateTurnstileToken(token?: string, remoteIp?: string): Promise<TurnstileVerifyResult> {
+  const isProduction = process.env.NODE_ENV === 'production';
   const isTestEnv = process.env.NODE_ENV === 'test' || process.env.VITEST === 'true';
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
 
-  // Em ambiente de teste ou com tokens de teste oficiais da Cloudflare, valida determinísticamente
-  if (isTestEnv) {
-    if (token === 'invalid-turnstile-token') {
-      return { success: false, error: 'Token Turnstile inválido em teste.' };
-    }
-    return { success: true };
-  }
-
-  // Se a chave não estiver configurada no ambiente de desenvolvimento, permite bypass com aviso
+  // O bypass local só existe sem credenciais e nunca é aplicado em produção.
   if (!secretKey) {
     if (process.env.NODE_ENV === 'development') {
       return { success: true };
@@ -31,9 +24,11 @@ export async function validateTurnstileToken(token?: string, remoteIp?: string):
     return { success: false, error: 'Token de verificação anti-robô ausente.' };
   }
 
-  // Token de teste oficial da Cloudflare (Always Passes)
-  if (token === '1x0000000000000000000000000000000AA' || token === 'XXXX.DUMMY.TOKEN.XXXX') {
-    return { success: true };
+  // Testes automatizados precisam optar explicitamente pelo token determinístico.
+  if (!isProduction && isTestEnv && process.env.TURNSTILE_TEST_BYPASS === 'true') {
+    return token === 'test-turnstile-valid'
+      ? { success: true }
+      : { success: false, error: 'Token Turnstile inválido em teste.' };
   }
 
   try {

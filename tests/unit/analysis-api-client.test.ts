@@ -2,6 +2,8 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   AnalysisApiError,
   claimPendingAnalysis,
+  confirmAnalysisDiscipline,
+  submitAnalysisFeedback,
   submitAnonymousPreview,
   submitAuthenticatedAnalysis,
 } from '@/lib/analysis-api-client';
@@ -99,7 +101,7 @@ describe('cliente dos contratos de análise da Sprint 4', () => {
 
     await expect(claimPendingAnalysis()).resolves.toEqual(analysis);
     const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
-    expect(init.body).toBe('{}');
+    expect(init.body).toBeUndefined();
   });
 
   it('distingue token expirado de token inválido', async () => {
@@ -108,6 +110,32 @@ describe('cliente dos contratos de análise da Sprint 4', () => {
 
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({ error: 'Token inválido.' }, 404)));
     await expect(claimPendingAnalysis()).rejects.toMatchObject({ kind: 'TOKEN_INVALID', status: 404 });
+  });
+
+  it('envia disciplina pelo enum e valida a resposta', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(jsonResponse({
+      discipline: 'Atualidades',
+      confirmedDiscipline: 'Português',
+      confirmedAt: '2026-08-28T12:00:00.000Z',
+    }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(confirmAnalysisDiscipline(analysis.id, 'Português')).resolves.toMatchObject({
+      confirmedDiscipline: 'Português',
+    });
+    expect(JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body))).toEqual({ discipline: 'Português' });
+  });
+
+  it('envia feedback separado da análise', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(jsonResponse({
+      rating: 'YES', comment: 'Ajudou.', updatedAt: '2026-08-28T12:00:00.000Z',
+    }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(submitAnalysisFeedback(analysis.id, 'YES', 'Ajudou.')).resolves.toMatchObject({ rating: 'YES' });
+    expect(JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body))).toEqual({
+      rating: 'YES', comment: 'Ajudou.',
+    });
   });
 
   it('preserva uma mensagem segura para erro de API', async () => {

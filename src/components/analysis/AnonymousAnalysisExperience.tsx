@@ -5,6 +5,7 @@ import { ArrowDown, ShieldCheck, Target } from 'lucide-react';
 import type { AnalysisPreview } from '@/types/analysis';
 import { AnalysisForm } from './AnalysisForm';
 import { PartialAnalysisResult } from './PartialAnalysisResult';
+import { trackActivationEvent } from '@/lib/analysis-api-client';
 
 export function AnonymousAnalysisExperience() {
   const [preview, setPreview] = useState<AnalysisPreview | null>(null);
@@ -12,6 +13,7 @@ export function AnonymousAnalysisExperience() {
 
   const handlePreview = (nextPreview: AnalysisPreview) => {
     setPreview(nextPreview);
+    trackActivationEvent('auth_gate_shown');
     window.requestAnimationFrame(() => resultRef.current?.focus());
   };
 
