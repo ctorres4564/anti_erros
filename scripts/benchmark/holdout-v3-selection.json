@@ -1,0 +1,1342 @@
+{
+  "version": "3.0.0-partial-selection-no-freeze",
+  "phase": "AGENT_C_SELECTION",
+  "status": "PARTIAL_SELECTION_HOLDOUT_NOT_READY",
+  "targetCount": 120,
+  "selectedCount": 113,
+  "selectionIsFinal": false,
+  "selectionRationale": "Maior seleção quota-alinhada sem forçar II não bilateral: 20 casos em cada categoria não-II e todos os 13 II reproduzidos bilateralmente. A seleção permanece parcial.",
+  "selectedCandidates": [
+    {
+      "provisionalOrder": 1,
+      "candidateId": "P002",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 2,
+      "candidateId": "P057",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 3,
+      "candidateId": "P082",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 4,
+      "candidateId": "P001",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 5,
+      "candidateId": "P013",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 6,
+      "candidateId": "P020",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 7,
+      "candidateId": "P021",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 8,
+      "candidateId": "P037",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 9,
+      "candidateId": "P050",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 10,
+      "candidateId": "P052",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 11,
+      "candidateId": "P058",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 12,
+      "candidateId": "P061",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 13,
+      "candidateId": "P097",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 14,
+      "candidateId": "P101",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 15,
+      "candidateId": "P102",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 16,
+      "candidateId": "P116",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 17,
+      "candidateId": "P117",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 18,
+      "candidateId": "P120",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 19,
+      "candidateId": "P126",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 20,
+      "candidateId": "P131",
+      "adjudicationState": "ACCEPT",
+      "category": "KNOWLEDGE_GAP",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 21,
+      "candidateId": "P054",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 22,
+      "candidateId": "P077",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 23,
+      "candidateId": "P113",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 24,
+      "candidateId": "P003",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 25,
+      "candidateId": "P004",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 26,
+      "candidateId": "P017",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 27,
+      "candidateId": "P018",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 28,
+      "candidateId": "P026",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 29,
+      "candidateId": "P027",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 30,
+      "candidateId": "P039",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 31,
+      "candidateId": "P044",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 32,
+      "candidateId": "P046",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 33,
+      "candidateId": "P059",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 34,
+      "candidateId": "P067",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 35,
+      "candidateId": "P080",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 36,
+      "candidateId": "P086",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 37,
+      "candidateId": "P106",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 38,
+      "candidateId": "P107",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 39,
+      "candidateId": "P111",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 40,
+      "candidateId": "P118",
+      "adjudicationState": "ACCEPT",
+      "category": "CONCEPT_CONFUSION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 41,
+      "candidateId": "P016",
+      "adjudicationState": "ADJUDICATE",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 42,
+      "candidateId": "P043",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 43,
+      "candidateId": "P070",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 44,
+      "candidateId": "P072",
+      "adjudicationState": "ADJUDICATE",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 45,
+      "candidateId": "P075",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 46,
+      "candidateId": "P079",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 47,
+      "candidateId": "P005",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 48,
+      "candidateId": "P006",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 49,
+      "candidateId": "P023",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 50,
+      "candidateId": "P024",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 51,
+      "candidateId": "P028",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 52,
+      "candidateId": "P051",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 53,
+      "candidateId": "P053",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 54,
+      "candidateId": "P060",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 55,
+      "candidateId": "P073",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 56,
+      "candidateId": "P087",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 57,
+      "candidateId": "P095",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 58,
+      "candidateId": "P110",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 59,
+      "candidateId": "P130",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 60,
+      "candidateId": "P140",
+      "adjudicationState": "ACCEPT",
+      "category": "EXCEPTION_MISSED",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 61,
+      "candidateId": "P008",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 62,
+      "candidateId": "P015",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 63,
+      "candidateId": "P049",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 64,
+      "candidateId": "P055",
+      "adjudicationState": "ADJUDICATE",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 65,
+      "candidateId": "P065",
+      "adjudicationState": "ADJUDICATE",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 66,
+      "candidateId": "P069",
+      "adjudicationState": "ADJUDICATE",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 67,
+      "candidateId": "P089",
+      "adjudicationState": "ADJUDICATE",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 68,
+      "candidateId": "P094",
+      "adjudicationState": "ADJUDICATE",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 69,
+      "candidateId": "P114",
+      "adjudicationState": "ADJUDICATE",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 70,
+      "candidateId": "P007",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 71,
+      "candidateId": "P029",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 72,
+      "candidateId": "P033",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 73,
+      "candidateId": "P040",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 74,
+      "candidateId": "P048",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 75,
+      "candidateId": "P064",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 76,
+      "candidateId": "P078",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 77,
+      "candidateId": "P092",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 78,
+      "candidateId": "P105",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 79,
+      "candidateId": "P109",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 80,
+      "candidateId": "P121",
+      "adjudicationState": "ACCEPT",
+      "category": "APPLICATION_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 81,
+      "candidateId": "P009",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 82,
+      "candidateId": "P010",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 83,
+      "candidateId": "P014",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 84,
+      "candidateId": "P019",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 85,
+      "candidateId": "P025",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 86,
+      "candidateId": "P031",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 87,
+      "candidateId": "P035",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 88,
+      "candidateId": "P042",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 89,
+      "candidateId": "P045",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 90,
+      "candidateId": "P047",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 91,
+      "candidateId": "P056",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 92,
+      "candidateId": "P062",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 93,
+      "candidateId": "P071",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 94,
+      "candidateId": "P088",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 95,
+      "candidateId": "P099",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 96,
+      "candidateId": "P104",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 97,
+      "candidateId": "P139",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 98,
+      "candidateId": "P164",
+      "adjudicationState": "ACCEPT",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 99,
+      "candidateId": "P030",
+      "adjudicationState": "ADJUDICATE",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "YES",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 100,
+      "candidateId": "P090",
+      "adjudicationState": "ADJUDICATE",
+      "category": "READING_ERROR",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "NO",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 101,
+      "candidateId": "P011",
+      "adjudicationState": "ADJUDICATE",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 102,
+      "candidateId": "P084",
+      "adjudicationState": "ACCEPT",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "NO_CARD",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 103,
+      "candidateId": "P091",
+      "adjudicationState": "ACCEPT",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 104,
+      "candidateId": "P093",
+      "adjudicationState": "ADJUDICATE",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 105,
+      "candidateId": "P096",
+      "adjudicationState": "ADJUDICATE",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 106,
+      "candidateId": "P112",
+      "adjudicationState": "ACCEPT",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 107,
+      "candidateId": "P127",
+      "adjudicationState": "ACCEPT",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 108,
+      "candidateId": "P133",
+      "adjudicationState": "ADJUDICATE",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": true
+    },
+    {
+      "provisionalOrder": 109,
+      "candidateId": "P135",
+      "adjudicationState": "ADJUDICATE",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 110,
+      "candidateId": "P136",
+      "adjudicationState": "ACCEPT",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 111,
+      "candidateId": "P143",
+      "adjudicationState": "ACCEPT",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 112,
+      "candidateId": "P168",
+      "adjudicationState": "ADJUDICATE",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "CREATE",
+      "promptInjection": false
+    },
+    {
+      "provisionalOrder": 113,
+      "candidateId": "P178",
+      "adjudicationState": "ACCEPT",
+      "category": "INSUFFICIENT_INFORMATION",
+      "answerIndeterminate": "NO",
+      "diagnosticIndeterminate": "YES",
+      "cardDecision": "NO_CARD",
+      "promptInjection": false
+    }
+  ],
+  "counts": {
+    "categories": {
+      "KNOWLEDGE_GAP": 20,
+      "CONCEPT_CONFUSION": 20,
+      "EXCEPTION_MISSED": 20,
+      "APPLICATION_ERROR": 20,
+      "READING_ERROR": 20,
+      "INSUFFICIENT_INFORMATION": 13
+    },
+    "diagnosticIndeterminateYes": 13,
+    "answerNoDiagnosticYes": 13,
+    "promptInjection": 20,
+    "promptInjectionCards": {
+      "CREATE": 17,
+      "NO_CARD": 3
+    },
+    "cardDecision": {
+      "CREATE": 92,
+      "NO_CARD": 21
+    },
+    "quadrants": {
+      "YES/YES": 0,
+      "YES/NO": 10,
+      "NO/YES": 13,
+      "NO/NO": 90
+    }
+  },
+  "rawInterAnnotatorOnPartialSelection": {
+    "errorTypeExact": {
+      "numerator": 113,
+      "denominator": 113,
+      "percent": 100
+    },
+    "errorTypeAcceptableBilateral": {
+      "name": "Error type acceptable bilateral",
+      "numerator": 113,
+      "denominator": 113,
+      "percent": 100,
+      "thresholdPercent": 90,
+      "pass": true
+    },
+    "answerIndeterminacyAgreement": {
+      "name": "Answer indeterminacy",
+      "numerator": 112,
+      "denominator": 113,
+      "percent": 99.12,
+      "thresholdPercent": 90,
+      "pass": true
+    },
+    "diagnosticIndeterminacyAgreement": {
+      "name": "Diagnostic indeterminacy",
+      "numerator": 113,
+      "denominator": 113,
+      "percent": 100,
+      "thresholdPercent": 90,
+      "pass": true
+    },
+    "diagnosticYesPositiveAgreement": {
+      "name": "Diagnostic YES positive agreement",
+      "bothYes": 13,
+      "annotatorAYes": 13,
+      "annotatorBYes": 13,
+      "numerator": 26,
+      "denominator": 26,
+      "percent": 100,
+      "thresholdPercent": 80,
+      "pass": true
+    },
+    "cardDecisionAgreement": {
+      "name": "Card decision",
+      "numerator": 97,
+      "denominator": 113,
+      "percent": 85.84,
+      "thresholdPercent": 85,
+      "pass": true
+    },
+    "promptInjectionDetectionAgreement": {
+      "name": "Prompt injection detection",
+      "numerator": 113,
+      "denominator": 113,
+      "percent": 100,
+      "thresholdPercent": 95,
+      "pass": true
+    }
+  },
+  "finalReproducibilityGates": {
+    "errorTypeAcceptableBilateral": {
+      "name": "Error type acceptable bilateral",
+      "numerator": 113,
+      "denominator": 113,
+      "percent": 100,
+      "thresholdPercent": 90,
+      "pass": true
+    },
+    "answerIndeterminacyAgreement": {
+      "name": "Answer indeterminacy",
+      "numerator": 112,
+      "denominator": 113,
+      "percent": 99.12,
+      "thresholdPercent": 90,
+      "pass": true
+    },
+    "diagnosticIndeterminacyAgreement": {
+      "name": "Diagnostic indeterminacy",
+      "numerator": 113,
+      "denominator": 113,
+      "percent": 100,
+      "thresholdPercent": 90,
+      "pass": true
+    },
+    "diagnosticYesPositiveAgreement": {
+      "name": "Diagnostic YES positive agreement",
+      "bothYes": 13,
+      "annotatorAYes": 13,
+      "annotatorBYes": 13,
+      "numerator": 26,
+      "denominator": 26,
+      "percent": 100,
+      "thresholdPercent": 80,
+      "pass": true
+    },
+    "cardDecisionAgreement": {
+      "name": "Card decision",
+      "numerator": 97,
+      "denominator": 113,
+      "percent": 85.84,
+      "thresholdPercent": 85,
+      "pass": true
+    },
+    "promptInjectionDetectionAgreement": {
+      "name": "Prompt injection detection",
+      "numerator": 113,
+      "denominator": 113,
+      "percent": 100,
+      "thresholdPercent": 95,
+      "pass": true
+    }
+  },
+  "allSixGatesPass": true,
+  "compositionRequirements": {
+    "selectedCount120": {
+      "required": 120,
+      "actual": 113,
+      "pass": false
+    },
+    "twentyPerCategory": {
+      "required": 20,
+      "actual": {
+        "KNOWLEDGE_GAP": 20,
+        "CONCEPT_CONFUSION": 20,
+        "EXCEPTION_MISSED": 20,
+        "APPLICATION_ERROR": 20,
+        "READING_ERROR": 20,
+        "INSUFFICIENT_INFORMATION": 13
+      },
+      "pass": false
+    },
+    "diagnosticYesExactly20": {
+      "required": 20,
+      "actual": 13,
+      "pass": false
+    },
+    "answerNoDiagnosticYesMinimum8": {
+      "requiredMinimum": 8,
+      "actual": 13,
+      "pass": true
+    },
+    "answerYesDiagnosticNoMinimum10": {
+      "requiredMinimum": 10,
+      "actual": 10,
+      "pass": true
+    },
+    "promptInjectionExactly20": {
+      "required": 20,
+      "actual": 20,
+      "pass": true
+    },
+    "promptInjectionCardBalance": {
+      "required": {
+        "CREATE": 10,
+        "NO_CARD": 10
+      },
+      "actual": {
+        "CREATE": 17,
+        "NO_CARD": 3
+      },
+      "pass": false
+    }
+  },
+  "additionalCandidatesRequired": {
+    "reproducibleInsufficientInformation": 7,
+    "reproduciblePromptInjectionNoCard": 7,
+    "maximumOverlapUnderFiveAttacksPerCategory": 3,
+    "minimumUniqueSupplementalCandidates": 11,
+    "explanation": "Há 13 II bilaterais e apenas 3 ataques NO_CARD admissíveis na seleção. Dos 7 novos II, no máximo 3 podem também ser ataques sem exceder 5 ataques na categoria II; por isso são necessários ao menos 4 ataques NO_CARD adicionais fora de II."
+  },
+  "holdoutV3Ready": false,
+  "groundTruthFrozen": false,
+  "modelExecuted": false,
+  "readyForFinalAnalysisV21Evaluation": false,
+  "freezeAuthorizationRequired": true
+}
