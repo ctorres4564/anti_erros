@@ -8,6 +8,7 @@ export interface TurnstileVerifyResult {
 }
 
 export async function validateTurnstileToken(token?: string, remoteIp?: string): Promise<TurnstileVerifyResult> {
+  const isProduction = process.env.NODE_ENV === 'production';
   const isTestEnv = process.env.NODE_ENV === 'test' || process.env.VITEST === 'true';
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
 
@@ -24,7 +25,7 @@ export async function validateTurnstileToken(token?: string, remoteIp?: string):
   }
 
   // Testes automatizados precisam optar explicitamente pelo token determinístico.
-  if (isTestEnv && process.env.TURNSTILE_TEST_BYPASS === 'true') {
+  if (!isProduction && isTestEnv && process.env.TURNSTILE_TEST_BYPASS === 'true') {
     return token === 'test-turnstile-valid'
       ? { success: true }
       : { success: false, error: 'Token Turnstile inválido em teste.' };

@@ -21,7 +21,7 @@ Nenhum benchmark, Gemini real, tuning, nova taxonomia ou alteração de threshol
 - Validação server-side contra o endpoint oficial usando `TURNSTILE_SECRET_KEY`.
 - Falha fechada em produção quando a chave secreta ou o token está ausente.
 - Bypass local somente sem credenciais em `development`.
-- Bypass de suíte automatizada somente com opt-in explícito por `TURNSTILE_TEST_BYPASS=true` e token determinístico; não existe atalho de token em produção.
+- Bypass de suíte automatizada somente com opt-in explícito por `TURNSTILE_TEST_BYPASS=true`, token determinístico e ambiente não produtivo. O código proíbe o bypass quando `NODE_ENV=production`, mesmo se `VITEST` e a flag forem configurados incorretamente.
 - Mensagem compreensível e possibilidade de nova tentativa no frontend.
 
 ### Magic Link e claim
@@ -93,7 +93,7 @@ Configurar no provedor de deploy, sem prefixo público para segredos:
 - `NEXT_PUBLIC_APP_URL`
 - versões legais e limites já descritos em `.env.example`
 
-`TURNSTILE_TEST_BYPASS` deve estar ausente ou `false` em produção. Nunca expor `TURNSTILE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY` ou `GEMINI_API_KEY` com prefixo `NEXT_PUBLIC_`.
+`TURNSTILE_TEST_BYPASS` é exclusivo para testes locais e deve estar ausente ou `false` em produção. A proteção não depende dessa configuração correta: `NODE_ENV=production` bloqueia o bypass no código. Nunca expor `TURNSTILE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY` ou `GEMINI_API_KEY` com prefixo `NEXT_PUBLIC_`.
 
 No Supabase Auth, cadastrar apenas URLs HTTPS controladas:
 
@@ -107,7 +107,7 @@ Confirmar SMTP remetente, domínio, SPF/DKIM, validade do Magic Link e política
 
 - Typecheck: **PASS**
 - Lint: **PASS**
-- Unit: **PASS — 178/178**
+- Unit: **PASS — 181/181**
 - Integration/RLS sem modelo: **PASS — 66/66; 18 ignorados (11 dependem de app/Gemini real e os 7 E2E Sprint 5 são executados separadamente contra o servidor local)**
 - Sprint 5 activation API E2E HTTP sem modelo: **PASS — 7/7**
 - Migration local: **PASS**

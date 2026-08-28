@@ -30,6 +30,46 @@ describe('validação server-side do Turnstile', () => {
     await expect(validateTurnstileToken('invalid-turnstile-token')).resolves.toMatchObject({ success: false });
   });
 
+  it('VITEST e bypass não habilitam token de teste em produção', async () => {
+    vi.stubEnv('NODE_ENV', 'production');
+    vi.stubEnv('VITEST', 'true');
+    vi.stubEnv('TURNSTILE_SECRET_KEY', 'server-secret');
+    vi.stubEnv('TURNSTILE_TEST_BYPASS', 'true');
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ success: false, 'error-codes': ['invalid-input-response'] }), { status: 200 })
+    );
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(validateTurnstileToken('test-turnstile-valid')).resolves.toMatchObject({ success: false });
+    expect(fetchMock).toHaveBeenCalledOnce();
+  });
+
+  it('flag de bypass sozinha não evita validação real em produção', async () => {
+    vi.stubEnv('NODE_ENV', 'production');
+    vi.stubEnv('VITEST', 'false');
+    vi.stubEnv('TURNSTILE_SECRET_KEY', 'server-secret');
+    vi.stubEnv('TURNSTILE_TEST_BYPASS', 'true');
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ success: false, 'error-codes': ['invalid-input-response'] }), { status: 200 })
+    );
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(validateTurnstileToken('test-turnstile-valid')).resolves.toMatchObject({ success: false });
+    expect(fetchMock).toHaveBeenCalledOnce();
+  });
+
+  it('rejeita token inválido pela verificação normal em produção', async () => {
+    vi.stubEnv('NODE_ENV', 'production');
+    vi.stubEnv('TURNSTILE_SECRET_KEY', 'server-secret');
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ success: false, 'error-codes': ['invalid-input-response'] }), { status: 200 })
+    );
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(validateTurnstileToken('browser-token-invalido')).resolves.toMatchObject({ success: false });
+    expect(fetchMock).toHaveBeenCalledOnce();
+  });
+
   it('consulta o endpoint oficial e não envia o secret ao cliente', async () => {
     vi.stubEnv('NODE_ENV', 'production');
     vi.stubEnv('TURNSTILE_SECRET_KEY', 'server-secret');
