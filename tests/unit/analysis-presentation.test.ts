@@ -89,6 +89,9 @@ describe('camada de apresentação da Sprint 4', () => {
     expect(html).toContain(baseAnalysis.recommendedAction);
     expect(html).toContain('criar um flashcard não é a melhor ação');
     expect(getCardDecisionLabel('NO_CARD')).toBe('Sem flashcard recomendado');
+    expect(html).toContain('Qual é a disciplina?');
+    expect(html).toContain('Isto ajudou você?');
+    expect(html).toContain('não altera a saída original');
   });
 
   it('mostra somente o flashcard retornado quando a decisão é CREATE', () => {

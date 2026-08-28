@@ -95,7 +95,7 @@ describe.skipIf(!available)('Sprint 1: validação empírica de RLS, RPC privada
     await admin
       .from('idempotency_locks')
       .insert({ user_id: userId, idempotency_key: `key-${userId}`, status: 'PENDING' });
-    await admin.from('analyses').insert({
+    const { data: analysis } = await admin.from('analyses').insert({
       user_id: userId,
       raw_question: 'Q',
       user_answer: 'A',
@@ -106,6 +106,13 @@ describe.skipIf(!available)('Sprint 1: validação empírica de RLS, RPC privada
       ai_confidence: 0.9,
       model_version: 'v1',
       prompt_version: 'v1',
+    }).select('id').single();
+    if (!analysis) throw new Error('falha ao criar análise de teste');
+    await admin.from('analysis_feedback').insert({
+      analysis_id: analysis.id,
+      user_id: userId,
+      rating: 'YES',
+      comment: 'Feedback de homologação',
     });
     await admin.from('events').insert({ user_id: userId, event_name: 'test_event' });
   }
@@ -131,7 +138,7 @@ describe.skipIf(!available)('Sprint 1: validação empírica de RLS, RPC privada
     }
   });
 
-  const ownTables = ['profiles', 'legal_acceptances', 'marketing_consent_events', 'daily_quotas', 'analyses'] as const;
+  const ownTables = ['profiles', 'legal_acceptances', 'marketing_consent_events', 'daily_quotas', 'analyses', 'analysis_feedback'] as const;
 
   it.each(ownTables)('%s: usuário autenticado lê os próprios dados', async (table) => {
     const { data, error } = await clientA.from(table).select('*');
@@ -189,6 +196,7 @@ describe.skipIf(!available)('Sprint 1: validação empírica de RLS, RPC privada
         },
       ],
       ['events', { user_id: uidA, event_name: 'hack' }],
+      ['analysis_feedback', { analysis_id: crypto.randomUUID(), user_id: uidA, rating: 'YES' }],
     ];
 
     for (const [table, payload] of attempts) {
@@ -204,6 +212,8 @@ describe.skipIf(!available)('Sprint 1: validação empírica de RLS, RPC privada
     expect(e2).not.toBeNull();
     const { error: e3 } = await clientA.from('analyses').update({ is_flashcard_worthy: false }).eq('user_id', uidA);
     expect(e3).not.toBeNull();
+    const { error: e4 } = await clientA.from('analysis_feedback').update({ rating: 'NO' }).eq('user_id', uidA);
+    expect(e4).not.toBeNull();
   });
 
   it('is_admin(): false para usuário comum, true para admin', async () => {
@@ -394,6 +404,7 @@ describe.skipIf(!available)('Sprint 1: validação empírica de RLS, RPC privada
            (SELECT count(*) FROM public.daily_quotas WHERE user_id = $1) +
            (SELECT count(*) FROM public.idempotency_locks WHERE user_id = $1) +
            (SELECT count(*) FROM public.analyses WHERE user_id = $1) +
+           (SELECT count(*) FROM public.analysis_feedback WHERE user_id = $1) +
            (SELECT count(*) FROM public.events WHERE user_id = $1) AS total`,
         [targetId],
       );
@@ -411,6 +422,7 @@ describe.skipIf(!available)('Sprint 1: validação empírica de RLS, RPC privada
            (SELECT count(*) FROM public.daily_quotas WHERE user_id = $1) +
            (SELECT count(*) FROM public.idempotency_locks WHERE user_id = $1) +
            (SELECT count(*) FROM public.analyses WHERE user_id = $1) +
+           (SELECT count(*) FROM public.analysis_feedback WHERE user_id = $1) +
            (SELECT count(*) FROM public.events WHERE user_id = $1) AS total`,
         [targetId],
       );

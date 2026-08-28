@@ -27,12 +27,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await request.json().catch(() => ({}));
-    let claimToken = body.claimToken;
-
-    if (!claimToken) {
-      claimToken = request.cookies.get('claim_token')?.value;
-    }
+    const claimToken = request.cookies.get('claim_token')?.value;
 
     const parseResult = claimPendingSchema.safeParse({ claimToken });
     if (!parseResult.success) {

@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { isOnboardingComplete } from '@/services/onboarding';
+import { recordActivationEvent } from '@/services/activation';
 
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
@@ -40,6 +41,7 @@ export async function GET(request: NextRequest) {
 
     // Verificar se o onboarding está completo
     const isComplete = await isOnboardingComplete(user.id);
+    await recordActivationEvent(user.id, 'auth_completed');
 
     if (isComplete) {
       return NextResponse.redirect(new URL('/app', request.url));

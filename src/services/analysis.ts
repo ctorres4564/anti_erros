@@ -12,6 +12,8 @@ export interface ApiAnalysis {
   correctAnswer: string;
   officialExplanation: string | null;
   discipline?: string | null;
+  confirmedDiscipline?: string | null;
+  disciplineConfirmedAt?: string | null;
   probableErrorType: string;
   confidence: number;
   reasoningSummary: string;
@@ -41,6 +43,8 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
     correctAnswer: row.correct_answer,
     officialExplanation: row.official_explanation,
     discipline: row.discipline,
+    confirmedDiscipline: row.discipline_confirmed,
+    disciplineConfirmedAt: row.discipline_confirmed_at,
     probableErrorType: row.error_type,
     confidence: row.ai_confidence,
     reasoningSummary: row.root_cause_explanation,
@@ -125,7 +129,7 @@ export async function runAnalysisEngine(params: {
 
   // status === 'RESERVED': prossegue para a chamada de IA fora de transação
   const lockId = reserve.lockId as string;
-  await logEvent(admin, userId, 'analysis_started', { idempotencyKey });
+  await logEvent(admin, userId, 'analysis_form_started');
 
   let aiOutput: AnalysisOutput;
   let modelVersion: string;

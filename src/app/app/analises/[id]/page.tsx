@@ -24,6 +24,12 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
   const { data: row, error } = await supabase.from('analyses').select('*').eq('id', id).maybeSingle();
   if (error || !row) notFound();
 
+  const { data: feedback } = await supabase
+    .from('analysis_feedback')
+    .select('rating, comment, updated_at')
+    .eq('analysis_id', id)
+    .maybeSingle();
+
   const analysis: AnalysisView = {
     id: row.id,
     question: row.raw_question,
@@ -31,6 +37,15 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
     correctAnswer: row.correct_answer,
     officialExplanation: row.official_explanation,
     discipline: row.discipline,
+    confirmedDiscipline: row.discipline_confirmed,
+    disciplineConfirmedAt: row.discipline_confirmed_at,
+    feedback: feedback
+      ? {
+          rating: feedback.rating as 'YES' | 'PARTIALLY' | 'NO',
+          comment: feedback.comment,
+          updatedAt: feedback.updated_at,
+        }
+      : null,
     probableErrorType: row.error_type,
     confidence: row.ai_confidence,
     reasoningSummary: row.root_cause_explanation,
