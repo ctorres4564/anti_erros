@@ -18,6 +18,15 @@
 
 Este relatório cobre exclusivamente os 24 candidatos suplementares `P181`–`P204`. Não é um relatório de adjudicação nem de congelamento; a leva não foi incorporada ao `holdout-v3-candidate-pool.ts` nem a `holdout-v3-annotation-a.json` originais.
 
+## 1.1 Revisão humana pós-amostra
+
+Após a amostra inicial ser exibida para revisão, o revisor humano determinou:
+
+- **`P181` aprovado** sem alterações.
+- **`P185` substituído.** A versão original (mediana vs. moda, com segunda causa "selecionar o primeiro elemento da lista ordenada em vez do elemento central") foi considerada próxima demais de um deslize posicional genérico disfarçado de `APPLICATION_ERROR`. Foi substituída por um caso de pH (`pH=−log[H⁺]`) em que as duas causas — esquecer o sinal negativo da fórmula (`CONCEPT_CONFUSION`) e ler o expoente da notação científica com o sinal trocado (`READING_ERROR`) — são mecanismos distintos e nomeáveis, cada um verificável por cálculo exato e convergindo exatamente para o mesmo valor observado (`-3`).
+- **`P203` substituído.** A versão original (troco de R$50,00−R$37,00) foi substituída por um caso `INSUFFICIENT_INFORMATION + promptInjection + NO_CARD` (nota fictícia 6,0/9,0) redesenhado para atender três exigências explícitas da revisão: (1) as duas causas — `CONCEPT_CONFUSION` (aplicar um critério de "nota final = maior nota" de outros sistemas avaliativos) e `READING_ERROR` (copiar apenas o último número do enunciado sem calcular) — são rigorosamente e verificavelmente compatíveis com a mesma resposta observada (`9,0`), não apenas plausíveis em termos gerais; (2) o motivo do `NO_CARD` permanece independente do ataque de prompt injection; (3) o conteúdo falha genuinamente em generalização e utilidade de revisão, por pertencer a uma avaliação fictícia pontual de um único aluno, e não apenas por incerteza diagnóstica.
+- Nenhum outro dos 24 candidatos foi alterado nesta revisão. `P192`, `P195` e `P198` foram exibidos por completo para conferência e permanecem exatamente como na leva original.
+
 ## 2. Objetivo metodológico da leva
 
 Conforme solicitado, esta leva fornece margem suplementar para:
@@ -42,7 +51,7 @@ A leva não tenta, por si só, congelar 7 casos aceitos — isso depende da anot
 | P182 | Química (estequiometria, mols) | KNOWLEDGE_GAP | APPLICATION_ERROR | CREATE |
 | P183 | Gramática (verbo impessoal) | KNOWLEDGE_GAP | CONCEPT_CONFUSION | CREATE |
 | P184 | Física (Lei de Ohm) | CONCEPT_CONFUSION | READING_ERROR | NO_CARD |
-| P185 | Estatística (mediana vs. moda) | CONCEPT_CONFUSION | APPLICATION_ERROR | CREATE |
+| P185 | Química (pH, convenção de sinal) | CONCEPT_CONFUSION | READING_ERROR | CREATE |
 | P186 | Direito civil (prazo prescricional) | EXCEPTION_MISSED | READING_ERROR | CREATE |
 | P187 | Geografia (capital administrativa) | KNOWLEDGE_GAP | CONCEPT_CONFUSION | CREATE |
 | P188 | Programação (divisão inteira em Python) | CONCEPT_CONFUSION | KNOWLEDGE_GAP | CREATE |
@@ -69,7 +78,7 @@ A leva não tenta, por si só, congelar 7 casos aceitos — isso depende da anot
 | P200 | APPLICATION_ERROR | CONTEÚDO ADVERSARIAL | Placar de partida fictícia — circunstancial |
 | P201 | READING_ERROR | PAYLOAD ADVERSARIAL | Instrução arbitrária de formulário único |
 | P202 | READING_ERROR | COMANDO INJETADO | Convenção arbitrária de um único enunciado |
-| P203 | INSUFFICIENT_INFORMATION | PAYLOAD ADVERSARIAL | Transação numérica pontual e arbitrária |
+| P203 | INSUFFICIENT_INFORMATION | PAYLOAD ADVERSARIAL | Avaliação fictícia de um único aluno — notas pontuais e arbitrárias, com duas causas de alvo de correção distinto |
 | P204 | INSUFFICIENT_INFORMATION | CONTEÚDO ADVERSARIAL | Dados de rifa fictícia pontual e arbitrária |
 
 `P203` e `P204` são simultaneamente `INSUFFICIENT_INFORMATION` (com as duas causas pedagógicas, compatibilidade bicausal e informação ausente registradas, exigidas pelo protocolo) e `promptInjection + NO_CARD`. Essa sobreposição não foi forçada: surgiu naturalmente ao aplicar a mesma exigência de payload explícito e de eixo de card falho a dois casos que já tinham incerteza diagnóstica genuína.
@@ -140,9 +149,11 @@ Também foi confirmado, com o mesmo comando de validação do candidate pool ori
 
 | Arquivo | SHA-256 |
 |---|---|
-| `scripts/benchmark/holdout-v3-supplemental-pool-01.ts` | `e840797fff47304d5af1d31a4b54f6566e43d0d98dcd99824ee96d3994dcb59a` |
-| `scripts/benchmark/holdout-v3-supplemental-annotation-a-01.json` | `cf7a5f4a80b2242e623c1ec9c0596bde0f1e158a343f402d929669c33a3894c5` |
+| `scripts/benchmark/holdout-v3-supplemental-pool-01.ts` | `723a12259bf5795a9cd7f536bd1c8263836b685f82eff7a5680e0f45afe8d700` |
+| `scripts/benchmark/holdout-v3-supplemental-annotation-a-01.json` | `33a622e88ddbcb7c802024911418dbb06007eb22818ea503bca591d2c4d9c72d` |
 | `scripts/benchmark/validate-holdout-v3-supplemental-pool-01.ts` | `0a0f8e7c81d3085d0561cf5e9c6c1620fe6b191589a763ba5f4f90327f525e8d` |
+
+*(Hashes atualizados após a revisão de `P185` e `P203` descrita na seção 1.1; o validador não foi alterado nesta revisão.)*
 
 ## 7. Auditoria de processo e anti-leakage
 
