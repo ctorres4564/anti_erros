@@ -26,7 +26,6 @@ const previewResponseSchema = z.object({
     discipline: z.string(),
     isAligned: z.boolean(),
   }),
-  claimToken: z.string().optional(),
 });
 
 const analysisResponseSchema = z.object({

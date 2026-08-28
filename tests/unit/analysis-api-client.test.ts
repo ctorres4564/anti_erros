@@ -45,8 +45,7 @@ afterEach(() => {
 });
 
 describe('cliente dos contratos de análise da Sprint 4', () => {
-  it('envia preview com Turnstile e não devolve o token de claim para a UI', async () => {
-    const dummyClaimToken = ['claim', 'token', 'de teste'].join('-');
+  it('avança com o preview sem depender de token de claim no JSON', async () => {
     const dummyTurnstileToken = ['turnstile', 'validado'].join('-');
     const fetchMock = vi.fn().mockResolvedValue(
       jsonResponse({
@@ -57,7 +56,6 @@ describe('cliente dos contratos de análise da Sprint 4', () => {
           discipline: 'Atualidades',
           isAligned: true,
         },
-        claimToken: dummyClaimToken,
       })
     );
     vi.stubGlobal('fetch', fetchMock);

@@ -75,7 +75,7 @@ O preview apresenta exclusivamente:
 - comparação independente com a autopercepção;
 - CTA “Ver análise completa”.
 
-Resposta correta, explicação completa, ação recomendada e flashcard não aparecem antes do gate. O `claimToken` retornado pelo contrato legado é descartado pela camada cliente; a UI usa o cookie HttpOnly e não persiste token em storage.
+Resposta correta, explicação completa, ação recomendada e flashcard não aparecem antes do gate. O transporte do `claimToken` ocorre exclusivamente pelo cookie HttpOnly; o token não integra o JSON público, não fica acessível ao JavaScript e não é persistido em storage.
 
 ### Gate de autenticação e claim
 
