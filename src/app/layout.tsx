@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { AuthNavigation } from "@/components/auth/AuthNavigation";
+import { createClient } from "@/lib/supabase/server";
 import { themeInitializationScript } from "@/lib/theme";
 import "./globals.css";
 
@@ -10,11 +11,14 @@ export const metadata: Metadata = {
   description: "Entenda causas prováveis dos seus erros e receba uma ação prática para estudar melhor.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col font-sans">
@@ -29,19 +33,11 @@ export default function RootLayout({
               <span className="text-xl font-bold tracking-tight text-primary">
                 Anti-Erros
               </span>
-              <span className="text-xs bg-primary/10 text-primary font-medium px-2 py-0.5 rounded-full">
+              <span className="hidden text-xs bg-primary/10 text-primary font-medium px-2 py-0.5 rounded-full sm:inline">
                 Método Aprender
               </span>
             </Link>
-            <nav aria-label="Navegação principal" className="flex items-center gap-2 text-sm font-medium">
-              <Link href="/app" className="hidden min-h-10 items-center rounded-lg px-3 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:inline-flex">
-                Minhas análises
-              </Link>
-              <ThemeToggle />
-              <Link href="/login" className="inline-flex min-h-10 items-center rounded-lg border bg-card px-3 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                Entrar
-              </Link>
-            </nav>
+            <AuthNavigation authenticated={Boolean(user)} />
           </div>
         </header>
         <main className="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">

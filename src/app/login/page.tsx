@@ -1,56 +1,69 @@
 'use client';
 
-import { useState, useTransition, Suspense } from 'react';
+import { useEffect, useState, useTransition, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
+import {
+  AUTH_RESEND_COOLDOWN_SECONDS,
+  getLoginErrorMessage,
+  getResendLabel,
+} from '@/lib/auth/redirect';
+import { requestMagicLink } from '@/lib/auth/request-magic-link';
 import { loginSchema } from '@/lib/validation';
 import { Mail, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 function LoginForm() {
   const searchParams = useSearchParams();
-  const initialError = searchParams.get('error');
+  const authError = searchParams.get('auth_error');
+  const initialError = getLoginErrorMessage(authError);
   const isContinuingAnalysis = searchParams.get('continue') === 'analysis';
 
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(initialError);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [cooldownSeconds, setCooldownSeconds] = useState(0);
   const [isPending, startTransition] = useTransition();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMessage(null);
+  useEffect(() => {
+    if (!isSuccess || cooldownSeconds <= 0) return;
 
+    const timer = window.setTimeout(() => {
+      setCooldownSeconds((current) => Math.max(0, current - 1));
+    }, 1000);
+
+    return () => window.clearTimeout(timer);
+  }, [cooldownSeconds, isSuccess]);
+
+  const sendLink = async () => {
     const validation = loginSchema.safeParse({ email });
     if (!validation.success) {
       setErrorMessage(validation.error.errors[0]?.message || 'E-mail inválido.');
       return;
     }
 
-    startTransition(async () => {
-      try {
-        const supabase = createClient();
-        const origin = window.location.origin;
-        const { error } = await supabase.auth.signInWithOtp({
-          email: validation.data.email,
-          options: {
-            emailRedirectTo: `${origin}/auth/callback`,
-          },
-        });
+    try {
+      const supabase = createClient();
+      const { error } = await requestMagicLink(supabase.auth, validation.data.email);
 
-        if (error) {
-          console.error('Erro no Supabase Auth signInWithOtp:', error.message);
-          // Mensagem genérica para resiliência e proteção contra enumeração
-          setErrorMessage('Não foi possível enviar o link de acesso no momento. Tente novamente mais tarde.');
-          return;
-        }
-
-        setIsSuccess(true);
-      } catch (err) {
-        console.error('Erro inesperado no login:', err);
-        setErrorMessage('Ocorreu um erro inesperado. Tente novamente.');
+      if (error) {
+        console.error('Falha ao solicitar Magic Link.', { code: error.code ?? 'otp_request_failed' });
+        setErrorMessage('Não foi possível enviar o link de acesso no momento. Tente novamente mais tarde.');
+        return;
       }
-    });
+
+      setCooldownSeconds(AUTH_RESEND_COOLDOWN_SECONDS);
+      setIsSuccess(true);
+    } catch {
+      console.error('Falha inesperada ao solicitar Magic Link.');
+      setErrorMessage('Ocorreu um erro inesperado. Tente novamente.');
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage(null);
+    startTransition(sendLink);
   };
 
   if (isSuccess) {
@@ -66,23 +79,44 @@ function LoginForm() {
           </p>
           {isContinuingAnalysis ? (
             <p className="text-sm text-muted-foreground">
-              Abra o link neste navegador para recuperar a análise já processada, sem uma nova inferência.
+              O acesso pode ser concluído em outro navegador ou dispositivo. Para resgatar automaticamente esta prévia, use o navegador que a criou.
             </p>
           ) : null}
         </div>
-        <p className="text-xs text-muted-foreground">
-          Não recebeu? Verifique a caixa de spam ou{' '}
+        {errorMessage ? (
+          <div className="flex items-start gap-3 rounded-lg border border-destructive/20 bg-destructive/10 p-3.5 text-left text-sm text-destructive" role="alert">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+            <span>{errorMessage}</span>
+          </div>
+        ) : null}
+        <div className="space-y-3 text-xs text-muted-foreground">
+          <p>Não recebeu? Verifique a caixa de spam.</p>
           <button
             type="button"
+            disabled={isPending || cooldownSeconds > 0}
             onClick={() => {
-              setIsSuccess(false);
-              setEmail('');
+              setErrorMessage(null);
+              startTransition(sendLink);
             }}
-            className="text-primary hover:underline font-medium"
+            className="min-h-10 rounded-lg border px-3 font-medium text-primary disabled:cursor-not-allowed disabled:opacity-60"
           >
-            tente com outro e-mail
-          </button>.
-        </p>
+            {getResendLabel(isPending, cooldownSeconds)}
+          </button>
+          <p>
+            E-mail incorreto?{' '}
+            <button
+              type="button"
+              onClick={() => {
+                setIsSuccess(false);
+                setCooldownSeconds(0);
+                setEmail('');
+              }}
+              className="font-medium text-primary hover:underline"
+            >
+              Usar outro e-mail
+            </button>
+          </p>
+        </div>
       </div>
     );
   }
@@ -138,7 +172,7 @@ function LoginForm() {
               <span>Enviando link...</span>
             </>
           ) : (
-            'ENVIAR LINK DE ACESSO'
+            authError === 'link_invalid' ? 'ENVIAR NOVO LINK' : 'ENVIAR LINK DE ACESSO'
           )}
         </button>
       </form>
