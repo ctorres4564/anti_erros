@@ -155,8 +155,9 @@ describe.skipIf(!available)('Sprint 5: APIs de ativação sem modelo', () => {
     const tokenHash = new URL(link.properties.action_link).searchParams.get('token');
     if (!tokenHash) throw new Error('token_hash ausente no Magic Link local');
 
+    // Cliente novo, sem storage/code verifier do navegador que solicitou o link.
     const magicSession = sessionClient();
-    const { error: verifyError } = await magicSession.client.auth.verifyOtp({ type: 'magiclink', token_hash: tokenHash });
+    const { error: verifyError } = await magicSession.client.auth.verifyOtp({ type: 'email', token_hash: tokenHash });
     if (verifyError) throw verifyError;
 
     const response = await fetch(`${APP_URL}/api/pending-analyses/claim`, {

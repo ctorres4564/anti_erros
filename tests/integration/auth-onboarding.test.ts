@@ -346,9 +346,6 @@ describe.skipIf(!available)('Sprint 2: Integração de Autenticação, Onboardin
     // 1. Solicitar Magic Link
     const { error: otpError } = await magicClient.auth.signInWithOtp({
       email: emails.magicLinkUser,
-      options: {
-        emailRedirectTo: 'http://localhost:3000/auth/callback',
-      },
     });
 
     expect(otpError).toBeNull();
