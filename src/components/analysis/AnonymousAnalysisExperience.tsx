@@ -19,8 +19,8 @@ export function AnonymousAnalysisExperience() {
 
   return (
     <div className="space-y-10 pb-8 sm:space-y-14">
-      <section className="grid items-center gap-8 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:py-12">
-        <div className="space-y-6">
+      <section className="grid items-start gap-8 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:py-12">
+        <div className="space-y-6 lg:pt-7">
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
             <Target className="h-3.5 w-3.5" aria-hidden="true" />
             Método Aprender

@@ -56,7 +56,7 @@ function LoginForm() {
   if (isSuccess) {
     return (
       <div className="w-full max-w-md mx-auto p-6 sm:p-8 bg-card border rounded-xl shadow-sm text-center space-y-5">
-        <div className="mx-auto w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-success/10 text-success">
           <CheckCircle2 className="w-6 h-6" />
         </div>
         <div className="space-y-2">

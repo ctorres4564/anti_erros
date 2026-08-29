@@ -115,7 +115,7 @@ export function TurnstileWidget({ onChange, resetSignal = 0 }: TurnstileWidgetPr
       ) : null}
 
       {status === 'verified' ? (
-        <p className="flex items-center gap-2 text-sm text-emerald-700">
+        <p className="flex items-center gap-2 text-sm text-success">
           <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
           {siteKey ? 'Verificação concluída.' : 'Verificação local habilitada.'}
         </p>

@@ -107,7 +107,7 @@ export function AuthenticatedAnalysisExperience({
         </div>
       ) : null}
       {claimState.status === 'success' ? (
-        <div role="status" className="flex items-center gap-3 rounded-xl border border-emerald-600/30 bg-emerald-50 p-4 text-sm text-emerald-900">
+        <div role="status" className="flex items-center gap-3 rounded-xl border border-success/30 bg-success/10 p-4 text-sm text-foreground">
           <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
           Análise vinculada à sua conta com sucesso.
         </div>

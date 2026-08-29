@@ -187,7 +187,7 @@ export function ContaView({ initialProfile }: ContaViewProps) {
               <div
                 className={`p-3 rounded-lg text-xs flex items-center gap-2 ${
                   nameMessage.type === 'success'
-                    ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400'
+                    ? 'border border-success/20 bg-success/10 text-success'
                     : 'bg-destructive/10 border border-destructive/20 text-destructive'
                 }`}
               >
@@ -211,7 +211,7 @@ export function ContaView({ initialProfile }: ContaViewProps) {
                 <Mail className="w-4 h-4 text-muted-foreground" />
                 <span className="text-sm font-medium text-foreground">{initialProfile.email}</span>
               </div>
-              <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+              <span className="rounded bg-success/10 px-2 py-0.5 text-[10px] font-semibold uppercase text-success">
                 Verificado
               </span>
             </div>
@@ -231,7 +231,7 @@ export function ContaView({ initialProfile }: ContaViewProps) {
             <span
               className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${
                 marketingConsented
-                  ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
+                  ? 'bg-success/10 text-success'
                   : 'bg-muted text-muted-foreground'
               }`}
             >
@@ -264,7 +264,7 @@ export function ContaView({ initialProfile }: ContaViewProps) {
             <div
               className={`p-3 rounded-lg text-xs flex items-center gap-2 ${
                 marketingMessage.type === 'success'
-                  ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400'
+                  ? 'border border-success/20 bg-success/10 text-success'
                   : 'bg-destructive/10 border border-destructive/20 text-destructive'
               }`}
             >
@@ -281,7 +281,7 @@ export function ContaView({ initialProfile }: ContaViewProps) {
         {/* Seção 3: Conformidade Legal */}
         <div className="p-4 bg-muted/30 border rounded-lg flex items-center justify-between text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <ShieldCheck className="h-4 w-4 text-success" />
             <span>Termos e Política de Privacidade aceitos e auditáveis.</span>
           </div>
           <div className="flex items-center gap-3">

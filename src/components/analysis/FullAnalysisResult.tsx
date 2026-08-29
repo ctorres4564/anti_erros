@@ -115,9 +115,9 @@ export function FullAnalysisResult({ analysis }: { analysis: AnalysisView }) {
         <p className="mt-3 text-sm leading-relaxed">{toConservativeLanguage(analysis.reasoningSummary)}</p>
       </div>
 
-      <div className="rounded-xl border-2 border-emerald-600/30 bg-emerald-50 p-5 text-emerald-950">
+      <div className="rounded-xl border-2 border-success/30 bg-success/10 p-5 text-foreground">
         <div className="flex items-center gap-2">
-          <ListChecks className="h-5 w-5 text-emerald-700" aria-hidden="true" />
+          <ListChecks className="h-5 w-5 text-success" aria-hidden="true" />
           <h3 className="text-sm font-extrabold uppercase tracking-wide">O que fazer agora</h3>
         </div>
         <p className="mt-3 text-base font-semibold leading-relaxed">
