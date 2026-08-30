@@ -46,6 +46,13 @@ const initialValues: AnalysisFormValues = {
   userAttribution: 'NAO_SEI',
 };
 
+export function isTurnstileSubmissionBlocked(
+  mode: AnalysisFormMode,
+  turnstileReady: boolean
+): boolean {
+  return mode === 'anonymous' && !turnstileReady;
+}
+
 function TextField({
   id,
   label,
@@ -147,7 +154,7 @@ export function AnalysisForm({ mode, onPreview, onAnalysis }: AnalysisFormProps)
       return;
     }
 
-    if (mode === 'anonymous' && !turnstileReady) {
+    if (isTurnstileSubmissionBlocked(mode, turnstileReady)) {
       setFormError('Conclua a verificação de segurança antes de enviar.');
       return;
     }
@@ -265,7 +272,7 @@ export function AnalysisForm({ mode, onPreview, onAnalysis }: AnalysisFormProps)
 
       <button
         type="submit"
-        disabled={isSubmitting || (mode === 'anonymous' && !turnstileReady)}
+        disabled={isSubmitting || isTurnstileSubmissionBlocked(mode, turnstileReady)}
         className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-sm transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isSubmitting ? (

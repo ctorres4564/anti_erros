@@ -2,20 +2,23 @@
 
 import Script from 'next/script';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { AlertCircle, CheckCircle2, Loader2, RotateCcw } from 'lucide-react';
+import { AlertCircle, RotateCcw } from 'lucide-react';
 
-type TurnstileStatus = 'loading' | 'verified' | 'failed';
+export type TurnstileStatus = 'loading' | 'verified' | 'failed';
+
+export interface TurnstileRenderOptions {
+  sitekey: string;
+  appearance: 'interaction-only';
+  callback: (token: string) => void;
+  'error-callback': () => void;
+  'expired-callback': () => void;
+  theme: 'auto';
+}
 
 interface TurnstileApi {
   render: (
     container: HTMLElement,
-    options: {
-      sitekey: string;
-      callback: (token: string) => void;
-      'error-callback': () => void;
-      'expired-callback': () => void;
-      theme: 'auto';
-    }
+    options: TurnstileRenderOptions
   ) => string;
   remove: (widgetId: string) => void;
   reset: (widgetId: string) => void;
@@ -35,6 +38,20 @@ interface TurnstileWidgetProps {
 const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 const isLocalBypassAllowed = process.env.NODE_ENV !== 'production';
 
+export function createTurnstileRenderOptions(
+  currentSiteKey: string,
+  onChange: (token: string | undefined, status: TurnstileStatus) => void
+): TurnstileRenderOptions {
+  return {
+    sitekey: currentSiteKey,
+    appearance: 'interaction-only',
+    theme: 'auto',
+    callback: (token) => onChange(token, 'verified'),
+    'error-callback': () => onChange(undefined, 'failed'),
+    'expired-callback': () => onChange(undefined, 'failed'),
+  };
+}
+
 export function TurnstileWidget({ onChange, resetSignal = 0 }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
@@ -51,13 +68,10 @@ export function TurnstileWidget({ onChange, resetSignal = 0 }: TurnstileWidgetPr
   const renderWidget = useCallback(() => {
     if (!siteKey || !containerRef.current || !window.turnstile || widgetIdRef.current) return;
 
-    widgetIdRef.current = window.turnstile.render(containerRef.current, {
-      sitekey: siteKey,
-      theme: 'auto',
-      callback: (token) => updateStatus(token, 'verified'),
-      'error-callback': () => updateStatus(undefined, 'failed'),
-      'expired-callback': () => updateStatus(undefined, 'failed'),
-    });
+    widgetIdRef.current = window.turnstile.render(
+      containerRef.current,
+      createTurnstileRenderOptions(siteKey, updateStatus)
+    );
   }, [updateStatus]);
 
   useEffect(() => {
@@ -95,7 +109,10 @@ export function TurnstileWidget({ onChange, resetSignal = 0 }: TurnstileWidgetPr
   };
 
   return (
-    <div className="space-y-2 rounded-xl border bg-muted/30 p-4" aria-live="polite">
+    <div
+      className={status === 'failed' ? 'rounded-xl border border-destructive/30 bg-destructive/10 p-4' : 'min-h-0'}
+      aria-live="polite"
+    >
       {siteKey ? (
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
@@ -105,21 +122,7 @@ export function TurnstileWidget({ onChange, resetSignal = 0 }: TurnstileWidgetPr
         />
       ) : null}
 
-      <div ref={containerRef} className="min-h-0 overflow-hidden" />
-
-      {status === 'loading' ? (
-        <p className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-          Verificando segurança…
-        </p>
-      ) : null}
-
-      {status === 'verified' ? (
-        <p className="flex items-center gap-2 text-sm text-success">
-          <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-          {siteKey ? 'Verificação concluída.' : 'Verificação local habilitada.'}
-        </p>
-      ) : null}
+      <div ref={containerRef} className="min-h-0 max-w-full" />
 
       {status === 'failed' ? (
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
