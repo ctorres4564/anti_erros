@@ -4,7 +4,7 @@ export interface AnalysisFormValues {
   question: string;
   userAnswer: string;
   correctAnswer: string;
-  officialExplanation?: string;
+  studentReasoning?: string;
   userAttribution: UserAttribution;
 }
 export interface AnalysisPreview {
@@ -19,7 +19,7 @@ export interface AnalysisView {
   question: string;
   userAnswer: string;
   correctAnswer: string;
-  officialExplanation: string | null;
+  studentReasoning: string | null;
   discipline?: string | null;
   confirmedDiscipline?: string | null;
   disciplineConfirmedAt?: string | null;

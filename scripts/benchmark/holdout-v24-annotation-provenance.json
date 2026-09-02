@@ -1,0 +1,17 @@
+{
+  "instrument": "holdout-v24-blind",
+  "annotationA": {
+    "file": "scripts/benchmark/holdout-v24-annotation-a.json",
+    "origin": "independent annotation artifact recovered from conversation"
+  },
+  "annotationB": {
+    "file": "scripts/benchmark/holdout-v24-annotation-b.json",
+    "origin": "independent annotation artifact recovered from conversation"
+  },
+  "groundTruth": {
+    "file": "scripts/benchmark/holdout-v24-blind-ground-truth.json",
+    "role": "original constructor ground truth"
+  },
+  "modelUnderTestExecuted": false,
+  "datasetFrozen": false
+}

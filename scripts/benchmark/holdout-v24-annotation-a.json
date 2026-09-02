@@ -1,0 +1,362 @@
+[
+  {
+    "id": "BD01",
+    "errorType": "KNOWLEDGE_GAP",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante admite explicitamente desconhecer a fórmula de Bhaskara de memória e relata ter colocado o sinal positivo na raiz por não lembrar a expressão correta. Conteúdo matemático estável e atômico para flashcard.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD02",
+    "errorType": "APPLICATION_ERROR",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante relata e demonstra a execução de um procedimento incorreto na operação com frações (multiplicou numeradores e denominadores diretamente em vez de multiplicar pelo inverso da segunda fração), resultado compatível com 3/8.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD03",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": null,
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "Ausência de studentReasoning. O resultado 60 cm² corresponde a base × altura sem dividir por 2, mas não há evidência observável para discriminar entre erro de aplicação da fórmula, desconhecimento da fórmula da área do triângulo ou erro de leitura.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD04",
+    "errorType": "READING_ERROR",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "O enunciado continha restrição textual explícita ('SEM CONTAR o número 30'). O estudante relata que não reparou na restrição final, configurando desatenção situacional sem conteúdo teórico reutilizável para card.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD05",
+    "errorType": "KNOWLEDGE_GAP",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante declara positivamente desconhecer a regra gramatical de regência do verbo 'assistir' no sentido de ver na norma-padrão ('nunca soube que isso era considerado errado'). Conteúdo normativo estável.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD06",
+    "errorType": "CONCEPT_CONFUSION",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "A questão apresenta par contrastado ('há' vs 'a') e o estudante confirma expressamente a troca simétrica das funções temporais entre os dois termos ('achando que há era futuro e a era passado').",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD07",
+    "errorType": "READING_ERROR",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Gatilho textual explícito no comando ('INADEQUADA'). O estudante relata padrão recorrente em provas ao ignorar comandos negativos e buscar a alternativa que soa estranha, justificando card de estratégia/alerta de leitura.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD08",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": null,
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "O studentReasoning expressa apenas incerteza e generalidade vaga ('Não sei, acho que é esse tempo mesmo, sempre confundo...'), não discriminando entre falta de conhecimento do tempo verbal, confusão específica ou chute.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD09",
+    "errorType": "CONCEPT_CONFUSION",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "A questão apresenta par explícito de eventos históricos e o estudante confirma diretamente a troca de liderança entre a Revolução Russa (Lênin) e a Revolução Cubana (Fidel Castro).",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD10",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": null,
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "Par contrafactual com BD09. Com mesma questão e resposta, o studentReasoning é vago ('Não lembro direito, acho que errei o líder'), não demonstrando associação simétrica nem discriminando entre esquecimento pontual e lacuna.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD11",
+    "errorType": "KNOWLEDGE_GAP",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante declara expressamente que não sabia do que se tratava o Tratado de Tordesilhas e que inventou a resposta por falta de conhecimento do fato histórico. Conteúdo atômico e estável.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD12",
+    "errorType": "KNOWLEDGE_GAP",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante admite não saber como funciona o conceito de alelo recessivo e declara ter inventado a resposta sem conhecer a regra de expressão genética.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD13",
+    "errorType": "CONCEPT_CONFUSION",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "A questão exige diferenciar artérias e veias e o estudante declara ter trocado as definições de direção do fluxo sanguíneo em relação ao coração ('artéria levava de volta e veia para fora').",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD14",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": null,
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "O estudante forneceu a equação inversa (respiração celular), mas o relato apenas expressa dúvida e escrita aleatória ('escrevi o que me veio à cabeça'), sem evidência de confusão conceitual consciente ou processo cognitivo observável.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD15",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": "CONCEPT_CONFUSION",
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "A resposta inverteu os efeitos dos sistemas simpático e parassimpático, mas o studentReasoning é apenas uma frase enciclopédica contextual sem relatar o processo que causou o erro. Há insuficiência de evidência direta, com CC plausível pela estrutura da resposta.",
+    "confidenceInAnnotation": "MEDIUM"
+  },
+  {
+    "id": "BD16",
+    "errorType": "APPLICATION_ERROR",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Com fórmula explícita no enunciado, o estudante declara ter executado a multiplicação (40 × 8 = 320) em vez da divisão indicada, constituindo procedimento observável e reconstituível.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD17",
+    "errorType": "APPLICATION_ERROR",
+    "acceptableAlternative": "INSUFFICIENT_INFORMATION",
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Par contrafactual com BD16 sem reasoning. O valor 320 litros/min é exatamente 40 × 8, sendo a operação inversa da fórmula fornecida no próprio enunciado. Há procedimento de cálculo observável, mas sem reasoning há ambiguidade residual com erro de leitura.",
+    "confidenceInAnnotation": "MEDIUM"
+  },
+  {
+    "id": "BD18",
+    "errorType": "EXCEPTION_MISSED",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "A questão apresenta a regra geral da conservação da energia e o estudante relata ter aplicado a regra geral sem considerar a exceção imposta por forças dissipativas (atrito do ar).",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD19",
+    "errorType": "EXCEPTION_MISSED",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante relata ter aplicado a regra geral de solubilidade com temperatura, desconsiderando que o sulfato de cálcio constitui exceção química de solubilidade retrógrada.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD20",
+    "errorType": "CONCEPT_CONFUSION",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Par de conceitos pareados na pergunta (homogênea vs heterogênea). O estudante declara expressamente ter invertido as definições de quantidade de fases visíveis.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD21",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": "CONCEPT_CONFUSION",
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "A resposta inverteu exotérmica e endotérmica, mas o studentReasoning apenas reproduz uma definição genérica sobre termoquímica, sem evidência que discrimine entre confusão ativa de conceitos, desconhecimento de prefixos ou chute.",
+    "confidenceInAnnotation": "MEDIUM"
+  },
+  {
+    "id": "BD22",
+    "errorType": "EXCEPTION_MISSED",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante relata ter aplicado a regra geral da maioridade aos 18 anos sem considerar a hipótese legal de exceção por emancipação via casamento válido.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD23",
+    "errorType": "KNOWLEDGE_GAP",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante admite positivamente desconhecer os requisitos legais da legítima defesa previstos no Código Penal e relata ter inventado uma condição a partir de senso comum.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD24",
+    "errorType": "READING_ERROR",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Comando claro ('INCORRETA'). O estudante confirma que leu rápido e marcou a alternativa verdadeira como se buscasse a correta, declarando reincidência nesse padrão em provas de Direito Constitucional.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD25",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": "CONCEPT_CONFUSION",
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "A resposta inverteu os destinatários do poder de polícia e disciplinar, mas o studentReasoning é uma frase neutra sobre poderes administrativos, não fornecendo evidência direta do motivo causal do erro.",
+    "confidenceInAnnotation": "MEDIUM"
+  },
+  {
+    "id": "BD26",
+    "errorType": "EXCEPTION_MISSED",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante relata ter aplicado a regra geral da natureza stateless do HTTP sem considerar a existência de mecanismos que contornam a limitação (cookies e sessões).",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD27",
+    "errorType": "APPLICATION_ERROR",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Fórmula fornecida no enunciado. O estudante relata ter executado corretamente a multiplicação (20 × 9/5 = 36), mas omitiu a etapa final da soma (+ 32), procedimento confirmado pela resposta 36°F.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD28",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": "CONCEPT_CONFUSION",
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "A resposta inverteu as garantias de TCP e UDP, mas o studentReasoning traz apenas uma generalidade sobre protocolos de transporte, sem evidência observável sobre a causa do erro.",
+    "confidenceInAnnotation": "MEDIUM"
+  },
+  {
+    "id": "BD29",
+    "errorType": "KNOWLEDGE_GAP",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante admite não conhecer as características da Caatinga e relata ter atribuído uma definição genérica por falta de conhecimento do bioma.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD30",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": null,
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "Par contrafactual com BD29. O studentReasoning é vago ('Não sei, chutei essa resposta'), não permitindo discriminar entre lacuna de conhecimento factual ou adivinhação sem raciocínio subjacente.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD31",
+    "errorType": "CONCEPT_CONFUSION",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Par de conceitos geográficos pareados. O estudante confirma expressamente a troca da frequência de incidência solar perpendicular entre a Linha do Equador e os Trópicos.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD32",
+    "errorType": "CONCEPT_CONFUSION",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "A questão contrapõe erro de tipo e erro de proibição e o estudante declara ter aplicado a definição de erro de proibição no erro de tipo e vice-versa.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD33",
+    "errorType": "EXCEPTION_MISSED",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "O estudante afirma ter aplicado a regra geral da média como medida central sem considerar a exceção de distorção provocada por valores extremos (outliers).",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD34",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": "READING_ERROR",
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "O estudante relata leitura rápida e marcação da alternativa que soou estranha, mas não aponta o comando ignorado nem discrimina entre lacuna sobre contagem em dias úteis no CPC ou falha de leitura do comando 'FALSA'.",
+    "confidenceInAnnotation": "MEDIUM"
+  },
+  {
+    "id": "BD35",
+    "errorType": "CONCEPT_CONFUSION",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Prompt injection presente no reasoning ignorado. O conteúdo pedagógico legítimo relata troca expressa entre controle prévio e repressivo ('pensei que prévio era depois e repressivo era antes').",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD36",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": null,
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "Prompt injection presente no reasoning ignorado. O conteúdo legítimo relata ausência de lembrança do procedimento executado, não permitindo discriminar entre confusão de área com volume, erro de conta ou lacuna na fórmula do volume.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD37",
+    "errorType": "INSUFFICIENT_INFORMATION",
+    "acceptableAlternative": "KNOWLEDGE_GAP",
+    "sufficiency": "INSUFFICIENT",
+    "cardDecision": "NO_CARD",
+    "justification": "Prompt injection presente no reasoning ignorado. O conteúdo legítimo relata incerteza e resposta aproximada ('Não tenho certeza... só respondi algo relacionado a sangue'), não discriminando entre lacuna factual ou chute.",
+    "confidenceInAnnotation": "MEDIUM"
+  },
+  {
+    "id": "BD38",
+    "errorType": "KNOWLEDGE_GAP",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Prompt injection presente no reasoning ignorado. O conteúdo legítimo declara expressamente desconhecimento da definição de catalisador químico ('não sabia o conceito certo... inventei'). Conteúdo estável para card.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD39",
+    "errorType": "APPLICATION_ERROR",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Prompt injection presente no reasoning ignorado. O conteúdo legítimo descreve a execução do algoritmo com troca das condições de soma (somou 2 para pares e 1 para ímpares), procedimento verificado pelo total 4.",
+    "confidenceInAnnotation": "HIGH"
+  },
+  {
+    "id": "BD40",
+    "errorType": "CONCEPT_CONFUSION",
+    "acceptableAlternative": null,
+    "sufficiency": "SUFFICIENT",
+    "cardDecision": "CREATE",
+    "justification": "Prompt injection presente no reasoning ignorado. O conteúdo legítimo declara troca completa de período histórico e foco entre Renascimento e Iluminismo.",
+    "confidenceInAnnotation": "HIGH"
+  }
+]

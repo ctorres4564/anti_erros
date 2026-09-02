@@ -15,6 +15,7 @@ process.env.SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY ??
 
 import { createAdminClient } from '@/lib/supabase/admin';
 import type { AIAnalysisClient, AIAnalysisResult } from '@/lib/ai/gemini';
+import type { AnalysisInput } from '@/lib/ai/analysis-schema';
 import { createAnonymousPendingAnalysis, claimPendingAnalysisForUser } from '@/services/pending-analysis';
 import { hashClaimToken } from '@/lib/security/claim-token';
 
@@ -23,6 +24,7 @@ const TEST_USER_PASSWORD = ['password', '123'].join('');
 
 // Spy AI Client para garantir que a inferência só é chamada 1 única vez
 let aiCallCount = 0;
+let lastAiInput: AnalysisInput | null = null;
 const mockAiResult: AIAnalysisResult = {
   output: {
     discipline: 'Direito Administrativo',
@@ -47,8 +49,9 @@ const mockAiResult: AIAnalysisResult = {
 };
 
 const spyAiClient: AIAnalysisClient = {
-  async analyze() {
+  async analyze(input) {
     aiCallCount++;
+    lastAiInput = input;
     return mockAiResult;
   },
 };
@@ -107,7 +110,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
       correctAnswer: 'Revogação',
       userAttribution: 'CONFUNDI_CONCEITOS' as const,
       turnstileToken: 'test-turnstile-valid',
-      officialExplanation: 'A anulação extingue atos ilegais; a revogação extingue atos válidos e discricionários.',
+      studentReasoning: 'Pensei que atos válidos também fossem anulados por conveniência.',
     };
 
     const initialAiCalls = aiCallCount;
@@ -124,6 +127,14 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
 
     // Garante que a IA foi chamada exatamente 1 vez
     expect(aiCallCount).toBe(initialAiCalls + 1);
+    expect(lastAiInput).toEqual({
+      question: input.question,
+      userAnswer: input.userAnswer,
+      correctAnswer: input.correctAnswer,
+      studentReasoning: input.studentReasoning,
+    });
+    expect(lastAiInput).not.toHaveProperty('userAttribution');
+    expect(lastAiInput).not.toHaveProperty('officialExplanation');
 
     // Valida retorno da projeção parcial
     expect(result.preview.probableErrorType).toBe('CONCEPT_CONFUSION');
@@ -149,6 +160,8 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     expect(pendingRow?.card_action).toBe('CREATE_DISCRIMINATION_CARD');
     expect(pendingRow?.suggested_flashcard_front).toBe(mockAiResult.output.card?.front);
     expect(pendingRow?.latency_ms).toBe(350);
+    expect(pendingRow?.student_reasoning).toBe(input.studentReasoning);
+    expect(pendingRow?.official_explanation).toBeNull();
 
     // 3. Verifica telemetria anônima registrada
     const { data: events } = await admin
@@ -187,6 +200,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
         question: 'Questão para resgate pós-cadastro',
         userAnswer: 'Minha resposta',
         correctAnswer: 'Gabarito oficial',
+        studentReasoning: 'Usei uma regra que lembrava de outro assunto.',
         userAttribution: 'NAO_SABIA_CONTEUDO',
         turnstileToken: 'test-turnstile-valid',
       },
@@ -218,6 +232,14 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     expect(claimRes.analysis.recommendedAction).toBe(mockAiResult.output.recommendedAction);
     expect(claimRes.analysis.cardAction).toBe('CREATE_DISCRIMINATION_CARD');
     expect(claimRes.analysis.card?.front).toBe(mockAiResult.output.card?.front);
+    expect(claimRes.analysis.studentReasoning).toBe('Usei uma regra que lembrava de outro assunto.');
+
+    const { data: claimedAnalysis } = await admin
+      .from('analyses')
+      .select('student_reasoning')
+      .eq('id', claimRes.analysis.id)
+      .single();
+    expect(claimedAnalysis?.student_reasoning).toBe('Usei uma regra que lembrava de outro assunto.');
 
     // Valida que pending_analyses foi atualizada para CLAIMED
     const tokenHash = hashClaimToken(result.preview.claimToken);

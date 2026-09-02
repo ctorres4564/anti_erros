@@ -1,0 +1,212 @@
+[
+  {
+    "id": "BD08",
+    "annotatorA": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "annotatorB": {
+      "errorType": "KNOWLEDGE_GAP",
+      "sufficiency": "SUFFICIENT",
+      "cardDecision": "CREATE",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": null,
+    "rationale": "O estudante relata incerteza difusa e autopercepção vaga ('não sei, acho que é esse tempo mesmo, sempre confundo os tempos verbais em geral'). Não há declaração de ausência de uma regra gramatical específica nem demonstração de confusão simétrica entre tempos determinados. Trata-se de dúvida/chute não discriminante.",
+    "status": "KEEP"
+  },
+  {
+    "id": "BD15",
+    "annotatorA": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": "CONCEPT_CONFUSION"
+    },
+    "annotatorB": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": "CONCEPT_CONFUSION",
+    "rationale": "A resposta inverteu os efeitos dos sistemas simpático e parassimpático, mas o studentReasoning é apenas uma sentença enciclopédica contextual ('são as duas divisões do SNA...'). A inversão na resposta isoladamente não prova confusão ativa no processo mental, justificando INSUFFICIENT_INFORMATION primário, com CONCEPT_CONFUSION aceitável pela simetria da resposta.",
+    "status": "KEEP"
+  },
+  {
+    "id": "BD17",
+    "annotatorA": {
+      "errorType": "APPLICATION_ERROR",
+      "sufficiency": "SUFFICIENT",
+      "cardDecision": "CREATE",
+      "acceptableAlternative": "INSUFFICIENT_INFORMATION"
+    },
+    "annotatorB": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": "APPLICATION_ERROR",
+    "rationale": "O valor 320 L/min corresponde aritmeticamente a 40 × 8. Contudo, compatibilidade numérica não é procedimento demonstrado. Sem passos intermediários ou reasoning, a causa não pode ser distinguida de leitura apressada da fórmula ou deslize. A ausência total de reasoning exige INSUFFICIENT_INFORMATION, com APPLICATION_ERROR aceitável pela alta plausibilidade da hipótese operatória.",
+    "status": "KEEP"
+  },
+  {
+    "id": "BD21",
+    "annotatorA": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": "CONCEPT_CONFUSION"
+    },
+    "annotatorB": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": "CONCEPT_CONFUSION",
+    "rationale": "A resposta inverteu exotérmica e endotérmica, mas o reasoning é neutro ('dois tipos de reação... relacionados à troca de calor'). Aplica-se a regra do cluster: INSUFFICIENT_INFORMATION mandatário por ausência de evidência direta do processo cognitivo, com CONCEPT_CONFUSION como alternativa aceitável.",
+    "status": "KEEP"
+  },
+  {
+    "id": "BD25",
+    "annotatorA": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": "CONCEPT_CONFUSION"
+    },
+    "annotatorB": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": "CONCEPT_CONFUSION",
+    "rationale": "Inversão pontual entre poder de polícia e disciplinar acompanhada de frase genérica de livro-texto no reasoning. Mantém-se o padrão metodológico do cluster: INSUFFICIENT_INFORMATION primário e CONCEPT_CONFUSION aceitável.",
+    "status": "KEEP"
+  },
+  {
+    "id": "BD28",
+    "annotatorA": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": "CONCEPT_CONFUSION"
+    },
+    "annotatorB": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": "CONCEPT_CONFUSION",
+    "rationale": "Inversão das garantias de TCP e UDP com reasoning neutro confirmando apenas que são protocolos de transporte. Adjudicado estritamente como INSUFFICIENT_INFORMATION (alt: CONCEPT_CONFUSION).",
+    "status": "KEEP"
+  },
+  {
+    "id": "BD30",
+    "annotatorA": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "annotatorB": {
+      "errorType": "KNOWLEDGE_GAP",
+      "sufficiency": "SUFFICIENT",
+      "cardDecision": "CREATE",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": null,
+    "rationale": "A declaração 'não sei, chutei essa resposta' relata apenas o comportamento de adivinhar. Não explicita qual conteúdo estava ausente (diferente de BD29, que declara expressamente desconhecer as características da Caatinga). 'Não sei' genérico não atinge o limiar probatório de KNOWLEDGE_GAP.",
+    "status": "KEEP"
+  },
+  {
+    "id": "BD34",
+    "annotatorA": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": "READING_ERROR"
+    },
+    "annotatorB": {
+      "errorType": "READING_ERROR",
+      "sufficiency": "SUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": "READING_ERROR",
+    "rationale": "O estudante relata ter marcado a alternativa por impressão superficial de 'estranheza', sem apontar violação expressa do comando 'FALSA'. Adicionalmente, a assertiva sobre contagem em dias úteis é verdadeira no Processo Civil (CPC/15, art. 219), mas falsa no Processo Penal (CPP, art. 798, dias contínuos), gerando ambiguidade de ramo processual. Adjudicado como INSUFFICIENT_INFORMATION (alt: READING_ERROR), com revisão textual de enunciado.",
+    "status": "REVISE"
+  },
+  {
+    "id": "BD37",
+    "annotatorA": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": "KNOWLEDGE_GAP"
+    },
+    "annotatorB": {
+      "errorType": "INSUFFICIENT_INFORMATION",
+      "sufficiency": "INSUFFICIENT",
+      "cardDecision": "NO_CARD",
+      "acceptableAlternative": null
+    },
+    "adjudicatedErrorType": "INSUFFICIENT_INFORMATION",
+    "adjudicatedSufficiency": "INSUFFICIENT",
+    "adjudicatedCardDecision": "NO_CARD",
+    "acceptableAlternative": "KNOWLEDGE_GAP",
+    "rationale": "Descartado o payload adversarial de injeção, o estudante relata dúvida difusa ('não tenho certeza do que sei sobre isso, só respondi algo relacionado a sangue e defesa...'). Não há confirmação de lacuna factual delimitada nem de confusão estruturada, exigindo INSUFFICIENT_INFORMATION primário, com KNOWLEDGE_GAP aceitável pela plausibilidade de desconhecimento da proteína.",
+    "status": "KEEP"
+  },
+  {
+    "id": "BD39",
+    "annotatorA": {
+      "errorType": "APPLICATION_ERROR",
+      "sufficiency": "SUFFICIENT",
+      "cardDecision": "CREATE",
+      "acceptableAlternative": null
+    },
+    "annotatorB": {
+      "errorType": "APPLICATION_ERROR",
+      "sufficiency": "SUFFICIENT",
+      "cardDecision": "CREATE",
+      "acceptableAlternative": "CONCEPT_CONFUSION"
+    },
+    "adjudicatedErrorType": "APPLICATION_ERROR",
+    "adjudicatedSufficiency": "SUFFICIENT",
+    "adjudicatedCardDecision": "CREATE",
+    "acceptableAlternative": null,
+    "rationale": "Descartado o ataque de formato, o estudante relata a execução passo a passo do algoritmo invertendo as condições de transição (3 -> 1, 4 -> 2, 5 -> 1 = 4). Não houve confusão sobre o conceito matemático de paridade; o erro foi estritamente na aplicação operacional das regras do algoritmo dado.",
+    "status": "KEEP"
+  }
+]

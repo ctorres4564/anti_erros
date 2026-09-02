@@ -43,6 +43,7 @@ describe('POST /api/analyses/preview', () => {
         question: 'Qual é a capital do Brasil?',
         userAnswer: 'Rio de Janeiro',
         correctAnswer: 'Brasília',
+        studentReasoning: 'Associei a capital à cidade mais conhecida.',
         userAttribution: 'NAO_SABIA_CONTEUDO',
       }),
     });
@@ -68,5 +69,11 @@ describe('POST /api/analyses/preview', () => {
     expect(setCookie.toLowerCase()).toContain('httponly');
     expect(setCookie.toLowerCase()).toContain('samesite=lax');
     expect(setCookie.toLowerCase()).toContain('max-age=86400');
+    expect(createAnonymousPendingAnalysis).toHaveBeenCalledWith(expect.objectContaining({
+      input: expect.objectContaining({
+        studentReasoning: 'Associei a capital à cidade mais conhecida.',
+        userAttribution: 'NAO_SABIA_CONTEUDO',
+      }),
+    }));
   });
 });

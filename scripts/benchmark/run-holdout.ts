@@ -20,7 +20,7 @@ loadEnv({ path: path.resolve(process.cwd(), '.env.local') });
 
 import { holdoutV1Cases, type HoldoutV1Case } from './holdout-v1-cases';
 import { analysisOutputSchema } from '../../src/lib/ai/analysis-schema';
-import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt, PROMPT_VERSION } from '../../src/lib/ai/analysis-prompt';
+import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt, PROMPT_VERSION } from '../../src/lib/ai/analysis-prompt-v2-1';
 import { GEMINI_RESPONSE_SCHEMA } from '../../src/lib/ai/gemini';
 
 const MODEL = 'gemini-3.7-flash'; // candidato "medium" (sem thinkingLevel override, igual ao dev run de analysis-v2.0)

@@ -21,7 +21,7 @@ describe('PRD v1.2: Teste Obrigatório de Anti-Contaminação (user_attribution)
       question: 'Em que hipótese ocorre a responsabilidade objetiva do Estado?',
       userAnswer: 'Dano causado por força maior',
       correctAnswer: 'Ato de agente público no exercício da função',
-      officialExplanation: 'Artigo 37, §6º da CF/88.',
+      studentReasoning: 'Associei responsabilidade objetiva a qualquer força maior.',
     };
 
     const prompt = buildAnalysisUserPrompt(input);
@@ -30,7 +30,7 @@ describe('PRD v1.2: Teste Obrigatório de Anti-Contaminação (user_attribution)
     expect(prompt).toContain('<question>');
     expect(prompt).toContain('<userAnswer>');
     expect(prompt).toContain('<correctAnswer>');
-    expect(prompt).toContain('<officialExplanation>');
+    expect(prompt).toContain('<studentReasoning>');
 
     // Verificar que NENHUMA das taxonomias de autopercepção aparece no prompt
     for (const attr of USER_ATTRIBUTIONS) {

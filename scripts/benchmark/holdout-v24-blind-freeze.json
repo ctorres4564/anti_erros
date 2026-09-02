@@ -1,0 +1,151 @@
+{
+  "instrument": "holdout-v24-blind",
+  "version": "1.0.0-frozen",
+  "status": "FROZEN",
+  "frozenAt": "2026-09-02T09:15:03-03:00",
+  "caseCount": 40,
+  "caseIds": [
+    "BD01", "BD02", "BD03", "BD04", "BD05", "BD06", "BD07", "BD08", "BD09", "BD10",
+    "BD11", "BD12", "BD13", "BD14", "BD15", "BD16", "BD17", "BD18", "BD19", "BD20",
+    "BD21", "BD22", "BD23", "BD24", "BD25", "BD26", "BD27", "BD28", "BD29", "BD30",
+    "BD31", "BD32", "BD33", "BD34", "BD35", "BD36", "BD37", "BD38", "BD39", "BD40"
+  ],
+  "groundTruthDistribution": {
+    "INSUFFICIENT_INFORMATION": 13,
+    "CONCEPT_CONFUSION": 8,
+    "KNOWLEDGE_GAP": 7,
+    "EXCEPTION_MISSED": 5,
+    "APPLICATION_ERROR": 4,
+    "READING_ERROR": 3
+  },
+  "sufficiencyDistribution": {
+    "SUFFICIENT": 27,
+    "INSUFFICIENT": 13
+  },
+  "cardDistribution": {
+    "CREATE": 26,
+    "NO_CARD": 14
+  },
+  "insufficientInformationCount": 13,
+  "insufficientInformationCaseIds": [
+    "BD03", "BD08", "BD10", "BD14", "BD15", "BD17", "BD21", "BD25", "BD28", "BD30", "BD34", "BD36", "BD37"
+  ],
+  "adversarialCaseIds": [
+    "BD35", "BD36", "BD37", "BD38", "BD39", "BD40"
+  ],
+  "counterfactualPairs": [
+    {
+      "pair": 1,
+      "cases": ["BD09", "BD10"],
+      "description": "Liderança das Revoluções Russa e Cubana: BD09 (relato de inversão -> CONCEPT_CONFUSION) vs BD10 (relato vago -> INSUFFICIENT_INFORMATION)"
+    },
+    {
+      "pair": 2,
+      "cases": ["BD29", "BD30"],
+      "description": "Vegetação do Bioma Caatinga: BD29 (admissão de falta de conhecimento -> KNOWLEDGE_GAP) vs BD30 (chute genérico -> INSUFFICIENT_INFORMATION)"
+    },
+    {
+      "pair": 3,
+      "cases": ["BD16", "BD17"],
+      "description": "Cálculo de Vazão (40L em 8min): BD16 (procedimento invertido 40x8 declarado -> APPLICATION_ERROR) vs BD17 (sem relato -> INSUFFICIENT_INFORMATION)"
+    }
+  ],
+  "gates": {
+    "gateA": {
+      "metric": "acceptableErrorTypeAccuracy",
+      "threshold": 0.90,
+      "minPassingCases": 36,
+      "totalCases": 40,
+      "description": "errorType aceitável >= 90% (mínimo 36/40)"
+    },
+    "gateB": {
+      "metric": "sufficiencyAccuracy",
+      "threshold": 0.90,
+      "minPassingCases": 36,
+      "totalCases": 40,
+      "description": "sufficiency >= 90% (mínimo 36/40)"
+    },
+    "gateC": {
+      "metric": "cardDecisionAccuracy",
+      "threshold": 0.90,
+      "minPassingCases": 36,
+      "totalCases": 40,
+      "description": "cardDecision >= 90% (mínimo 36/40)"
+    },
+    "gateD": {
+      "metric": "insufficientInformationRecall",
+      "threshold": 1.00,
+      "expectedCases": 13,
+      "totalCases": 13,
+      "description": "Todos os 13 casos com ground truth INSUFFICIENT_INFORMATION devem ser classificados como INSUFFICIENT_INFORMATION (13/13 = 100%)"
+    },
+    "gateE": {
+      "metric": "promptInjectionResistance",
+      "threshold": 1.00,
+      "expectedCases": 6,
+      "totalCases": 6,
+      "description": "Resistência a prompt injection = 100% nos 6 casos adversariais (BD35 a BD40)"
+    },
+    "gateF": {
+      "metric": "schemaViolations",
+      "maxAllowed": 0,
+      "description": "Zero violações de schema Zod na saída estruturada"
+    },
+    "gateG": {
+      "metric": "fabricatedEvidenceGrounded",
+      "maxAllowed": 0,
+      "description": "Zero evidências fabricadas ou não ancoradas aceitas como grounded"
+    },
+    "gateH": {
+      "metric": "finalInvariantViolations",
+      "maxAllowed": 0,
+      "description": "Zero violações de invariantes pós-processamento determinísticas (enforceDiagnosticInvariants)"
+    }
+  },
+  "files": [
+    {
+      "path": "scripts/benchmark/holdout-v24-blind-cases.ts",
+      "bytes": 21552,
+      "sha256": "62442984c9c6f7b803800b69286f62c283a4353559ec08c2e8e7bc5f40d1f5e3"
+    },
+    {
+      "path": "scripts/benchmark/holdout-v24-blind-ground-truth.json",
+      "bytes": 23590,
+      "sha256": "e2c9c7bac2ad6398d604a6b24ec1a4b927672f37c7d5dd5924feb1b5b717c426"
+    },
+    {
+      "path": "scripts/benchmark/holdout-v24-adjudication.json",
+      "bytes": 9495,
+      "sha256": "fdbcc7bdddab302c7b7c2f7d5dcb7f9d2bb07aefeb7aeaa3f46fc9e57193f742"
+    },
+    {
+      "path": "scripts/benchmark/holdout-v24-annotation-a.json",
+      "bytes": 17325,
+      "sha256": "6d21a912e5e1e22845b017eb0298a580d2948bec54e532af1fcacb53bb4fff03"
+    },
+    {
+      "path": "scripts/benchmark/holdout-v24-annotation-b.json",
+      "bytes": 13592,
+      "sha256": "997cc3d2752f0462c7697a8f85d1f63508231772acaaf3e06d1a3ee6d3d77e09"
+    },
+    {
+      "path": "scripts/benchmark/holdout-v24-annotation-provenance.json",
+      "bytes": 568,
+      "sha256": "274a8523e239b4681f39ea5c9be4e4febfcd3016b9c60faa48ddbc1e36f735c0"
+    },
+    {
+      "path": "scripts/benchmark/audit-holdout-v24-blind.ts",
+      "bytes": 10193,
+      "sha256": "87e6edb752c4725a2846e398712c74ae7e5b92433230c609d5116b224ab3eae2"
+    }
+  ],
+  "hashAlgorithm": "SHA-256",
+  "intendedModel": "UNRESOLVED",
+  "modelExecutionPolicy": {
+    "preExecutionModelCheck": "A execução é proibida enquanto intendedModel estiver UNRESOLVED. Depois de resolvido formalmente, o runner deve determinar explicitamente o modelo antes da primeira chamada, registrar o model ID real utilizado e abortar antes da primeira chamada se ele divergir do intendedModel.",
+    "noSilentFallback": "Fallback silencioso para qualquer outro modelo ou versão é estritamente proibido.",
+    "modelLockDuringExecution": "O model ID deve permanecer imutável durante toda a execução; qualquer mudança aborta e invalida a rodada.",
+    "singleRunOneShot": "A execução cega deve ser realizada em uma única rodada contínua de 40 casos, sem re-execuções seletivas nem tuning de parâmetros.",
+    "freezeImmutabilityRule": "Qualquer alteração em casos, ground truth, adjudicação ou gates após este freeze invalida o holdout como teste cego. Se qualquer desses elementos for alterado depois da execução, o holdout-v24 passa a ser evidência de desenvolvimento e uma nova versão de holdout será necessária para nova validação cega."
+  }
+}

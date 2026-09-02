@@ -1,5 +1,5 @@
-import { AI_MAX_SCHEMA_RETRIES, AI_MODEL, AI_REQUEST_TIMEOUT_MS, DISCIPLINES } from '@/config/ai';
-import { analysisOutputSchema, applyLowConfidencePolicy, type AnalysisInput, type AnalysisOutput } from './analysis-schema';
+import { AI_MAX_SCHEMA_RETRIES, AI_MODEL, AI_REQUEST_TIMEOUT_MS, DISCIPLINES, EVIDENCE_SOURCES, EVIDENCE_SUPPORT_TYPES } from '@/config/ai';
+import { analysisOutputSchema, enforceDiagnosticInvariants, type AnalysisInput, type AnalysisOutput } from './analysis-schema';
 import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt } from './analysis-prompt';
 
 export type AIAnalysisErrorCode = 'TIMEOUT' | 'HTTP_ERROR' | 'SCHEMA_INVALID' | 'EMPTY_RESPONSE' | 'UNKNOWN';
@@ -40,6 +40,37 @@ export const GEMINI_RESPONSE_SCHEMA = {
     discipline: {
       type: 'STRING',
       enum: DISCIPLINES,
+    },
+    // observableBehavior e diagnosticEvidence aparecem ANTES de probableErrorType
+    // deliberadamente: no Structured Output do Gemini, a ordem de `properties` reflete
+    // a ordem de geração token a token. Isso é uma decomposição diagnóstica estruturada
+    // (não uma "chain-of-thought") que faz o modelo se comprometer com o erro observado
+    // e a suficiência/evidência ANTES de emitir a causa escolhida, dentro da MESMA
+    // chamada (analysis-v2.4).
+    observableBehavior: { type: 'STRING' },
+    diagnosticEvidence: {
+      type: 'OBJECT',
+      properties: {
+        sufficient: { type: 'BOOLEAN' },
+        evidenceSource: { type: 'STRING', enum: EVIDENCE_SOURCES, nullable: true },
+        evidenceQuote: { type: 'STRING', nullable: true },
+        supportType: { type: 'STRING', enum: EVIDENCE_SUPPORT_TYPES },
+        competingCauses: {
+          type: 'ARRAY',
+          items: {
+            type: 'STRING',
+            enum: [
+              'KNOWLEDGE_GAP',
+              'CONCEPT_CONFUSION',
+              'EXCEPTION_MISSED',
+              'APPLICATION_ERROR',
+              'READING_ERROR',
+              'INSUFFICIENT_INFORMATION',
+            ],
+          },
+        },
+      },
+      required: ['sufficient', 'evidenceSource', 'evidenceQuote', 'supportType', 'competingCauses'],
     },
     probableErrorType: {
       type: 'STRING',
@@ -153,7 +184,7 @@ async function callGeminiOnce(params: {
   };
 }
 
-function parseAndValidate(text: string): AnalysisOutput {
+function parseAndValidate(text: string, input: AnalysisInput): AnalysisOutput {
   let parsed: unknown;
   try {
     parsed = JSON.parse(text);
@@ -166,7 +197,7 @@ function parseAndValidate(text: string): AnalysisOutput {
     throw new AIAnalysisError('SCHEMA_INVALID', `Resposta do Gemini violou o schema: ${result.error.message}`);
   }
 
-  return applyLowConfidencePolicy(result.data);
+  return enforceDiagnosticInvariants(input, result.data);
 }
 
 export interface GeminiAnalysisClientOptions {
@@ -210,7 +241,7 @@ export class GeminiAnalysisClient implements AIAnalysisClient {
           timeoutMs: this.timeoutMs,
         });
 
-        const output = parseAndValidate(text);
+        const output = parseAndValidate(text, input);
 
         return {
           output,

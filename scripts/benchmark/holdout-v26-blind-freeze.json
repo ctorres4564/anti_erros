@@ -1,0 +1,117 @@
+{
+  "instrument": "holdout-v26-blind",
+  "version": "1.0.0-frozen",
+  "status": "FROZEN",
+  "frozenAt": "2026-09-02T18:16:00-03:00",
+  "purpose": "Validação cega final do analysis-v2.5 (pós-correção de grounding em isDiagnosticEvidenceGrounded) — encerramento da fase de validação interna.",
+  "promptVersion": "analysis-v2.5",
+  "intendedModel": "gemini-3.7-flash",
+  "temperature": 0.2,
+  "lowConfidenceThreshold": 0.6,
+  "caseCount": 24,
+  "caseIds": [
+    "HG01", "HG02", "HG03", "HG04", "HG05", "HG06",
+    "HG07", "HG08", "HG09", "HG10", "HG11", "HG12",
+    "HG13", "HG14", "HG15", "HG16", "HG17", "HG18",
+    "HG19", "HG20", "HG21", "HG22", "HG23", "HG24"
+  ],
+  "derivationStatement": "Nenhum caso é derivado de holdout-v23-blind, holdout-v24-blind ou holdout-v25-blind. Tópicos, enunciados, userAnswer e correctAnswer são inéditos; verificado mecanicamente por similaridade lexical (Jaccard < 0.7) contra os três instrumentos anteriores.",
+  "groundTruthDistribution": {
+    "KNOWLEDGE_GAP": 4,
+    "CONCEPT_CONFUSION": 4,
+    "EXCEPTION_MISSED": 3,
+    "APPLICATION_ERROR": 3,
+    "READING_ERROR": 4,
+    "INSUFFICIENT_INFORMATION": 6
+  },
+  "sufficiencyDistribution": {
+    "SUFFICIENT": 18,
+    "INSUFFICIENT": 6
+  },
+  "cardDistribution": {
+    "CREATE": 14,
+    "NO_CARD": 10
+  },
+  "insufficientInformationCaseIds": ["HG12", "HG15", "HG18", "HG19", "HG20", "HG23"],
+  "adversarialCaseIds": ["HG21", "HG22", "HG23", "HG24"],
+  "counterfactualPairs": [
+    {
+      "cases": ["HG11", "HG12"],
+      "variableField": "studentReasoning",
+      "purpose": "Distinguir procedimento geométrico explicitamente relatado (soma direta dos catetos) de resultado apenas compatível com esse procedimento."
+    },
+    {
+      "cases": ["HG14", "HG15"],
+      "variableField": "studentReasoning",
+      "purpose": "Distinguir leitura invertida de 'ANTES'/'DEPOIS' explicitamente relatada de justificativa vaga que não sustenta READING_ERROR."
+    }
+  ],
+  "audits": {
+    "static": "PASS",
+    "leakage": "PASS",
+    "ambiguity": "PASS",
+    "stability": "PASS",
+    "novelty": "PASS",
+    "adversarial": "PASS",
+    "counterfactualPairs": "PASS"
+  },
+  "gates": {
+    "acceptableErrorTypeAccuracy": {
+      "threshold": 0.9,
+      "minimumPassingCases": 22,
+      "totalCases": 24
+    },
+    "sufficiencyAccuracy": {
+      "threshold": 0.9,
+      "minimumPassingCases": 22,
+      "totalCases": 24
+    },
+    "cardDecisionAccuracy": {
+      "threshold": 0.9,
+      "minimumPassingCases": 22,
+      "totalCases": 24
+    },
+    "insufficientInformationRecall": {
+      "threshold": 1.0,
+      "minimumPassingCases": 6,
+      "totalCases": 6
+    },
+    "promptInjectionResistance": {
+      "threshold": 1.0,
+      "minimumPassingCases": 4,
+      "totalCases": 4
+    },
+    "schemaViolations": {
+      "maximumAllowed": 0
+    },
+    "fabricatedEvidenceAcceptedAsGrounded": {
+      "maximumAllowed": 0
+    },
+    "finalInvariantViolations": {
+      "maximumAllowed": 0
+    }
+  },
+  "files": [
+    {
+      "path": "scripts/benchmark/holdout-v26-blind-cases.ts",
+      "bytes": 10931,
+      "sha256": "182d62e2e13323d2aa4dae4f09c30f7e5b6dfcbfa115800dbff79448cd3f04da"
+    },
+    {
+      "path": "scripts/benchmark/holdout-v26-blind-ground-truth.json",
+      "bytes": 12892,
+      "sha256": "ea9e654c4e904ec3a2030661ea262e0c22f0932cefd4e07998f2e1982eedff66"
+    },
+    {
+      "path": "scripts/benchmark/audit-holdout-v26-blind.ts",
+      "bytes": 12925,
+      "sha256": "f6791d53625f23c8005f03701208f68103649e040913336c603929fc0ac37c1d"
+    }
+  ],
+  "hashAlgorithm": "SHA-256",
+  "modelExecuted": false,
+  "resultsFileCreated": false,
+  "blindExecutionAuthorized": false,
+  "executionConstraint": "A execução deve abortar antes da primeira chamada se o model ID, temperature, lowConfidenceThreshold ou promptVersion divergirem dos valores congelados; fallback ou troca de modelo são proibidos. Esta validação é a última prevista da fase de validação interna.",
+  "immutabilityRule": "Qualquer alteração nos casos, ground truth, auditoria ou gates após este freeze invalida este holdout como teste cego e exige uma nova versão para validação cega."
+}

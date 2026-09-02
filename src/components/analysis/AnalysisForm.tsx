@@ -27,9 +27,11 @@ interface TextFieldProps {
   label: string;
   value: string;
   placeholder: string;
+  helpText?: string;
   error?: string;
   disabled: boolean;
   rows?: number;
+  maxLength?: number;
   required?: boolean;
   onChange: (value: string) => void;
 }
@@ -42,7 +44,7 @@ const initialValues: AnalysisFormValues = {
   question: '',
   userAnswer: '',
   correctAnswer: '',
-  officialExplanation: '',
+  studentReasoning: '',
   userAttribution: 'NAO_SEI',
 };
 
@@ -58,9 +60,11 @@ function TextField({
   label,
   value,
   placeholder,
+  helpText,
   error,
   disabled,
   rows = 3,
+  maxLength,
   required = true,
   onChange,
 }: TextFieldProps) {
@@ -76,14 +80,20 @@ function TextField({
         name={id}
         value={value}
         rows={rows}
+        maxLength={maxLength}
         placeholder={placeholder}
         required={required}
         disabled={disabled}
         aria-invalid={Boolean(error)}
-        aria-describedby={error ? errorId : undefined}
+        aria-describedby={error ? errorId : helpText ? `${id}-help` : undefined}
         onChange={(event) => onChange(event.target.value)}
         className="w-full resize-y rounded-xl border bg-background px-3.5 py-3 text-sm leading-relaxed outline-none transition focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-60"
       />
+      {helpText ? (
+        <p id={`${id}-help`} className="text-xs leading-relaxed text-muted-foreground">
+          {helpText}
+        </p>
+      ) : null}
       {error ? (
         <p id={errorId} className="text-sm text-destructive">
           {error}
@@ -200,26 +210,39 @@ export function AnalysisForm({ mode, onPreview, onAnalysis }: AnalysisFormProps)
         onChange={(value) => updateField('question', value)}
       />
 
-      <div className="grid gap-5 md:grid-cols-2">
-        <TextField
-          id="userAnswer"
-          label="Sua resposta"
-          value={values.userAnswer}
-          placeholder="O que você marcou ou respondeu?"
-          error={fieldErrors.userAnswer}
-          disabled={isSubmitting}
-          onChange={(value) => updateField('userAnswer', value)}
-        />
-        <TextField
-          id="correctAnswer"
-          label="Resposta correta"
-          value={values.correctAnswer}
-          placeholder="Informe o gabarito correto."
-          error={fieldErrors.correctAnswer}
-          disabled={isSubmitting}
-          onChange={(value) => updateField('correctAnswer', value)}
-        />
-      </div>
+      <TextField
+        id="userAnswer"
+        label="Sua resposta"
+        value={values.userAnswer}
+        placeholder="O que você marcou ou respondeu?"
+        error={fieldErrors.userAnswer}
+        disabled={isSubmitting}
+        onChange={(value) => updateField('userAnswer', value)}
+      />
+
+      <TextField
+        id="studentReasoning"
+        label="Como você chegou a essa resposta?"
+        value={values.studentReasoning ?? ''}
+        placeholder="Descreva seu raciocínio, se lembrar."
+        helpText="Conte o cálculo, a regra ou a ideia que você usou. Se não lembrar, pode deixar em branco."
+        error={fieldErrors.studentReasoning}
+        disabled={isSubmitting}
+        required={false}
+        rows={3}
+        maxLength={2000}
+        onChange={(value) => updateField('studentReasoning', value)}
+      />
+
+      <TextField
+        id="correctAnswer"
+        label="Resposta correta"
+        value={values.correctAnswer}
+        placeholder="Informe o gabarito correto."
+        error={fieldErrors.correctAnswer}
+        disabled={isSubmitting}
+        onChange={(value) => updateField('correctAnswer', value)}
+      />
 
       <div className="space-y-1.5">
         <label htmlFor="userAttribution" className="block text-sm font-semibold text-foreground">
@@ -242,24 +265,6 @@ export function AnalysisForm({ mode, onPreview, onAnalysis }: AnalysisFormProps)
           Sua percepção é comparada depois, mas não é enviada ao modelo durante a análise.
         </p>
       </div>
-
-      <details className="group rounded-xl border bg-muted/20 p-4">
-        <summary className="cursor-pointer text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary">
-          Adicionar explicação oficial (opcional)
-        </summary>
-        <div className="pt-4">
-          <TextField
-            id="officialExplanation"
-            label="Explicação oficial"
-            value={values.officialExplanation ?? ''}
-            placeholder="Cole a justificativa do gabarito, se houver."
-            error={fieldErrors.officialExplanation}
-            disabled={isSubmitting}
-            required={false}
-            onChange={(value) => updateField('officialExplanation', value)}
-          />
-        </div>
-      </details>
 
       {mode === 'anonymous' ? (
         <TurnstileWidget onChange={handleTurnstileChange} resetSignal={turnstileResetSignal} />

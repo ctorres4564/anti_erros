@@ -49,14 +49,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { question, userAnswer, correctAnswer, officialExplanation, userAttribution } = inputResult.data;
+    const { question, userAnswer, correctAnswer, studentReasoning, userAttribution } = inputResult.data;
 
     // 5-11. Reserva de cota, chamada de IA (SEM user_attribution no prompt!), persistência
     const aiClient = resolveAIClient(request);
     const result = await runAnalysisEngine({
       userId: user.id,
       idempotencyKey,
-      input: { question, userAnswer, correctAnswer, officialExplanation },
+      input: { question, userAnswer, correctAnswer, studentReasoning },
       userAttribution,
       aiClient,
     });

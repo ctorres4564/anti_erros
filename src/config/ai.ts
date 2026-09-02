@@ -23,6 +23,31 @@ export const ERROR_TYPE_LABELS: Record<ProbableErrorType, string> = {
   INSUFFICIENT_INFORMATION: 'Informações Insuficientes',
 };
 
+/**
+ * Campos de entrada de onde uma citação de evidência diagnóstica (diagnosticEvidence)
+ * pode legitimamente ser extraída (analysis-v2.3). Fechado deliberadamente aos quatro
+ * campos brutos enviados ao modelo — nunca aceitar uma fonte fora deste conjunto.
+ */
+export const EVIDENCE_SOURCES = ['QUESTION', 'USER_ANSWER', 'CORRECT_ANSWER', 'STUDENT_REASONING'] as const;
+
+export type EvidenceSource = (typeof EVIDENCE_SOURCES)[number];
+
+/**
+ * Natureza do suporte diagnóstico declarado pelo modelo (analysis-v2.4). Responde a uma
+ * pergunta DIFERENTE da de `evidenceSource`/`evidenceQuote`: aquelas verificam se a
+ * evidência EXISTE (grounding, mecânico); `supportType` classifica QUE TIPO de suporte
+ * ela representa (julgamento do modelo, não uma prova determinística — ver
+ * enforceDiagnosticInvariants em src/lib/ai/analysis-schema.ts).
+ */
+export const EVIDENCE_SUPPORT_TYPES = [
+  'EXPLICIT_REASONING_CONFIRMATION',
+  'OBSERVABLE_PROCEDURE',
+  'EXPLICIT_TEXTUAL_TRIGGER',
+  'NONE',
+] as const;
+
+export type EvidenceSupportType = (typeof EVIDENCE_SUPPORT_TYPES)[number];
+
 export const CARD_ACTIONS = [
   'CREATE_BASIC_CARD',
   'CREATE_DISCRIMINATION_CARD',
@@ -147,9 +172,43 @@ export const AI_MODEL = process.env.GEMINI_MODEL_NAME || 'gemini-3.7-flash';
  * analysis-v2.1 (correção de constructo de INSUFFICIENT_INFORMATION e
  * independência de cardAction/prompt-injection, ver
  * docs/SPRINT_3_ANALYSIS_V2_1_IMPLEMENTATION.md). analysis-v2.0 não foi
- * homologado (ver docs/SPRINT_3_FINAL_HOLDOUT_EVALUATION.md).
+ * homologado (ver docs/SPRINT_3_FINAL_HOLDOUT_EVALUATION.md) -> analysis-v2.2
+ * (raciocínio relatado opcional, sem officialExplanation no contrato ativo;
+ * congelado em src/lib/ai/analysis-prompt-v2-2.ts) -> analysis-v2.3 (evidência
+ * diagnóstica estruturada: diagnosticEvidence.sufficient/evidenceQuote/
+ * evidenceSource validados deterministicamente contra os campos de entrada
+ * antes de aceitar qualquer probableErrorType causal específico; validado
+ * cegamente contra holdout-v23-blind em 2026-09-02 com resultado FAIL — ver
+ * scripts/benchmark/holdout-v23-blind-run-results.json — porque `sufficient`
+ * podia ser false e ainda assim conviver com uma causa específica no output
+ * final; congelado em src/lib/ai/analysis-prompt-v2-3.ts) -> analysis-v2.4
+ * (unifica applyLowConfidencePolicy + applyDiagnosticEvidencePolicy em
+ * enforceDiagnosticInvariants — um único ponto determinístico que torna
+ * sufficient=false, evidência não-grounded, confidence baixa e
+ * probableErrorType=INSUFFICIENT_INFORMATION mutuamente consistentes por
+ * construção, nunca por policies independentes que podiam divergir; adiciona
+ * `observableBehavior` — o que foi observado, sem inferência causal — e
+ * `diagnosticEvidence.supportType`, separando "a evidência existe"
+ * (grounding, mecânico) de "que tipo de suporte ela representa"
+ * (julgamento do modelo, auditável mas não uma prova); validado cegamente
+ * contra holdout-v24-blind em 2026-09-02 com resultado FAIL (39/40 causal,
+ * 36/40 sufficiency, 35/40 card, 9/13 INSUFFICIENT_INFORMATION, 5/6 prompt
+ * injection) — ver scripts/benchmark/holdout-v24-postmortem.json; congelado
+ * em src/lib/ai/analysis-prompt-v2-4.ts) -> analysis-v2.5 (duas novas
+ * invariantes determinísticas gerais, não específicas de disciplina: (6)
+ * evidenceSource=QUESTION nunca sustenta sozinho uma causa cognitiva
+ * específica — resultado numericamente compatível com um procedimento não
+ * prova que o procedimento foi executado; (7) probableErrorType=
+ * READING_ERROR força cardAction=NO_CARD sempre, mesmo com recorrência
+ * declarada — a recorrência informa recommendedAction, não gera flashcard de
+ * conteúdo. Reforça no prompt que USER_ANSWER só sustenta causa específica
+ * quando contém uma afirmação relacional/definicional completa, não uma
+ * escolha curta sem conteúdo, e que studentReasoning que só descreve um
+ * estado geral de pressa/incerteza — sem nomear a regra/termo/gatilho
+ * específico — não é evidência discriminante. Ver
+ * src/lib/ai/analysis-schema.ts:enforceDiagnosticInvariants).
  */
-export const PROMPT_VERSION = 'analysis-v2.1';
+export const PROMPT_VERSION = 'analysis-v2.5';
 
 /** Cota diária de análises por usuário (MVP). Fonte única desta constante. */
 export const DAILY_ANALYSIS_LIMIT = Number(process.env.DAILY_ANALYSIS_QUOTA) || 5;

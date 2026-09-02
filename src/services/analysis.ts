@@ -1,6 +1,6 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { AIAnalysisError, type AIAnalysisClient } from '@/lib/ai/gemini';
-import { PROMPT_VERSION } from '@/lib/ai/analysis-prompt';
+import { PROMPT_VERSION } from '@/config/ai';
 import type { AnalysisInput, AnalysisOutput } from '@/lib/ai/analysis-schema';
 import { DAILY_ANALYSIS_LIMIT, IDEMPOTENCY_LOCK_TTL_SECONDS, type UserAttribution } from '@/config/ai';
 import type { Json, Tables } from '@/types/database.types';
@@ -10,7 +10,7 @@ export interface ApiAnalysis {
   question: string;
   userAnswer: string;
   correctAnswer: string;
-  officialExplanation: string | null;
+  studentReasoning: string | null;
   discipline?: string | null;
   confirmedDiscipline?: string | null;
   disciplineConfirmedAt?: string | null;
@@ -41,7 +41,7 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
     question: row.raw_question,
     userAnswer: row.user_answer,
     correctAnswer: row.correct_answer,
-    officialExplanation: row.official_explanation,
+    studentReasoning: row.student_reasoning,
     discipline: row.discipline,
     confirmedDiscipline: row.discipline_confirmed,
     disciplineConfirmedAt: row.discipline_confirmed_at,
@@ -157,7 +157,8 @@ export async function runAnalysisEngine(params: {
     p_raw_question: input.question,
     p_user_answer: input.userAnswer,
     p_correct_answer: input.correctAnswer,
-    p_official_explanation: (input.officialExplanation ?? null) as string,
+    // Campo legado mantido no RPC para compatibilidade histórica; não integra o contrato v2.2.
+    p_official_explanation: null as unknown as string,
     p_error_type: aiOutput.probableErrorType,
     p_root_cause_explanation: aiOutput.reasoningSummary,
     p_learning_gap_concept: aiOutput.coreConcept,
@@ -190,6 +191,7 @@ export async function runAnalysisEngine(params: {
     .update({
       discipline: aiOutput.discipline,
       recommended_action: aiOutput.recommendedAction,
+      student_reasoning: input.studentReasoning ?? null,
       user_attribution: userAttribution ?? null,
       ai_user_agreement: agreement,
       latency_ms: latencyMs,

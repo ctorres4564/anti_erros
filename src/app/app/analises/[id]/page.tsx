@@ -35,7 +35,7 @@ export default async function AnalysisDetailPage({ params }: AnalysisDetailPageP
     question: row.raw_question,
     userAnswer: row.user_answer,
     correctAnswer: row.correct_answer,
-    officialExplanation: row.official_explanation,
+    studentReasoning: row.student_reasoning,
     discipline: row.discipline,
     confirmedDiscipline: row.discipline_confirmed,
     disciplineConfirmedAt: row.discipline_confirmed_at,

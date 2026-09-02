@@ -6,7 +6,7 @@ const analysisViewSchema: z.ZodType<AnalysisView> = z.object({
   question: z.string(),
   userAnswer: z.string(),
   correctAnswer: z.string(),
-  officialExplanation: z.string().nullable(),
+  studentReasoning: z.string().nullable(),
   discipline: z.string().nullable().optional(),
   confirmedDiscipline: z.string().nullable().optional(),
   disciplineConfirmedAt: z.string().nullable().optional(),

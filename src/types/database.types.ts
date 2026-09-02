@@ -51,6 +51,7 @@ export type Database = {
           learning_gap_concept: string
           model_version: string
           official_explanation: string | null
+          student_reasoning: string | null
           prompt_version: string
           raw_question: string
           recommended_action: string | null
@@ -80,6 +81,7 @@ export type Database = {
           learning_gap_concept: string
           model_version: string
           official_explanation?: string | null
+          student_reasoning?: string | null
           prompt_version: string
           raw_question: string
           recommended_action?: string | null
@@ -109,6 +111,7 @@ export type Database = {
           learning_gap_concept?: string
           model_version?: string
           official_explanation?: string | null
+          student_reasoning?: string | null
           prompt_version?: string
           raw_question?: string
           recommended_action?: string | null
@@ -374,6 +377,7 @@ export type Database = {
           latency_ms: number
           model_version: string
           official_explanation: string | null
+          student_reasoning: string | null
           probable_error_type: string
           prompt_version: string
           question: string
@@ -402,6 +406,7 @@ export type Database = {
           latency_ms: number
           model_version: string
           official_explanation?: string | null
+          student_reasoning?: string | null
           probable_error_type: string
           prompt_version: string
           question: string
@@ -430,6 +435,7 @@ export type Database = {
           latency_ms?: number
           model_version?: string
           official_explanation?: string | null
+          student_reasoning?: string | null
           probable_error_type?: string
           prompt_version?: string
           question?: string

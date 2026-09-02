@@ -2,6 +2,7 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { FullAnalysisResult } from '@/components/analysis/FullAnalysisResult';
+import { AnalysisForm } from '@/components/analysis/AnalysisForm';
 import { PartialAnalysisResult } from '@/components/analysis/PartialAnalysisResult';
 import {
   getAlignmentMessage,
@@ -18,7 +19,7 @@ const baseAnalysis: AnalysisView = {
   question: 'Qual é a capital do Brasil?',
   userAnswer: 'Rio de Janeiro',
   correctAnswer: 'Brasília',
-  officialExplanation: null,
+  studentReasoning: 'Associei a capital à cidade mais conhecida.',
   discipline: 'Atualidades',
   probableErrorType: 'KNOWLEDGE_GAP',
   confidence: 0.82,
@@ -81,6 +82,15 @@ describe('camada de apresentação da Sprint 4', () => {
     expect(html).toContain('Ver análise completa');
     expect(html).not.toContain(baseAnalysis.correctAnswer);
     expect(html).not.toContain(baseAnalysis.recommendedAction);
+  });
+
+  it('mostra studentReasoning opcional e remove officialExplanation da interface de entrada', () => {
+    const html = renderToStaticMarkup(createElement(AnalysisForm, { mode: 'authenticated' }));
+    expect(html).toContain('Como você chegou a essa resposta?');
+    expect(html).toContain('Conte o cálculo, a regra ou a ideia que você usou.');
+    expect(html).toContain('maxLength="2000"');
+    expect(html).not.toContain('Explicação oficial');
+    expect(html).not.toContain('officialExplanation');
   });
 
   it('destaca ação recomendada e explica NO_CARD', () => {

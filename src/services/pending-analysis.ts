@@ -1,6 +1,6 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import type { AIAnalysisClient } from '@/lib/ai/gemini';
-import { PROMPT_VERSION } from '@/lib/ai/analysis-prompt';
+import { PROMPT_VERSION } from '@/config/ai';
 import type { AnonymousAnalysisInput } from '@/lib/ai/analysis-schema';
 import { calculateDivergence, type UserAttribution } from '@/config/ai';
 import { generateClaimToken, hashClaimToken, hashIpAddress } from '@/lib/security/claim-token';
@@ -41,7 +41,7 @@ function toApiAnalysis(row: Tables<'analyses'>): ApiAnalysis {
     question: row.raw_question,
     userAnswer: row.user_answer,
     correctAnswer: row.correct_answer,
-    officialExplanation: row.official_explanation,
+    studentReasoning: row.student_reasoning,
     discipline: row.discipline,
     confirmedDiscipline: row.discipline_confirmed,
     disciplineConfirmedAt: row.discipline_confirmed_at,
@@ -122,7 +122,7 @@ export async function createAnonymousPendingAnalysis(params: {
       question: input.question,
       userAnswer: input.userAnswer,
       correctAnswer: input.correctAnswer,
-      officialExplanation: input.officialExplanation,
+      studentReasoning: input.studentReasoning,
     });
   } catch (err: unknown) {
     const code = err && typeof err === 'object' && 'code' in err ? String(err.code) : 'UNKNOWN';
@@ -144,7 +144,8 @@ export async function createAnonymousPendingAnalysis(params: {
       user_answer: input.userAnswer,
       correct_answer: input.correctAnswer,
       user_attribution: input.userAttribution,
-      official_explanation: input.officialExplanation ?? null,
+      official_explanation: null,
+      student_reasoning: input.studentReasoning ?? null,
       discipline: output.discipline,
       concept: output.coreConcept,
       probable_error_type: output.probableErrorType,

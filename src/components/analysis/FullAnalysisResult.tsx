@@ -92,6 +92,12 @@ export function FullAnalysisResult({ analysis }: { analysis: AnalysisView }) {
           <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Sua resposta</p>
           <p className="mt-2 whitespace-pre-wrap text-sm">{analysis.userAnswer}</p>
         </div>
+        {analysis.studentReasoning ? (
+          <div className="rounded-xl border p-4">
+            <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Como você chegou à resposta</p>
+            <p className="mt-2 whitespace-pre-wrap text-sm">{analysis.studentReasoning}</p>
+          </div>
+        ) : null}
         <div className="rounded-xl border p-4">
           <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Resposta correta</p>
           <p className="mt-2 whitespace-pre-wrap text-sm">{analysis.correctAnswer}</p>

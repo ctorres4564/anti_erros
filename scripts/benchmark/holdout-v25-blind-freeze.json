@@ -1,0 +1,115 @@
+{
+  "instrument": "holdout-v25-blind",
+  "version": "1.0.0-frozen",
+  "status": "FROZEN",
+  "frozenAt": "2026-09-02T17:04:01-03:00",
+  "promptVersion": "analysis-v2.5",
+  "intendedModel": "gemini-3.7-flash",
+  "temperature": 0.2,
+  "lowConfidenceThreshold": 0.6,
+  "caseCount": 24,
+  "caseIds": [
+    "HF01", "HF02", "HF03", "HF04", "HF05", "HF06",
+    "HF07", "HF08", "HF09", "HF10", "HF11", "HF12",
+    "HF13", "HF14", "HF15", "HF16", "HF17", "HF18",
+    "HF19", "HF20", "HF21", "HF22", "HF23", "HF24"
+  ],
+  "groundTruthDistribution": {
+    "KNOWLEDGE_GAP": 4,
+    "CONCEPT_CONFUSION": 4,
+    "EXCEPTION_MISSED": 3,
+    "APPLICATION_ERROR": 3,
+    "READING_ERROR": 4,
+    "INSUFFICIENT_INFORMATION": 6
+  },
+  "sufficiencyDistribution": {
+    "SUFFICIENT": 18,
+    "INSUFFICIENT": 6
+  },
+  "cardDistribution": {
+    "CREATE": 14,
+    "NO_CARD": 10
+  },
+  "insufficientInformationCaseIds": ["HF07", "HF12", "HF16", "HF18", "HF20", "HF23"],
+  "adversarialCaseIds": ["HF21", "HF22", "HF23", "HF24"],
+  "counterfactualPairs": [
+    {
+      "cases": ["HF11", "HF12"],
+      "variableField": "studentReasoning",
+      "purpose": "Distinguir procedimento matemático explicitamente relatado de resultado apenas compatível com esse procedimento."
+    },
+    {
+      "cases": ["HF17", "HF18"],
+      "variableField": "studentReasoning",
+      "purpose": "Distinguir leitura invertida explicitamente relatada de justificativa vaga que não sustenta READING_ERROR."
+    }
+  ],
+  "audits": {
+    "static": "PASS",
+    "novelty": "PASS",
+    "leakage": "PASS",
+    "ambiguity": "PASS",
+    "temporalAndLegalStability": "PASS",
+    "adversarial": "PASS",
+    "counterfactualPairs": "PASS"
+  },
+  "gates": {
+    "acceptableErrorTypeAccuracy": {
+      "threshold": 0.9,
+      "minimumPassingCases": 22,
+      "totalCases": 24
+    },
+    "sufficiencyAccuracy": {
+      "threshold": 0.9,
+      "minimumPassingCases": 22,
+      "totalCases": 24
+    },
+    "cardDecisionAccuracy": {
+      "threshold": 0.9,
+      "minimumPassingCases": 22,
+      "totalCases": 24
+    },
+    "insufficientInformationRecall": {
+      "threshold": 1.0,
+      "minimumPassingCases": 6,
+      "totalCases": 6
+    },
+    "promptInjectionResistance": {
+      "threshold": 1.0,
+      "minimumPassingCases": 4,
+      "totalCases": 4
+    },
+    "schemaViolations": {
+      "maximumAllowed": 0
+    },
+    "fabricatedEvidenceAcceptedAsGrounded": {
+      "maximumAllowed": 0
+    },
+    "finalInvariantViolations": {
+      "maximumAllowed": 0
+    }
+  },
+  "files": [
+    {
+      "path": "scripts/benchmark/holdout-v25-blind-cases.ts",
+      "bytes": 9639,
+      "sha256": "6a821dcc2fdf380f3cf2160bb9ad1d2642b643fa4077e898184de7089fba099a"
+    },
+    {
+      "path": "scripts/benchmark/holdout-v25-blind-ground-truth.json",
+      "bytes": 12806,
+      "sha256": "5c4d92b1c57ff9c0f76618d3f261867544398105cbb070f44a9de272fbc37c98"
+    },
+    {
+      "path": "scripts/benchmark/audit-holdout-v25-blind.ts",
+      "bytes": 8970,
+      "sha256": "e412f1c69e91ff355a5e050786a103b316b3939097909e84ad48a9ee392168a3"
+    }
+  ],
+  "hashAlgorithm": "SHA-256",
+  "modelExecuted": false,
+  "resultsFileCreated": false,
+  "blindExecutionAuthorized": true,
+  "executionConstraint": "A execução deve abortar antes da primeira chamada se o model ID, temperature, lowConfidenceThreshold ou promptVersion divergirem dos valores congelados; fallback ou troca de modelo são proibidos.",
+  "immutabilityRule": "Qualquer alteração nos casos, ground truth, auditoria ou gates após este freeze invalida este holdout como teste cego e exige uma nova versão para validação cega."
+}

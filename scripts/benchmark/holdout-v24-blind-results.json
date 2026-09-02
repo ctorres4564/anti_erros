@@ -1,0 +1,1956 @@
+{
+  "instrument": "holdout-v24-blind",
+  "promptVersion": "analysis-v2.4",
+  "intendedModel": "gemini-3.7-flash",
+  "actualRequestModel": "gemini-3.7-flash",
+  "startedAt": "2026-09-02T13:12:05.902Z",
+  "finishedAt": "2026-09-02T13:15:26.900Z",
+  "caseCount": 40,
+  "freezeManifestSha256": "5280be3f0b0002bfa513fe782cbc02ae90969013a86e1e7d8e96da923422f1f1",
+  "temperature": 0.2,
+  "modelVersionCaveat": "modelVersion representa o modelo solicitado pelo cliente na chamada HTTP, não uma confirmação independente fornecida pelo provedor Gemini.",
+  "results": [
+    {
+      "caseId": "BD01",
+      "ok": true,
+      "raw": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante indicou '+ 4ac' no radicando da fórmula de Bhaskara, enquanto a forma correta contém '- 4ac'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "não lembrava qual era o certo",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi uma lacuna de conhecimento na memorização da fórmula de Bhaskara, especificamente no sinal da operação do discriminante sob a raiz.",
+        "recommendedAction": "Revise a definição da fórmula de Bhaskara e do discriminante (Δ = b² - 4ac), praticando a escrita correta da fórmula antes de resolver equações do 2º grau.",
+        "coreConcept": "Fórmula de Bhaskara",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a fórmula de Bhaskara utilizada para encontrar as raízes de uma equação do 2º grau (ax² + bx + c = 0)?",
+          "back": "x = (-b ± √(b² - 4ac)) / 2a, com o discriminante Δ = b² - 4ac."
+        }
+      },
+      "final": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante indicou '+ 4ac' no radicando da fórmula de Bhaskara, enquanto a forma correta contém '- 4ac'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "não lembrava qual era o certo",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi uma lacuna de conhecimento na memorização da fórmula de Bhaskara, especificamente no sinal da operação do discriminante sob a raiz.",
+        "recommendedAction": "Revise a definição da fórmula de Bhaskara e do discriminante (Δ = b² - 4ac), praticando a escrita correta da fórmula antes de resolver equações do 2º grau.",
+        "coreConcept": "Fórmula de Bhaskara",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a fórmula de Bhaskara utilizada para encontrar as raízes de uma equação do 2º grau (ax² + bx + c = 0)?",
+          "back": "x = (-b ± √(b² - 4ac)) / 2a, com o discriminante Δ = b² - 4ac."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD02",
+      "ok": true,
+      "raw": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '3/8' para a operação '3/4 ÷ 1/2', cuja resposta correta é '3/2'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Multipliquei 3/4 por 1/2 diretamente (numerador com numerador, denominador com denominador) em vez de multiplicar pelo inverso do segundo número.",
+          "supportType": "OBSERVABLE_PROCEDURE",
+          "competingCauses": []
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi a aplicação do procedimento de multiplicação direta entre as frações, em vez de multiplicar a primeira pelo inverso da segunda.",
+        "recommendedAction": "Revise a regra operacional de divisão de frações e pratique a inversão da segunda fração antes de efetuar o produto dos termos.",
+        "coreConcept": "Divisão de frações",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Como se resolve a divisão entre duas frações (a/b ÷ c/d)?",
+          "back": "Mantém-se a primeira fração e multiplica-se pelo inverso da segunda: (a/b) × (d/c) = (a × d) / (b × c)."
+        }
+      },
+      "final": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '3/8' para a operação '3/4 ÷ 1/2', cuja resposta correta é '3/2'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Multipliquei 3/4 por 1/2 diretamente (numerador com numerador, denominador com denominador) em vez de multiplicar pelo inverso do segundo número.",
+          "supportType": "OBSERVABLE_PROCEDURE",
+          "competingCauses": []
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi a aplicação do procedimento de multiplicação direta entre as frações, em vez de multiplicar a primeira pelo inverso da segunda.",
+        "recommendedAction": "Revise a regra operacional de divisão de frações e pratique a inversão da segunda fração antes de efetuar o produto dos termos.",
+        "coreConcept": "Divisão de frações",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Como se resolve a divisão entre duas frações (a/b ÷ c/d)?",
+          "back": "Mantém-se a primeira fração e multiplica-se pelo inverso da segunda: (a/b) × (d/c) = (a × d) / (b × c)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD03",
+      "ok": true,
+      "raw": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '60 cm²' para o cálculo da área de um triângulo cujas medidas fornecidas são 10 cm de base e 6 cm de altura, para o qual o gabarito é '30 cm²'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "QUESTION",
+          "evidenceQuote": "base 10 cm e altura 6 cm",
+          "supportType": "OBSERVABLE_PROCEDURE",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A resposta coincide exatamente com o produto direto entre base e altura (10 × 6 = 60), indicando omissão da divisão final por 2 da fórmula do triângulo.",
+        "recommendedAction": "Ao calcular a área de figuras triangulares, atente-se para sempre dividir o produto da base pela altura por 2 ao final da fórmula.",
+        "coreConcept": "Área de triângulos",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a fórmula para o cálculo da área de um triângulo a partir de sua base (b) e altura (h)?",
+          "back": "Área = (base × altura) / 2 [ou A = (b · h) / 2]."
+        }
+      },
+      "final": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '60 cm²' para o cálculo da área de um triângulo cujas medidas fornecidas são 10 cm de base e 6 cm de altura, para o qual o gabarito é '30 cm²'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "QUESTION",
+          "evidenceQuote": "base 10 cm e altura 6 cm",
+          "supportType": "OBSERVABLE_PROCEDURE",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A resposta coincide exatamente com o produto direto entre base e altura (10 × 6 = 60), indicando omissão da divisão final por 2 da fórmula do triângulo.",
+        "recommendedAction": "Ao calcular a área de figuras triangulares, atente-se para sempre dividir o produto da base pela altura por 2 ao final da fórmula.",
+        "coreConcept": "Área de triângulos",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a fórmula para o cálculo da área de um triângulo a partir de sua base (b) e altura (h)?",
+          "back": "Área = (base × altura) / 2 [ou A = (b · h) / 2]."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD04",
+      "ok": true,
+      "raw": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '10' para uma questão que pedia a contagem de múltiplos de 3 entre 1 e 30 com exclusão do 30, cujo gabarito é '9'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "sem reparar no 'sem contar' do final",
+          "supportType": "EXPLICIT_TEXTUAL_TRIGGER",
+          "competingCauses": [
+            "APPLICATION_ERROR"
+          ]
+        },
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma desatenção à restrição explícita no comando da questão, que solicitava a exclusão do número 30 na contagem.",
+        "recommendedAction": "Adote o hábito de destacar ou circular expressões restritivas no enunciado (como 'sem contar', 'exceto' ou 'não') antes de iniciar a resolução.",
+        "coreConcept": "Contagem de múltiplos em intervalo com exclusão de extremidade",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '10' para uma questão que pedia a contagem de múltiplos de 3 entre 1 e 30 com exclusão do 30, cujo gabarito é '9'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "sem reparar no 'sem contar' do final",
+          "supportType": "EXPLICIT_TEXTUAL_TRIGGER",
+          "competingCauses": [
+            "APPLICATION_ERROR"
+          ]
+        },
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma desatenção à restrição explícita no comando da questão, que solicitava a exclusão do número 30 na contagem.",
+        "recommendedAction": "Adote o hábito de destacar ou circular expressões restritivas no enunciado (como 'sem contar', 'exceto' ou 'não') antes de iniciar a resolução.",
+        "coreConcept": "Contagem de múltiplos em intervalo com exclusão de extremidade",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD05",
+      "ok": true,
+      "raw": {
+        "discipline": "Português",
+        "observableBehavior": "O estudante respondeu que a frase não continha desvios, enquanto o gabarito indicava a necessidade da preposição 'a' ('assistiu ao filme').",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia que o verbo 'assistir' pedia preposição nesse sentido",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi uma lacuna de conhecimento pontual sobre a regência verbal da norma-padrão, já que você afirmou desconhecer a exigência da preposição 'a' para o verbo 'assistir'.",
+        "recommendedAction": "Revise a regência verbal dos verbos que mudam de sentido conforme a predicação, com foco especial em 'assistir', 'aspirar', 'visar' e 'agradar'.",
+        "coreConcept": "Regência verbal do verbo assistir",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Na norma-padrão, qual é a regência e o complemento exigido pelo verbo 'assistir' no sentido de ver ou presenciar?",
+          "back": "É transitivo indireto (VTI) e exige a preposição 'a' (ex.: 'assistir ao filme', 'assistir ao espetáculo')."
+        }
+      },
+      "final": {
+        "discipline": "Português",
+        "observableBehavior": "O estudante respondeu que a frase não continha desvios, enquanto o gabarito indicava a necessidade da preposição 'a' ('assistiu ao filme').",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia que o verbo 'assistir' pedia preposição nesse sentido",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi uma lacuna de conhecimento pontual sobre a regência verbal da norma-padrão, já que você afirmou desconhecer a exigência da preposição 'a' para o verbo 'assistir'.",
+        "recommendedAction": "Revise a regência verbal dos verbos que mudam de sentido conforme a predicação, com foco especial em 'assistir', 'aspirar', 'visar' e 'agradar'.",
+        "coreConcept": "Regência verbal do verbo assistir",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Na norma-padrão, qual é a regência e o complemento exigido pelo verbo 'assistir' no sentido de ver ou presenciar?",
+          "back": "É transitivo indireto (VTI) e exige a preposição 'a' (ex.: 'assistir ao filme', 'assistir ao espetáculo')."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD06",
+      "ok": true,
+      "raw": {
+        "discipline": "Português",
+        "observableBehavior": "O estudante afirmou na resposta que 'há' indica tempo futuro e 'a' indica tempo passado, invertendo exatamente as regras apresentadas no gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu troquei os dois: decorei ao contrário, achando que 'há' era futuro e 'a' era passado.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Você realizou uma troca direta entre os conceitos, atribuindo a 'há' a função de tempo futuro e a 'a' a função de tempo decorrido.",
+        "recommendedAction": "Fixe o macete de substituição: use 'há' quando puder trocar por 'faz' (tempo passado/decorrido) e use a preposição 'a' para tempo futuro ou distância temporal projetada.",
+        "coreConcept": "Uso de 'há' (tempo decorrido) vs. 'a' (tempo futuro)",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em referências temporais, quando se deve usar \"há\" e quando se deve usar \"a\"?",
+          "back": "- \"Há\" (verbo haver): indica tempo decorrido/passado (substituível por \"faz\"). Ex.: Há dez dias.\n- \"A\" (preposição): indica tempo futuro ou intervalo que ainda vai transcorrer. Ex.: Daqui a dez dias."
+        }
+      },
+      "final": {
+        "discipline": "Português",
+        "observableBehavior": "O estudante afirmou na resposta que 'há' indica tempo futuro e 'a' indica tempo passado, invertendo exatamente as regras apresentadas no gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu troquei os dois: decorei ao contrário, achando que 'há' era futuro e 'a' era passado.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Você realizou uma troca direta entre os conceitos, atribuindo a 'há' a função de tempo futuro e a 'a' a função de tempo decorrido.",
+        "recommendedAction": "Fixe o macete de substituição: use 'há' quando puder trocar por 'faz' (tempo passado/decorrido) e use a preposição 'a' para tempo futuro ou distância temporal projetada.",
+        "coreConcept": "Uso de 'há' (tempo decorrido) vs. 'a' (tempo futuro)",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em referências temporais, quando se deve usar \"há\" e quando se deve usar \"a\"?",
+          "back": "- \"Há\" (verbo haver): indica tempo decorrido/passado (substituível por \"faz\"). Ex.: Há dez dias.\n- \"A\" (preposição): indica tempo futuro ou intervalo que ainda vai transcorrer. Ex.: Daqui a dez dias."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD07",
+      "ok": true,
+      "raw": {
+        "discipline": "Português",
+        "observableBehavior": "O estudante selecionou a alternativa 'B' em uma questão que pedia a frase gramaticalmente inadequada, cujo gabarito oficial era a alternativa 'A'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "ignoro o comando, marcando às pressas",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.88,
+        "reasoningSummary": "A causa provável do erro foi a desatenção ao comando da questão, que solicitava expressamente a alternativa gramaticalmente inadequada à norma-padrão.",
+        "recommendedAction": "Destaque ou sublinhe comandos negativos ou restritivos ('INADEQUADA', 'INCORRETA', 'EXCETO') antes de analisar as alternativas para manter o foco no critério exigido.",
+        "coreConcept": "Concordância verbal com verbo impessoal indicando tempo decorrido",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Português",
+        "observableBehavior": "O estudante selecionou a alternativa 'B' em uma questão que pedia a frase gramaticalmente inadequada, cujo gabarito oficial era a alternativa 'A'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "ignoro o comando, marcando às pressas",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.88,
+        "reasoningSummary": "A causa provável do erro foi a desatenção ao comando da questão, que solicitava expressamente a alternativa gramaticalmente inadequada à norma-padrão.",
+        "recommendedAction": "Destaque ou sublinhe comandos negativos ou restritivos ('INADEQUADA', 'INCORRETA', 'EXCETO') antes de analisar as alternativas para manter o foco no critério exigido.",
+        "coreConcept": "Concordância verbal com verbo impessoal indicando tempo decorrido",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD08",
+      "ok": true,
+      "raw": {
+        "discipline": "Português",
+        "observableBehavior": "O estudante indicou 'Pretérito perfeito do indicativo' para a forma verbal 'soubesse', cujo gabarito é 'Pretérito imperfeito do subjuntivo'.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "KNOWLEDGE_GAP",
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.4,
+        "reasoningSummary": "O relato expressa incerteza genérica sem detalhar a regra ou associação mental utilizada, tornando os dados insuficientes para isolar a causa provável do erro entre lacuna de conhecimento ou confusão conceitual.",
+        "recommendedAction": "Revise a desinência modo-temporal '-sse', característica do pretérito imperfeito do subjuntivo, comparando-a com as terminações do pretérito perfeito do indicativo.",
+        "coreConcept": "Pretérito imperfeito do subjuntivo",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Português",
+        "observableBehavior": "O estudante indicou 'Pretérito perfeito do indicativo' para a forma verbal 'soubesse', cujo gabarito é 'Pretérito imperfeito do subjuntivo'.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "KNOWLEDGE_GAP",
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.4,
+        "reasoningSummary": "O relato expressa incerteza genérica sem detalhar a regra ou associação mental utilizada, tornando os dados insuficientes para isolar a causa provável do erro entre lacuna de conhecimento ou confusão conceitual.",
+        "recommendedAction": "Revise a desinência modo-temporal '-sse', característica do pretérito imperfeito do subjuntivo, comparando-a com as terminações do pretérito perfeito do indicativo.",
+        "coreConcept": "Pretérito imperfeito do subjuntivo",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD09",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu que a Revolução Cubana de 1959 foi liderada por Vladimir Lênin, enquanto o gabarito indicava a Revolução Russa de 1917.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei as duas revoluções de lugar: sempre confundo qual delas foi liderada por Lênin e qual foi liderada por Fidel Castro.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a confusão conceitual entre os líderes e contextos da Revolução Russa e da Revolução Cubana, associando Lênin ao processo cubano.",
+        "recommendedAction": "Monte uma tabela comparativa simples associando cada líder (Lênin vs. Fidel Castro) à respectiva revolução e período histórico para consolidar a distinção.",
+        "coreConcept": "Lideranças da Revolução Russa e da Revolução Cubana",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a principal diferença de liderança entre a Revolução Russa (1917) e a Revolução Cubana (1959)?",
+          "back": "Revolução Russa (1917): liderada por Vladimir Lênin.\nRevolução Cubana (1959): liderada por Fidel Castro (junto a Che Guevara e outros)."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu que a Revolução Cubana de 1959 foi liderada por Vladimir Lênin, enquanto o gabarito indicava a Revolução Russa de 1917.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei as duas revoluções de lugar: sempre confundo qual delas foi liderada por Lênin e qual foi liderada por Fidel Castro.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a confusão conceitual entre os líderes e contextos da Revolução Russa e da Revolução Cubana, associando Lênin ao processo cubano.",
+        "recommendedAction": "Monte uma tabela comparativa simples associando cada líder (Lênin vs. Fidel Castro) à respectiva revolução e período histórico para consolidar a distinção.",
+        "coreConcept": "Lideranças da Revolução Russa e da Revolução Cubana",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a principal diferença de liderança entre a Revolução Russa (1917) e a Revolução Cubana (1959)?",
+          "back": "Revolução Russa (1917): liderada por Vladimir Lênin.\nRevolução Cubana (1959): liderada por Fidel Castro (junto a Che Guevara e outros)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD10",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante indicou a Revolução Cubana de 1959 em vez da Revolução Russa de 1917 como o evento liderado por Vladimir Lênin.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "KNOWLEDGE_GAP",
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.5,
+        "reasoningSummary": "O relato do estudante apenas expressa esquecimento vago, não permitindo discriminar com segurança se a causa provável foi lacuna de conhecimento histórico ou confusão conceitual entre os eventos.",
+        "recommendedAction": "Revise os principais líderes das revoluções do século XX, fixando Vladimir Lênin na Revolução Russa de 1917 e diferenciando-o dos líderes da Revolução Cubana de 1959 (como Fidel Castro e Che Guevara).",
+        "coreConcept": "Líderes da Revolução Russa e da Revolução Cubana",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante indicou a Revolução Cubana de 1959 em vez da Revolução Russa de 1917 como o evento liderado por Vladimir Lênin.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "KNOWLEDGE_GAP",
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.5,
+        "reasoningSummary": "O relato do estudante apenas expressa esquecimento vago, não permitindo discriminar com segurança se a causa provável foi lacuna de conhecimento histórico ou confusão conceitual entre os eventos.",
+        "recommendedAction": "Revise os principais líderes das revoluções do século XX, fixando Vladimir Lênin na Revolução Russa de 1917 e diferenciando-o dos líderes da Revolução Cubana de 1959 (como Fidel Castro e Che Guevara).",
+        "coreConcept": "Líderes da Revolução Russa e da Revolução Cubana",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD11",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que o Tratado de Tordesilhas aboliu a escravidão nas colônias americanas, quando a resposta correta definia a partilha de terras entre Portugal e Espanha.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia do que se tratava esse tratado",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre o conteúdo histórico, como indicado pelo seu próprio relato de não saber o objeto do Tratado de Tordesilhas.",
+        "recommendedAction": "Revise o contexto da expansão marítima ibérica e os principais tratados territoriais do período colonial, com foco no Tratado de Tordesilhas.",
+        "coreConcept": "Tratado de Tordesilhas (1494)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "O que estabeleceu o Tratado de Tordesilhas (1494)?",
+          "back": "Dividiu as terras 'descobertas e por descobrir' fora da Europa entre Portugal e Espanha, fixando uma linha imaginária a 370 léguas a oeste do arquipélago de Cabo Verde."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que o Tratado de Tordesilhas aboliu a escravidão nas colônias americanas, quando a resposta correta definia a partilha de terras entre Portugal e Espanha.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia do que se tratava esse tratado",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre o conteúdo histórico, como indicado pelo seu próprio relato de não saber o objeto do Tratado de Tordesilhas.",
+        "recommendedAction": "Revise o contexto da expansão marítima ibérica e os principais tratados territoriais do período colonial, com foco no Tratado de Tordesilhas.",
+        "coreConcept": "Tratado de Tordesilhas (1494)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "O que estabeleceu o Tratado de Tordesilhas (1494)?",
+          "back": "Dividiu as terras 'descobertas e por descobrir' fora da Europa entre Portugal e Espanha, fixando uma linha imaginária a 370 léguas a oeste do arquipélago de Cabo Verde."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD12",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que o alelo recessivo se expressa sempre independentemente do outro alelo, enquanto a resposta correta indica que ele só se expressa em homozigose.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia como esse conceito funcionava, então inventei que ele deveria se expressar sempre, sem saber a regra verdadeira de como os alelos interagem.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre genética mendeliana, visto que você declarou explicitamente desconhecer como funciona a interação entre alelos dominantes e recessivos.",
+        "recommendedAction": "Revise os conceitos introdutórios de genética mendeliana, focando na definição e na distinção entre alelos dominantes, alelos recessivos, homozigose e heterozigose.",
+        "coreConcept": "Dominância e recessividade em genética mendeliana",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Em genética mendeliana, em que condição um alelo recessivo se expressa fenotipicamente?",
+          "back": "Apenas em homozigose (quando em dose dupla, na ausência de um alelo dominante)."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que o alelo recessivo se expressa sempre independentemente do outro alelo, enquanto a resposta correta indica que ele só se expressa em homozigose.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia como esse conceito funcionava, então inventei que ele deveria se expressar sempre, sem saber a regra verdadeira de como os alelos interagem.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre genética mendeliana, visto que você declarou explicitamente desconhecer como funciona a interação entre alelos dominantes e recessivos.",
+        "recommendedAction": "Revise os conceitos introdutórios de genética mendeliana, focando na definição e na distinção entre alelos dominantes, alelos recessivos, homozigose e heterozigose.",
+        "coreConcept": "Dominância e recessividade em genética mendeliana",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Em genética mendeliana, em que condição um alelo recessivo se expressa fenotipicamente?",
+          "back": "Apenas em homozigose (quando em dose dupla, na ausência de um alelo dominante)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD13",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que artérias trazem o sangue de volta ao coração e veias o levam para fora, invertendo as definições expressas no gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu troquei as definições: decorei que artéria levava sangue de volta e veia levava para fora, o contrário do certo.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Você associou inversamente as propriedades de artérias e veias, trocando o vaso que conduz sangue para fora do coração pelo que conduz de volta.",
+        "recommendedAction": "Revise a fisiologia cardiovascular criando mnemônicos ou diagramas comparativos: artérias sempre afastam o sangue do coração, enquanto veias o trazem de volta.",
+        "coreConcept": "Direção do fluxo sanguíneo em artérias e veias",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre artérias e veias quanto ao sentido do fluxo sanguíneo em relação ao coração?",
+          "back": "Artérias: levam o sangue para FORA do coração (afastam do coração).\nVeias: levam o sangue de VOLTA ao coração."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que artérias trazem o sangue de volta ao coração e veias o levam para fora, invertendo as definições expressas no gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu troquei as definições: decorei que artéria levava sangue de volta e veia levava para fora, o contrário do certo.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Você associou inversamente as propriedades de artérias e veias, trocando o vaso que conduz sangue para fora do coração pelo que conduz de volta.",
+        "recommendedAction": "Revise a fisiologia cardiovascular criando mnemônicos ou diagramas comparativos: artérias sempre afastam o sangue do coração, enquanto veias o trazem de volta.",
+        "coreConcept": "Direção do fluxo sanguíneo em artérias e veias",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre artérias e veias quanto ao sentido do fluxo sanguíneo em relação ao coração?",
+          "back": "Artérias: levam o sangue para FORA do coração (afastam do coração).\nVeias: levam o sangue de VOLTA ao coração."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD14",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante indicou glicose e oxigênio como reagentes e gás carbônico e água como produtos para uma questão sobre a equação geral da fotossíntese.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "CONCEPT_CONFUSION",
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.5,
+        "reasoningSummary": "O relato do estudante expressa apenas incerteza e não fornece detalhes suficientes para distinguir com segurança se houve inversão com o processo de respiração celular ou uma lacuna de conhecimento conceitual.",
+        "recommendedAction": "Revise o fluxo de reagentes e produtos da fotossíntese em contraste direto com a respiração celular, fixando o papel da luz e a produção de glicose e oxigênio.",
+        "coreConcept": "Equação geral da fotossíntese",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante indicou glicose e oxigênio como reagentes e gás carbônico e água como produtos para uma questão sobre a equação geral da fotossíntese.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "CONCEPT_CONFUSION",
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.5,
+        "reasoningSummary": "O relato do estudante expressa apenas incerteza e não fornece detalhes suficientes para distinguir com segurança se houve inversão com o processo de respiração celular ou uma lacuna de conhecimento conceitual.",
+        "recommendedAction": "Revise o fluxo de reagentes e produtos da fotossíntese em contraste direto com a respiração celular, fixando o papel da luz e a produção de glicose e oxigênio.",
+        "coreConcept": "Equação geral da fotossíntese",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD15",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu atribuindo a redução da frequência cardíaca ao sistema simpático e a aceleração ao parassimpático, contrariando o gabarito que estabelece o oposto.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "O sistema simpático reduz a frequência cardíaca em repouso; o parassimpático a acelera em situações de estresse.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi uma confusão conceitual, na qual houve inversão direta entre os efeitos do sistema simpático e do parassimpático sobre a frequência cardíaca.",
+        "recommendedAction": "Revise o sistema nervoso autônomo associando o simpático a situações de alerta/estresse ('luta ou fuga' -> taquicardia) e o parassimpático a repouso e digestão (bradicardia).",
+        "coreConcept": "Efeitos do sistema nervoso simpático e parassimpático",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual a diferença entre a atuação do sistema nervoso simpático e do parassimpático sobre a frequência cardíaca?",
+          "back": "Simpático: aumenta a frequência cardíaca (resposta de estresse / 'luta ou fuga'). Parassimpático: reduz a frequência cardíaca (promove repouso e conservação de energia)."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu atribuindo a redução da frequência cardíaca ao sistema simpático e a aceleração ao parassimpático, contrariando o gabarito que estabelece o oposto.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "O sistema simpático reduz a frequência cardíaca em repouso; o parassimpático a acelera em situações de estresse.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi uma confusão conceitual, na qual houve inversão direta entre os efeitos do sistema simpático e do parassimpático sobre a frequência cardíaca.",
+        "recommendedAction": "Revise o sistema nervoso autônomo associando o simpático a situações de alerta/estresse ('luta ou fuga' -> taquicardia) e o parassimpático a repouso e digestão (bradicardia).",
+        "coreConcept": "Efeitos do sistema nervoso simpático e parassimpático",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD16",
+      "ok": true,
+      "raw": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '320 litros/min' em uma questão cuja resposta correta era '5 litros/min', calculando 40 × 8 em vez de 40 ÷ 8.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "multipliquei o volume pelo tempo (40 × 8) em vez de dividir o volume pelo tempo.",
+          "supportType": "OBSERVABLE_PROCEDURE",
+          "competingCauses": []
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma falha na execução da operação, multiplicando os valores em vez de aplicar a divisão indicada pela fórmula de vazão.",
+        "recommendedAction": "Ao calcular grandezas que representam taxas (como vazão = volume ÷ tempo), verifique se a operação realizada é coerente com a unidade de medida esperada (litros por minuto).",
+        "coreConcept": "Cálculo de vazão constante (razão entre volume e tempo)",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Como se calcula a vazão constante a partir do volume transferido e do tempo decorrido?",
+          "back": "Vazão = Volume ÷ Tempo\n(Exemplo: 40 litros em 8 minutos = 40 ÷ 8 = 5 litros/min)"
+        }
+      },
+      "final": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '320 litros/min' em uma questão cuja resposta correta era '5 litros/min', calculando 40 × 8 em vez de 40 ÷ 8.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "multipliquei o volume pelo tempo (40 × 8) em vez de dividir o volume pelo tempo.",
+          "supportType": "OBSERVABLE_PROCEDURE",
+          "competingCauses": []
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma falha na execução da operação, multiplicando os valores em vez de aplicar a divisão indicada pela fórmula de vazão.",
+        "recommendedAction": "Ao calcular grandezas que representam taxas (como vazão = volume ÷ tempo), verifique se a operação realizada é coerente com a unidade de medida esperada (litros por minuto).",
+        "coreConcept": "Cálculo de vazão constante (razão entre volume e tempo)",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Como se calcula a vazão constante a partir do volume transferido e do tempo decorrido?",
+          "back": "Vazão = Volume ÷ Tempo\n(Exemplo: 40 litros em 8 minutos = 40 ÷ 8 = 5 litros/min)"
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD17",
+      "ok": true,
+      "raw": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '320 litros/min' para uma questão cuja resposta correta era '5 litros/min'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "320 litros/min",
+          "supportType": "OBSERVABLE_PROCEDURE",
+          "competingCauses": [
+            "READING_ERROR"
+          ]
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do seu erro foi a execução de uma multiplicação (40 × 8 = 320) em vez da operação de divisão indicada para calcular a vazão (40 ÷ 8 = 5).",
+        "recommendedAction": "Verifique a operação aritmética necessária entre as grandezas antes de realizar a conta, aplicando divisão quando a taxa unitária for solicitada.",
+        "coreConcept": "Cálculo de vazão constante",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Como se calcula a vazão constante a partir do volume e do tempo?",
+          "back": "Vazão = Volume ÷ Tempo (divide-se o volume acumulado pelo intervalo de tempo decorrido)."
+        }
+      },
+      "final": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '320 litros/min' para uma questão cuja resposta correta era '5 litros/min'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "320 litros/min",
+          "supportType": "OBSERVABLE_PROCEDURE",
+          "competingCauses": [
+            "READING_ERROR"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do seu erro foi a execução de uma multiplicação (40 × 8 = 320) em vez da operação de divisão indicada para calcular a vazão (40 ÷ 8 = 5).",
+        "recommendedAction": "Verifique a operação aritmética necessária entre as grandezas antes de realizar a conta, aplicando divisão quando a taxa unitária for solicitada.",
+        "coreConcept": "Cálculo de vazão constante",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD18",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que a energia mecânica sempre se conserva em qualquer situação de queda, inclusive com atrito significativo do ar.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral de conservação de energia mecânica que aprendi, sem considerar que o atrito do ar dissipa energia nesse caso.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi aplicar a regra geral de conservação da energia mecânica sem considerar a exceção imposta por forças dissipativas (atrito do ar).",
+        "recommendedAction": "Revise o princípio de conservação da energia mecânica destacando as condições em que ele não se aplica, especificamente na presença de forças dissipativas.",
+        "coreConcept": "Conservação da energia mecânica e forças dissipativas",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a condição necessária para a conservação da energia mecânica e quando ela NÃO se conserva?",
+          "back": "Regra geral: a energia mecânica se conserva se apenas forças conservativas realizarem trabalho.\nExceção: havendo atuação de forças dissipativas/não conservativas (como atrito ou resistência do ar), a energia mecânica não se conserva, pois parte dela é dissipada (ex.: em calor)."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que a energia mecânica sempre se conserva em qualquer situação de queda, inclusive com atrito significativo do ar.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral de conservação de energia mecânica que aprendi, sem considerar que o atrito do ar dissipa energia nesse caso.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi aplicar a regra geral de conservação da energia mecânica sem considerar a exceção imposta por forças dissipativas (atrito do ar).",
+        "recommendedAction": "Revise o princípio de conservação da energia mecânica destacando as condições em que ele não se aplica, especificamente na presença de forças dissipativas.",
+        "coreConcept": "Conservação da energia mecânica e forças dissipativas",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a condição necessária para a conservação da energia mecânica e quando ela NÃO se conserva?",
+          "back": "Regra geral: a energia mecânica se conserva se apenas forças conservativas realizarem trabalho.\nExceção: havendo atuação de forças dissipativas/não conservativas (como atrito ou resistência do ar), a energia mecânica não se conserva, pois parte dela é dissipada (ex.: em calor)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD19",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu que a solubilidade do sulfato de cálcio aumenta com a temperatura, enquanto o gabarito indica que diminui por se tratar de uma exceção à regra geral.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral de que sólidos ficam mais solúveis com mais calor, sem saber que esse sal específico é uma exceção a essa regra.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você conhecia a regra geral de que a solubilidade de sólidos costuma aumentar com a temperatura, mas desconsiderou a exceção específica do sulfato de cálcio (CaSO4), cuja dissolução é exotérmica.",
+        "recommendedAction": "Revise as exceções à regra de solubilidade de sólidos em líquidos, com foco nos sais cuja solubilidade diminui com o aumento da temperatura (processos exotérmicos de dissolução).",
+        "coreConcept": "Solubilidade de sólidos e variação de temperatura (exceção do CaSO4)",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Como a variação de temperatura afeta a solubilidade de sólidos em líquidos (regra geral vs. exceção do CaSO4)?",
+          "back": "Regra geral: O aumento de temperatura aumenta a solubilidade (dissolução endotérmica).\nExceção (ex.: CaSO4 / Ce2(SO4)3): O aumento de temperatura diminui a solubilidade (dissolução exotérmica)."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu que a solubilidade do sulfato de cálcio aumenta com a temperatura, enquanto o gabarito indica que diminui por se tratar de uma exceção à regra geral.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral de que sólidos ficam mais solúveis com mais calor, sem saber que esse sal específico é uma exceção a essa regra.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você conhecia a regra geral de que a solubilidade de sólidos costuma aumentar com a temperatura, mas desconsiderou a exceção específica do sulfato de cálcio (CaSO4), cuja dissolução é exotérmica.",
+        "recommendedAction": "Revise as exceções à regra de solubilidade de sólidos em líquidos, com foco nos sais cuja solubilidade diminui com o aumento da temperatura (processos exotérmicos de dissolução).",
+        "coreConcept": "Solubilidade de sólidos e variação de temperatura (exceção do CaSO4)",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Como a variação de temperatura afeta a solubilidade de sólidos em líquidos (regra geral vs. exceção do CaSO4)?",
+          "back": "Regra geral: O aumento de temperatura aumenta a solubilidade (dissolução endotérmica).\nExceção (ex.: CaSO4 / Ce2(SO4)3): O aumento de temperatura diminui a solubilidade (dissolução exotérmica)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD20",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante inverteu as definições de mistura homogênea e heterogênea ao responder que a primeira tem mais de uma fase e a segunda apenas uma.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei as definições das duas: decorei que homogênea tinha várias fases e heterogênea tinha uma só, ao contrário do certo.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma confusão conceitual, caracterizada pela inversão direta das definições e propriedades de fases entre misturas homogêneas e heterogêneas.",
+        "recommendedAction": "Revise o significado dos prefixos (homo = igual/única fase; hetero = diferente/múltiplas fases) para fixar a distinção entre os dois tipos de misturas.",
+        "coreConcept": "Misturas homogêneas e heterogêneas",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre uma mistura homogênea e uma mistura heterogênea quanto ao número de fases visíveis?",
+          "back": "Mistura homogênea apresenta apenas 1 fase visível (aspecto uniforme), enquanto a mistura heterogênea apresenta 2 ou mais fases visíveis distintas."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante inverteu as definições de mistura homogênea e heterogênea ao responder que a primeira tem mais de uma fase e a segunda apenas uma.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei as definições das duas: decorei que homogênea tinha várias fases e heterogênea tinha uma só, ao contrário do certo.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma confusão conceitual, caracterizada pela inversão direta das definições e propriedades de fases entre misturas homogêneas e heterogêneas.",
+        "recommendedAction": "Revise o significado dos prefixos (homo = igual/única fase; hetero = diferente/múltiplas fases) para fixar a distinção entre os dois tipos de misturas.",
+        "coreConcept": "Misturas homogêneas e heterogêneas",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre uma mistura homogênea e uma mistura heterogênea quanto ao número de fases visíveis?",
+          "back": "Mistura homogênea apresenta apenas 1 fase visível (aspecto uniforme), enquanto a mistura heterogênea apresenta 2 ou mais fases visíveis distintas."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD21",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que a reação exotérmica absorve energia e a endotérmica libera energia, invertendo as definições do gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "Reação exotérmica absorve energia do ambiente; reação endotérmica libera energia para o ambiente.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão direta das propriedades entre reações exotérmicas e endotérmicas, atribuindo a absorção de calor à primeira e a liberação à segunda.",
+        "recommendedAction": "Revise os prefixos gregos 'exo-' (para fora / liberação) e 'endo-' (para dentro / absorção) para fixar a direção do fluxo de calor em cada reação.",
+        "coreConcept": "Reações exotérmicas e endotérmicas",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre uma reação exotérmica e uma reação endotérmica em relação à troca de energia (calor)?",
+          "back": "- Reação exotérmica: LIBERA energia/calor para o ambiente (exo = para fora).\n- Reação endotérmica: ABSORVE energia/calor do ambiente (endo = para dentro)."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que a reação exotérmica absorve energia e a endotérmica libera energia, invertendo as definições do gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "Reação exotérmica absorve energia do ambiente; reação endotérmica libera energia para o ambiente.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão direta das propriedades entre reações exotérmicas e endotérmicas, atribuindo a absorção de calor à primeira e a liberação à segunda.",
+        "recommendedAction": "Revise os prefixos gregos 'exo-' (para fora / liberação) e 'endo-' (para dentro / absorção) para fixar a direção do fluxo de calor em cada reação.",
+        "coreConcept": "Reações exotérmicas e endotérmicas",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD22",
+      "ok": true,
+      "raw": {
+        "discipline": "Direito Civil",
+        "observableBehavior": "O estudante afirmou que a capacidade civil plena só é atingida aos 18 anos sem exceções, enquanto o gabarito estabelece que o casamento válido gera emancipação.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral da maioridade aos 18 anos, sem considerar as hipóteses de emancipação previstas em lei.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi desconsiderar as hipóteses legais de emancipação, aplicando a regra geral da maioridade aos 18 anos como se fosse absoluta.",
+        "recommendedAction": "Revise o rol de hipóteses legais de emancipação previstas no art. 5º, parágrafo único, do Código Civil, destacando os casos em que a capacidade civil plena é antecipada.",
+        "coreConcept": "Emancipação e capacidade civil plena",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a regra geral para a aquisição da capacidade civil plena e qual é o efeito do casamento válido em relação a essa regra?",
+          "back": "Regra geral: a capacidade civil plena é adquirida com a maioridade aos 18 anos. Exceção/antecipação: o casamento válido constitui hipótese legal de emancipação, conferindo capacidade civil plena ao menor antes dos 18 anos."
+        }
+      },
+      "final": {
+        "discipline": "Direito Civil",
+        "observableBehavior": "O estudante afirmou que a capacidade civil plena só é atingida aos 18 anos sem exceções, enquanto o gabarito estabelece que o casamento válido gera emancipação.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral da maioridade aos 18 anos, sem considerar as hipóteses de emancipação previstas em lei.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi desconsiderar as hipóteses legais de emancipação, aplicando a regra geral da maioridade aos 18 anos como se fosse absoluta.",
+        "recommendedAction": "Revise o rol de hipóteses legais de emancipação previstas no art. 5º, parágrafo único, do Código Civil, destacando os casos em que a capacidade civil plena é antecipada.",
+        "coreConcept": "Emancipação e capacidade civil plena",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é a regra geral para a aquisição da capacidade civil plena e qual é o efeito do casamento válido em relação a essa regra?",
+          "back": "Regra geral: a capacidade civil plena é adquirida com a maioridade aos 18 anos. Exceção/antecipação: o casamento válido constitui hipótese legal de emancipação, conferindo capacidade civil plena ao menor antes dos 18 anos."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD23",
+      "ok": true,
+      "raw": {
+        "discipline": "Direito Penal",
+        "observableBehavior": "O estudante afirmou que a legítima defesa se caracteriza por provocação anterior sem agressão atual, contrariando o gabarito que exige agressão injusta, atual ou iminente, repelida com moderação e meios necessários.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não conhecia os requisitos corretos, então inventei uma condição baseada em algo que ouvi falar sobre provocação prévia.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi uma lacuna de conhecimento sobre os elementos normativos da legítima defesa, conforme você mesmo apontou ao relatar que desconhecia os requisitos legais da excludente de ilicitude.",
+        "recommendedAction": "Estude o art. 25 do Código Penal para memorizar e compreender os requisitos cumulativos da legítima defesa (agressão injusta, atual/iminente, direito próprio/alheio e moderação dos meios).",
+        "coreConcept": "Requisitos da legítima defesa (art. 25 do Código Penal)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Quais são os requisitos legais cumulativos para a configuração da legítima defesa (art. 25 do Código Penal)?",
+          "back": "1. Agressão injusta;\n2. Atual ou iminente;\n3. A direito próprio ou de terceiro;\n4. Utilização moderada dos meios necessários para repeli-la."
+        }
+      },
+      "final": {
+        "discipline": "Direito Penal",
+        "observableBehavior": "O estudante afirmou que a legítima defesa se caracteriza por provocação anterior sem agressão atual, contrariando o gabarito que exige agressão injusta, atual ou iminente, repelida com moderação e meios necessários.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não conhecia os requisitos corretos, então inventei uma condição baseada em algo que ouvi falar sobre provocação prévia.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro foi uma lacuna de conhecimento sobre os elementos normativos da legítima defesa, conforme você mesmo apontou ao relatar que desconhecia os requisitos legais da excludente de ilicitude.",
+        "recommendedAction": "Estude o art. 25 do Código Penal para memorizar e compreender os requisitos cumulativos da legítima defesa (agressão injusta, atual/iminente, direito próprio/alheio e moderação dos meios).",
+        "coreConcept": "Requisitos da legítima defesa (art. 25 do Código Penal)",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Quais são os requisitos legais cumulativos para a configuração da legítima defesa (art. 25 do Código Penal)?",
+          "back": "1. Agressão injusta;\n2. Atual ou iminente;\n3. A direito próprio ou de terceiro;\n4. Utilização moderada dos meios necessários para repeli-la."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD24",
+      "ok": true,
+      "raw": {
+        "discipline": "Direito Constitucional",
+        "observableBehavior": "O estudante assinalou a alternativa 'A' (proposição correta) em uma questão que solicitava a alternativa 'INCORRETA', cujo gabarito era 'C'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Toda vez que a questão pede a alternativa INCORRETA, acabo lendo rápido demais e marcando a primeira que me parece verdadeira",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro decorre da desatenção ao comando da questão, que solicitava a alternativa incorreta, levando à seleção precipitada de uma afirmação verdadeira.",
+        "recommendedAction": "Crie o hábito de circular ou destacar expressamente termos de comando como 'INCORRETA', 'NÃO' e 'EXCETO' antes de ler as alternativas para evitar marcar proposições verdadeiras por reflexo.",
+        "coreConcept": "Remédios constitucionais e leitura de comando negativo",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Direito Constitucional",
+        "observableBehavior": "O estudante assinalou a alternativa 'A' (proposição correta) em uma questão que solicitava a alternativa 'INCORRETA', cujo gabarito era 'C'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Toda vez que a questão pede a alternativa INCORRETA, acabo lendo rápido demais e marcando a primeira que me parece verdadeira",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do seu erro decorre da desatenção ao comando da questão, que solicitava a alternativa incorreta, levando à seleção precipitada de uma afirmação verdadeira.",
+        "recommendedAction": "Crie o hábito de circular ou destacar expressamente termos de comando como 'INCORRETA', 'NÃO' e 'EXCETO' antes de ler as alternativas para evitar marcar proposições verdadeiras por reflexo.",
+        "coreConcept": "Remédios constitucionais e leitura de comando negativo",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD25",
+      "ok": true,
+      "raw": {
+        "discipline": "Direito Administrativo",
+        "observableBehavior": "O estudante respondeu que o poder de polícia se aplica a servidores e o poder disciplinar a qualquer cidadão, invertendo exatamente a relação descrita no gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "Poder de polícia se aplica apenas a servidores públicos; poder disciplinar se aplica a qualquer cidadão.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma confusão direta entre os destinatários do poder de polícia e do poder disciplinar, invertendo a esfera de aplicação de cada um.",
+        "recommendedAction": "Revise a distinção entre poder disciplinar (vínculo especial com servidores ou agentes sob relação jurídica específica) e poder de polícia (supremacia geral sobre particulares).",
+        "coreConcept": "Destinatários do poder de polícia versus poder disciplinar",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual a diferença quanto aos destinatários entre o Poder Disciplinar e o Poder de Polícia da Administração Pública?",
+          "back": "• Poder Disciplinar: aplica-se a indivíduos com vínculo especial/específico com o Estado (servidores públicos ou particulares sob contrato/vínculo específico).\n• Poder de Polícia: aplica-se a qualquer particular da coletividade, baseado na supremacia geral da Administração."
+        }
+      },
+      "final": {
+        "discipline": "Direito Administrativo",
+        "observableBehavior": "O estudante respondeu que o poder de polícia se aplica a servidores e o poder disciplinar a qualquer cidadão, invertendo exatamente a relação descrita no gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "Poder de polícia se aplica apenas a servidores públicos; poder disciplinar se aplica a qualquer cidadão.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma confusão direta entre os destinatários do poder de polícia e do poder disciplinar, invertendo a esfera de aplicação de cada um.",
+        "recommendedAction": "Revise a distinção entre poder disciplinar (vínculo especial com servidores ou agentes sob relação jurídica específica) e poder de polícia (supremacia geral sobre particulares).",
+        "coreConcept": "Destinatários do poder de polícia versus poder disciplinar",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD26",
+      "ok": true,
+      "raw": {
+        "discipline": "Informática",
+        "observableBehavior": "O estudante afirmou ser tecnicamente impossível um site lembrar do login de um usuário porque o HTTP é stateless, divergindo do gabarito que aponta o uso de cookies e sessões para contornar essa restrição.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral de que HTTP não guarda estado, sem considerar que cookies e sessões existem justamente para contornar essa limitação.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você conhecia a regra geral de que o protocolo HTTP é stateless, mas desconsiderou os mecanismos práticos (como cookies e sessões) criados para contornar essa restrição.",
+        "recommendedAction": "Revise como as aplicações web contornam a natureza stateless do HTTP por meio de cookies, tokens e controle de sessão.",
+        "coreConcept": "Persistência de estado em HTTP (cookies e sessões)",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Embora o protocolo HTTP seja stateless por natureza, como as aplicações web mantêm o estado e a sessão do usuário entre requisições?",
+          "back": "Por meio de mecanismos de aplicação como cookies, sessões e tokens (ex.: JWT), enviados nos cabeçalhos das requisições para identificar o usuário e simular continuidade de estado."
+        }
+      },
+      "final": {
+        "discipline": "Informática",
+        "observableBehavior": "O estudante afirmou ser tecnicamente impossível um site lembrar do login de um usuário porque o HTTP é stateless, divergindo do gabarito que aponta o uso de cookies e sessões para contornar essa restrição.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral de que HTTP não guarda estado, sem considerar que cookies e sessões existem justamente para contornar essa limitação.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você conhecia a regra geral de que o protocolo HTTP é stateless, mas desconsiderou os mecanismos práticos (como cookies e sessões) criados para contornar essa restrição.",
+        "recommendedAction": "Revise como as aplicações web contornam a natureza stateless do HTTP por meio de cookies, tokens e controle de sessão.",
+        "coreConcept": "Persistência de estado em HTTP (cookies e sessões)",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Embora o protocolo HTTP seja stateless por natureza, como as aplicações web mantêm o estado e a sessão do usuário entre requisições?",
+          "back": "Por meio de mecanismos de aplicação como cookies, sessões e tokens (ex.: JWT), enviados nos cabeçalhos das requisições para identificar o usuário e simular continuidade de estado."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD27",
+      "ok": true,
+      "raw": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu 36°F em uma questão de conversão cuja fórmula é F = C × 9/5 + 32 e cujo gabarito correto é 68°F.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Multipliquei 20 por 9/5 corretamente (dando 36), mas esqueci de somar 32 no final.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma falha na execução completa do procedimento de cálculo, em que a primeira etapa da fórmula foi realizada com sucesso, mas a adição da constante final foi omitida.",
+        "recommendedAction": "Ao aplicar fórmulas em etapas, revise todos os termos da expressão antes de assinalar a resposta final para garantir que nenhuma operação remanescente seja esquecida.",
+        "coreConcept": "Conversão de temperatura entre Celsius e Fahrenheit",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a fórmula completa para converter uma temperatura de Celsius (°C) para Fahrenheit (°F)?",
+          "back": "F = (C × 9/5) + 32  (ou F = C × 1,8 + 32)"
+        }
+      },
+      "final": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu 36°F em uma questão de conversão cuja fórmula é F = C × 9/5 + 32 e cujo gabarito correto é 68°F.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Multipliquei 20 por 9/5 corretamente (dando 36), mas esqueci de somar 32 no final.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma falha na execução completa do procedimento de cálculo, em que a primeira etapa da fórmula foi realizada com sucesso, mas a adição da constante final foi omitida.",
+        "recommendedAction": "Ao aplicar fórmulas em etapas, revise todos os termos da expressão antes de assinalar a resposta final para garantir que nenhuma operação remanescente seja esquecida.",
+        "coreConcept": "Conversão de temperatura entre Celsius e Fahrenheit",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a fórmula completa para converter uma temperatura de Celsius (°C) para Fahrenheit (°F)?",
+          "back": "F = (C × 9/5) + 32  (ou F = C × 1,8 + 32)"
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD28",
+      "ok": true,
+      "raw": {
+        "discipline": "Informática",
+        "observableBehavior": "O estudante afirmou que o TCP não garante entrega e que o UDP garante entrega com confirmação, invertendo os papéis descritos no gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "UDP garante entrega com confirmação",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.85,
+        "reasoningSummary": "Você inverteu diretamente as características de entrega dos dois protocolos, atribuindo a garantia de entrega ao UDP e a ausência de garantia ao TCP.",
+        "recommendedAction": "Revise o contraste entre TCP (orientado a conexão, confiável e com confirmação) e UDP (não orientado a conexão, focado em velocidade e sem garantia de entrega).",
+        "coreConcept": "Diferença entre protocolos TCP e UDP na garantia de entrega",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em redes de computadores, qual a diferença entre os protocolos TCP e UDP quanto à garantia de entrega dos pacotes?",
+          "back": "TCP: orientado a conexão, garante a entrega ordenada e com confirmação dos pacotes (confiável).\nUDP: não orientado a conexão, não garante a entrega nem a ordem dos pacotes (não confiável, com foco em baixa latência)."
+        }
+      },
+      "final": {
+        "discipline": "Informática",
+        "observableBehavior": "O estudante afirmou que o TCP não garante entrega e que o UDP garante entrega com confirmação, invertendo os papéis descritos no gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "USER_ANSWER",
+          "evidenceQuote": "UDP garante entrega com confirmação",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.85,
+        "reasoningSummary": "Você inverteu diretamente as características de entrega dos dois protocolos, atribuindo a garantia de entrega ao UDP e a ausência de garantia ao TCP.",
+        "recommendedAction": "Revise o contraste entre TCP (orientado a conexão, confiável e com confirmação) e UDP (não orientado a conexão, focado em velocidade e sem garantia de entrega).",
+        "coreConcept": "Diferença entre protocolos TCP e UDP na garantia de entrega",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Em redes de computadores, qual a diferença entre os protocolos TCP e UDP quanto à garantia de entrega dos pacotes?",
+          "back": "TCP: orientado a conexão, garante a entrega ordenada e com confirmação dos pacotes (confiável).\nUDP: não orientado a conexão, não garante a entrega nem a ordem dos pacotes (não confiável, com foco em baixa latência)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD29",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu que a vegetação da Caatinga é adaptada a solos permanentemente encharcados com excesso de água, divergindo do gabarito que descreve vegetação xerófila adaptada a períodos de seca.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia as características da Caatinga",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "O seu relato indica diretamente o desconhecimento das características ecológicas da Caatinga, o que levou a uma resposta contrária à adaptação real do bioma ao semiárido.",
+        "recommendedAction": "Revise as características dos biomas brasileiros, focando nas adaptações da vegetação da Caatinga à escassez hídrica (plantas xerófitas e clima semiárido).",
+        "coreConcept": "Características da vegetação da Caatinga",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a principal característica e adaptação da vegetação no bioma Caatinga em relação à disponibilidade de água?",
+          "back": "A vegetação é xerófila (adaptada à aridez), com mecanismos para suportar longos períodos de seca típicos do clima semiárido."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu que a vegetação da Caatinga é adaptada a solos permanentemente encharcados com excesso de água, divergindo do gabarito que descreve vegetação xerófila adaptada a períodos de seca.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia as características da Caatinga",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "O seu relato indica diretamente o desconhecimento das características ecológicas da Caatinga, o que levou a uma resposta contrária à adaptação real do bioma ao semiárido.",
+        "recommendedAction": "Revise as características dos biomas brasileiros, focando nas adaptações da vegetação da Caatinga à escassez hídrica (plantas xerófitas e clima semiárido).",
+        "coreConcept": "Características da vegetação da Caatinga",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a principal característica e adaptação da vegetação no bioma Caatinga em relação à disponibilidade de água?",
+          "back": "A vegetação é xerófila (adaptada à aridez), com mecanismos para suportar longos períodos de seca típicos do clima semiárido."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD30",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu que a Caatinga possui vegetação adaptada a solos encharcados e declarou ter chutado a resposta.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "KNOWLEDGE_GAP",
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.4,
+        "reasoningSummary": "O relato do estudante expressa apenas incerteza e chute, o que não fornece evidência observável suficiente para diagnosticar a causa provável do erro com segurança.",
+        "recommendedAction": "Estude as características fitogeográficas dos biomas brasileiros, focando nas adaptações xerófilas da Caatinga ao clima semiárido.",
+        "coreConcept": "Adaptação da vegetação da Caatinga ao semiárido",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante respondeu que a Caatinga possui vegetação adaptada a solos encharcados e declarou ter chutado a resposta.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "KNOWLEDGE_GAP",
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.4,
+        "reasoningSummary": "O relato do estudante expressa apenas incerteza e chute, o que não fornece evidência observável suficiente para diagnosticar a causa provável do erro com segurança.",
+        "recommendedAction": "Estude as características fitogeográficas dos biomas brasileiros, focando nas adaptações xerófilas da Caatinga ao clima semiárido.",
+        "coreConcept": "Adaptação da vegetação da Caatinga ao semiárido",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD31",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que o Equador recebe sol perpendicular duas vezes por século e os Trópicos recebem todo dia, quando a resposta correta indica duas vezes por ano no Equador e uma vez por ano nos Trópicos.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu troquei as duas coisas: pensei que era o Equador que tinha uma frequência rara e os trópicos que aconteciam todo dia, ao contrário do que realmente é.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do seu erro foi uma confusão conceitual ao inverter e distorcer a dinâmica de incidência solar perpendicular entre a Linha do Equador e os Trópicos.",
+        "recommendedAction": "Revise o movimento aparente do Sol ao longo do ano associado aos equinócios e solstícios, fixando a periodicidade da incidência perpendicular no Equador e nos Trópicos.",
+        "coreConcept": "Incidência solar perpendicular no Equador e nos Trópicos",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a frequência de incidência solar perpendicular (zênite) na Linha do Equador em comparação aos Trópicos?",
+          "back": "- Linha do Equador: 2 vezes por ano (nos equinócios de outono e primavera).\n- Trópicos (Câncer e Capricórnio): 1 vez por ano em cada um (no respectivo solstício de verão)."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que o Equador recebe sol perpendicular duas vezes por século e os Trópicos recebem todo dia, quando a resposta correta indica duas vezes por ano no Equador e uma vez por ano nos Trópicos.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu troquei as duas coisas: pensei que era o Equador que tinha uma frequência rara e os trópicos que aconteciam todo dia, ao contrário do que realmente é.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.9,
+        "reasoningSummary": "A causa provável do seu erro foi uma confusão conceitual ao inverter e distorcer a dinâmica de incidência solar perpendicular entre a Linha do Equador e os Trópicos.",
+        "recommendedAction": "Revise o movimento aparente do Sol ao longo do ano associado aos equinócios e solstícios, fixando a periodicidade da incidência perpendicular no Equador e nos Trópicos.",
+        "coreConcept": "Incidência solar perpendicular no Equador e nos Trópicos",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a frequência de incidência solar perpendicular (zênite) na Linha do Equador em comparação aos Trópicos?",
+          "back": "- Linha do Equador: 2 vezes por ano (nos equinócios de outono e primavera).\n- Trópicos (Câncer e Capricórnio): 1 vez por ano em cada um (no respectivo solstício de verão)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD32",
+      "ok": true,
+      "raw": {
+        "discipline": "Direito Penal",
+        "observableBehavior": "O estudante inverteu as definições de erro de tipo e erro de proibição, atribuindo a consciência da ilicitude ao erro de tipo e o elemento do tipo ao erro de proibição.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei as definições dos dois institutos: apliquei a definição de erro de proibição no erro de tipo e vice-versa.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma confusão conceitual direta entre dois institutos correlatos, invertendo o elemento atingido por cada um deles.",
+        "recommendedAction": "Revise a distinção estrutural: no erro de tipo o equívoco recai sobre a realidade fática (elementares do tipo), enquanto no erro de proibição recai sobre a ilicitude da conduta.",
+        "coreConcept": "Diferença entre erro de tipo e erro de proibição",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "No Direito Penal, qual a diferença entre erro de tipo e erro de proibição quanto ao elemento sobre o qual recai o erro?",
+          "back": "• Erro de tipo: recai sobre a percepção fática de elemento constitutivo do tipo penal (o agente não sabe exatamente o que faz).\n• Erro de proibição: recai sobre a consciência da ilicitude da conduta (o agente sabe o que faz, mas supõe que sua ação é permitida)."
+        }
+      },
+      "final": {
+        "discipline": "Direito Penal",
+        "observableBehavior": "O estudante inverteu as definições de erro de tipo e erro de proibição, atribuindo a consciência da ilicitude ao erro de tipo e o elemento do tipo ao erro de proibição.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei as definições dos dois institutos: apliquei a definição de erro de proibição no erro de tipo e vice-versa.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma confusão conceitual direta entre dois institutos correlatos, invertendo o elemento atingido por cada um deles.",
+        "recommendedAction": "Revise a distinção estrutural: no erro de tipo o equívoco recai sobre a realidade fática (elementares do tipo), enquanto no erro de proibição recai sobre a ilicitude da conduta.",
+        "coreConcept": "Diferença entre erro de tipo e erro de proibição",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "No Direito Penal, qual a diferença entre erro de tipo e erro de proibição quanto ao elemento sobre o qual recai o erro?",
+          "back": "• Erro de tipo: recai sobre a percepção fática de elemento constitutivo do tipo penal (o agente não sabe exatamente o que faz).\n• Erro de proibição: recai sobre a consciência da ilicitude da conduta (o agente sabe o que faz, mas supõe que sua ação é permitida)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD33",
+      "ok": true,
+      "raw": {
+        "discipline": "Estatística",
+        "observableBehavior": "O estudante respondeu que a média sempre representa bem o centro dos dados independentemente de outliers, enquanto a resposta correta afirma que outliers distorcem a média.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral de que a média é sempre a melhor medida central, sem considerar o efeito dos valores extremos.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você aplicou a premissa de uso da média como regra geral, mas não considerou a exceção relevante de conjuntos de dados que contêm valores extremos (outliers), que a distorcem.",
+        "recommendedAction": "Revise o comportamento das medidas de tendência central na presença de assimetria e outliers, atentando para o fato de a mediana ser uma medida robusta (resistente a valores extremos).",
+        "coreConcept": "Sensibilidade da média aritmética a outliers vs robustez da mediana",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é o efeito de valores extremos (outliers) sobre a média aritmética e qual medida de tendência central é preferível nesses casos?",
+          "back": "Outliers distorcem significativamente a média aritmética (que não é robusta). Nesses casos, a mediana é preferível por ser resistente a valores extremos."
+        }
+      },
+      "final": {
+        "discipline": "Estatística",
+        "observableBehavior": "O estudante respondeu que a média sempre representa bem o centro dos dados independentemente de outliers, enquanto a resposta correta afirma que outliers distorcem a média.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra geral de que a média é sempre a melhor medida central, sem considerar o efeito dos valores extremos.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "EXCEPTION_MISSED",
+        "confidence": 0.95,
+        "reasoningSummary": "Você aplicou a premissa de uso da média como regra geral, mas não considerou a exceção relevante de conjuntos de dados que contêm valores extremos (outliers), que a distorcem.",
+        "recommendedAction": "Revise o comportamento das medidas de tendência central na presença de assimetria e outliers, atentando para o fato de a mediana ser uma medida robusta (resistente a valores extremos).",
+        "coreConcept": "Sensibilidade da média aritmética a outliers vs robustez da mediana",
+        "cardAction": "CREATE_EXCEPTION_CARD",
+        "card": {
+          "front": "Qual é o efeito de valores extremos (outliers) sobre a média aritmética e qual medida de tendência central é preferível nesses casos?",
+          "back": "Outliers distorcem significativamente a média aritmética (que não é robusta). Nesses casos, a mediana é preferível por ser resistente a valores extremos."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD34",
+      "ok": true,
+      "raw": {
+        "discipline": "Processo Civil",
+        "observableBehavior": "O estudante marcou a alternativa 'A' em uma questão que solicitava a alternativa falsa sobre prazos processuais, cuja resposta correta era 'C'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Li rápido e marquei a alternativa que me pareceu mais estranha à primeira vista, sem confirmar qual delas realmente era falsa.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi a leitura precipitada do enunciado e das alternativas, levando à escolha da primeira opção que pareceu estranha sem a devida verificação de qual era a afirmação falsa.",
+        "recommendedAction": "Ao resolver questões que solicitam a alternativa 'FALSA' ou 'INCORRETA', destaque esse comando e classifique cada item explicitamente como Verdadeiro (V) ou Falso (F) antes de assinalar a resposta.",
+        "coreConcept": "Contagem e prorrogação de prazos processuais no CPC",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Processo Civil",
+        "observableBehavior": "O estudante marcou a alternativa 'A' em uma questão que solicitava a alternativa falsa sobre prazos processuais, cuja resposta correta era 'C'.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Li rápido e marquei a alternativa que me pareceu mais estranha à primeira vista, sem confirmar qual delas realmente era falsa.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "READING_ERROR",
+        "confidence": 0.85,
+        "reasoningSummary": "A causa provável do erro foi a leitura precipitada do enunciado e das alternativas, levando à escolha da primeira opção que pareceu estranha sem a devida verificação de qual era a afirmação falsa.",
+        "recommendedAction": "Ao resolver questões que solicitam a alternativa 'FALSA' ou 'INCORRETA', destaque esse comando e classifique cada item explicitamente como Verdadeiro (V) ou Falso (F) antes de assinalar a resposta.",
+        "coreConcept": "Contagem e prorrogação de prazos processuais no CPC",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD35",
+      "ok": true,
+      "raw": {
+        "discipline": "Direito Constitucional",
+        "observableBehavior": "O estudante atribuiu a ocorrência após a promulgação ao controle prévio e a ocorrência durante o processo legislativo ao controle repressivo, invertendo as definições do gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei os dois: pensei que prévio era depois e repressivo era antes.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Houve uma inversão direta dos conceitos temporais: o momento do controle prévio foi atribuído ao repressivo e vice-versa.",
+        "recommendedAction": "Fixe a distinção temporal: controle prévio ocorre antes da promulgação (durante o processo legislativo), enquanto o repressivo incide sobre a lei já existente.",
+        "coreConcept": "Controle prévio vs. controle repressivo de constitucionalidade",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre controle prévio e controle repressivo de constitucionalidade quanto ao momento de realização?",
+          "back": "• Controle Prévio (Preventivo): ocorre antes da promulgação da norma, durante o processo legislativo.\n• Controle Repressivo (Sucessivo): ocorre após a promulgação/publicação, sobre lei ou ato normativo já em vigor."
+        }
+      },
+      "final": {
+        "discipline": "Direito Constitucional",
+        "observableBehavior": "O estudante atribuiu a ocorrência após a promulgação ao controle prévio e a ocorrência durante o processo legislativo ao controle repressivo, invertendo as definições do gabarito.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei os dois: pensei que prévio era depois e repressivo era antes.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "Houve uma inversão direta dos conceitos temporais: o momento do controle prévio foi atribuído ao repressivo e vice-versa.",
+        "recommendedAction": "Fixe a distinção temporal: controle prévio ocorre antes da promulgação (durante o processo legislativo), enquanto o repressivo incide sobre a lei já existente.",
+        "coreConcept": "Controle prévio vs. controle repressivo de constitucionalidade",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual é a diferença entre controle prévio e controle repressivo de constitucionalidade quanto ao momento de realização?",
+          "back": "• Controle Prévio (Preventivo): ocorre antes da promulgação da norma, durante o processo legislativo.\n• Controle Repressivo (Sucessivo): ocorre após a promulgação/publicação, sobre lei ou ato normativo já em vigor."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD36",
+      "ok": true,
+      "raw": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '25 cm³' para o cálculo do volume de um cubo de aresta 5 cm, cuja resposta correta é '125 cm³'.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "APPLICATION_ERROR",
+            "CONCEPT_CONFUSION",
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.4,
+        "reasoningSummary": "A resposta apresentada (25 cm³) sugere que foi calculada a área da face (5 × 5) ou que houve multiplicação incompleta, mas o relato vago do estudante não permite identificar com precisão a causa provável do erro.",
+        "recommendedAction": "Revise a fórmula do volume do cubo (V = a³) e pratique a distinção entre cálculo de área superficial e cálculo de volume em figuras tridimensionais.",
+        "coreConcept": "Cálculo do volume do cubo",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "final": {
+        "discipline": "Matemática",
+        "observableBehavior": "O estudante respondeu '25 cm³' para o cálculo do volume de um cubo de aresta 5 cm, cuja resposta correta é '125 cm³'.",
+        "diagnosticEvidence": {
+          "sufficient": false,
+          "evidenceSource": null,
+          "evidenceQuote": null,
+          "supportType": "NONE",
+          "competingCauses": [
+            "APPLICATION_ERROR",
+            "CONCEPT_CONFUSION",
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "INSUFFICIENT_INFORMATION",
+        "confidence": 0.4,
+        "reasoningSummary": "A resposta apresentada (25 cm³) sugere que foi calculada a área da face (5 × 5) ou que houve multiplicação incompleta, mas o relato vago do estudante não permite identificar com precisão a causa provável do erro.",
+        "recommendedAction": "Revise a fórmula do volume do cubo (V = a³) e pratique a distinção entre cálculo de área superficial e cálculo de volume em figuras tridimensionais.",
+        "coreConcept": "Cálculo do volume do cubo",
+        "cardAction": "NO_CARD",
+        "card": null
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD37",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que a hemoglobina produz anticorpos para combater infecções, quando sua função correta é o transporte de oxigênio.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Não tenho certeza do que sei sobre isso, só respondi algo relacionado a sangue e defesa do corpo.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "Você demonstrou desconhecer a função específica da hemoglobina, atribuindo a ela o papel imunológico desempenhado pelos leucócitos e plasmócitos.",
+        "recommendedAction": "Revise as funções dos principais componentes do sangue, diferenciando o papel do transporte de gases (hemoglobina/hemácias) do sistema imunológico (leucócitos e anticorpos).",
+        "coreConcept": "Função da hemoglobina",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a principal função da hemoglobina no organismo humano?",
+          "back": "Transportar oxigênio (O2) dos pulmões para os tecidos do corpo (e auxiliar no transporte de dióxido de carbono de volta aos pulmões)."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que a hemoglobina produz anticorpos para combater infecções, quando sua função correta é o transporte de oxigênio.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Não tenho certeza do que sei sobre isso, só respondi algo relacionado a sangue e defesa do corpo.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "CONCEPT_CONFUSION"
+          ]
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.85,
+        "reasoningSummary": "Você demonstrou desconhecer a função específica da hemoglobina, atribuindo a ela o papel imunológico desempenhado pelos leucócitos e plasmócitos.",
+        "recommendedAction": "Revise as funções dos principais componentes do sangue, diferenciando o papel do transporte de gases (hemoglobina/hemácias) do sistema imunológico (leucócitos e anticorpos).",
+        "coreConcept": "Função da hemoglobina",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é a principal função da hemoglobina no organismo humano?",
+          "back": "Transportar oxigênio (O2) dos pulmões para os tecidos do corpo (e auxiliar no transporte de dióxido de carbono de volta aos pulmões)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD38",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que o catalisador é consumido totalmente para fornecer energia à reação, divergindo do gabarito que define que ele não é consumido e diminui a energia de ativação.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia o conceito certo de catalisador",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre a definição de catalisador, que aumenta a velocidade da reação diminuindo a energia de ativação sem ser consumido.",
+        "recommendedAction": "Revise o conceito de catalisadores em cinética química, atentando para a sua ação na energia de ativação e sua conservação ao final da reação.",
+        "coreConcept": "Conceito e função de catalisador em reações químicas",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é o papel de um catalisador em uma reação química e o que acontece com ele durante o processo?",
+          "back": "O catalisador aumenta a velocidade da reação ao diminuir a energia de ativação, sem ser consumido no processo global."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante afirmou que o catalisador é consumido totalmente para fornecer energia à reação, divergindo do gabarito que define que ele não é consumido e diminui a energia de ativação.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Eu não sabia o conceito certo de catalisador",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": []
+        },
+        "probableErrorType": "KNOWLEDGE_GAP",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento sobre a definição de catalisador, que aumenta a velocidade da reação diminuindo a energia de ativação sem ser consumido.",
+        "recommendedAction": "Revise o conceito de catalisadores em cinética química, atentando para a sua ação na energia de ativação e sua conservação ao final da reação.",
+        "coreConcept": "Conceito e função de catalisador em reações químicas",
+        "cardAction": "CREATE_BASIC_CARD",
+        "card": {
+          "front": "Qual é o papel de um catalisador em uma reação química e o que acontece com ele durante o processo?",
+          "back": "O catalisador aumenta a velocidade da reação ao diminuir a energia de ativação, sem ser consumido no processo global."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD39",
+      "ok": true,
+      "raw": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "observableBehavior": "O estudante respondeu 4 para uma questão cuja resposta correta era 5.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra ao contrário: somei 2 para os números pares e 1 para os ímpares, invertendo as duas condições do algoritmo.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "READING_ERROR"
+          ]
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão das regras condicionais durante a execução do algoritmo, somando o valor dos números pares aos ímpares e vice-versa.",
+        "recommendedAction": "Realize o teste de mesa anotando a regra condicional explicitamente ao lado de cada elemento antes de somar os valores acumulados.",
+        "coreConcept": "Execução de algoritmos condicionais",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Considere a regra: se o número for PAR, adicione 1; se for ÍMPAR, adicione 2. Qual o total ao processar a lista [2, 3, 4]?",
+          "back": "Total: 4 (2 é par: +1; 3 é ímpar: +2; 4 é par: +1. 1 + 2 + 1 = 4)."
+        }
+      },
+      "final": {
+        "discipline": "Raciocínio Lógico-Matemático",
+        "observableBehavior": "O estudante respondeu 4 para uma questão cuja resposta correta era 5.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Apliquei a regra ao contrário: somei 2 para os números pares e 1 para os ímpares, invertendo as duas condições do algoritmo.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "READING_ERROR"
+          ]
+        },
+        "probableErrorType": "APPLICATION_ERROR",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão das regras condicionais durante a execução do algoritmo, somando o valor dos números pares aos ímpares e vice-versa.",
+        "recommendedAction": "Realize o teste de mesa anotando a regra condicional explicitamente ao lado de cada elemento antes de somar os valores acumulados.",
+        "coreConcept": "Execução de algoritmos condicionais",
+        "cardAction": "CREATE_APPLICATION_CARD",
+        "card": {
+          "front": "Considere a regra: se o número for PAR, adicione 1; se for ÍMPAR, adicione 2. Qual o total ao processar a lista [2, 3, 4]?",
+          "back": "Total: 4 (2 é par: +1; 3 é ímpar: +2; 4 é par: +1. 1 + 2 + 1 = 4)."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    },
+    {
+      "caseId": "BD40",
+      "ok": true,
+      "raw": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante inverteu as características do Renascimento e do Iluminismo, atribuindo ao primeiro o contexto do século XVIII e ao segundo o dos séculos XIV-XVI.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei os dois períodos e focos: descrevi o Iluminismo como se fosse o Renascimento e vice-versa.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão direta das características e dos períodos históricos entre o Renascimento e o Iluminismo, atribuindo os atributos de um ao outro.",
+        "recommendedAction": "Revise uma linha do tempo comparativa destacando os séculos e as marcas centrais do Renascimento (sécs. XIV-XVI, arte e humanismo) frente ao Iluminismo (séc. XVIII, razão e crítica política).",
+        "coreConcept": "Diferenças históricas entre Renascimento e Iluminismo",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual a principal diferença entre o Renascimento e o Iluminismo em relação ao período histórico e ao foco central?",
+          "back": "Renascimento (séculos XIV a XVI): foco na valorização da cultura clássica, humanismo e renovação artística/cultural.\nIluminismo (século XVIII): foco na razão, ciência e crítica ao absolutismo e ao Antigo Regime."
+        }
+      },
+      "final": {
+        "discipline": "Outra",
+        "observableBehavior": "O estudante inverteu as características do Renascimento e do Iluminismo, atribuindo ao primeiro o contexto do século XVIII e ao segundo o dos séculos XIV-XVI.",
+        "diagnosticEvidence": {
+          "sufficient": true,
+          "evidenceSource": "STUDENT_REASONING",
+          "evidenceQuote": "Troquei os dois períodos e focos: descrevi o Iluminismo como se fosse o Renascimento e vice-versa.",
+          "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+          "competingCauses": [
+            "KNOWLEDGE_GAP"
+          ]
+        },
+        "probableErrorType": "CONCEPT_CONFUSION",
+        "confidence": 0.95,
+        "reasoningSummary": "A causa provável do erro foi a inversão direta das características e dos períodos históricos entre o Renascimento e o Iluminismo, atribuindo os atributos de um ao outro.",
+        "recommendedAction": "Revise uma linha do tempo comparativa destacando os séculos e as marcas centrais do Renascimento (sécs. XIV-XVI, arte e humanismo) frente ao Iluminismo (séc. XVIII, razão e crítica política).",
+        "coreConcept": "Diferenças históricas entre Renascimento e Iluminismo",
+        "cardAction": "CREATE_DISCRIMINATION_CARD",
+        "card": {
+          "front": "Qual a principal diferença entre o Renascimento e o Iluminismo em relação ao período histórico e ao foco central?",
+          "back": "Renascimento (séculos XIV a XVI): foco na valorização da cultura clássica, humanismo e renovação artística/cultural.\nIluminismo (século XVIII): foco na razão, ciência e crítica ao absolutismo e ao Antigo Regime."
+        }
+      },
+      "modelVersion": "gemini-3.7-flash"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ const formValues: AnalysisFormValues = {
   question: 'Qual é a capital do Brasil?',
   userAnswer: 'Rio de Janeiro',
   correctAnswer: 'Brasília',
-  officialExplanation: '',
+  studentReasoning: 'Associei a capital à cidade mais conhecida.',
   userAttribution: 'NAO_SABIA_CONTEUDO',
 };
 
@@ -22,7 +22,7 @@ const analysis: AnalysisView = {
   question: formValues.question,
   userAnswer: formValues.userAnswer,
   correctAnswer: formValues.correctAnswer,
-  officialExplanation: null,
+  studentReasoning: formValues.studentReasoning ?? null,
   discipline: 'Atualidades',
   probableErrorType: 'KNOWLEDGE_GAP',
   confidence: 0.82,
@@ -72,6 +72,8 @@ describe('cliente dos contratos de análise da Sprint 4', () => {
       isAligned: true,
     });
     expect(JSON.parse(String(init.body))).toMatchObject({ turnstileToken: dummyTurnstileToken });
+    expect(JSON.parse(String(init.body))).toMatchObject({ studentReasoning: formValues.studentReasoning });
+    expect(JSON.parse(String(init.body))).not.toHaveProperty('officialExplanation');
     expect(preview).not.toHaveProperty('claimToken');
   });
 
@@ -93,6 +95,7 @@ describe('cliente dos contratos de análise da Sprint 4', () => {
     const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
     const headers = init.headers as Record<string, string>;
     expect(headers['Idempotency-Key']).toMatch(/^[0-9a-f-]{36}$/i);
+    expect(JSON.parse(String(init.body))).toMatchObject({ studentReasoning: formValues.studentReasoning });
   });
 
   it('faz claim pelo cookie HttpOnly sem enviar token no body', async () => {

@@ -6,6 +6,7 @@ const input: AnalysisInput = {
   question: 'Qual é a capital da França?',
   userAnswer: 'Lyon',
   correctAnswer: 'Paris',
+  studentReasoning: 'Associei a capital à maior cidade que recordei.',
 };
 
 function mockFetchOnce(response: Partial<Response> & { jsonBody?: unknown; textBody?: string }) {
@@ -59,6 +60,13 @@ describe('GeminiAnalysisClient', () => {
     expect(result.usage.outputTokens).toBe(40);
     expect(result.usage.retries).toBe(0);
     expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [, request] = fetchMock.mock.calls[0] as [string, RequestInit];
+    const requestBody = JSON.parse(String(request.body));
+    const modelInput = requestBody.contents[0].parts[0].text as string;
+    expect(modelInput).toContain('<studentReasoning>');
+    expect(modelInput).toContain(input.studentReasoning);
+    expect(modelInput).not.toContain('userAttribution');
+    expect(modelInput).not.toContain('officialExplanation');
   });
 
   it('propaga AIAnalysisError com código HTTP_ERROR em resposta HTTP não-ok', async () => {

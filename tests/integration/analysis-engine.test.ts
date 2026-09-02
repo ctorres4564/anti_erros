@@ -39,6 +39,7 @@ const sampleInput: AnalysisInput = {
   question: 'Qual é a capital da França?',
   userAnswer: 'Lyon',
   correctAnswer: 'Paris',
+  studentReasoning: 'Associei a capital à maior cidade francesa que recordei.',
 };
 
 const successOutput: AnalysisOutput = {
@@ -189,6 +190,8 @@ describe.skipIf(!available)('Sprint 3: Motor de Análise — cota, idempotência
 
       const analyses = await pg.query('SELECT count(*) FROM public.analyses WHERE user_id=$1', [userId]);
       expect(Number(analyses.rows[0].count)).toBe(1);
+      const persisted = await pg.query('SELECT student_reasoning FROM public.analyses WHERE user_id=$1', [userId]);
+      expect(persisted.rows[0].student_reasoning).toBe(sampleInput.studentReasoning);
     });
 
     it('AI failure: reserved volta, used não muda, lock FAILED, 0 análises', async () => {

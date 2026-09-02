@@ -1,0 +1,1514 @@
+[
+  {
+    "caseId": "BC01",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante indicou que o clima mediterrâneo possui verões chuvosos e frios e invernos secos e quentes, divergindo do gabarito que define verões secos/quentes e invernos amenos/chuvosos.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu decorei errado: pensei que \"mediterrâneo\" significava o oposto do que realmente é, com as estações trocadas.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.9,
+      "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento conceitual, em que houve a inversão completa do padrão sazonal de chuvas e temperaturas do clima mediterrâneo.",
+      "recommendedAction": "Revise as características dos grandes domínios climáticos mundiais, enfatizando que o clima mediterrâneo é atípico justamente por apresentar verões secos e invernos chuvosos.",
+      "coreConcept": "Características do clima mediterrâneo",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "Como se caracterizam as estações do ano no clima mediterrâneo em termos de temperatura e precipitação?",
+        "back": "Verões quentes e secos; invernos amenos e chuvosos."
+      }
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante indicou que o clima mediterrâneo possui verões chuvosos e frios e invernos secos e quentes, divergindo do gabarito que define verões secos/quentes e invernos amenos/chuvosos.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu decorei errado: pensei que \"mediterrâneo\" significava o oposto do que realmente é, com as estações trocadas.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.9,
+      "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento conceitual, em que houve a inversão completa do padrão sazonal de chuvas e temperaturas do clima mediterrâneo.",
+      "recommendedAction": "Revise as características dos grandes domínios climáticos mundiais, enfatizando que o clima mediterrâneo é atípico justamente por apresentar verões secos e invernos chuvosos.",
+      "coreConcept": "Características do clima mediterrâneo",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "Como se caracterizam as estações do ano no clima mediterrâneo em termos de temperatura e precipitação?",
+        "back": "Verões quentes e secos; invernos amenos e chuvosos."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 4500
+  },
+  {
+    "caseId": "BC02",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu que o ribossomo é responsável por sintetizar ATP, enquanto a resposta correta indicava a mitocôndria.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "achando que também gerava energia, porque não lembrava qual organela fazia a respiração celular.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.9,
+      "reasoningSummary": "A causa provável do seu erro foi uma lacuna de conhecimento sobre a organela responsável pela respiração celular, o que levou à atribuição incorreta da produção de ATP ao ribossomo.",
+      "recommendedAction": "Revise o resumo das principais organelas celulares e suas respectivas funções vitais, destacando a mitocôndria (geração de ATP/respiração) e o ribossomo (síntese proteica).",
+      "coreConcept": "Funções das organelas celulares (mitocôndria e respiração celular)",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "Qual organela celular é responsável pela respiração celular aeróbica e pela produção da maior parte do ATP?",
+        "back": "Mitocôndria."
+      }
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu que o ribossomo é responsável por sintetizar ATP, enquanto a resposta correta indicava a mitocôndria.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "achando que também gerava energia, porque não lembrava qual organela fazia a respiração celular.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.9,
+      "reasoningSummary": "A causa provável do seu erro foi uma lacuna de conhecimento sobre a organela responsável pela respiração celular, o que levou à atribuição incorreta da produção de ATP ao ribossomo.",
+      "recommendedAction": "Revise o resumo das principais organelas celulares e suas respectivas funções vitais, destacando a mitocôndria (geração de ATP/respiração) e o ribossomo (síntese proteica).",
+      "coreConcept": "Funções das organelas celulares (mitocôndria e respiração celular)",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "Qual organela celular é responsável pela respiração celular aeróbica e pela produção da maior parte do ATP?",
+        "back": "Mitocôndria."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3779
+  },
+  {
+    "caseId": "BC03",
+    "ok": true,
+    "raw": {
+      "discipline": "Informática",
+      "observableBehavior": "O estudante afirmou que a sigla RAM significa 'Read Access Memory' e que mantém os dados após desligar, quando a resposta correta é 'Random Access Memory' e que é uma memória volátil.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu não sabia o significado certo da sigla, então inventei uma expansão parecida com 'Read', e também achei que toda memória do computador guardava os dados permanentemente como um HD.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.95,
+      "reasoningSummary": "O erro decorre de uma lacuna de conhecimento conceitual direta: você declarou desconhecer o significado da sigla RAM e a distinção fundamental de volatilidade entre memória principal e armazenamento secundário.",
+      "recommendedAction": "Revise os conceitos fundamentais de hardware e tipos de memória, atentando para a diferença entre memórias voláteis (como a RAM) e memórias não-voláteis de armazenamento permanente (como HDs e SSDs).",
+      "coreConcept": "Memória RAM e volatilidade",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "O que significa a sigla RAM e qual é sua característica quanto à persistência (volatilidade) dos dados?",
+        "back": "RAM significa *Random Access Memory* (Memória de Acesso Aleatório). Trata-se de uma memória **volátil**, ou seja, perde todo o seu conteúdo quando o computador é desligado."
+      }
+    },
+    "final": {
+      "discipline": "Informática",
+      "observableBehavior": "O estudante afirmou que a sigla RAM significa 'Read Access Memory' e que mantém os dados após desligar, quando a resposta correta é 'Random Access Memory' e que é uma memória volátil.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu não sabia o significado certo da sigla, então inventei uma expansão parecida com 'Read', e também achei que toda memória do computador guardava os dados permanentemente como um HD.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.95,
+      "reasoningSummary": "O erro decorre de uma lacuna de conhecimento conceitual direta: você declarou desconhecer o significado da sigla RAM e a distinção fundamental de volatilidade entre memória principal e armazenamento secundário.",
+      "recommendedAction": "Revise os conceitos fundamentais de hardware e tipos de memória, atentando para a diferença entre memórias voláteis (como a RAM) e memórias não-voláteis de armazenamento permanente (como HDs e SSDs).",
+      "coreConcept": "Memória RAM e volatilidade",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "O que significa a sigla RAM e qual é sua característica quanto à persistência (volatilidade) dos dados?",
+        "back": "RAM significa *Random Access Memory* (Memória de Acesso Aleatório). Trata-se de uma memória **volátil**, ou seja, perde todo o seu conteúdo quando o computador é desligado."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3711
+  },
+  {
+    "caseId": "BC04",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu que o cátion ganha elétrons e fica negativo e o ânion perde elétrons e fica positivo, contrariando o gabarito que define cátion como perda de elétrons (positivo) e ânion como ganho de elétrons (negativo).",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu troquei as definições: apliquei a definição de cátion no ânion e vice-versa.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi uma inversão conceitual direta entre cátion e ânion, atribuindo a cada um o processo de perda/ganho de elétrons e a carga do outro.",
+      "recommendedAction": "Revise a formação de íons associando que elétrons possuem carga negativa, logo perder elétrons resulta em cátion (positivo) e ganhar elétrons resulta em ânion (negativo).",
+      "coreConcept": "Diferença entre cátion e ânion",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é a diferença entre cátion e ânion em termos de troca de elétrons e carga final?",
+        "back": "Cátion: átomo que PERDE elétrons e fica com carga POSITIVA (+).\nÂnion: átomo que GANHA elétrons e fica com carga NEGATIVA (-)."
+      }
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu que o cátion ganha elétrons e fica negativo e o ânion perde elétrons e fica positivo, contrariando o gabarito que define cátion como perda de elétrons (positivo) e ânion como ganho de elétrons (negativo).",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu troquei as definições: apliquei a definição de cátion no ânion e vice-versa.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi uma inversão conceitual direta entre cátion e ânion, atribuindo a cada um o processo de perda/ganho de elétrons e a carga do outro.",
+      "recommendedAction": "Revise a formação de íons associando que elétrons possuem carga negativa, logo perder elétrons resulta em cátion (positivo) e ganhar elétrons resulta em ânion (negativo).",
+      "coreConcept": "Diferença entre cátion e ânion",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é a diferença entre cátion e ânion em termos de troca de elétrons e carga final?",
+        "back": "Cátion: átomo que PERDE elétrons e fica com carga POSITIVA (+).\nÂnion: átomo que GANHA elétrons e fica com carga NEGATIVA (-)."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3361
+  },
+  {
+    "caseId": "BC05",
+    "ok": true,
+    "raw": {
+      "discipline": "Direito Civil",
+      "observableBehavior": "O estudante respondeu que é sempre necessário comprovar culpa em ambas as modalidades, enquanto a resposta correta indica que a responsabilidade objetiva independe de culpa.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Tratei as duas como se fossem iguais, achando que sempre é preciso provar culpa em qualquer caso de responsabilidade civil.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.9,
+      "reasoningSummary": "Você tratou as duas modalidades de responsabilidade como equivalentes, generalizando a exigência de culpa (própria da subjetiva) também para a responsabilidade objetiva.",
+      "recommendedAction": "Revise a distinção conceitual entre responsabilidade subjetiva (regra geral que exige dolo ou culpa) e objetiva (independe de culpa, bastando conduta, dano e nexo causal).",
+      "coreConcept": "Diferença entre responsabilidade civil subjetiva e objetiva",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual a diferença entre responsabilidade civil subjetiva e objetiva quanto à necessidade de comprovar culpa?",
+        "back": "• Responsabilidade subjetiva: exige comprovação de culpa (ou dolo) do agente causador do dano.\n• Responsabilidade objetiva: independe da comprovação de culpa, bastando a demonstração da conduta, do dano e do nexo causal."
+      }
+    },
+    "final": {
+      "discipline": "Direito Civil",
+      "observableBehavior": "O estudante respondeu que é sempre necessário comprovar culpa em ambas as modalidades, enquanto a resposta correta indica que a responsabilidade objetiva independe de culpa.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Tratei as duas como se fossem iguais, achando que sempre é preciso provar culpa em qualquer caso de responsabilidade civil.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.9,
+      "reasoningSummary": "Você tratou as duas modalidades de responsabilidade como equivalentes, generalizando a exigência de culpa (própria da subjetiva) também para a responsabilidade objetiva.",
+      "recommendedAction": "Revise a distinção conceitual entre responsabilidade subjetiva (regra geral que exige dolo ou culpa) e objetiva (independe de culpa, bastando conduta, dano e nexo causal).",
+      "coreConcept": "Diferença entre responsabilidade civil subjetiva e objetiva",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual a diferença entre responsabilidade civil subjetiva e objetiva quanto à necessidade de comprovar culpa?",
+        "back": "• Responsabilidade subjetiva: exige comprovação de culpa (ou dolo) do agente causador do dano.\n• Responsabilidade objetiva: independe da comprovação de culpa, bastando a demonstração da conduta, do dano e do nexo causal."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3981
+  },
+  {
+    "caseId": "BC06",
+    "ok": true,
+    "raw": {
+      "discipline": "Português",
+      "observableBehavior": "O estudante afirmou que 'mal' e 'mau' são intercambiáveis e escolheu 'mau' para acompanhar o verbo comportar-se.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "acho que 'mau' é só uma forma mais forte de 'mal'",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "Você tratou 'mau' como uma variação de intensidade de 'mal', desconsiderando a distinção funcional entre adjetivo e advérbio.",
+      "recommendedAction": "Utilize a regra da oposição direta: substitua o termo por 'bem'/'bom' para definir se deve usar 'mal' (oposto de bem) ou 'mau' (oposto de bom).",
+      "coreConcept": "Emprego de mal e mau",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Como diferenciar o uso de 'mal' e 'mau'?",
+        "back": "'Mal' é advérbio (ou conjunção/substantivo) e opõe-se a 'bem' (ex.: comportou-se mal / bem).\n'Mau' é adjetivo e opõe-se a 'bom' (ex.: mau comportamento / bom comportamento)."
+      }
+    },
+    "final": {
+      "discipline": "Português",
+      "observableBehavior": "O estudante afirmou que 'mal' e 'mau' são intercambiáveis e escolheu 'mau' para acompanhar o verbo comportar-se.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "acho que 'mau' é só uma forma mais forte de 'mal'",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "Você tratou 'mau' como uma variação de intensidade de 'mal', desconsiderando a distinção funcional entre adjetivo e advérbio.",
+      "recommendedAction": "Utilize a regra da oposição direta: substitua o termo por 'bem'/'bom' para definir se deve usar 'mal' (oposto de bem) ou 'mau' (oposto de bom).",
+      "coreConcept": "Emprego de mal e mau",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Como diferenciar o uso de 'mal' e 'mau'?",
+        "back": "'Mal' é advérbio (ou conjunção/substantivo) e opõe-se a 'bem' (ex.: comportou-se mal / bem).\n'Mau' é adjetivo e opõe-se a 'bom' (ex.: mau comportamento / bom comportamento)."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 4216
+  },
+  {
+    "caseId": "BC07",
+    "ok": true,
+    "raw": {
+      "discipline": "Direito Administrativo",
+      "observableBehavior": "O estudante afirmou que todo ato discricionário pode ser revogado a qualquer momento, contrariando o gabarito que estabelece a vedação à revogação quando há direito adquirido.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu apliquei a regra geral de que atos discricionários podem ser revogados livremente, sem considerar que direitos já adquiridos pelo particular impedem essa revogação.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "EXCEPTION_MISSED",
+      "confidence": 0.95,
+      "reasoningSummary": "Você conhecia a regra geral de revogação de atos discricionários, mas não considerou a vedação/exceção referente a atos que geraram direito adquirido.",
+      "recommendedAction": "Revise os limites materiais ao poder de revogação da Administração Pública, especialmente a proteção ao direito adquirido e aos atos já exauridos.",
+      "coreConcept": "Limites à revogação de atos administrativos e direito adquirido",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "card": {
+        "front": "Regra geral: atos discricionários podem ser revogados por conveniência e oportunidade. É permitida a revogação de atos que já geraram direito adquirido ao particular?",
+        "back": "NÃO. Atos que geraram direito adquirido não podem ser revogados pela Administração (Súmula 473/STF e art. 53 da Lei 9.784/1999), cabendo apenas anulação em caso de ilegalidade."
+      }
+    },
+    "final": {
+      "discipline": "Direito Administrativo",
+      "observableBehavior": "O estudante afirmou que todo ato discricionário pode ser revogado a qualquer momento, contrariando o gabarito que estabelece a vedação à revogação quando há direito adquirido.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu apliquei a regra geral de que atos discricionários podem ser revogados livremente, sem considerar que direitos já adquiridos pelo particular impedem essa revogação.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "EXCEPTION_MISSED",
+      "confidence": 0.95,
+      "reasoningSummary": "Você conhecia a regra geral de revogação de atos discricionários, mas não considerou a vedação/exceção referente a atos que geraram direito adquirido.",
+      "recommendedAction": "Revise os limites materiais ao poder de revogação da Administração Pública, especialmente a proteção ao direito adquirido e aos atos já exauridos.",
+      "coreConcept": "Limites à revogação de atos administrativos e direito adquirido",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "card": {
+        "front": "Regra geral: atos discricionários podem ser revogados por conveniência e oportunidade. É permitida a revogação de atos que já geraram direito adquirido ao particular?",
+        "back": "NÃO. Atos que geraram direito adquirido não podem ser revogados pela Administração (Súmula 473/STF e art. 53 da Lei 9.784/1999), cabendo apenas anulação em caso de ilegalidade."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3556
+  },
+  {
+    "caseId": "BC08",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante afirmou que a Lei de Boyle se aplica mesmo durante a mudança de fase, enquanto o gabarito indica que a pressão permanece constante nessa transição.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Usei a regra geral da Lei de Boyle que aprendi, sem pensar que ela deixa de valer quando o gás está mudando de fase.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "EXCEPTION_MISSED",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a aplicação da regra geral da Lei de Boyle sem considerar a exceção de que ela não se aplica durante transições de fase.",
+      "recommendedAction": "Revise as condições de aplicabilidade das leis dos gases ideais e o comportamento da pressão de vapor durante mudanças de estado físico.",
+      "coreConcept": "Limites de aplicabilidade da Lei de Boyle e transição de fase",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "card": {
+        "front": "A Lei de Boyle (aumento de pressão ao reduzir o volume a temperatura constante) se aplica durante a mudança de fase (ex.: liquefação)?",
+        "back": "Não. Durante a transição de fase isotérmica, a pressão permanece constante (patamar de pressão de vapor) enquanto coexistem líquido e vapor."
+      }
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante afirmou que a Lei de Boyle se aplica mesmo durante a mudança de fase, enquanto o gabarito indica que a pressão permanece constante nessa transição.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Usei a regra geral da Lei de Boyle que aprendi, sem pensar que ela deixa de valer quando o gás está mudando de fase.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "EXCEPTION_MISSED",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a aplicação da regra geral da Lei de Boyle sem considerar a exceção de que ela não se aplica durante transições de fase.",
+      "recommendedAction": "Revise as condições de aplicabilidade das leis dos gases ideais e o comportamento da pressão de vapor durante mudanças de estado físico.",
+      "coreConcept": "Limites de aplicabilidade da Lei de Boyle e transição de fase",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "card": {
+        "front": "A Lei de Boyle (aumento de pressão ao reduzir o volume a temperatura constante) se aplica durante a mudança de fase (ex.: liquefação)?",
+        "back": "Não. Durante a transição de fase isotérmica, a pressão permanece constante (patamar de pressão de vapor) enquanto coexistem líquido e vapor."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3333
+  },
+  {
+    "caseId": "BC09",
+    "ok": true,
+    "raw": {
+      "discipline": "Português",
+      "observableBehavior": "O estudante respondeu que o plural de 'cidadão' é 'cidadões' aplicando a terminação '-ões', quando a resposta correta é 'cidadãos'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Apliquei a regra geral de plural em 'ão' que eu conhecia, sem lembrar que 'cidadão' é uma das exceções que não segue esse padrão.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "EXCEPTION_MISSED",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do seu erro foi a aplicação da regra geral de pluralização em '-ões' sem considerar a exceção específica aplicável ao vocábulo 'cidadão'.",
+      "recommendedAction": "Revise a flexão de plural dos substantivos terminados em '-ão', memorizando as principais palavras que recebem apenas a terminação '-ãos' (como cidadão, irmão, cristão).",
+      "coreConcept": "Plural dos substantivos terminados em '-ão'",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "card": {
+        "front": "Qual é a regra geral de plural para palavras terminadas em '-ão' e qual é o plural correto de 'cidadão'?",
+        "back": "Regra geral: a maioria dos substantivos em '-ão' faz plural em '-ões' (ex.: limão → limões).\nExceção: 'cidadão' flexiona-se em 'cidadãos'."
+      }
+    },
+    "final": {
+      "discipline": "Português",
+      "observableBehavior": "O estudante respondeu que o plural de 'cidadão' é 'cidadões' aplicando a terminação '-ões', quando a resposta correta é 'cidadãos'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Apliquei a regra geral de plural em 'ão' que eu conhecia, sem lembrar que 'cidadão' é uma das exceções que não segue esse padrão.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "EXCEPTION_MISSED",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do seu erro foi a aplicação da regra geral de pluralização em '-ões' sem considerar a exceção específica aplicável ao vocábulo 'cidadão'.",
+      "recommendedAction": "Revise a flexão de plural dos substantivos terminados em '-ão', memorizando as principais palavras que recebem apenas a terminação '-ãos' (como cidadão, irmão, cristão).",
+      "coreConcept": "Plural dos substantivos terminados em '-ão'",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "card": {
+        "front": "Qual é a regra geral de plural para palavras terminadas em '-ão' e qual é o plural correto de 'cidadão'?",
+        "back": "Regra geral: a maioria dos substantivos em '-ão' faz plural em '-ões' (ex.: limão → limões).\nExceção: 'cidadão' flexiona-se em 'cidadãos'."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3339
+  },
+  {
+    "caseId": "BC10",
+    "ok": true,
+    "raw": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu x = 3 para a equação 2x + 6 = 0, cuja solução correta é x = -3.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "esqueci de manter o sinal negativo do 6 ao passar para o outro lado",
+        "supportType": "OBSERVABLE_PROCEDURE",
+        "competingCauses": []
+      },
+      "probableErrorType": "APPLICATION_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi uma falha na execução do procedimento de transposição de termos, esquecendo de inverter o sinal ao passar o termo constante para o outro membro da equação.",
+      "recommendedAction": "Pratique a resolução passo a passo de equações do primeiro grau, aplicando a operação inversa em ambos os lados da igualdade para não omitir a troca de sinal.",
+      "coreConcept": "Equação do 1º grau e transposição de termos",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "card": {
+        "front": "Ao resolver a equação 3x + 12 = 0, como fica a equação após isolar o termo com a incógnita no primeiro membro?",
+        "back": "3x = -12\n\nAo transpor um termo somado para o outro lado da igualdade, seu sinal é invertido (operação inversa da adição)."
+      }
+    },
+    "final": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu x = 3 para a equação 2x + 6 = 0, cuja solução correta é x = -3.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "esqueci de manter o sinal negativo do 6 ao passar para o outro lado",
+        "supportType": "OBSERVABLE_PROCEDURE",
+        "competingCauses": []
+      },
+      "probableErrorType": "APPLICATION_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi uma falha na execução do procedimento de transposição de termos, esquecendo de inverter o sinal ao passar o termo constante para o outro membro da equação.",
+      "recommendedAction": "Pratique a resolução passo a passo de equações do primeiro grau, aplicando a operação inversa em ambos os lados da igualdade para não omitir a troca de sinal.",
+      "coreConcept": "Equação do 1º grau e transposição de termos",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "card": {
+        "front": "Ao resolver a equação 3x + 12 = 0, como fica a equação após isolar o termo com a incógnita no primeiro membro?",
+        "back": "3x = -12\n\nAo transpor um termo somado para o outro lado da igualdade, seu sinal é invertido (operação inversa da adição)."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3783
+  },
+  {
+    "caseId": "BC11",
+    "ok": true,
+    "raw": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu 41 para o cálculo de 7 × 6, cuja resposta correta é 42.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Multipliquei 7 por 6 fazendo a conta de cabeça e escrevi 41 por engano",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "APPLICATION_ERROR",
+      "confidence": 0.85,
+      "reasoningSummary": "A causa provável do erro foi uma falha pontual de cálculo mental na execução da multiplicação, resultando em 41 em vez de 42.",
+      "recommendedAction": "Ao realizar cálculos mentais rápidos, faça uma breve dupla checagem do resultado antes de registrar a resposta final.",
+      "coreConcept": "Multiplicação básica (tabuada)",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "final": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu 41 para o cálculo de 7 × 6, cuja resposta correta é 42.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Multipliquei 7 por 6 fazendo a conta de cabeça e escrevi 41 por engano",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "APPLICATION_ERROR",
+      "confidence": 0.85,
+      "reasoningSummary": "A causa provável do erro foi uma falha pontual de cálculo mental na execução da multiplicação, resultando em 41 em vez de 42.",
+      "recommendedAction": "Ao realizar cálculos mentais rápidos, faça uma breve dupla checagem do resultado antes de registrar a resposta final.",
+      "coreConcept": "Multiplicação básica (tabuada)",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "policyIntervention": false,
+    "latencyMs": 4400
+  },
+  {
+    "caseId": "BC12",
+    "ok": true,
+    "raw": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu '0,4 m/s' calculando a divisão de 2 por 5, enquanto a resposta correta era '10 m/s' resultante da multiplicação de 2 por 5.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Dividi a aceleração pelo tempo (2 ÷ 5) em vez de multiplicar, achando que a fórmula era v = a ÷ t.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "READING_ERROR",
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "APPLICATION_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a aplicação incorreta da operação matemática, realizando uma divisão em vez do produto entre aceleração e tempo.",
+      "recommendedAction": "Atente-se à relação multiplicativa entre aceleração e tempo no cálculo da velocidade e confira os dados e fórmulas fornecidos no enunciado antes de operar.",
+      "coreConcept": "Cálculo da velocidade a partir da aceleração e tempo",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "card": {
+        "front": "Como se calcula a velocidade final ($v$) de um corpo que parte do repouso com aceleração constante ($a$) durante um intervalo de tempo ($t$)?",
+        "back": "$v = a \\times t$\n\nA velocidade final é o produto (multiplicação) da aceleração pelo tempo decorrido."
+      }
+    },
+    "final": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu '0,4 m/s' calculando a divisão de 2 por 5, enquanto a resposta correta era '10 m/s' resultante da multiplicação de 2 por 5.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Dividi a aceleração pelo tempo (2 ÷ 5) em vez de multiplicar, achando que a fórmula era v = a ÷ t.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "READING_ERROR",
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "APPLICATION_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a aplicação incorreta da operação matemática, realizando uma divisão em vez do produto entre aceleração e tempo.",
+      "recommendedAction": "Atente-se à relação multiplicativa entre aceleração e tempo no cálculo da velocidade e confira os dados e fórmulas fornecidos no enunciado antes de operar.",
+      "coreConcept": "Cálculo da velocidade a partir da aceleração e tempo",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "card": {
+        "front": "Como se calcula a velocidade final ($v$) de um corpo que parte do repouso com aceleração constante ($a$) durante um intervalo de tempo ($t$)?",
+        "back": "$v = a \\times t$\n\nA velocidade final é o produto (multiplicação) da aceleração pelo tempo decorrido."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 5076
+  },
+  {
+    "caseId": "BC13",
+    "ok": true,
+    "raw": {
+      "discipline": "Português",
+      "observableBehavior": "O estudante assinalou a alternativa B ('Havia muitos alunos na sala.') para uma questão cujo gabarito indicava a alternativa A ('Fazem dois anos que ele se formou.') como a opção que contém erro de concordância verbal.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Li rápido e marquei a frase que me pareceu mais estranha à primeira vista, sem reler com atenção qual das duas realmente tinha o erro.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "READING_ERROR"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.85,
+      "reasoningSummary": "A causa provável do seu erro foi a ausência de aplicação da regra de impessoalidade do verbo 'fazer' indicando tempo decorrido, baseando a escolha em intuição superficial.",
+      "recommendedAction": "Revise as regras de concordância com verbos impessoais (como 'fazer' indicando tempo e 'haver' no sentido de existir), atentando para a obrigatoriedade da 3ª pessoa do singular.",
+      "coreConcept": "Concordância verbal com verbo impessoal 'fazer'",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "Qual é a regra de concordância verbal para o verbo 'fazer' quando indica tempo decorrido ou fenômeno meteorológico?",
+        "back": "O verbo 'fazer' é impessoal (não possui sujeito) e deve permanecer obrigatoriamente na 3ª pessoa do singular (ex.: 'Faz dois anos', e não 'Fazem dois anos')."
+      }
+    },
+    "final": {
+      "discipline": "Português",
+      "observableBehavior": "O estudante assinalou a alternativa B ('Havia muitos alunos na sala.') para uma questão cujo gabarito indicava a alternativa A ('Fazem dois anos que ele se formou.') como a opção que contém erro de concordância verbal.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Li rápido e marquei a frase que me pareceu mais estranha à primeira vista, sem reler com atenção qual das duas realmente tinha o erro.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "READING_ERROR"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.85,
+      "reasoningSummary": "A causa provável do seu erro foi a ausência de aplicação da regra de impessoalidade do verbo 'fazer' indicando tempo decorrido, baseando a escolha em intuição superficial.",
+      "recommendedAction": "Revise as regras de concordância com verbos impessoais (como 'fazer' indicando tempo e 'haver' no sentido de existir), atentando para a obrigatoriedade da 3ª pessoa do singular.",
+      "coreConcept": "Concordância verbal com verbo impessoal 'fazer'",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "Qual é a regra de concordância verbal para o verbo 'fazer' quando indica tempo decorrido ou fenômeno meteorológico?",
+        "back": "O verbo 'fazer' é impessoal (não possui sujeito) e deve permanecer obrigatoriamente na 3ª pessoa do singular (ex.: 'Faz dois anos', e não 'Fazem dois anos')."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 4805
+  },
+  {
+    "caseId": "BC14",
+    "ok": true,
+    "raw": {
+      "discipline": "Direito Constitucional",
+      "observableBehavior": "O estudante selecionou a alternativa A em uma questão cujo comando pedia a alternativa incorreta, sendo o gabarito a alternativa C.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "acabo lendo rápido e marcando a alternativa que me parece mais correta à primeira vista, como se fosse para marcar a CORRETA",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": []
+      },
+      "probableErrorType": "READING_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi desatenção ao comando da questão, buscando a assertiva correta em vez de identificar a alternativa incorreta solicitada pelo enunciado.",
+      "recommendedAction": "Ao se deparar com comandos que pedem a alternativa incorreta, falsa ou a exceção, destaque ou circule o termo negativo antes de avaliar as alternativas para evitar a busca automática pela opção verdadeira.",
+      "coreConcept": "Características dos direitos fundamentais e interpretação de comandos negativos",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "final": {
+      "discipline": "Direito Constitucional",
+      "observableBehavior": "O estudante selecionou a alternativa A em uma questão cujo comando pedia a alternativa incorreta, sendo o gabarito a alternativa C.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "acabo lendo rápido e marcando a alternativa que me parece mais correta à primeira vista, como se fosse para marcar a CORRETA",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": []
+      },
+      "probableErrorType": "READING_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi desatenção ao comando da questão, buscando a assertiva correta em vez de identificar a alternativa incorreta solicitada pelo enunciado.",
+      "recommendedAction": "Ao se deparar com comandos que pedem a alternativa incorreta, falsa ou a exceção, destaque ou circule o termo negativo antes de avaliar as alternativas para evitar a busca automática pela opção verdadeira.",
+      "coreConcept": "Características dos direitos fundamentais e interpretação de comandos negativos",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "policyIntervention": false,
+    "latencyMs": 3187
+  },
+  {
+    "caseId": "BC15",
+    "ok": true,
+    "raw": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu '10' em vez de '9' para uma questão que solicitava a contagem de pares excluindo o número 20.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "sem prestar atenção na palavra 'excluindo' no final da pergunta",
+        "supportType": "EXPLICIT_TEXTUAL_TRIGGER",
+        "competingCauses": []
+      },
+      "probableErrorType": "READING_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a desatenção à restrição 'EXCLUINDO o número 20' presente expressamente no comando, levando à contagem indevida do limite superior.",
+      "recommendedAction": "Crie o hábito de sublinhar ou destacar palavras restritivas e condições de contorno (como 'excluindo', 'exceto', 'entre') no enunciado antes de realizar a operação.",
+      "coreConcept": "Contagem com restrição de intervalo",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "final": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu '10' em vez de '9' para uma questão que solicitava a contagem de pares excluindo o número 20.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "sem prestar atenção na palavra 'excluindo' no final da pergunta",
+        "supportType": "EXPLICIT_TEXTUAL_TRIGGER",
+        "competingCauses": []
+      },
+      "probableErrorType": "READING_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a desatenção à restrição 'EXCLUINDO o número 20' presente expressamente no comando, levando à contagem indevida do limite superior.",
+      "recommendedAction": "Crie o hábito de sublinhar ou destacar palavras restritivas e condições de contorno (como 'excluindo', 'exceto', 'entre') no enunciado antes de realizar a operação.",
+      "coreConcept": "Contagem com restrição de intervalo",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "policyIntervention": false,
+    "latencyMs": 3655
+  },
+  {
+    "caseId": "BC16",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu 'Watt' para uma pergunta cuja resposta correta era 'Ohm'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu não sabia o nome certo da unidade de resistência elétrica",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento, pois você relatou desconhecer a unidade de resistência elétrica (Ohm) e optou por Watt apenas por ser uma unidade elétrica lembrada.",
+      "recommendedAction": "Revise as principais grandezas do eletromagnetismo no SI e associe cada grandeza à sua unidade correta (tensão em Volts, corrente em Ampères, potência em Watts e resistência em Ohms).",
+      "coreConcept": "Unidade de medida de resistência elétrica no SI (Ohm)",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "No Sistema Internacional de Unidades (SI), qual é a unidade de medida da resistência elétrica?",
+        "back": "Ohm (símbolo: Ω)."
+      }
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu 'Watt' para uma pergunta cuja resposta correta era 'Ohm'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu não sabia o nome certo da unidade de resistência elétrica",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi uma lacuna de conhecimento, pois você relatou desconhecer a unidade de resistência elétrica (Ohm) e optou por Watt apenas por ser uma unidade elétrica lembrada.",
+      "recommendedAction": "Revise as principais grandezas do eletromagnetismo no SI e associe cada grandeza à sua unidade correta (tensão em Volts, corrente em Ampères, potência em Watts e resistência em Ohms).",
+      "coreConcept": "Unidade de medida de resistência elétrica no SI (Ohm)",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "No Sistema Internacional de Unidades (SI), qual é a unidade de medida da resistência elétrica?",
+        "back": "Ohm (símbolo: Ω)."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3006
+  },
+  {
+    "caseId": "BC17",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante indicou 'Transportar oxigênio para os tecidos' para uma questão cuja resposta correta era 'Defender o organismo contra agentes infecciosos (função imunológica)'.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "CONCEPT_CONFUSION",
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.45,
+      "reasoningSummary": "A resposta fornecida atribui aos glóbulos brancos a função de transporte de oxigênio (própria das hemácias), mas seu relato expressa apenas incerteza geral, sem demonstrar se a causa foi confusão conceitual ativa ou falta de retenção do conteúdo.",
+      "recommendedAction": "Revise a classificação e as respectivas funções dos elementos figurados do sangue, contrastando o papel das hemácias (transporte de gases) com o dos leucócitos (defesa imunológica).",
+      "coreConcept": "Função dos elementos figurados do sangue (leucócitos vs. hemácias)",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante indicou 'Transportar oxigênio para os tecidos' para uma questão cuja resposta correta era 'Defender o organismo contra agentes infecciosos (função imunológica)'.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "CONCEPT_CONFUSION",
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.45,
+      "reasoningSummary": "A resposta fornecida atribui aos glóbulos brancos a função de transporte de oxigênio (própria das hemácias), mas seu relato expressa apenas incerteza geral, sem demonstrar se a causa foi confusão conceitual ativa ou falta de retenção do conteúdo.",
+      "recommendedAction": "Revise a classificação e as respectivas funções dos elementos figurados do sangue, contrastando o papel das hemácias (transporte de gases) com o dos leucócitos (defesa imunológica).",
+      "coreConcept": "Função dos elementos figurados do sangue (leucócitos vs. hemácias)",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "policyIntervention": false,
+    "latencyMs": 3697
+  },
+  {
+    "caseId": "BC18",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu '1 mol' para uma questão cuja resposta correta era '2 mols', tendo a equação balanceada sido fornecida no próprio enunciado.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "READING_ERROR",
+          "APPLICATION_ERROR",
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.5,
+      "reasoningSummary": "A causa provável do erro não pode ser determinada com precisão sem o relato do estudante, sendo igualmente plausível uma leitura desatenta dos coeficientes estequiométricos da equação fornecida ou uma dúvida na interpretação de proporções molares.",
+      "recommendedAction": "Ao analisar equações químicas balanceadas, identifique expressamente o coeficiente estequiométrico que acompanha a substância solicitada (neste caso, o coeficiente 2 em 2H2O).",
+      "coreConcept": "Estequiometria e interpretação de coeficientes em equações químicas",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu '1 mol' para uma questão cuja resposta correta era '2 mols', tendo a equação balanceada sido fornecida no próprio enunciado.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "READING_ERROR",
+          "APPLICATION_ERROR",
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.5,
+      "reasoningSummary": "A causa provável do erro não pode ser determinada com precisão sem o relato do estudante, sendo igualmente plausível uma leitura desatenta dos coeficientes estequiométricos da equação fornecida ou uma dúvida na interpretação de proporções molares.",
+      "recommendedAction": "Ao analisar equações químicas balanceadas, identifique expressamente o coeficiente estequiométrico que acompanha a substância solicitada (neste caso, o coeficiente 2 em 2H2O).",
+      "coreConcept": "Estequiometria e interpretação de coeficientes em equações químicas",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "policyIntervention": false,
+    "latencyMs": 3097
+  },
+  {
+    "caseId": "BC19",
+    "ok": true,
+    "raw": {
+      "discipline": "Direito Penal",
+      "observableBehavior": "O estudante respondeu 'A integridade física da vítima' para uma questão cuja resposta correta era 'O patrimônio (a posse e a propriedade de coisa alheia móvel)'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "não sabia que furto é classificado como crime contra o patrimônio",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.95,
+      "reasoningSummary": "O relato evidencia uma lacuna conceitual na classificação dos crimes da Parte Especial do Código Penal, associando o furto aos crimes contra a pessoa em vez de crimes contra o patrimônio.",
+      "recommendedAction": "Revise a estrutura dos títulos da Parte Especial do Código Penal, fixando quais bens jurídicos fundamentais correspondem a cada categoria de delito (como patrimônio para o furto).",
+      "coreConcept": "Bem jurídico tutelado no crime de furto",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "Qual é o bem jurídico tutelado pelo crime de furto (art. 155 do Código Penal)?",
+        "back": "O patrimônio (protegendo a posse e a propriedade da coisa alheia móvel)."
+      }
+    },
+    "final": {
+      "discipline": "Direito Penal",
+      "observableBehavior": "O estudante respondeu 'A integridade física da vítima' para uma questão cuja resposta correta era 'O patrimônio (a posse e a propriedade de coisa alheia móvel)'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "não sabia que furto é classificado como crime contra o patrimônio",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "KNOWLEDGE_GAP",
+      "confidence": 0.95,
+      "reasoningSummary": "O relato evidencia uma lacuna conceitual na classificação dos crimes da Parte Especial do Código Penal, associando o furto aos crimes contra a pessoa em vez de crimes contra o patrimônio.",
+      "recommendedAction": "Revise a estrutura dos títulos da Parte Especial do Código Penal, fixando quais bens jurídicos fundamentais correspondem a cada categoria de delito (como patrimônio para o furto).",
+      "coreConcept": "Bem jurídico tutelado no crime de furto",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "Qual é o bem jurídico tutelado pelo crime de furto (art. 155 do Código Penal)?",
+        "back": "O patrimônio (protegendo a posse e a propriedade da coisa alheia móvel)."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 4411
+  },
+  {
+    "caseId": "BC20",
+    "ok": true,
+    "raw": {
+      "discipline": "Informática",
+      "observableBehavior": "O estudante respondeu 'Camada de Enlace (camada 2)' para uma questão cuja resposta correta era 'Camada de Rede (camada 3)'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Confundi as camadas de enlace e rede",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.9,
+      "reasoningSummary": "A causa provável do erro foi a confusão entre as funções da Camada de Enlace (camada 2) e da Camada de Rede (camada 3) do modelo OSI.",
+      "recommendedAction": "Revise o modelo OSI associando as camadas 2 e 3 aos seus dispositivos característicos (switch/enlace vs. roteador/rede) e unidades de dados (quadros vs. pacotes).",
+      "coreConcept": "Modelo OSI e dispositivos de rede",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "No modelo OSI, qual é a principal diferença entre a Camada de Enlace (camada 2) e a Camada de Rede (camada 3) quanto ao dispositivo e à PDU?",
+        "back": "• Camada de Enlace (2): opera com quadros (frames) e endereçamento físico MAC; dispositivo típico: switch.\n• Camada de Rede (3): opera com pacotes (packets) e endereçamento lógico IP/roteamento; dispositivo típico: roteador."
+      }
+    },
+    "final": {
+      "discipline": "Informática",
+      "observableBehavior": "O estudante respondeu 'Camada de Enlace (camada 2)' para uma questão cuja resposta correta era 'Camada de Rede (camada 3)'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Confundi as camadas de enlace e rede",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.9,
+      "reasoningSummary": "A causa provável do erro foi a confusão entre as funções da Camada de Enlace (camada 2) e da Camada de Rede (camada 3) do modelo OSI.",
+      "recommendedAction": "Revise o modelo OSI associando as camadas 2 e 3 aos seus dispositivos característicos (switch/enlace vs. roteador/rede) e unidades de dados (quadros vs. pacotes).",
+      "coreConcept": "Modelo OSI e dispositivos de rede",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "No modelo OSI, qual é a principal diferença entre a Camada de Enlace (camada 2) e a Camada de Rede (camada 3) quanto ao dispositivo e à PDU?",
+        "back": "• Camada de Enlace (2): opera com quadros (frames) e endereçamento físico MAC; dispositivo típico: switch.\n• Camada de Rede (3): opera com pacotes (packets) e endereçamento lógico IP/roteamento; dispositivo típico: roteador."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3514
+  },
+  {
+    "caseId": "BC21",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu 'Watt' para uma questão cuja resposta correta é 'Ohm'.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "KNOWLEDGE_GAP",
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.5,
+      "reasoningSummary": "O relato expressa apenas incerteza e não apresenta elementos suficientes para determinar com segurança se o erro foi causado por desconhecimento da unidade ou confusão pontual entre grandezas.",
+      "recommendedAction": "Revise o quadro de grandezas elétricas fundamentais do SI, associando cada grandeza (como resistência, potência, tensão e corrente) à sua respectiva unidade de medida.",
+      "coreConcept": "Unidades de grandezas elétricas no Sistema Internacional",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu 'Watt' para uma questão cuja resposta correta é 'Ohm'.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "KNOWLEDGE_GAP",
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.5,
+      "reasoningSummary": "O relato expressa apenas incerteza e não apresenta elementos suficientes para determinar com segurança se o erro foi causado por desconhecimento da unidade ou confusão pontual entre grandezas.",
+      "recommendedAction": "Revise o quadro de grandezas elétricas fundamentais do SI, associando cada grandeza (como resistência, potência, tensão e corrente) à sua respectiva unidade de medida.",
+      "coreConcept": "Unidades de grandezas elétricas no Sistema Internacional",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "policyIntervention": false,
+    "latencyMs": 2923
+  },
+  {
+    "caseId": "BC22",
+    "ok": true,
+    "raw": {
+      "discipline": "Atualidades",
+      "observableBehavior": "O estudante respondeu 'A Segunda Guerra Mundial.' para uma questão que solicitava qual conflito mundial teve início em 1914.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Troquei as duas guerras, sempre confundo qual delas começou em 1914 e qual em 1939.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a troca dos marcos temporais entre os dois conflitos, associando a data de 1914 à Segunda Guerra Mundial em vez da Primeira.",
+      "recommendedAction": "Revise a linha do tempo dos grandes conflitos do século XX, fixando as datas de início e fim da Primeira Guerra (1914–1918) e da Segunda Guerra (1939–1945).",
+      "coreConcept": "Cronologia de início da Primeira e Segunda Guerra Mundial",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é o ano de início de cada uma das Grandes Guerras Mundiais (Primeira vs. Segunda)?",
+        "back": "• Primeira Guerra Mundial: 1914 (durou até 1918)\n• Segunda Guerra Mundial: 1939 (durou até 1945)"
+      }
+    },
+    "final": {
+      "discipline": "Atualidades",
+      "observableBehavior": "O estudante respondeu 'A Segunda Guerra Mundial.' para uma questão que solicitava qual conflito mundial teve início em 1914.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Troquei as duas guerras, sempre confundo qual delas começou em 1914 e qual em 1939.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a troca dos marcos temporais entre os dois conflitos, associando a data de 1914 à Segunda Guerra Mundial em vez da Primeira.",
+      "recommendedAction": "Revise a linha do tempo dos grandes conflitos do século XX, fixando as datas de início e fim da Primeira Guerra (1914–1918) e da Segunda Guerra (1939–1945).",
+      "coreConcept": "Cronologia de início da Primeira e Segunda Guerra Mundial",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é o ano de início de cada uma das Grandes Guerras Mundiais (Primeira vs. Segunda)?",
+        "back": "• Primeira Guerra Mundial: 1914 (durou até 1918)\n• Segunda Guerra Mundial: 1939 (durou até 1945)"
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3768
+  },
+  {
+    "caseId": "BC23",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu 'A Segunda Guerra Mundial' para uma pergunta cuja resposta correta era 'A Primeira Guerra Mundial'.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "KNOWLEDGE_GAP",
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.45,
+      "reasoningSummary": "O relato expressa apenas esquecimento e incerteza, o que não fornece evidência observável suficiente para determinar a causa provável do erro entre lacuna de conhecimento ou confusão pontual.",
+      "recommendedAction": "Revise a linha do tempo dos grandes conflitos do século XX, fixando os períodos da Primeira Guerra Mundial (1914–1918) e da Segunda Guerra Mundial (1939–1945).",
+      "coreConcept": "Cronologia das Guerras Mundiais",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante respondeu 'A Segunda Guerra Mundial' para uma pergunta cuja resposta correta era 'A Primeira Guerra Mundial'.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "KNOWLEDGE_GAP",
+          "CONCEPT_CONFUSION"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.45,
+      "reasoningSummary": "O relato expressa apenas esquecimento e incerteza, o que não fornece evidência observável suficiente para determinar a causa provável do erro entre lacuna de conhecimento ou confusão pontual.",
+      "recommendedAction": "Revise a linha do tempo dos grandes conflitos do século XX, fixando os períodos da Primeira Guerra Mundial (1914–1918) e da Segunda Guerra Mundial (1939–1945).",
+      "coreConcept": "Cronologia das Guerras Mundiais",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "policyIntervention": false,
+    "latencyMs": 4294
+  },
+  {
+    "caseId": "BC24",
+    "ok": true,
+    "raw": {
+      "discipline": "Contabilidade",
+      "observableBehavior": "O estudante respondeu que a depreciação deve ser mantida linearmente sem qualquer ajuste após obsolescência, enquanto a resposta correta exige a reavaliação da vida útil remanescente.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Segui a regra geral de depreciação linear que aprendi, dividindo o valor residual pelo tempo restante, sem considerar que a obsolescência mudava a conta.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "EXCEPTION_MISSED",
+      "confidence": 0.9,
+      "reasoningSummary": "Você aplicou corretamente a regra geral de depreciação linear constante, mas desconsiderou a necessidade de ajuste na estimativa contábil quando ocorre obsolescência tecnológica antecipada.",
+      "recommendedAction": "Revise as normas de CPC 27/NBC TG 27 relativas à revisão periódica da vida útil, valor residual e método de depreciação, especialmente diante de eventos de obsolescência ou impairment.",
+      "coreConcept": "Revisão de estimativa de vida útil e depreciação por obsolescência",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "card": {
+        "front": "Regra geral: a depreciação segue a vida útil inicialmente estimada. O que deve ser feito se ocorrer obsolescência tecnológica antes do término desse prazo?",
+        "back": "Trata-se de uma alteração de estimativa contábil: a vida útil remanescente e/ou o valor residual devem ser revisados e a depreciação deve ser recalculada prospectivamente sobre o novo período."
+      }
+    },
+    "final": {
+      "discipline": "Contabilidade",
+      "observableBehavior": "O estudante respondeu que a depreciação deve ser mantida linearmente sem qualquer ajuste após obsolescência, enquanto a resposta correta exige a reavaliação da vida útil remanescente.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Segui a regra geral de depreciação linear que aprendi, dividindo o valor residual pelo tempo restante, sem considerar que a obsolescência mudava a conta.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "EXCEPTION_MISSED",
+      "confidence": 0.9,
+      "reasoningSummary": "Você aplicou corretamente a regra geral de depreciação linear constante, mas desconsiderou a necessidade de ajuste na estimativa contábil quando ocorre obsolescência tecnológica antecipada.",
+      "recommendedAction": "Revise as normas de CPC 27/NBC TG 27 relativas à revisão periódica da vida útil, valor residual e método de depreciação, especialmente diante de eventos de obsolescência ou impairment.",
+      "coreConcept": "Revisão de estimativa de vida útil e depreciação por obsolescência",
+      "cardAction": "CREATE_EXCEPTION_CARD",
+      "card": {
+        "front": "Regra geral: a depreciação segue a vida útil inicialmente estimada. O que deve ser feito se ocorrer obsolescência tecnológica antes do término desse prazo?",
+        "back": "Trata-se de uma alteração de estimativa contábil: a vida útil remanescente e/ou o valor residual devem ser revisados e a depreciação deve ser recalculada prospectivamente sobre o novo período."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3623
+  },
+  {
+    "caseId": "BC25",
+    "ok": true,
+    "raw": {
+      "discipline": "Português",
+      "observableBehavior": "O estudante indicou que o verbo 'fosse' pertence ao modo indicativo e expressa ação real/certa, quando o correto é o modo subjuntivo expressando hipótese/condição.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Não sabia diferenciar quando uma frase usa o modo subjuntivo, então chamei de indicativo, que é o modo que eu mais reconheço.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.9,
+      "reasoningSummary": "A provável causa do seu erro foi a confusão conceitual entre os modos indicativo e subjuntivo, tratando uma oração hipotética/condicional como se expressasse certeza ou realidade.",
+      "recommendedAction": "Revise a distinção essencial entre modo indicativo (certeza, fato) e modo subjuntivo (hipótese, dúvida, condição) e pratique a identificação de orações condicionais.",
+      "coreConcept": "Modos verbais: indicativo vs. subjuntivo",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é a diferença fundamental de sentido entre o modo indicativo e o modo subjuntivo?",
+        "back": "Indicativo: expressa certeza, fatos reais e ações tidas como certas.\nSubjuntivo: expressa dúvida, hipótese, possibilidade, desejo ou condição irreal."
+      }
+    },
+    "final": {
+      "discipline": "Português",
+      "observableBehavior": "O estudante indicou que o verbo 'fosse' pertence ao modo indicativo e expressa ação real/certa, quando o correto é o modo subjuntivo expressando hipótese/condição.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Não sabia diferenciar quando uma frase usa o modo subjuntivo, então chamei de indicativo, que é o modo que eu mais reconheço.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.9,
+      "reasoningSummary": "A provável causa do seu erro foi a confusão conceitual entre os modos indicativo e subjuntivo, tratando uma oração hipotética/condicional como se expressasse certeza ou realidade.",
+      "recommendedAction": "Revise a distinção essencial entre modo indicativo (certeza, fato) e modo subjuntivo (hipótese, dúvida, condição) e pratique a identificação de orações condicionais.",
+      "coreConcept": "Modos verbais: indicativo vs. subjuntivo",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é a diferença fundamental de sentido entre o modo indicativo e o modo subjuntivo?",
+        "back": "Indicativo: expressa certeza, fatos reais e ações tidas como certas.\nSubjuntivo: expressa dúvida, hipótese, possibilidade, desejo ou condição irreal."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 4893
+  },
+  {
+    "caseId": "BC26",
+    "ok": true,
+    "raw": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante afirmou que tanto a Revolução Industrial quanto a Revolução Francesa foram revoltas armadas para derrubar o rei, enquanto a resposta correta diferencia a primeira como transformação econômico-tecnológica e a segunda como movimento político-social.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Sempre confundo as duas porque aconteceram na mesma época, então tratei as duas como se fossem o mesmo tipo de revolta popular contra o rei.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do seu erro foi uma confusão conceitual entre os dois marcos históricos, tratando a Revolução Industrial com a natureza político-armada própria da Revolução Francesa.",
+      "recommendedAction": "Estude em quadro comparativo as revoluções do século XVIII, fixando que a Revolução Industrial teve natureza técnico-econômica e a Revolução Francesa, natureza político-social.",
+      "coreConcept": "Natureza da Revolução Industrial vs. Revolução Francesa",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é a diferença de natureza principal entre a Revolução Industrial e a Revolução Francesa?",
+        "back": "• Revolução Industrial: transformação técnico-econômica (mecanização da produção e consolidação do capitalismo industrial).\n• Revolução Francesa: transformação político-social (ruptura com o Antigo Regime, queda do absolutismo e tomada de poder)."
+      }
+    },
+    "final": {
+      "discipline": "Outra",
+      "observableBehavior": "O estudante afirmou que tanto a Revolução Industrial quanto a Revolução Francesa foram revoltas armadas para derrubar o rei, enquanto a resposta correta diferencia a primeira como transformação econômico-tecnológica e a segunda como movimento político-social.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Sempre confundo as duas porque aconteceram na mesma época, então tratei as duas como se fossem o mesmo tipo de revolta popular contra o rei.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do seu erro foi uma confusão conceitual entre os dois marcos históricos, tratando a Revolução Industrial com a natureza político-armada própria da Revolução Francesa.",
+      "recommendedAction": "Estude em quadro comparativo as revoluções do século XVIII, fixando que a Revolução Industrial teve natureza técnico-econômica e a Revolução Francesa, natureza político-social.",
+      "coreConcept": "Natureza da Revolução Industrial vs. Revolução Francesa",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é a diferença de natureza principal entre a Revolução Industrial e a Revolução Francesa?",
+        "back": "• Revolução Industrial: transformação técnico-econômica (mecanização da produção e consolidação do capitalismo industrial).\n• Revolução Francesa: transformação político-social (ruptura com o Antigo Regime, queda do absolutismo e tomada de poder)."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 4044
+  },
+  {
+    "caseId": "BC27",
+    "ok": true,
+    "raw": {
+      "discipline": "Direito Constitucional",
+      "observableBehavior": "O estudante respondeu que o controle concentrado e o difuso são a mesma coisa e que qualquer juiz de primeira instância pode exercer ambos igualmente.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu tratei controle concentrado e controle difuso como sinônimos, achando que eram exatamente a mesma coisa feita por qualquer juiz.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a confusão conceitual entre controle concentrado e difuso, tratando institutos com órgãos competentes distintos como sinônimos.",
+      "recommendedAction": "Revise a distinção fundamental entre controle difuso (exercido por qualquer juiz ou tribunal) e concentrado (competência exclusiva do STF ou tribunais competentes em ação direta).",
+      "coreConcept": "Controle de constitucionalidade difuso vs. concentrado (competência)",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é a diferença entre o controle difuso e o controle concentrado de constitucionalidade quanto à competência dos órgãos julgadores?",
+        "back": "• Controle Difuso: pode ser exercido por qualquer juiz ou tribunal no caso concreto (incidentalmente).\n• Controle Concentrado: exercido privativamente pelo STF (ou Tribunal de Justiça no âmbito estadual) em ações diretas de controle."
+      }
+    },
+    "final": {
+      "discipline": "Direito Constitucional",
+      "observableBehavior": "O estudante respondeu que o controle concentrado e o difuso são a mesma coisa e que qualquer juiz de primeira instância pode exercer ambos igualmente.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu tratei controle concentrado e controle difuso como sinônimos, achando que eram exatamente a mesma coisa feita por qualquer juiz.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a confusão conceitual entre controle concentrado e difuso, tratando institutos com órgãos competentes distintos como sinônimos.",
+      "recommendedAction": "Revise a distinção fundamental entre controle difuso (exercido por qualquer juiz ou tribunal) e concentrado (competência exclusiva do STF ou tribunais competentes em ação direta).",
+      "coreConcept": "Controle de constitucionalidade difuso vs. concentrado (competência)",
+      "cardAction": "CREATE_DISCRIMINATION_CARD",
+      "card": {
+        "front": "Qual é a diferença entre o controle difuso e o controle concentrado de constitucionalidade quanto à competência dos órgãos julgadores?",
+        "back": "• Controle Difuso: pode ser exercido por qualquer juiz ou tribunal no caso concreto (incidentalmente).\n• Controle Concentrado: exercido privativamente pelo STF (ou Tribunal de Justiça no âmbito estadual) em ações diretas de controle."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3573
+  },
+  {
+    "caseId": "BC28",
+    "ok": true,
+    "raw": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu '31,4 cm²' para uma questão que solicitava a área de um círculo de raio 5 cm com π ≈ 3,14, cuja resposta correta é '78,5 cm²'.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "CONCEPT_CONFUSION",
+          "APPLICATION_ERROR",
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.5,
+      "reasoningSummary": "A resposta fornecida (31,4 cm²) coincide com o cálculo do comprimento da circunferência (2πr) em vez da área (πr²), mas o relato vago impede distinguir se houve confusão entre fórmulas, desconhecimento da relação correta ou aplicação procedimental inadequada.",
+      "recommendedAction": "Revise e diferencie as fórmulas geométricas do círculo, contrastando explicitamente a área (A = π·r²) com o comprimento/perímetro (C = 2·π·r).",
+      "coreConcept": "Cálculo da área do círculo",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "final": {
+      "discipline": "Matemática",
+      "observableBehavior": "O estudante respondeu '31,4 cm²' para uma questão que solicitava a área de um círculo de raio 5 cm com π ≈ 3,14, cuja resposta correta é '78,5 cm²'.",
+      "diagnosticEvidence": {
+        "sufficient": false,
+        "evidenceSource": null,
+        "evidenceQuote": null,
+        "supportType": "NONE",
+        "competingCauses": [
+          "CONCEPT_CONFUSION",
+          "APPLICATION_ERROR",
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "INSUFFICIENT_INFORMATION",
+      "confidence": 0.5,
+      "reasoningSummary": "A resposta fornecida (31,4 cm²) coincide com o cálculo do comprimento da circunferência (2πr) em vez da área (πr²), mas o relato vago impede distinguir se houve confusão entre fórmulas, desconhecimento da relação correta ou aplicação procedimental inadequada.",
+      "recommendedAction": "Revise e diferencie as fórmulas geométricas do círculo, contrastando explicitamente a área (A = π·r²) com o comprimento/perímetro (C = 2·π·r).",
+      "coreConcept": "Cálculo da área do círculo",
+      "cardAction": "NO_CARD",
+      "card": null
+    },
+    "policyIntervention": false,
+    "latencyMs": 7097
+  },
+  {
+    "caseId": "BC29",
+    "ok": true,
+    "raw": {
+      "discipline": "Direito Administrativo",
+      "observableBehavior": "O estudante respondeu que o interesse particular prevalece sobre o do Estado, contrariando a resposta correta de que o interesse coletivo prevalece sobre o individual.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu inverti completamente o conceito: pensei que o princípio protegia o particular contra o Estado, quando na verdade é o contrário.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a inversão direta do significado do princípio, atribuindo prevalência ao interesse particular em vez do interesse coletivo.",
+      "recommendedAction": "Revise as premissas do regime jurídico-administrativo, fixando a distinção entre a supremacia do interesse público (prerrogativas) e a indisponibilidade do interesse público (restrições).",
+      "coreConcept": "Princípio da supremacia do interesse público sobre o privado",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "No Direito Administrativo, qual é o núcleo do princípio da supremacia do interesse público sobre o privado?",
+        "back": "Determina que, diante de um conflito e nos limites da lei, o interesse coletivo/público prevalece sobre o interesse individual do particular."
+      }
+    },
+    "final": {
+      "discipline": "Direito Administrativo",
+      "observableBehavior": "O estudante respondeu que o interesse particular prevalece sobre o do Estado, contrariando a resposta correta de que o interesse coletivo prevalece sobre o individual.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "Eu inverti completamente o conceito: pensei que o princípio protegia o particular contra o Estado, quando na verdade é o contrário.",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": [
+          "KNOWLEDGE_GAP"
+        ]
+      },
+      "probableErrorType": "CONCEPT_CONFUSION",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi a inversão direta do significado do princípio, atribuindo prevalência ao interesse particular em vez do interesse coletivo.",
+      "recommendedAction": "Revise as premissas do regime jurídico-administrativo, fixando a distinção entre a supremacia do interesse público (prerrogativas) e a indisponibilidade do interesse público (restrições).",
+      "coreConcept": "Princípio da supremacia do interesse público sobre o privado",
+      "cardAction": "CREATE_BASIC_CARD",
+      "card": {
+        "front": "No Direito Administrativo, qual é o núcleo do princípio da supremacia do interesse público sobre o privado?",
+        "back": "Determina que, diante de um conflito e nos limites da lei, o interesse coletivo/público prevalece sobre o interesse individual do particular."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 4240
+  },
+  {
+    "caseId": "BC30",
+    "ok": true,
+    "raw": {
+      "discipline": "Informática",
+      "observableBehavior": "O estudante respondeu '1101' para a conversão decimal-binária de 11, cuja resposta correta é '1011'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "escrevi os restos na ordem em que fui calculando, sem inverter no final",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": []
+      },
+      "probableErrorType": "APPLICATION_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi uma falha procedimental na execução do método de divisões sucessivas, no qual os restos obtidos foram lidos na ordem direta em vez da ordem inversa (do último para o primeiro).",
+      "recommendedAction": "Ao realizar a conversão de base decimal para binária pelo método das divisões sucessivas, lembre-se de registrar o número binário lendo os restos de baixo para cima (do último quociente/resto para o primeiro resto obtido).",
+      "coreConcept": "Conversão de decimal para binário por divisões sucessivas",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "card": {
+        "front": "Ao converter um número da base decimal para a base binária usando divisões sucessivas por 2, em qual ordem os restos das divisões devem ser lidos para formar o número binário?",
+        "back": "Na ordem inversa à que foram calculados, ou seja, do último resto obtido (bit mais significativo / MSB) até o primeiro resto (bit menos significativo / LSB)."
+      }
+    },
+    "final": {
+      "discipline": "Informática",
+      "observableBehavior": "O estudante respondeu '1101' para a conversão decimal-binária de 11, cuja resposta correta é '1011'.",
+      "diagnosticEvidence": {
+        "sufficient": true,
+        "evidenceSource": "STUDENT_REASONING",
+        "evidenceQuote": "escrevi os restos na ordem em que fui calculando, sem inverter no final",
+        "supportType": "EXPLICIT_REASONING_CONFIRMATION",
+        "competingCauses": []
+      },
+      "probableErrorType": "APPLICATION_ERROR",
+      "confidence": 0.95,
+      "reasoningSummary": "A causa provável do erro foi uma falha procedimental na execução do método de divisões sucessivas, no qual os restos obtidos foram lidos na ordem direta em vez da ordem inversa (do último para o primeiro).",
+      "recommendedAction": "Ao realizar a conversão de base decimal para binária pelo método das divisões sucessivas, lembre-se de registrar o número binário lendo os restos de baixo para cima (do último quociente/resto para o primeiro resto obtido).",
+      "coreConcept": "Conversão de decimal para binário por divisões sucessivas",
+      "cardAction": "CREATE_APPLICATION_CARD",
+      "card": {
+        "front": "Ao converter um número da base decimal para a base binária usando divisões sucessivas por 2, em qual ordem os restos das divisões devem ser lidos para formar o número binário?",
+        "back": "Na ordem inversa à que foram calculados, ou seja, do último resto obtido (bit mais significativo / MSB) até o primeiro resto (bit menos significativo / LSB)."
+      }
+    },
+    "policyIntervention": false,
+    "latencyMs": 3950
+  }
+]

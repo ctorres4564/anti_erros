@@ -19,7 +19,7 @@ loadEnv({ path: path.resolve(process.cwd(), '.env.local') });
 
 import { BENCHMARK_DATASET, BENCHMARK_DATASET_VERSION, type BenchmarkCase } from './dataset';
 import { analysisOutputSchema } from '../../src/lib/ai/analysis-schema';
-import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt } from '../../src/lib/ai/analysis-prompt';
+import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt } from '../../src/lib/ai/analysis-prompt-v2-1';
 import { GEMINI_RESPONSE_SCHEMA } from '../../src/lib/ai/gemini';
 import { LOW_CONFIDENCE_THRESHOLD } from '../../src/config/ai';
 

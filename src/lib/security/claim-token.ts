@@ -22,10 +22,33 @@ export function generateAnonymousId(): string {
   return `anon_${crypto.randomBytes(16).toString('hex')}`;
 }
 
+let ephemeralDevIpSalt: string | undefined;
+
+/**
+ * Resolve o segredo usado para o HMAC do IP. Em produção, `IP_SALT_SECRET` é
+ * obrigatória — sem fallback para outro segredo (nunca reaproveita
+ * SUPABASE_SERVICE_ROLE_KEY) e sem valor fixo no código-fonte. Fora de
+ * produção, gera um valor efêmero por processo para não exigir configuração
+ * local, sem nunca reutilizar um segredo hardcoded.
+ */
+function resolveIpSaltSecret(): string {
+  const secret = process.env.IP_SALT_SECRET;
+  if (secret) return secret;
+
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(
+      'IP_SALT_SECRET não configurada no servidor. Obrigatória em produção para o hashing seguro de IPs.'
+    );
+  }
+
+  ephemeralDevIpSalt ??= crypto.randomBytes(32).toString('hex');
+  return ephemeralDevIpSalt;
+}
+
 /**
  * Calcula o HMAC do IP usando segredo de servidor para telemetria sem PII em claro.
  */
 export function hashIpAddress(ip: string): string {
-  const secret = process.env.IP_SALT_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || 'anti-erros-salt';
+  const secret = resolveIpSaltSecret();
   return crypto.createHmac('sha256', secret).update(ip.trim()).digest('hex');
 }
