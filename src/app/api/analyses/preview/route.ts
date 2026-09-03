@@ -7,6 +7,7 @@ import {
   getClaimCookieName,
   parseClaimReference,
 } from '@/lib/security/claim-token';
+import { logClaimEvent } from '@/lib/observability/claim-log';
 
 export async function POST(request: NextRequest) {
   try {
@@ -95,6 +96,10 @@ export async function POST(request: NextRequest) {
     if (!parsedReference) {
       throw new Error('Referência interna de análise pendente inválida.');
     }
+
+    logClaimEvent('pending_preview_created', {
+      pendingAnalysisId: parsedReference.pendingAnalysisId,
+    });
 
     response.cookies.set(getClaimCookieName(parsedReference.pendingAnalysisId), result.preview.claimToken, {
       httpOnly: true,

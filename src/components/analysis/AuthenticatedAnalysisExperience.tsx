@@ -57,6 +57,7 @@ export function AuthenticatedAnalysisExperience({
 }: AuthenticatedAnalysisExperienceProps) {
   const claimStarted = useRef(false);
   const resultRef = useRef<HTMLDivElement>(null);
+  const claimStatusRef = useRef<HTMLDivElement>(null);
   const [claimState, setClaimState] = useState<ClaimState>(claimReference ? { status: 'loading' } : { status: 'idle' });
   const [latestAnalysis, setLatestAnalysis] = useState<AnalysisView | null>(null);
   const [history, setHistory] = useState(initialHistory);
@@ -79,6 +80,10 @@ export function AuthenticatedAnalysisExperience({
         setClaimState({ status: 'success' });
       } catch (error) {
         setClaimState({ status: 'error', message: claimErrorMessage(error) });
+        if (error instanceof AnalysisApiError) {
+          console.warn('[claim] falhou ao recuperar a análise pendente', { kind: error.kind });
+        }
+        window.requestAnimationFrame(() => claimStatusRef.current?.focus());
       }
     })();
   }, [claimReference]);
@@ -100,24 +105,26 @@ export function AuthenticatedAnalysisExperience({
         </Link>
       </header>
 
-      {claimState.status === 'loading' ? (
-        <div role="status" className="flex items-center gap-3 rounded-xl border bg-card p-4 text-sm">
-          <Loader2 className="h-4 w-4 animate-spin text-primary" aria-hidden="true" />
-          Recuperando sua análise completa, sem processá-la novamente…
-        </div>
-      ) : null}
-      {claimState.status === 'success' ? (
-        <div role="status" className="flex items-center gap-3 rounded-xl border border-success/30 bg-success/10 p-4 text-sm text-foreground">
-          <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-          Análise vinculada à sua conta com sucesso.
-        </div>
-      ) : null}
-      {claimState.status === 'error' ? (
-        <div role="alert" className="flex items-start gap-3 rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-          <p>{claimState.message}</p>
-        </div>
-      ) : null}
+      <div ref={claimStatusRef} tabIndex={-1} className="scroll-mt-24 outline-none">
+        {claimState.status === 'loading' ? (
+          <div role="status" className="flex items-center gap-3 rounded-xl border bg-card p-4 text-sm">
+            <Loader2 className="h-4 w-4 animate-spin text-primary" aria-hidden="true" />
+            Recuperando sua análise completa, sem processá-la novamente…
+          </div>
+        ) : null}
+        {claimState.status === 'success' ? (
+          <div role="status" className="flex items-center gap-3 rounded-xl border border-success/30 bg-success/10 p-4 text-sm text-foreground">
+            <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+            Análise vinculada à sua conta com sucesso.
+          </div>
+        ) : null}
+        {claimState.status === 'error' ? (
+          <div role="alert" className="flex items-start gap-3 rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <p>{claimState.message}</p>
+          </div>
+        ) : null}
+      </div>
 
       {latestAnalysis ? (
         <div ref={resultRef} tabIndex={-1} className="scroll-mt-24 outline-none">

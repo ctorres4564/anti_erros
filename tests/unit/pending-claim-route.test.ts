@@ -124,4 +124,69 @@ describe('POST /api/pending-analyses/claim com vínculo explícito', () => {
     expect(response.status).toBe(status);
     expect((await response.json()).error).toBe(result.message);
   });
+
+  describe('instrumentação diagnóstica (eventos não sensíveis)', () => {
+    it('sucesso gera pending_claim_started e pending_claim_succeeded com pendingAnalysisId e analysisId', async () => {
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await POST(request(REFERENCE_A, { [getClaimCookieName(PENDING_A)]: TOKEN_A }));
+
+      const events = logSpy.mock.calls.map(([line]) => JSON.parse(line as string));
+      const started = events.find((e) => e.event === 'pending_claim_started');
+      const succeeded = events.find((e) => e.event === 'pending_claim_succeeded');
+
+      expect(started?.pendingAnalysisId).toBe(PENDING_A);
+      expect(succeeded?.pendingAnalysisId).toBe(PENDING_A);
+      expect(succeeded?.analysisId).toBe(analysis.id);
+
+      logSpy.mockRestore();
+    });
+
+    it('falha (cookie ausente) gera pending_claim_failed com pendingAnalysisId e código do erro', async () => {
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await POST(request(REFERENCE_A, {}));
+
+      const events = logSpy.mock.calls.map(([line]) => JSON.parse(line as string));
+      const failed = events.find((e) => e.event === 'pending_claim_failed');
+
+      expect(failed?.pendingAnalysisId).toBe(PENDING_A);
+      expect(failed?.stage).toBe('cookie_missing');
+      expect(failed?.errorKind).toBeTruthy();
+      expect(mocks.claimPendingAnalysisForUser).not.toHaveBeenCalled();
+
+      logSpy.mockRestore();
+    });
+
+    it('falha vinda do serviço de claim (ex.: EXPIRED) gera pending_claim_failed com o kind correspondente', async () => {
+      mocks.claimPendingAnalysisForUser.mockResolvedValue({
+        kind: 'EXPIRED',
+        message: 'Esta análise expirou.',
+      });
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await POST(request(REFERENCE_A, { [getClaimCookieName(PENDING_A)]: TOKEN_A }));
+
+      const events = logSpy.mock.calls.map(([line]) => JSON.parse(line as string));
+      const failed = events.find((e) => e.event === 'pending_claim_failed');
+
+      expect(failed?.pendingAnalysisId).toBe(PENDING_A);
+      expect(failed?.errorKind).toBe('EXPIRED');
+
+      logSpy.mockRestore();
+    });
+
+    it('nenhum evento logado contém o token bruto, a claim_ref completa ou o hash', async () => {
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await POST(request(REFERENCE_A, { [getClaimCookieName(PENDING_A)]: TOKEN_A }));
+
+      const allLoggedText = logSpy.mock.calls.map(([line]) => line).join('\n');
+      expect(allLoggedText).not.toContain(TOKEN_A);
+      expect(allLoggedText).not.toContain(REFERENCE_A);
+      expect(allLoggedText.toLowerCase()).not.toContain('cookie');
+
+      logSpy.mockRestore();
+    });
+  });
 });

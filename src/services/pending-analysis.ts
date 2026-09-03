@@ -14,6 +14,7 @@ import { checkRateLimit } from '@/lib/security/rate-limit';
 import type { ApiAnalysis } from './analysis';
 import type { Tables } from '@/types/database.types';
 import { recordActivationEvent } from './activation';
+import { logClaimEvent } from '@/lib/observability/claim-log';
 
 export interface AnonymousPreviewResult {
   anonymousId: string;
@@ -222,12 +223,17 @@ export async function claimPendingAnalysisForUser(params: {
     .maybeSingle();
 
   if (matchingError) {
+    logClaimEvent('pending_claim_lookup', { pendingAnalysisId, found: false });
     return { kind: 'ERROR', message: 'Erro ao validar a análise pendente.' };
   }
 
   if (!matchingPending) {
+    logClaimEvent('pending_claim_lookup', { pendingAnalysisId, found: false });
     return { kind: 'NOT_FOUND', message: 'Análise pendente não encontrada.' };
   }
+
+  logClaimEvent('pending_claim_lookup', { pendingAnalysisId, found: true });
+  logClaimEvent('pending_claim_validated', { pendingAnalysisId });
 
   const { data, error } = await admin.rpc('claim_pending_analysis', {
     p_user_id: userId,
@@ -235,6 +241,7 @@ export async function claimPendingAnalysisForUser(params: {
   });
 
   if (error) {
+    logClaimEvent('pending_claim_rpc_executed', { pendingAnalysisId, status: 'RPC_ERROR' });
     return { kind: 'ERROR', message: `Erro ao resgatar análise: ${error.message}` };
   }
 
@@ -244,6 +251,8 @@ export async function claimPendingAnalysisForUser(params: {
     message?: string;
     limit?: number;
   };
+
+  logClaimEvent('pending_claim_rpc_executed', { pendingAnalysisId, status: result.status });
 
   if (result.status === 'NOT_FOUND') {
     return { kind: 'NOT_FOUND', message: result.message || 'Análise pendente não encontrada.' };
@@ -271,6 +280,8 @@ export async function claimPendingAnalysisForUser(params: {
   if (fetchErr || !analysis) {
     throw new Error('Análise resgatada com sucesso mas não pôde ser recuperada.');
   }
+
+  logClaimEvent('pending_claim_analysis_resolved', { pendingAnalysisId, analysisId: analysis.id });
 
   await recordActivationEvent(userId, 'analysis_claimed', { analysisId: analysis.id });
 

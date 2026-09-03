@@ -59,3 +59,31 @@ describe('AuthenticatedAnalysisExperience: estado inicial nunca fica "idle" quan
     expect(html).not.toContain('Análise vinculada à sua conta com sucesso');
   });
 });
+
+describe('AuthenticatedAnalysisExperience: alvo de foco/scroll para o estado do claim', () => {
+  it('o bloco de status do claim (loading/success/error) está dentro de um container focável (tabIndex=-1), alvo do foco automático em caso de erro', () => {
+    const html = renderToStaticMarkup(
+      createElement(AuthenticatedAnalysisExperience, {
+        firstName: 'Ana',
+        claimReference: '6607bfb7-cf9a-40d3-a406-a50291dc4f22.' + 'a'.repeat(43),
+        initialHistory: [],
+      })
+    );
+
+    // O container com tabIndex=-1 + scroll-mt-24 é o mesmo padrão já usado para
+    // o resultado da análise (resultRef); precisa envolver o bloco de status
+    // para que window.requestAnimationFrame(() => claimStatusRef.current?.focus())
+    // (disparado no catch do useEffect de claim) tenha um alvo válido.
+    const wrapperIndex = html.indexOf('tabindex="-1" class="scroll-mt-24 outline-none"');
+    const loadingIndex = html.indexOf('Recuperando sua análise completa');
+
+    expect(wrapperIndex).toBeGreaterThan(-1);
+    expect(loadingIndex).toBeGreaterThan(wrapperIndex);
+  });
+
+  // Observação: este projeto não tem jsdom/testing-library instalado, então a
+  // execução real do useEffect (que chama claimStatusRef.current?.focus() no
+  // catch) não roda em renderToStaticMarkup (SSR não executa efeitos). O teste
+  // acima confirma a fiação estrutural (o alvo do foco existe e envolve os três
+  // estados); confirmar o foco disparado de fato exigiria um ambiente jsdom.
+});

@@ -82,4 +82,36 @@ describe('POST /api/analyses/preview', () => {
       }),
     }));
   });
+
+  it('registra pending_preview_created com o pendingAnalysisId, sem token/claim_ref/e-mail/conteúdo da questão', async () => {
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+    const request = new NextRequest('http://localhost/api/analyses/preview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        question: 'Qual é a capital do Brasil?',
+        userAnswer: 'Rio de Janeiro',
+        correctAnswer: 'Brasília',
+        studentReasoning: 'Associei a capital à cidade mais conhecida.',
+        userAttribution: 'NAO_SABIA_CONTEUDO',
+      }),
+    });
+
+    await POST(request);
+
+    const events = logSpy.mock.calls
+      .map(([line]) => JSON.parse(line as string))
+      .filter((entry) => entry.event === 'pending_preview_created');
+
+    expect(events).toHaveLength(1);
+    expect(events[0].pendingAnalysisId).toBe(pendingId);
+
+    const allLoggedText = logSpy.mock.calls.map(([line]) => line).join('\n');
+    expect(allLoggedText).not.toContain(claimToken);
+    expect(allLoggedText).not.toContain(claimReference);
+    expect(allLoggedText.toLowerCase()).not.toContain('capital do brasil');
+
+    logSpy.mockRestore();
+  });
 });
