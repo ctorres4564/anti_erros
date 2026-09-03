@@ -138,6 +138,72 @@ describe('confirmMagicLink (Server Action disparada pelo clique explícito)', ()
     ).rejects.toThrow('NEXT_REDIRECT:/login?auth_error=link_invalid');
   });
 
+  describe('instrumentação do redirect pós-autenticação', () => {
+    it('com claim_ref válido registra auth_confirm_redirect indicando app_with_claim, sem expor a referência', async () => {
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await expect(
+        confirmMagicLink(formData({
+          token_hash: 'valid',
+          type: 'email',
+          next: '/app',
+          claim_ref: claimReference,
+        }))
+      ).rejects.toThrow('NEXT_REDIRECT:');
+
+      const events = logSpy.mock.calls.map(([line]) => JSON.parse(line as string));
+      const redirectEvent = events.find((e) => e.event === 'auth_confirm_redirect');
+
+      expect(redirectEvent?.hasClaimReference).toBe(true);
+      expect(redirectEvent?.destination).toBe('app_with_claim');
+      expect(redirectEvent?.pendingAnalysisId).toBe('6607bfb7-cf9a-40d3-a406-a50291dc4f22');
+
+      const allLoggedText = logSpy.mock.calls.map(([line]) => line).join('\n');
+      expect(allLoggedText).not.toContain(claimReference);
+      expect(allLoggedText).not.toContain('valid');
+
+      logSpy.mockRestore();
+    });
+
+    it('sem claim_ref registra app_without_claim, distinguindo o redirect "/app" puro', async () => {
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await expect(
+        confirmMagicLink(formData({ token_hash: 'valid', type: 'email', next: '/app' }))
+      ).rejects.toThrow('NEXT_REDIRECT:/app');
+
+      const events = logSpy.mock.calls.map(([line]) => JSON.parse(line as string));
+      const redirectEvent = events.find((e) => e.event === 'auth_confirm_redirect');
+
+      expect(redirectEvent?.hasClaimReference).toBe(false);
+      expect(redirectEvent?.destination).toBe('app_without_claim');
+      expect(redirectEvent?.pendingAnalysisId).toBeNull();
+
+      logSpy.mockRestore();
+    });
+
+    it('usuário sem onboarding com claim é registrado como onboarding_with_claim', async () => {
+      mocks.isOnboardingComplete.mockResolvedValue(false);
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await expect(
+        confirmMagicLink(formData({
+          token_hash: 'valid',
+          type: 'email',
+          next: '/app',
+          claim_ref: claimReference,
+        }))
+      ).rejects.toThrow('NEXT_REDIRECT:/onboarding?claim_ref=');
+
+      const events = logSpy.mock.calls.map(([line]) => JSON.parse(line as string));
+      const redirectEvent = events.find((e) => e.event === 'auth_confirm_redirect');
+
+      expect(redirectEvent?.destination).toBe('onboarding_with_claim');
+
+      logSpy.mockRestore();
+    });
+  });
+
   it('neutraliza next externo sem produzir open redirect', async () => {
     await expect(
       confirmMagicLink(

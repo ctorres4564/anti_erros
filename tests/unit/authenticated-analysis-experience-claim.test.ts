@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   AuthenticatedAnalysisExperience,
   claimErrorMessage,
@@ -79,6 +79,24 @@ describe('AuthenticatedAnalysisExperience: alvo de foco/scroll para o estado do 
 
     expect(wrapperIndex).toBeGreaterThan(-1);
     expect(loadingIndex).toBeGreaterThan(wrapperIndex);
+  });
+
+  it('os eventos de diagnóstico do cliente não são emitidos no render de servidor (são exclusivos do navegador)', () => {
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+    renderToStaticMarkup(
+      createElement(AuthenticatedAnalysisExperience, {
+        firstName: 'Ana',
+        claimReference: '6607bfb7-cf9a-40d3-a406-a50291dc4f22.' + 'a'.repeat(43),
+        initialHistory: [],
+      })
+    );
+
+    const events = logSpy.mock.calls.map(([line]) => String(line));
+    expect(events.some((line) => line.includes('authenticated_analysis_mounted'))).toBe(false);
+    expect(events.some((line) => line.includes('authenticated_claim_effect_started'))).toBe(false);
+
+    logSpy.mockRestore();
   });
 
   // Observação: este projeto não tem jsdom/testing-library instalado, então a

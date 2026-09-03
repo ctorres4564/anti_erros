@@ -6,8 +6,30 @@ import { createClient } from '@/lib/supabase/server';
 import { recordActivationEvent } from '@/services/activation';
 import { isOnboardingComplete } from '@/services/onboarding';
 import { parseClaimReference } from '@/lib/security/claim-token';
+import {
+  logClaimEvent,
+  safePendingAnalysisId,
+  type ClaimLogDestination,
+} from '@/lib/observability/claim-log';
 
 const INVALID_LINK_PATH = '/login?auth_error=link_invalid';
+
+/** Traduz o destino real em um rótulo controlado, sem expor a URL completa. */
+function resolveRedirectDestination(
+  onboardingComplete: boolean,
+  destination: string,
+  claimReference: string | null
+): ClaimLogDestination {
+  const withClaim = Boolean(claimReference);
+
+  if (!onboardingComplete) {
+    return withClaim ? 'onboarding_with_claim' : 'onboarding_without_claim';
+  }
+
+  if (destination !== '/app') return 'other_internal_destination';
+
+  return withClaim ? 'app_with_claim' : 'app_without_claim';
+}
 
 // Só executa a validação (e o consumo de uso único) do token quando o usuário
 // aciona esta Server Action por clique explícito — nunca no GET que renderiza
@@ -62,6 +84,12 @@ export async function confirmMagicLink(formData: FormData) {
     ? `?claim_ref=${encodeURIComponent(claimReference)}`
     : '';
   const postAuthDestination = destination === '/app' ? `/app${claimQuery}` : destination;
+
+  logClaimEvent('auth_confirm_redirect', {
+    hasClaimReference: Boolean(claimReference),
+    pendingAnalysisId: safePendingAnalysisId(claimReference),
+    destination: resolveRedirectDestination(onboardingComplete, destination, claimReference),
+  });
 
   redirect(onboardingComplete ? postAuthDestination : `/onboarding${claimQuery}`);
 }

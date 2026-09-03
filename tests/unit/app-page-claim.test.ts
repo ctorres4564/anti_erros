@@ -64,4 +64,55 @@ describe('/app e repasse estrutural do claim_ref (sem gate de cookie no server c
 
     expect(result.props.claimReference).toBeNull();
   });
+
+  describe('instrumentação app_page_claim_state', () => {
+    it('registra que recebeu um claim_ref válido, com o pendingAnalysisId e sem a referência completa', async () => {
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await AppPage({ searchParams: Promise.resolve({ claim_ref: VALID_REFERENCE }) });
+
+      const events = logSpy.mock.calls.map(([line]) => JSON.parse(line as string));
+      const state = events.find((e) => e.event === 'app_page_claim_state');
+
+      expect(state?.hasClaimRefParam).toBe(true);
+      expect(state?.claimRefStructurallyValid).toBe(true);
+      expect(state?.pendingAnalysisId).toBe('6607bfb7-cf9a-40d3-a406-a50291dc4f22');
+
+      const allLoggedText = logSpy.mock.calls.map(([line]) => line).join('\n');
+      expect(allLoggedText).not.toContain(VALID_REFERENCE);
+
+      logSpy.mockRestore();
+    });
+
+    it('registra ausência de claim_ref, distinguindo "/app" sem parâmetro', async () => {
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await AppPage({ searchParams: Promise.resolve({}) });
+
+      const state = logSpy.mock.calls
+        .map(([line]) => JSON.parse(line as string))
+        .find((e) => e.event === 'app_page_claim_state');
+
+      expect(state?.hasClaimRefParam).toBe(false);
+      expect(state?.claimRefStructurallyValid).toBe(false);
+      expect(state?.pendingAnalysisId).toBeNull();
+
+      logSpy.mockRestore();
+    });
+
+    it('registra claim_ref presente porém estruturalmente inválido', async () => {
+      const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+      await AppPage({ searchParams: Promise.resolve({ claim_ref: 'referencia-sem-formato-valido' }) });
+
+      const state = logSpy.mock.calls
+        .map(([line]) => JSON.parse(line as string))
+        .find((e) => e.event === 'app_page_claim_state');
+
+      expect(state?.hasClaimRefParam).toBe(true);
+      expect(state?.claimRefStructurallyValid).toBe(false);
+
+      logSpy.mockRestore();
+    });
+  });
 });
