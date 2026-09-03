@@ -1,5 +1,16 @@
+import { redirect } from 'next/navigation';
 import { AnonymousAnalysisExperience } from '@/components/analysis/AnonymousAnalysisExperience';
+import { createClient } from '@/lib/supabase/server';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    redirect('/app');
+  }
+
   return <AnonymousAnalysisExperience />;
 }
