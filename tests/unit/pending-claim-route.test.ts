@@ -94,6 +94,14 @@ describe('POST /api/pending-analyses/claim com vínculo explícito', () => {
     );
   });
 
+  it('B) referência estruturalmente válida sem cookie correspondente falha com erro claro, sem executar claim', async () => {
+    const response = await POST(request(REFERENCE_A, {}));
+
+    expect(response.status).toBe(400);
+    expect((await response.json()).error).toBeTruthy();
+    expect(mocks.claimPendingAnalysisForUser).not.toHaveBeenCalled();
+  });
+
   it('rejeita referência adulterada sem executar claim', async () => {
     const tampered = `${REFERENCE_A.slice(0, -1)}x`;
     const response = await POST(request(tampered, {

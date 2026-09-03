@@ -1,10 +1,9 @@
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { AuthenticatedAnalysisExperience } from '@/components/analysis/AuthenticatedAnalysisExperience';
 import { createClient } from '@/lib/supabase/server';
 import { isOnboardingComplete, getUserProfileData } from '@/services/onboarding';
 import type { AnalysisHistoryItem } from '@/types/analysis';
-import { getClaimCookieName, parseClaimReference } from '@/lib/security/claim-token';
+import { parseClaimReference } from '@/lib/security/claim-token';
 
 export default async function AppPage({
   searchParams,
@@ -22,7 +21,7 @@ export default async function AppPage({
     redirect('/login');
   }
 
-  const [isComplete, profile, historyResult, cookieStore] = await Promise.all([
+  const [isComplete, profile, historyResult] = await Promise.all([
     isOnboardingComplete(user.id),
     getUserProfileData(user.id),
     supabase
@@ -30,7 +29,6 @@ export default async function AppPage({
       .select('id, raw_question, error_type, recommended_action, card_action, discipline, discipline_confirmed, created_at')
       .order('created_at', { ascending: false })
       .limit(25),
-    cookies(),
   ]);
 
   if (!isComplete) redirect('/onboarding');
@@ -48,11 +46,13 @@ export default async function AppPage({
 
   const displayName = profile?.fullName?.trim() || user.email || 'Estudante';
   const firstName = displayName.split(/\s+/)[0] || 'Estudante';
-  const parsedReference = params.claim_ref ? parseClaimReference(params.claim_ref) : null;
+  // Só validamos o formato estrutural aqui. A verificação de segurança real
+  // (referência assinada contra o cookie de posse do pending) acontece em
+  // /api/pending-analyses/claim — nunca decidimos aqui se o claim é legítimo,
+  // para não descartar silenciosamente uma referência válida por o cookie
+  // não estar visível nesta requisição específica.
   const claimReference =
-    parsedReference && cookieStore.has(getClaimCookieName(parsedReference.pendingAnalysisId))
-      ? params.claim_ref ?? null
-      : null;
+    params.claim_ref && parseClaimReference(params.claim_ref) ? params.claim_ref : null;
 
   return (
     <AuthenticatedAnalysisExperience

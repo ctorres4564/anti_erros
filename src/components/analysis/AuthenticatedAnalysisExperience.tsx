@@ -35,7 +35,7 @@ function toHistoryItem(analysis: AnalysisView): AnalysisHistoryItem {
   };
 }
 
-function claimErrorMessage(error: unknown): string {
+export function claimErrorMessage(error: unknown): string {
   if (!(error instanceof AnalysisApiError)) {
     return 'Não foi possível recuperar sua análise pendente.';
   }
