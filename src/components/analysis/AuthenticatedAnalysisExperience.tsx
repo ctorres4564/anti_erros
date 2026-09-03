@@ -11,7 +11,7 @@ import { FullAnalysisResult } from './FullAnalysisResult';
 
 interface AuthenticatedAnalysisExperienceProps {
   firstName: string;
-  hasPendingClaim: boolean;
+  claimReference: string | null;
   initialHistory: AnalysisHistoryItem[];
   historyUnavailable?: boolean;
 }
@@ -51,13 +51,13 @@ function claimErrorMessage(error: unknown): string {
 
 export function AuthenticatedAnalysisExperience({
   firstName,
-  hasPendingClaim,
+  claimReference,
   initialHistory,
   historyUnavailable = false,
 }: AuthenticatedAnalysisExperienceProps) {
   const claimStarted = useRef(false);
   const resultRef = useRef<HTMLDivElement>(null);
-  const [claimState, setClaimState] = useState<ClaimState>(hasPendingClaim ? { status: 'loading' } : { status: 'idle' });
+  const [claimState, setClaimState] = useState<ClaimState>(claimReference ? { status: 'loading' } : { status: 'idle' });
   const [latestAnalysis, setLatestAnalysis] = useState<AnalysisView | null>(null);
   const [history, setHistory] = useState(initialHistory);
 
@@ -68,20 +68,20 @@ export function AuthenticatedAnalysisExperience({
   };
 
   useEffect(() => {
-    if (!hasPendingClaim || claimStarted.current) return;
+    if (!claimReference || claimStarted.current) return;
     claimStarted.current = true;
 
     void (async () => {
       setClaimState({ status: 'loading' });
       try {
-        const analysis = await claimPendingAnalysis();
+        const analysis = await claimPendingAnalysis(claimReference);
         revealAnalysis(analysis);
         setClaimState({ status: 'success' });
       } catch (error) {
         setClaimState({ status: 'error', message: claimErrorMessage(error) });
       }
     })();
-  }, [hasPendingClaim]);
+  }, [claimReference]);
 
   return (
     <div className="space-y-10 py-4 sm:space-y-12 sm:py-8">

@@ -28,6 +28,7 @@ const analysisViewSchema: z.ZodType<AnalysisView> = z.object({
 const previewResponseSchema = z.object({
   success: z.literal(true),
   preview: z.object({
+    claimReference: z.string(),
     probableErrorType: z.string(),
     concept: z.string(),
     discipline: z.string(),
@@ -144,11 +145,13 @@ export async function submitAuthenticatedAnalysis(values: AnalysisFormValues): P
   return result.analysis;
 }
 
-export async function claimPendingAnalysis(): Promise<AnalysisView> {
+export async function claimPendingAnalysis(claimReference: string): Promise<AnalysisView> {
   const result = await requestJson(
     '/api/pending-analyses/claim',
     {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ claimReference }),
     },
     claimResponseSchema
   );

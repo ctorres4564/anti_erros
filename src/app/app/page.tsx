@@ -4,8 +4,14 @@ import { AuthenticatedAnalysisExperience } from '@/components/analysis/Authentic
 import { createClient } from '@/lib/supabase/server';
 import { isOnboardingComplete, getUserProfileData } from '@/services/onboarding';
 import type { AnalysisHistoryItem } from '@/types/analysis';
+import { getClaimCookieName, parseClaimReference } from '@/lib/security/claim-token';
 
-export default async function AppPage() {
+export default async function AppPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ claim_ref?: string }>;
+}) {
+  const params = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -42,11 +48,16 @@ export default async function AppPage() {
 
   const displayName = profile?.fullName?.trim() || user.email || 'Estudante';
   const firstName = displayName.split(/\s+/)[0] || 'Estudante';
+  const parsedReference = params.claim_ref ? parseClaimReference(params.claim_ref) : null;
+  const claimReference =
+    parsedReference && cookieStore.has(getClaimCookieName(parsedReference.pendingAnalysisId))
+      ? params.claim_ref ?? null
+      : null;
 
   return (
     <AuthenticatedAnalysisExperience
       firstName={firstName}
-      hasPendingClaim={cookieStore.has('claim_token')}
+      claimReference={claimReference}
       initialHistory={initialHistory}
       historyUnavailable={Boolean(historyResult.error)}
     />

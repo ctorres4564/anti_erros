@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { onboardingSchema } from '@/lib/validation';
 import { User, CheckSquare, Square, AlertCircle, Loader2 } from 'lucide-react';
 
-export function OnboardingForm() {
+export function OnboardingForm({ claimReference }: { claimReference: string | null }) {
   const router = useRouter();
   const [fullName, setFullName] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -50,7 +50,9 @@ export function OnboardingForm() {
         }
 
         // Cadastro concluído com sucesso, redirecionar para a aplicação
-        router.push('/app');
+        router.push(
+          claimReference ? `/app?claim_ref=${encodeURIComponent(claimReference)}` : '/app'
+        );
         router.refresh();
       } catch (err) {
         console.error('Erro ao enviar onboarding:', err);

@@ -27,7 +27,7 @@ Nenhum benchmark, Gemini real, tuning, nova taxonomia ou alteração de threshol
 ### Magic Link e claim
 
 - Magic Link/PKCE e criação de sessão continuam sob responsabilidade do Supabase Auth.
-- O claim é transportado exclusivamente pelo cookie `claim_token` HttpOnly; o endpoint não aceita token no JSON, client state, URL ou storage.
+- A credencial do claim permanece exclusivamente em cookie HttpOnly específico do pending. O cliente transporta apenas uma referência assinada e não sensível; o endpoint exige a correspondência entre ambos.
 - O claim continua atômico, one-use, com TTL de 24 horas, cota e vínculo obrigatório ao usuário autenticado após onboarding.
 - A operação apenas promove o resultado já persistido; não executa nova inferência.
 

@@ -2,7 +2,11 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { anonymousAnalysisInputSchema } from '@/lib/ai/analysis-schema';
 import { resolveAIClient } from '@/lib/ai/resolve-client';
 import { createAnonymousPendingAnalysis } from '@/services/pending-analysis';
-import { generateAnonymousId } from '@/lib/security/claim-token';
+import {
+  generateAnonymousId,
+  getClaimCookieName,
+  parseClaimReference,
+} from '@/lib/security/claim-token';
 
 export async function POST(request: NextRequest) {
   try {
@@ -67,6 +71,7 @@ export async function POST(request: NextRequest) {
     const response = NextResponse.json({
       success: true,
       preview: {
+        claimReference: result.preview.claimReference,
         probableErrorType: result.preview.probableErrorType,
         concept: result.preview.concept,
         discipline: result.preview.discipline,
@@ -86,7 +91,12 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    response.cookies.set('claim_token', result.preview.claimToken, {
+    const parsedReference = parseClaimReference(result.preview.claimReference);
+    if (!parsedReference) {
+      throw new Error('Referência interna de análise pendente inválida.');
+    }
+
+    response.cookies.set(getClaimCookieName(parsedReference.pendingAnalysisId), result.preview.claimToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',

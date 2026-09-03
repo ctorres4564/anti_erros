@@ -16,6 +16,7 @@ const formValues: AnalysisFormValues = {
   studentReasoning: 'Associei a capital à cidade mais conhecida.',
   userAttribution: 'NAO_SABIA_CONTEUDO',
 };
+const claimReference = `6607bfb7-cf9a-40d3-a406-a50291dc4f22.${'a'.repeat(43)}`;
 
 const analysis: AnalysisView = {
   id: '6607bfb7-cf9a-40d3-a406-a50291dc4f22',
@@ -53,6 +54,7 @@ describe('cliente dos contratos de análise da Sprint 4', () => {
       jsonResponse({
         success: true,
         preview: {
+          claimReference,
           probableErrorType: 'KNOWLEDGE_GAP',
           concept: 'Capital federal',
           discipline: 'Atualidades',
@@ -66,6 +68,7 @@ describe('cliente dos contratos de análise da Sprint 4', () => {
     const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
 
     expect(preview).toEqual({
+      claimReference,
       probableErrorType: 'KNOWLEDGE_GAP',
       concept: 'Capital federal',
       discipline: 'Atualidades',
@@ -98,21 +101,22 @@ describe('cliente dos contratos de análise da Sprint 4', () => {
     expect(JSON.parse(String(init.body))).toMatchObject({ studentReasoning: formValues.studentReasoning });
   });
 
-  it('faz claim pelo cookie HttpOnly sem enviar token no body', async () => {
+  it('faz claim pela referência do preview sem enviar o token HttpOnly no body', async () => {
     const fetchMock = vi.fn().mockResolvedValue(jsonResponse({ success: true, analysis }));
     vi.stubGlobal('fetch', fetchMock);
 
-    await expect(claimPendingAnalysis()).resolves.toEqual(analysis);
+    await expect(claimPendingAnalysis(claimReference)).resolves.toEqual(analysis);
     const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
-    expect(init.body).toBeUndefined();
+    expect(JSON.parse(String(init.body))).toEqual({ claimReference });
+    expect(String(init.body)).not.toContain('claimToken');
   });
 
   it('distingue token expirado de token inválido', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({ error: 'Esta análise expirou.' }, 410)));
-    await expect(claimPendingAnalysis()).rejects.toMatchObject({ kind: 'TOKEN_EXPIRED', status: 410 });
+    await expect(claimPendingAnalysis(claimReference)).rejects.toMatchObject({ kind: 'TOKEN_EXPIRED', status: 410 });
 
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({ error: 'Token inválido.' }, 404)));
-    await expect(claimPendingAnalysis()).rejects.toMatchObject({ kind: 'TOKEN_INVALID', status: 404 });
+    await expect(claimPendingAnalysis(claimReference)).rejects.toMatchObject({ kind: 'TOKEN_INVALID', status: 404 });
   });
 
   it('envia disciplina pelo enum e valida a resposta', async () => {

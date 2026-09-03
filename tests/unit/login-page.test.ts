@@ -23,14 +23,23 @@ describe('LoginPage', () => {
   it('redireciona usuário já autenticado para /app sem pedir e-mail novamente', async () => {
     mocks.getUser.mockResolvedValue({ data: { user: { id: 'user-1' } } });
 
-    await expect(LoginPage()).rejects.toThrow('NEXT_REDIRECT:/app');
+    await expect(LoginPage({ searchParams: Promise.resolve({}) })).rejects.toThrow('NEXT_REDIRECT:/app');
   });
 
   it('mantém o formulário de Magic Link quando não há sessão', async () => {
     mocks.getUser.mockResolvedValue({ data: { user: null } });
 
-    const result = await LoginPage();
+    const result = await LoginPage({ searchParams: Promise.resolve({}) });
 
     expect(result.type).toBe(LoginForm);
+  });
+
+  it('leva a referência específica para /app quando a sessão já existe', async () => {
+    mocks.getUser.mockResolvedValue({ data: { user: { id: 'user-1' } } });
+    const reference = `6607bfb7-cf9a-40d3-a406-a50291dc4f22.${'a'.repeat(43)}`;
+
+    await expect(
+      LoginPage({ searchParams: Promise.resolve({ claim_ref: reference }) })
+    ).rejects.toThrow(`NEXT_REDIRECT:/app?claim_ref=${encodeURIComponent(reference)}`);
   });
 });

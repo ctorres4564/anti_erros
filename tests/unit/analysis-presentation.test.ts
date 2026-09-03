@@ -70,6 +70,7 @@ describe('camada de apresentação da Sprint 4', () => {
     const html = renderToStaticMarkup(
       createElement(PartialAnalysisResult, {
         preview: {
+          claimReference: `6607bfb7-cf9a-40d3-a406-a50291dc4f22.${'a'.repeat(43)}`,
           probableErrorType: 'CONCEPT_CONFUSION',
           concept: 'Anulação e revogação',
           discipline: 'Direito Administrativo',

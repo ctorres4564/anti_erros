@@ -7,7 +7,8 @@ vi.mock('@/lib/ai/resolve-client', () => ({
   resolveAIClient: vi.fn(() => ({ analyze: vi.fn() })),
 }));
 
-vi.mock('@/lib/security/claim-token', () => ({
+vi.mock('@/lib/security/claim-token', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@/lib/security/claim-token')>()),
   generateAnonymousId: vi.fn(() => 'anonymous-review-id'),
 }));
 
@@ -16,6 +17,8 @@ vi.mock('@/services/pending-analysis', () => ({
 }));
 
 const claimToken = 'a'.repeat(64);
+const pendingId = '6607bfb7-cf9a-40d3-a406-a50291dc4f22';
+const claimReference = `${pendingId}.${'b'.repeat(43)}`;
 
 describe('POST /api/analyses/preview', () => {
   beforeEach(() => {
@@ -25,6 +28,7 @@ describe('POST /api/analyses/preview', () => {
       preview: {
         anonymousId: 'anonymous-review-id',
         claimToken,
+        claimReference,
         probableErrorType: 'KNOWLEDGE_GAP',
         concept: 'Capital federal',
         discipline: 'Atualidades',
@@ -56,6 +60,7 @@ describe('POST /api/analyses/preview', () => {
     expect(payload).toEqual({
       success: true,
       preview: {
+        claimReference,
         probableErrorType: 'KNOWLEDGE_GAP',
         concept: 'Capital federal',
         discipline: 'Atualidades',
@@ -64,8 +69,9 @@ describe('POST /api/analyses/preview', () => {
       },
     });
     expect(payload).not.toHaveProperty('claimToken');
-    expect(response.cookies.get('claim_token')?.value).toBe(claimToken);
-    expect(setCookie).toContain(`claim_token=${claimToken}`);
+    const cookieName = `claim_token_${pendingId.replaceAll('-', '')}`;
+    expect(response.cookies.get(cookieName)?.value).toBe(claimToken);
+    expect(setCookie).toContain(`${cookieName}=${claimToken}`);
     expect(setCookie.toLowerCase()).toContain('httponly');
     expect(setCookie.toLowerCase()).toContain('samesite=lax');
     expect(setCookie.toLowerCase()).toContain('max-age=86400');

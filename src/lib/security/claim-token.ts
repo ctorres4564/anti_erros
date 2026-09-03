@@ -15,6 +15,50 @@ export function hashClaimToken(token: string): string {
   return crypto.createHash('sha256').update(token.trim()).digest('hex');
 }
 
+const PENDING_ID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+export function createClaimReference(pendingAnalysisId: string, claimToken: string): string {
+  const signature = crypto
+    .createHmac('sha256', claimToken)
+    .update(pendingAnalysisId)
+    .digest('base64url');
+
+  return `${pendingAnalysisId}.${signature}`;
+}
+
+export function parseClaimReference(reference: string): { pendingAnalysisId: string } | null {
+  const [pendingAnalysisId, signature, extra] = reference.split('.');
+  if (extra || !pendingAnalysisId || !signature || !PENDING_ID_PATTERN.test(pendingAnalysisId)) {
+    return null;
+  }
+
+  if (!/^[A-Za-z0-9_-]{43}$/.test(signature)) return null;
+  return { pendingAnalysisId };
+}
+
+export function verifyClaimReference(reference: string, claimToken: string): string | null {
+  const parsed = parseClaimReference(reference);
+  if (!parsed) return null;
+
+  const expected = createClaimReference(parsed.pendingAnalysisId, claimToken);
+  const actualBuffer = Buffer.from(reference);
+  const expectedBuffer = Buffer.from(expected);
+
+  if (
+    actualBuffer.length !== expectedBuffer.length ||
+    !crypto.timingSafeEqual(actualBuffer, expectedBuffer)
+  ) {
+    return null;
+  }
+
+  return parsed.pendingAnalysisId;
+}
+
+export function getClaimCookieName(pendingAnalysisId: string): string {
+  return `claim_token_${pendingAnalysisId.replaceAll('-', '')}`;
+}
+
 /**
  * Gera um identificador pseudônimo para a sessão anônima do navegador.
  */

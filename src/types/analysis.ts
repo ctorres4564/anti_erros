@@ -8,6 +8,7 @@ export interface AnalysisFormValues {
   userAttribution: UserAttribution;
 }
 export interface AnalysisPreview {
+  claimReference: string;
   probableErrorType: string;
   concept: string;
   discipline: string;

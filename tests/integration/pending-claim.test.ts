@@ -17,7 +17,13 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import type { AIAnalysisClient, AIAnalysisResult } from '@/lib/ai/gemini';
 import type { AnalysisInput } from '@/lib/ai/analysis-schema';
 import { createAnonymousPendingAnalysis, claimPendingAnalysisForUser } from '@/services/pending-analysis';
-import { hashClaimToken } from '@/lib/security/claim-token';
+import { hashClaimToken, parseClaimReference } from '@/lib/security/claim-token';
+
+function pendingIdFrom(reference: string): string {
+  const parsed = parseClaimReference(reference);
+  if (!parsed) throw new Error('Referência de claim inválida no teste.');
+  return parsed.pendingAnalysisId;
+}
 
 const admin = createAdminClient();
 const TEST_USER_PASSWORD = ['password', '123'].join('');
@@ -217,6 +223,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     const claimRes = await claimPendingAnalysisForUser({
       userId: testUser.id,
       claimToken: result.preview.claimToken,
+      pendingAnalysisId: pendingIdFrom(result.preview.claimReference),
     });
 
     expect(claimRes.kind).toBe('SUCCESS');
@@ -291,6 +298,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     const firstClaim = await claimPendingAnalysisForUser({
       userId: testUser.id,
       claimToken: result.preview.claimToken,
+      pendingAnalysisId: pendingIdFrom(result.preview.claimReference),
     });
     expect(firstClaim.kind).toBe('SUCCESS');
 
@@ -298,8 +306,50 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     const secondClaim = await claimPendingAnalysisForUser({
       userId: testUser.id,
       claimToken: result.preview.claimToken,
+      pendingAnalysisId: pendingIdFrom(result.preview.claimReference),
     });
     expect(secondClaim.kind).toBe('ALREADY_CLAIMED');
+  });
+
+  it('4b. Não permite usar o token do preview A para reclamar o pending B', async () => {
+    const previewA = await createAnonymousPendingAnalysis({
+      input: {
+        question: 'Questão específica do preview A',
+        userAnswer: 'A',
+        correctAnswer: 'B',
+        userAttribution: 'NAO_SEI',
+        turnstileToken: 'test-turnstile-valid',
+      },
+      anonymousId: 'anon_bound_a_' + Date.now(),
+      clientIp: '127.0.0.1',
+      aiClient: spyAiClient,
+    });
+    const previewB = await createAnonymousPendingAnalysis({
+      input: {
+        question: 'Questão específica do preview B',
+        userAnswer: 'C',
+        correctAnswer: 'D',
+        userAttribution: 'NAO_SEI',
+        turnstileToken: 'test-turnstile-valid',
+      },
+      anonymousId: 'anon_bound_b_' + Date.now(),
+      clientIp: '127.0.0.1',
+      aiClient: spyAiClient,
+    });
+
+    if (previewA.kind !== 'SUCCESS' || previewB.kind !== 'SUCCESS') {
+      throw new Error('Falha ao preparar previews vinculados');
+    }
+    const callsBeforeClaim = aiCallCount;
+
+    const crossedClaim = await claimPendingAnalysisForUser({
+      userId: testUser.id,
+      claimToken: previewA.preview.claimToken,
+      pendingAnalysisId: pendingIdFrom(previewB.preview.claimReference),
+    });
+
+    expect(crossedClaim.kind).toBe('NOT_FOUND');
+    expect(aiCallCount).toBe(callsBeforeClaim);
   });
 
   it('5. Rejeita resgate de análise expirada (> 24 horas)', async () => {
@@ -329,6 +379,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     const expiredClaim = await claimPendingAnalysisForUser({
       userId: testUser.id,
       claimToken: result.preview.claimToken,
+      pendingAnalysisId: pendingIdFrom(result.preview.claimReference),
     });
 
     expect(expiredClaim.kind).toBe('EXPIRED');
@@ -372,6 +423,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     if (result.kind !== 'SUCCESS') return;
 
     const claimToken = result.preview.claimToken;
+    const pendingAnalysisId = pendingIdFrom(result.preview.claimReference);
     const tokenHash = hashClaimToken(claimToken);
 
     // 3. Executar o claim com cota 5/5
@@ -379,6 +431,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     const failedClaim = await claimPendingAnalysisForUser({
       userId: quotaFullUser.id,
       claimToken,
+      pendingAnalysisId,
     });
 
     // Validação 1: claim recusado por limite diário
@@ -422,6 +475,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     const successClaim = await claimPendingAnalysisForUser({
       userId: quotaFullUser.id,
       claimToken,
+      pendingAnalysisId,
     });
 
     // Validação 5: claim agora permitido com sucesso
@@ -462,6 +516,7 @@ describe('PRD v1.2: Fluxo Integrado de Análise Anônima, Pending Analyses e Cla
     const duplicateClaim = await claimPendingAnalysisForUser({
       userId: quotaFullUser.id,
       claimToken,
+      pendingAnalysisId,
     });
     expect(duplicateClaim.kind).toBe('ALREADY_CLAIMED');
 

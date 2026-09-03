@@ -29,7 +29,7 @@ A landing enviava o visitante diretamente ao login. A área autenticada confirma
 
 ### Fluxo de autenticação disponível
 
-Magic Link/PKCE, callback SSR, onboarding obrigatório e sessão Supabase foram reutilizados sem criar um segundo mecanismo de autenticação. O cookie HttpOnly `claim_token` atravessa autenticação e onboarding no mesmo navegador.
+Magic Link, onboarding obrigatório e sessão Supabase são reutilizados sem criar um segundo mecanismo de autenticação. Cada pending usa um cookie HttpOnly próprio; uma referência assinada preserva qual preview deve ser resgatado.
 
 ### Divergências encontradas
 

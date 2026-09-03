@@ -36,6 +36,7 @@ function formData(entries: Record<string, string>) {
 }
 
 describe('confirmMagicLink (Server Action disparada pelo clique explícito)', () => {
+  const claimReference = `6607bfb7-cf9a-40d3-a406-a50291dc4f22.${'a'.repeat(43)}`;
   beforeEach(() => {
     vi.clearAllMocks();
     mocks.verifyOtp.mockResolvedValue({
@@ -63,6 +64,27 @@ describe('confirmMagicLink (Server Action disparada pelo clique explícito)', ()
     await expect(
       confirmMagicLink(formData({ token_hash: 'valid', type: 'email', next: '/conta' }))
     ).rejects.toThrow('NEXT_REDIRECT:/onboarding');
+  });
+
+  it('preserva uma referência de claim bem formada até /app', async () => {
+    await expect(
+      confirmMagicLink(formData({
+        token_hash: 'valid',
+        type: 'email',
+        next: '/app',
+        claim_ref: claimReference,
+      }))
+    ).rejects.toThrow(`NEXT_REDIRECT:/app?claim_ref=${encodeURIComponent(claimReference)}`);
+  });
+
+  it('descarta referência de claim adulterada antes do redirecionamento', async () => {
+    await expect(
+      confirmMagicLink(formData({
+        token_hash: 'valid',
+        type: 'email',
+        claim_ref: 'pending-id-puro',
+      }))
+    ).rejects.toThrow('NEXT_REDIRECT:/app');
   });
 
   it.each(['expired', 'invalid', 'already_used'])(

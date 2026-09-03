@@ -5,6 +5,7 @@ import { getSafePostAuthPath } from '@/lib/auth/redirect';
 import { createClient } from '@/lib/supabase/server';
 import { recordActivationEvent } from '@/services/activation';
 import { isOnboardingComplete } from '@/services/onboarding';
+import { parseClaimReference } from '@/lib/security/claim-token';
 
 const INVALID_LINK_PATH = '/login?auth_error=link_invalid';
 
@@ -16,10 +17,15 @@ export async function confirmMagicLink(formData: FormData) {
   const tokenHashField = formData.get('token_hash');
   const typeField = formData.get('type');
   const nextField = formData.get('next');
+  const claimReferenceField = formData.get('claim_ref');
 
   const tokenHash = typeof tokenHashField === 'string' ? tokenHashField : null;
   const type = typeof typeField === 'string' ? typeField : null;
   const destination = getSafePostAuthPath(typeof nextField === 'string' ? nextField : null);
+  const claimReference =
+    typeof claimReferenceField === 'string' && parseClaimReference(claimReferenceField)
+      ? claimReferenceField
+      : null;
 
   if (!tokenHash || tokenHash.length > 512 || type !== 'email') {
     redirect(INVALID_LINK_PATH);
@@ -52,5 +58,10 @@ export async function confirmMagicLink(formData: FormData) {
   const onboardingComplete = await isOnboardingComplete(verifiedUserId);
   await recordActivationEvent(verifiedUserId, 'auth_completed');
 
-  redirect(onboardingComplete ? destination : '/onboarding');
+  const claimQuery = claimReference
+    ? `?claim_ref=${encodeURIComponent(claimReference)}`
+    : '';
+  const postAuthDestination = destination === '/app' ? `/app${claimQuery}` : destination;
+
+  redirect(onboardingComplete ? postAuthDestination : `/onboarding${claimQuery}`);
 }

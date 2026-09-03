@@ -3,7 +3,12 @@ import type { AIAnalysisClient } from '@/lib/ai/gemini';
 import { PROMPT_VERSION } from '@/config/ai';
 import type { AnonymousAnalysisInput } from '@/lib/ai/analysis-schema';
 import { calculateDivergence, type UserAttribution } from '@/config/ai';
-import { generateClaimToken, hashClaimToken, hashIpAddress } from '@/lib/security/claim-token';
+import {
+  createClaimReference,
+  generateClaimToken,
+  hashClaimToken,
+  hashIpAddress,
+} from '@/lib/security/claim-token';
 import { validateTurnstileToken } from '@/lib/security/turnstile';
 import { checkRateLimit } from '@/lib/security/rate-limit';
 import type { ApiAnalysis } from './analysis';
@@ -13,6 +18,7 @@ import { recordActivationEvent } from './activation';
 export interface AnonymousPreviewResult {
   anonymousId: string;
   claimToken: string;
+  claimReference: string;
   probableErrorType: string;
   concept: string;
   discipline: string;
@@ -184,6 +190,7 @@ export async function createAnonymousPendingAnalysis(params: {
     preview: {
       anonymousId,
       claimToken,
+      claimReference: createClaimReference(pending.id, claimToken),
       probableErrorType: output.probableErrorType,
       concept: output.coreConcept,
       discipline: output.discipline,
@@ -201,10 +208,26 @@ export async function createAnonymousPendingAnalysis(params: {
 export async function claimPendingAnalysisForUser(params: {
   userId: string;
   claimToken: string;
+  pendingAnalysisId: string;
 }): Promise<ClaimServiceResult> {
-  const { userId, claimToken } = params;
+  const { userId, claimToken, pendingAnalysisId } = params;
   const admin = createAdminClient();
   const claimTokenHash = hashClaimToken(claimToken);
+
+  const { data: matchingPending, error: matchingError } = await admin
+    .from('pending_analyses')
+    .select('id')
+    .eq('id', pendingAnalysisId)
+    .eq('claim_token_hash', claimTokenHash)
+    .maybeSingle();
+
+  if (matchingError) {
+    return { kind: 'ERROR', message: 'Erro ao validar a análise pendente.' };
+  }
+
+  if (!matchingPending) {
+    return { kind: 'NOT_FOUND', message: 'Análise pendente não encontrada.' };
+  }
 
   const { data, error } = await admin.rpc('claim_pending_analysis', {
     p_user_id: userId,

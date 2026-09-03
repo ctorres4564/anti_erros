@@ -3,6 +3,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { createBrowserClient } from '@supabase/ssr';
 import type { AIAnalysisClient } from '@/lib/ai/gemini';
 import { createAnonymousPendingAnalysis } from '@/services/pending-analysis';
+import { getClaimCookieName, parseClaimReference } from '@/lib/security/claim-token';
 
 const SUPABASE_URL = process.env.SUPABASE_TEST_URL ?? 'http://127.0.0.1:54321';
 const ANON_KEY = process.env.SUPABASE_TEST_ANON_KEY ?? 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0';
@@ -149,6 +150,9 @@ describe.skipIf(!available)('Sprint 5: APIs de ativação sem modelo', () => {
     });
     expect(pending.kind).toBe('SUCCESS');
     if (pending.kind !== 'SUCCESS') return;
+    const parsedReference = parseClaimReference(pending.preview.claimReference);
+    if (!parsedReference) throw new Error('referência de claim inválida');
+    const claimCookieName = getClaimCookieName(parsedReference.pendingAnalysisId);
 
     const { data: link, error: linkError } = await admin.auth.admin.generateLink({ type: 'magiclink', email });
     if (linkError) throw linkError;
@@ -162,11 +166,15 @@ describe.skipIf(!available)('Sprint 5: APIs de ativação sem modelo', () => {
 
     const response = await fetch(`${APP_URL}/api/pending-analyses/claim`, {
       method: 'POST',
-      headers: { Cookie: `${magicSession.cookie()}; claim_token=${pending.preview.claimToken}` },
+      headers: {
+        Cookie: `${magicSession.cookie()}; ${claimCookieName}=${pending.preview.claimToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ claimReference: pending.preview.claimReference }),
     });
     expect(response.status).toBe(200);
     expect((await response.json()).analysis.probableErrorType).toBe('KNOWLEDGE_GAP');
-    expect(response.headers.get('set-cookie')?.toLowerCase()).toContain('claim_token=');
+    expect(response.headers.get('set-cookie')?.toLowerCase()).toContain(claimCookieName);
     expect(aiCalls).toBe(1);
   });
 

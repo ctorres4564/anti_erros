@@ -24,6 +24,7 @@ describe('Página intermediária /auth/confirm (GET passivo)', () => {
       tokenHash: 'hash-from-email',
       type: 'email',
       next: '/app',
+      claimReference: null,
     });
   });
 
@@ -33,6 +34,6 @@ describe('Página intermediária /auth/confirm (GET passivo)', () => {
     expect(mocks.verifyOtp).not.toHaveBeenCalled();
 
     const confirmElement = result.props.children;
-    expect(confirmElement.props).toEqual({ tokenHash: null, type: null, next: null });
+    expect(confirmElement.props).toEqual({ tokenHash: null, type: null, next: null, claimReference: null });
   });
 });

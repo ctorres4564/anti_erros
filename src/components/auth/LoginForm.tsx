@@ -18,6 +18,7 @@ function LoginFormInner() {
   const authError = searchParams.get('auth_error');
   const initialError = getLoginErrorMessage(authError);
   const isContinuingAnalysis = searchParams.get('continue') === 'analysis';
+  const claimReference = isContinuingAnalysis ? searchParams.get('claim_ref') : null;
 
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(initialError);
@@ -44,7 +45,14 @@ function LoginFormInner() {
 
     try {
       const supabase = createClient();
-      const { error } = await requestMagicLink(supabase.auth, validation.data.email);
+      const confirmationUrl = new URL('/auth/confirm', window.location.origin);
+      confirmationUrl.searchParams.set('flow', 'magic_link');
+      if (claimReference) confirmationUrl.searchParams.set('claim_ref', claimReference);
+      const { error } = await requestMagicLink(
+        supabase.auth,
+        validation.data.email,
+        confirmationUrl.toString()
+      );
 
       if (error) {
         console.error('Falha ao solicitar Magic Link.', { code: error.code ?? 'otp_request_failed' });

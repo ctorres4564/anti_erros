@@ -58,8 +58,10 @@ Execute este roteiro no domínio canônico depois de configurar o Site URL, os t
 4. Confirme que a análise pendente é vinculada uma única vez e o resultado completo é exibido.
 5. Confirme nos logs/contadores de teste que o claim não executou nova inferência.
 6. Repita o claim e confirme que ele não cria uma segunda análise.
+7. Crie previews A e B em abas diferentes e confirme que o CTA de A resgata A e o CTA de B resgata B.
+8. Altere um caractere de `claim_ref` em um teste controlado e confirme falha genérica sem consumir nenhum pending.
 
-O claim automático é deliberadamente vinculado ao cookie HttpOnly do navegador que criou a prévia. O Magic Link pode autenticar em outro dispositivo, mas a credencial da análise não é copiada para e-mail, URL ou JavaScript. Para resgatar aquela prévia automaticamente, o usuário deve concluir o acesso no navegador que conserva o cookie.
+Cada preview recebe uma referência assinada e um cookie HttpOnly próprio. A referência atravessa o Magic Link, mas não é a credencial de claim; o token bruto permanece somente no cookie do navegador que criou a prévia. O claim exige que ambos correspondam ao mesmo pending. Em outro dispositivo, a autenticação funciona, mas o resgate automático não ocorre sem esse cookie.
 
 ## Resultado
 

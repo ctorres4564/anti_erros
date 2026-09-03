@@ -1,7 +1,39 @@
 import crypto from 'crypto';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import {
+  createClaimReference,
+  getClaimCookieName,
+  parseClaimReference,
+  verifyClaimReference,
+} from '@/lib/security/claim-token';
 
 const ORIGINAL_ENV = { ...process.env };
+const PENDING_A = '6607bfb7-cf9a-40d3-a406-a50291dc4f22';
+const PENDING_B = '550e8400-e29b-41d4-a716-446655440000';
+
+describe('referência vinculada de claim', () => {
+  it('vincula criptograficamente a referência ao pending e ao token correto', () => {
+    const tokenA = 'a'.repeat(64);
+    const referenceA = createClaimReference(PENDING_A, tokenA);
+
+    expect(parseClaimReference(referenceA)).toEqual({ pendingAnalysisId: PENDING_A });
+    expect(verifyClaimReference(referenceA, tokenA)).toBe(PENDING_A);
+    expect(verifyClaimReference(referenceA, 'b'.repeat(64))).toBeNull();
+  });
+
+  it('rejeita troca de pending, assinatura adulterada e formato inválido', () => {
+    const tokenA = 'a'.repeat(64);
+    const referenceA = createClaimReference(PENDING_A, tokenA);
+
+    expect(verifyClaimReference(referenceA.replace(PENDING_A, PENDING_B), tokenA)).toBeNull();
+    expect(verifyClaimReference(`${referenceA.slice(0, -1)}x`, tokenA)).toBeNull();
+    expect(parseClaimReference('pending-id-puro')).toBeNull();
+  });
+
+  it('isola os cookies de duas abas/previews', () => {
+    expect(getClaimCookieName(PENDING_A)).not.toBe(getClaimCookieName(PENDING_B));
+  });
+});
 
 async function importFreshHashIpAddress() {
   vi.resetModules();

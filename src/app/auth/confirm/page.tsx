@@ -5,6 +5,7 @@ interface AuthConfirmPageProps {
     token_hash?: string;
     type?: string;
     next?: string;
+    claim_ref?: string;
   }>;
 }
 
@@ -20,6 +21,7 @@ export default async function AuthConfirmPage({ searchParams }: AuthConfirmPageP
         tokenHash={params.token_hash ?? null}
         type={params.type ?? null}
         next={params.next ?? null}
+        claimReference={params.claim_ref ?? null}
       />
     </div>
   );

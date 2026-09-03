@@ -10,6 +10,7 @@ interface ConfirmMagicLinkProps {
   tokenHash: string | null;
   type: string | null;
   next: string | null;
+  claimReference: string | null;
 }
 
 function SubmitButton() {
@@ -27,7 +28,7 @@ function SubmitButton() {
   );
 }
 
-export function ConfirmMagicLink({ tokenHash, type, next }: ConfirmMagicLinkProps) {
+export function ConfirmMagicLink({ tokenHash, type, next, claimReference }: ConfirmMagicLinkProps) {
   const isValid = Boolean(tokenHash) && tokenHash!.length <= 512 && type === 'email';
 
   if (!isValid) {
@@ -56,6 +57,7 @@ export function ConfirmMagicLink({ tokenHash, type, next }: ConfirmMagicLinkProp
         <input type="hidden" name="token_hash" value={tokenHash ?? ''} />
         <input type="hidden" name="type" value={type ?? ''} />
         {next ? <input type="hidden" name="next" value={next} /> : null}
+        {claimReference ? <input type="hidden" name="claim_ref" value={claimReference} /> : null}
         <SubmitButton />
       </form>
     </div>

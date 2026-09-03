@@ -48,7 +48,7 @@ export function PartialAnalysisResult({ preview }: { preview: AnalysisPreview })
           Crie seu acesso gratuito por Magic Link. Esta análise já foi processada e será vinculada à sua conta sem uma nova inferência.
         </p>
         <Link
-          href="/login?continue=analysis"
+          href={`/login?continue=analysis&claim_ref=${encodeURIComponent(preview.claimReference)}`}
           className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:w-auto"
         >
           Ver análise completa
