@@ -17,6 +17,11 @@ O parâmetro `next` aceito pelo aplicativo é restrito a `/app`, `/conta` e `/on
 
 Em **Authentication → Email Templates**, atualize os templates **Magic Link** e **Confirm signup**. Os dois precisam usar o mesmo destino seguro para cobrir usuários existentes e novos usuários criados pelo login sem senha.
 
+> Configuração confirmada em produção: o template precisa iniciar o link com
+> `{{ .RedirectTo }}`. Usar `{{ .SiteURL }}/auth/confirm?token_hash=...` descarta
+> os parâmetros preparados na solicitação do Magic Link, inclusive `claim_ref`,
+> e impede o resgate automático da análise pendente correta.
+
 Assunto sugerido:
 
 ```text
@@ -41,6 +46,7 @@ Requisitos de segurança:
 - não usar `{{ .ConfirmationURL }}` neste fluxo, pois ele volta ao callback PKCE dependente do navegador de origem;
 - não adicionar e-mail, `claim_token` ou outro identificador sensível à URL; `claim_ref` é apenas uma referência assinada e não contém a credencial de claim;
 - usar `{{ .RedirectTo }}` somente com a Redirect URL canônica permitida no Supabase.
+- não substituir `{{ .RedirectTo }}` por `{{ .SiteURL }}/auth/confirm`; essa forma perde `claim_ref`.
 
 ## 3. Validação após salvar
 

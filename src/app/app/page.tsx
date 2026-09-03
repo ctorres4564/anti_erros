@@ -4,7 +4,6 @@ import { createClient } from '@/lib/supabase/server';
 import { isOnboardingComplete, getUserProfileData } from '@/services/onboarding';
 import type { AnalysisHistoryItem } from '@/types/analysis';
 import { parseClaimReference } from '@/lib/security/claim-token';
-import { logClaimEvent, safePendingAnalysisId } from '@/lib/observability/claim-log';
 
 export default async function AppPage({
   searchParams,
@@ -54,12 +53,6 @@ export default async function AppPage({
   // não estar visível nesta requisição específica.
   const claimReference =
     params.claim_ref && parseClaimReference(params.claim_ref) ? params.claim_ref : null;
-
-  logClaimEvent('app_page_claim_state', {
-    hasClaimRefParam: Boolean(params.claim_ref),
-    claimRefStructurallyValid: Boolean(claimReference),
-    pendingAnalysisId: safePendingAnalysisId(claimReference),
-  });
 
   return (
     <AuthenticatedAnalysisExperience

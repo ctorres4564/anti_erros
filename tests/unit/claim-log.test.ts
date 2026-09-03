@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { logClaimEvent, safePendingAnalysisId } from '@/lib/observability/claim-log';
+import { logClaimEvent } from '@/lib/observability/claim-log';
 
 describe('logClaimEvent: instrumentação não sensível do fluxo de claim', () => {
   let logSpy: ReturnType<typeof vi.spyOn>;
@@ -50,31 +50,6 @@ describe('logClaimEvent: instrumentação não sensível do fluxo de claim', () 
     expect(keys).not.toContain('cookie');
   });
 
-  it('os campos de rastreio do fluxo pré-claim são booleanos e enum controlado, sem URL nem referência', () => {
-    logClaimEvent('auth_confirm_redirect', {
-      hasClaimReference: true,
-      pendingAnalysisId: '6607bfb7-cf9a-40d3-a406-a50291dc4f22',
-      destination: 'app_with_claim',
-    });
-    logClaimEvent('app_page_claim_state', {
-      hasClaimRefParam: true,
-      claimRefStructurallyValid: true,
-      pendingAnalysisId: '6607bfb7-cf9a-40d3-a406-a50291dc4f22',
-    });
-
-    const redirectPayload = JSON.parse(logSpy.mock.calls[0][0] as string);
-    const appPayload = JSON.parse(logSpy.mock.calls[1][0] as string);
-
-    expect(redirectPayload.destination).toBe('app_with_claim');
-    expect(redirectPayload.hasClaimReference).toBe(true);
-    expect(appPayload.hasClaimRefParam).toBe(true);
-    expect(appPayload.claimRefStructurallyValid).toBe(true);
-
-    const allLoggedText = logSpy.mock.calls.map(([line]) => line).join('\n');
-    expect(allLoggedText).not.toContain('claim_ref=');
-    expect(allLoggedText).not.toContain('http');
-  });
-
   it('não vaza padrão de hash SHA-256 (64 hex) nem token de 64 caracteres em nenhuma chamada', () => {
     logClaimEvent('pending_claim_failed', {
       pendingAnalysisId: '6607bfb7-cf9a-40d3-a406-a50291dc4f22',
@@ -85,24 +60,4 @@ describe('logClaimEvent: instrumentação não sensível do fluxo de claim', () 
     const line = logSpy.mock.calls[0][0] as string;
     expect(line).not.toMatch(/[0-9a-f]{64}/i);
   });
-});
-
-describe('safePendingAnalysisId: extrai só o identificador, nunca a assinatura', () => {
-  const pendingId = '6607bfb7-cf9a-40d3-a406-a50291dc4f22';
-  const signature = 'a'.repeat(43);
-
-  it('devolve apenas o pendingAnalysisId de uma referência bem formada', () => {
-    const extracted = safePendingAnalysisId(`${pendingId}.${signature}`);
-
-    expect(extracted).toBe(pendingId);
-    expect(extracted).not.toContain(signature);
-    expect(extracted).not.toContain('.');
-  });
-
-  it.each([null, undefined, '', 'referencia-invalida', 'sem-ponto', `${pendingId}`])(
-    'devolve null para entrada inválida ou ausente (%s)',
-    (input) => {
-      expect(safePendingAnalysisId(input)).toBeNull();
-    }
-  );
 });

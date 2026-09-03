@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { AlertCircle, CheckCircle2, Loader2, Settings } from 'lucide-react';
 import { AnalysisApiError, claimPendingAnalysis } from '@/lib/analysis-api-client';
-import { logClaimEvent, safePendingAnalysisId } from '@/lib/observability/claim-log';
 import type { AnalysisHistoryItem, AnalysisView } from '@/types/analysis';
 import { AnalysisForm } from './AnalysisForm';
 import { AnalysisHistory } from './AnalysisHistory';
@@ -69,25 +68,9 @@ export function AuthenticatedAnalysisExperience({
     window.requestAnimationFrame(() => resultRef.current?.focus());
   };
 
-  // Diagnóstico: registra a montagem no navegador para distinguir "a referência
-  // nunca chegou ao componente" de "chegou, mas o efeito de claim não rodou".
-  useEffect(() => {
-    logClaimEvent('authenticated_analysis_mounted', {
-      hasClaimReference: Boolean(claimReference),
-      pendingAnalysisId: safePendingAnalysisId(claimReference),
-    });
-    // Executa apenas na montagem, por isso não observa `claimReference`.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   useEffect(() => {
     if (!claimReference || claimStarted.current) return;
     claimStarted.current = true;
-
-    logClaimEvent('authenticated_claim_effect_started', {
-      hasClaimReference: true,
-      pendingAnalysisId: safePendingAnalysisId(claimReference),
-    });
 
     void (async () => {
       setClaimState({ status: 'loading' });
@@ -97,9 +80,6 @@ export function AuthenticatedAnalysisExperience({
         setClaimState({ status: 'success' });
       } catch (error) {
         setClaimState({ status: 'error', message: claimErrorMessage(error) });
-        if (error instanceof AnalysisApiError) {
-          console.warn('[claim] falhou ao recuperar a análise pendente', { kind: error.kind });
-        }
         window.requestAnimationFrame(() => claimStatusRef.current?.focus());
       }
     })();
