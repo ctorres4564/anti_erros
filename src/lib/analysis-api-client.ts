@@ -159,6 +159,29 @@ export async function claimPendingAnalysis(claimReference: string): Promise<Anal
   return result.analysis;
 }
 
+/**
+ * Explicação simples sob demanda. Chamada SOMENTE a partir do clique do
+ * estudante — envia apenas os campos necessários, sem id de análise.
+ */
+export async function requestSimpleExplanation(input: {
+  question: string;
+  correctAnswer: string;
+  userAnswer: string;
+  concept?: string;
+}): Promise<string> {
+  const result = await requestJson(
+    '/api/analyses/explain-simple',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(input),
+    },
+    z.object({ explanation: z.string() })
+  );
+
+  return result.explanation;
+}
+
 export async function confirmAnalysisDiscipline(analysisId: string, discipline: string) {
   return requestJson(
     `/api/analyses/${analysisId}/discipline`,

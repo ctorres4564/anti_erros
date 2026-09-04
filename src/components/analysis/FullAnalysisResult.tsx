@@ -16,6 +16,7 @@ import {
   toConservativeLanguage,
 } from '@/lib/analysis-presentation';
 import type { AnalysisView } from '@/types/analysis';
+import { SimpleExplanation } from './SimpleExplanation';
 
 export function FullAnalysisResult({ analysis }: { analysis: AnalysisView }) {
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'failed'>('idle');
@@ -132,6 +133,13 @@ export function FullAnalysisResult({ analysis }: { analysis: AnalysisView }) {
             : 'Revise a questão e compare cada etapa da sua resposta com o gabarito comentado.'}
         </p>
       </div>
+
+      <SimpleExplanation
+        question={analysis.question}
+        correctAnswer={analysis.correctAnswer}
+        userAnswer={analysis.userAnswer}
+        concept={analysis.coreConcept}
+      />
 
       <div className="grid gap-5 lg:grid-cols-2">
         <section className="rounded-xl border p-5" aria-labelledby={`discipline-${analysis.id}`}>
