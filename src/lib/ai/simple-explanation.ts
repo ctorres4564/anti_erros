@@ -10,6 +10,12 @@
 
 import { z } from 'zod';
 import { AI_MODEL } from '@/config/ai';
+import {
+  extractUsageMetadata,
+  type AiUsageOutcome,
+  type GeminiCallTelemetryHook,
+  type GeminiUsageMetadata,
+} from './usage';
 
 /**
  * Timeout EXCLUSIVO desta funcionalidade. Deliberadamente menor que o
@@ -173,12 +179,16 @@ export function buildSimpleExplanationUserPrompt(input: SimpleExplanationInput):
 
 interface GeminiTextResponse {
   candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+  usageMetadata?: Record<string, unknown>;
+  modelVersion?: string;
 }
 
 export interface GenerateSimpleExplanationOptions {
   apiKey?: string;
   model?: string;
   timeoutMs?: number;
+  /** Chamado uma vez pela chamada ao Gemini (sucesso ou falha). Best-effort. */
+  onGeminiCall?: GeminiCallTelemetryHook;
 }
 
 /**
@@ -200,6 +210,27 @@ export async function generateSimpleExplanation(
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const startedAt = Date.now();
+
+  // Uma única chamada, portanto sempre attempt 1 e nunca retry.
+  const emit = (
+    outcome: AiUsageOutcome,
+    extra: { usage?: GeminiUsageMetadata; servedModel?: string } = {}
+  ) => {
+    try {
+      options.onGeminiCall?.({
+        feature: 'simple_explanation',
+        requestedModel: model,
+        latencyMs: Date.now() - startedAt,
+        attempt: 1,
+        isRetry: false,
+        outcome,
+        ...extra,
+      });
+    } catch {
+      // telemetria nunca quebra a explicação
+    }
+  };
 
   let response: Response;
   try {
@@ -224,23 +255,31 @@ export async function generateSimpleExplanation(
     );
   } catch (err) {
     if (err instanceof Error && err.name === 'AbortError') {
+      emit('TIMEOUT');
       throw new SimpleExplanationError('TIMEOUT', `Timeout de ${timeoutMs}ms ao gerar a explicação.`, err);
     }
+    emit('UNKNOWN');
     throw new SimpleExplanationError('UNKNOWN', 'Falha de rede ao gerar a explicação.', err);
   } finally {
     clearTimeout(timer);
   }
 
   if (!response.ok) {
+    emit('HTTP_ERROR');
     throw new SimpleExplanationError('HTTP_ERROR', `Gemini retornou HTTP ${response.status}.`);
   }
 
   const json = (await response.json().catch(() => null)) as GeminiTextResponse | null;
+  const usage = extractUsageMetadata(json?.usageMetadata);
+  const servedModel = typeof json?.modelVersion === 'string' ? json.modelVersion : undefined;
   const text = (json?.candidates?.[0]?.content?.parts?.map((part) => part.text ?? '').join('') ?? '').trim();
 
   if (!text) {
+    emit('EMPTY_RESPONSE', { usage, servedModel });
     throw new SimpleExplanationError('EMPTY_RESPONSE', 'Gemini retornou resposta vazia.');
   }
+
+  emit('SUCCESS', { usage, servedModel });
 
   return text.slice(0, SIMPLE_EXPLANATION_MAX_CHARS);
 }

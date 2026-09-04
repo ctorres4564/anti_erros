@@ -9,6 +9,8 @@ import {
   SIMPLE_EXPLANATION_RATE_LIMIT_WINDOW_MS,
 } from '@/lib/ai/simple-explanation';
 import { checkRateLimit } from '@/lib/security/rate-limit';
+import type { GeminiCallTelemetry } from '@/lib/ai/usage';
+import { recordAuthenticatedAiUsage } from '@/services/ai-usage';
 
 /**
  * Explicação simples da questão, sob demanda (clique explícito do estudante).
@@ -54,7 +56,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const explanation = await generateSimpleExplanation(parsed.data);
+    // Telemetria de consumo, best-effort e sempre gravada — inclusive quando a
+    // chamada falha, para não perder custo de chamadas com erro.
+    const geminiCalls: GeminiCallTelemetry[] = [];
+    const flushUsage = async () => {
+      try {
+        for (const call of geminiCalls) {
+          await recordAuthenticatedAiUsage(user.id, call);
+        }
+      } catch {
+        // Telemetria jamais derruba a explicação.
+      } finally {
+        geminiCalls.length = 0;
+      }
+    };
+
+    let explanation: string;
+    try {
+      explanation = await generateSimpleExplanation(parsed.data, {
+        onGeminiCall: (telemetry) => geminiCalls.push(telemetry),
+      });
+    } catch (error) {
+      await flushUsage();
+      throw error;
+    }
+
+    await flushUsage();
 
     return NextResponse.json({ explanation }, { status: 200 });
   } catch (error) {

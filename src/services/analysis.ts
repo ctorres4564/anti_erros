@@ -1,5 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { AIAnalysisError, type AIAnalysisClient } from '@/lib/ai/gemini';
+import type { GeminiCallTelemetry } from '@/lib/ai/usage';
+import { recordAuthenticatedAiUsage } from './ai-usage';
 import { PROMPT_VERSION } from '@/config/ai';
 import type { AnalysisInput, AnalysisOutput } from '@/lib/ai/analysis-schema';
 import { DAILY_ANALYSIS_LIMIT, IDEMPOTENCY_LOCK_TTL_SECONDS, type UserAttribution } from '@/config/ai';
@@ -131,15 +133,34 @@ export async function runAnalysisEngine(params: {
   const lockId = reserve.lockId as string;
   await logEvent(admin, userId, 'analysis_form_started');
 
+  // Telemetria de consumo: coletada por chamada real ao Gemini e persistida
+  // logo após, de forma best-effort. Nunca interfere no resultado da análise.
+  const geminiCalls: GeminiCallTelemetry[] = [];
+  const flushUsage = async () => {
+    try {
+      for (const call of geminiCalls) {
+        await recordAuthenticatedAiUsage(userId, call);
+      }
+    } catch {
+      // Telemetria jamais derruba a análise.
+    } finally {
+      geminiCalls.length = 0;
+    }
+  };
+
   let aiOutput: AnalysisOutput;
   let modelVersion: string;
   let latencyMs = 0;
   try {
-    const result = await aiClient.analyze(input);
+    const result = await aiClient.analyze(input, {
+      onGeminiCall: (telemetry) => geminiCalls.push(telemetry),
+    });
     aiOutput = result.output;
     modelVersion = result.modelVersion;
     latencyMs = result.usage.latencyMs;
+    await flushUsage();
   } catch (err) {
+    await flushUsage();
     // ---- Fase 2 (falha): estorna a reserva, nunca consome cota ----
     await admin.rpc('fail_analysis', { p_user_id: userId, p_lock_id: lockId });
 

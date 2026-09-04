@@ -15,6 +15,8 @@ import type { ApiAnalysis } from './analysis';
 import type { Tables } from '@/types/database.types';
 import { recordActivationEvent } from './activation';
 import { logClaimEvent } from '@/lib/observability/claim-log';
+import type { GeminiCallTelemetry } from '@/lib/ai/usage';
+import { recordAnonymousAiUsage } from './ai-usage';
 
 export interface AnonymousPreviewResult {
   anonymousId: string;
@@ -123,15 +125,34 @@ export async function createAnonymousPendingAnalysis(params: {
   });
 
   // 3. Chamada de IA (userAttribution é EXCLUÍDA do payload da IA!)
+  // A telemetria de consumo é coletada aqui e gravada depois, quando já se
+  // conhece o pending_analysis_id (ou com null, se a chamada falhar antes disso).
+  const geminiCalls: GeminiCallTelemetry[] = [];
+  const flushUsage = async (pendingAnalysisId: string | null) => {
+    try {
+      for (const call of geminiCalls) {
+        await recordAnonymousAiUsage(anonymousId, pendingAnalysisId, call);
+      }
+    } catch {
+      // Telemetria jamais derruba o preview.
+    } finally {
+      geminiCalls.length = 0;
+    }
+  };
+
   let aiResult;
   try {
-    aiResult = await aiClient.analyze({
-      question: input.question,
-      userAnswer: input.userAnswer,
-      correctAnswer: input.correctAnswer,
-      studentReasoning: input.studentReasoning,
-    });
+    aiResult = await aiClient.analyze(
+      {
+        question: input.question,
+        userAnswer: input.userAnswer,
+        correctAnswer: input.correctAnswer,
+        studentReasoning: input.studentReasoning,
+      },
+      { onGeminiCall: (telemetry) => geminiCalls.push(telemetry) }
+    );
   } catch (err: unknown) {
+    await flushUsage(null);
     const code = err && typeof err === 'object' && 'code' in err ? String(err.code) : 'UNKNOWN';
     const message = err instanceof Error ? err.message : 'Falha no motor de IA.';
     return { kind: 'AI_FAILED', code, message };
@@ -170,6 +191,8 @@ export async function createAnonymousPendingAnalysis(params: {
     })
     .select('id')
     .single();
+
+  await flushUsage(pending?.id ?? null);
 
   if (insertError || !pending) {
     throw new Error(`Falha ao registrar análise pendente: ${insertError?.message}`);

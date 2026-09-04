@@ -1,6 +1,11 @@
 import { AI_MAX_SCHEMA_RETRIES, AI_MODEL, AI_REQUEST_TIMEOUT_MS, DISCIPLINES, EVIDENCE_SOURCES, EVIDENCE_SUPPORT_TYPES } from '@/config/ai';
 import { analysisOutputSchema, enforceDiagnosticInvariants, type AnalysisInput, type AnalysisOutput } from './analysis-schema';
 import { ANALYSIS_SYSTEM_PROMPT, buildAnalysisUserPrompt } from './analysis-prompt';
+import {
+  extractUsageMetadata,
+  type GeminiCallTelemetryHook,
+  type GeminiUsageMetadata,
+} from './usage';
 
 export type AIAnalysisErrorCode = 'TIMEOUT' | 'HTTP_ERROR' | 'SCHEMA_INVALID' | 'EMPTY_RESPONSE' | 'UNKNOWN';
 
@@ -28,9 +33,15 @@ export interface AIAnalysisResult {
   usage: AIAnalysisUsage;
 }
 
+/** Ganchos opcionais de observabilidade — não alteram o contrato de análise. */
+export interface AIAnalysisHooks {
+  /** Chamado uma vez por chamada REAL ao Gemini (inclusive nas que falharam). */
+  onGeminiCall?: GeminiCallTelemetryHook;
+}
+
 /** Interface do motor de IA — injetável, para permitir mocks determinísticos em testes. */
 export interface AIAnalysisClient {
-  analyze(input: AnalysisInput): Promise<AIAnalysisResult>;
+  analyze(input: AnalysisInput, hooks?: AIAnalysisHooks): Promise<AIAnalysisResult>;
 }
 
 /** Schema JSON (dialeto OpenAPI/Gemini) espelhando analysisOutputSchema para Structured Output. */
@@ -118,7 +129,9 @@ interface GeminiGenerateContentResponse {
   usageMetadata?: {
     promptTokenCount?: number;
     candidatesTokenCount?: number;
+    [key: string]: unknown;
   };
+  modelVersion?: string;
 }
 
 function extractResponseText(payload: GeminiGenerateContentResponse): string | null {
@@ -131,7 +144,13 @@ async function callGeminiOnce(params: {
   model: string;
   userPrompt: string;
   timeoutMs: number;
-}): Promise<{ text: string; inputTokens: number; outputTokens: number }> {
+}): Promise<{
+  text: string;
+  inputTokens: number;
+  outputTokens: number;
+  usage?: GeminiUsageMetadata;
+  servedModel?: string;
+}> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), params.timeoutMs);
 
@@ -179,8 +198,12 @@ async function callGeminiOnce(params: {
 
   return {
     text,
+    // Campos legados mantidos por compatibilidade; a contagem completa (inclusive
+    // thoughtsTokenCount e totalTokenCount) vai em `usage`.
     inputTokens: json.usageMetadata?.promptTokenCount ?? 0,
     outputTokens: json.usageMetadata?.candidatesTokenCount ?? 0,
+    usage: extractUsageMetadata(json.usageMetadata),
+    servedModel: typeof json.modelVersion === 'string' ? json.modelVersion : undefined,
   };
 }
 
@@ -224,7 +247,7 @@ export class GeminiAnalysisClient implements AIAnalysisClient {
     this.maxSchemaRetries = options.maxSchemaRetries ?? AI_MAX_SCHEMA_RETRIES;
   }
 
-  async analyze(input: AnalysisInput): Promise<AIAnalysisResult> {
+  async analyze(input: AnalysisInput, hooks?: AIAnalysisHooks): Promise<AIAnalysisResult> {
     const userPrompt = buildAnalysisUserPrompt(input);
     const startedAt = Date.now();
 
@@ -233,22 +256,59 @@ export class GeminiAnalysisClient implements AIAnalysisClient {
 
     for (let attempt = 0; attempt <= this.maxSchemaRetries; attempt++) {
       if (attempt > 0) retries++;
+      const attemptStartedAt = Date.now();
+
+      // Telemetria é best-effort: um hook com defeito nunca pode derrubar a análise.
+      const emit = (
+        outcome: AIAnalysisErrorCode | 'SUCCESS',
+        extra: { usage?: GeminiUsageMetadata; servedModel?: string } = {}
+      ) => {
+        try {
+          hooks?.onGeminiCall?.({
+            feature: 'analysis',
+            requestedModel: this.model,
+            latencyMs: Date.now() - attemptStartedAt,
+            attempt: attempt + 1,
+            isRetry: attempt > 0,
+            outcome,
+            ...extra,
+          });
+        } catch {
+          // silencioso por design
+        }
+      };
+
+      let call: Awaited<ReturnType<typeof callGeminiOnce>>;
       try {
-        const { text, inputTokens, outputTokens } = await callGeminiOnce({
+        call = await callGeminiOnce({
           apiKey: this.apiKey,
           model: this.model,
           userPrompt,
           timeoutMs: this.timeoutMs,
         });
+      } catch (err) {
+        const aiErr =
+          err instanceof AIAnalysisError ? err : new AIAnalysisError('UNKNOWN', 'Erro desconhecido no motor de IA.', err);
+        // Falhou antes de haver contagem de tokens: registra a chamada sem usage
+        // (potencialmente cobrada), sem inventar zeros.
+        emit(aiErr.code);
+        lastError = aiErr;
 
-        const output = parseAndValidate(text, input);
+        if (aiErr.code !== 'SCHEMA_INVALID') throw aiErr;
+        continue;
+      }
+
+      try {
+        const output = parseAndValidate(call.text, input);
+
+        emit('SUCCESS', { usage: call.usage, servedModel: call.servedModel });
 
         return {
           output,
           modelVersion: this.model,
           usage: {
-            inputTokens,
-            outputTokens,
+            inputTokens: call.inputTokens,
+            outputTokens: call.outputTokens,
             latencyMs: Date.now() - startedAt,
             retries,
           },
@@ -256,6 +316,8 @@ export class GeminiAnalysisClient implements AIAnalysisClient {
       } catch (err) {
         const aiErr =
           err instanceof AIAnalysisError ? err : new AIAnalysisError('UNKNOWN', 'Erro desconhecido no motor de IA.', err);
+        // A chamada retornou (e foi cobrada) mesmo com schema inválido: o usage existe.
+        emit(aiErr.code, { usage: call.usage, servedModel: call.servedModel });
         lastError = aiErr;
 
         if (aiErr.code !== 'SCHEMA_INVALID') {
