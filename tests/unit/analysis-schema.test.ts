@@ -124,9 +124,14 @@ describe('anonymousAnalysisInputSchema', () => {
     expect(result.success).toBe(true);
   });
 
-  it('rejeita input anônimo sem userAttribution', () => {
-    const { userAttribution, ...rest } = validAnon;
-    expect(anonymousAnalysisInputSchema.safeParse(rest).success).toBe(false);
+  it('aceita input anônimo sem userAttribution, aplicando o default NAO_SEI', () => {
+    // Redução de atrito: o campo saiu do caminho obrigatório. Continua existindo
+    // e sendo validado contra a taxonomia quando informado (teste seguinte).
+    const { userAttribution: _omitido, ...rest } = validAnon;
+    const parsed = anonymousAnalysisInputSchema.safeParse(rest);
+
+    expect(parsed.success).toBe(true);
+    if (parsed.success) expect(parsed.data.userAttribution).toBe('NAO_SEI');
   });
 
   it('rejeita userAttribution fora da taxonomia', () => {

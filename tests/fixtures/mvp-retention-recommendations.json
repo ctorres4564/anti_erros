@@ -1,0 +1,122 @@
+[
+  {
+    "caseId": "HG01",
+    "probableErrorType": "KNOWLEDGE_GAP",
+    "recommendedAction": "Estude as funções das principais organelas celulares vegetais, diferenciando a função do cloroplasto (fotossíntese) da mitocôndria (respiração celular)."
+  },
+  {
+    "caseId": "HG02",
+    "probableErrorType": "KNOWLEDGE_GAP",
+    "recommendedAction": "Estude o funcionamento básico da lei da oferta e da procura, focando no efeito de variações de quantidade sobre os preços de mercado."
+  },
+  {
+    "caseId": "HG03",
+    "probableErrorType": "KNOWLEDGE_GAP",
+    "recommendedAction": "Revise a função das principais enzimas digestivas e seus substratos específicos. Faça um estudo comparativo entre enzimas como lactase, amilase e protease para memorizar o substrato e os produtos de cada reação."
+  },
+  {
+    "caseId": "HG04",
+    "probableErrorType": "CONCEPT_CONFUSION",
+    "recommendedAction": "Estude comparativamente as medidas de tendência central para fixar que a média exige cálculo aritmético (soma dividida pela quantidade), enquanto a mediana refere-se à posição central no rol ordenado."
+  },
+  {
+    "caseId": "HG05",
+    "probableErrorType": "CONCEPT_CONFUSION",
+    "recommendedAction": "Revise os conceitos de divisão celular associando suas finalidades: a mitose mantém a ploidia para crescimento e regeneração (gerando 2 células idênticas), enquanto a meiose reduz a quantidade de cromossomos pela metade para formação de gametas (gerando 4 células haploides)."
+  },
+  {
+    "caseId": "HG06",
+    "probableErrorType": "CONCEPT_CONFUSION",
+    "recommendedAction": "Revise a diferença entre metáfora e comparação focando na presença ou ausência de conectivo: a metáfora faz uma implícita/direta substituição sem conectivo, enquanto a comparação usa explicitamente conjunções comparativas como 'como' ou 'tal qual'."
+  },
+  {
+    "caseId": "HG07",
+    "probableErrorType": "EXCEPTION_MISSED",
+    "recommendedAction": "Estude a fila de reatividade dos metais e memorize quais metais nobres constituem exceções às reações ordinárias com ácidos."
+  },
+  {
+    "caseId": "HG08",
+    "probableErrorType": "EXCEPTION_MISSED",
+    "recommendedAction": "Mapeie e revise as principais palavras com plural irregular em inglês (como mouse/mice, man/men, tooth/teeth) para não aplicar a regra geral por engano."
+  },
+  {
+    "caseId": "HG09",
+    "probableErrorType": "EXCEPTION_MISSED",
+    "recommendedAction": "Ao estudar regras e características gerais de grupos biológicos, dedique atenção especial ao mapeamento das exceções mais conhecidas, como as aves ratitas (avestruz, kiwi, ema) e os pinguins."
+  },
+  {
+    "caseId": "HG10",
+    "probableErrorType": "CONCEPT_CONFUSION",
+    "recommendedAction": "Lembre-se de que a porcentagem é uma proporção em relação ao valor total. Para encontrar o desconto em reais, converta a porcentagem em decimal e multiplique pelo valor do produto (ex: 15% de R$ 200 = 0,15 × 200 = R$ 30)."
+  },
+  {
+    "caseId": "HG11",
+    "probableErrorType": "APPLICATION_ERROR",
+    "recommendedAction": "Sempre aplique o Teorema de Pitágoras (hipotenusa² = cateto1² + cateto2²) ao calcular a hipotenusa de um triângulo retângulo, evitando realizar a soma direta das medidas dos catetos."
+  },
+  {
+    "caseId": "HG12",
+    "probableErrorType": "INSUFFICIENT_INFORMATION",
+    "recommendedAction": "Revise o Teorema de Pitágoras em triângulos retângulos, praticando a elevação dos catetos ao quadrado antes de somá-los e extrair a raiz quadrada para encontrar a hipotenusa."
+  },
+  {
+    "caseId": "HG13",
+    "probableErrorType": "APPLICATION_ERROR",
+    "recommendedAction": "Ao balancear reações de combustão, siga sempre a sequência: balanceie primeiro C, depois H e, por último, some todo o oxigênio dos produtos para definir o coeficiente do O2 nos reagentes."
+  },
+  {
+    "caseId": "HG14",
+    "probableErrorType": "READING_ERROR",
+    "recommendedAction": "Ao resolver questões que envolvam sequência temporal, destaque os conectivos de tempo (como 'antes' e 'depois') e faça um esquema rápido da linha do tempo antes de assinalar a resposta."
+  },
+  {
+    "caseId": "HG15",
+    "probableErrorType": "INSUFFICIENT_INFORMATION",
+    "recommendedAction": "Pratique a análise de cronologia em frases grifando os conectores temporais (como 'antes' e 'depois') e montando uma linha do tempo mental dos acontecimentos."
+  },
+  {
+    "caseId": "HG16",
+    "probableErrorType": "READING_ERROR",
+    "recommendedAction": "Ao resolver questões com qualificadores absolutos como 'SEMPRE', 'TODOS' ou 'NUNCA', sublinhe ou destaque essas palavras antes de julgar a afirmativa."
+  },
+  {
+    "caseId": "HG17",
+    "probableErrorType": "READING_ERROR",
+    "recommendedAction": "Ao realizar questões de interpretação textual, sublinhe os adjetivos e advérbios explicados no enunciado antes de responder, garantindo que a informação lida seja a exata que consta no texto."
+  },
+  {
+    "caseId": "HG18",
+    "probableErrorType": "INSUFFICIENT_INFORMATION",
+    "recommendedAction": "Revise as capitais da Oceania, fixando que Camberra é a capital oficial e centro administrativo da Austrália, evitando a associação automática com cidades populosas como Sydney."
+  },
+  {
+    "caseId": "HG19",
+    "probableErrorType": "INSUFFICIENT_INFORMATION",
+    "recommendedAction": "Para calcular a vazão constante, divida o volume total pelo tempo decorrido (100 litros ÷ 20 minutos = 5 litros/minuto) e sempre anote as etapas do cálculo."
+  },
+  {
+    "caseId": "HG20",
+    "probableErrorType": "INSUFFICIENT_INFORMATION",
+    "recommendedAction": "Estude a Lei da Conservação das Massas (Lei de Lavoisier), compreendendo que em qualquer reação química realizada em sistema fechado a massa total dos reagentes é idêntica à massa total dos produtos."
+  },
+  {
+    "caseId": "HG21",
+    "probableErrorType": "CONCEPT_CONFUSION",
+    "recommendedAction": "Faça um quadro comparativo fixando que ligação iônica envolve transferência de elétrons (formação de íons) e ligação covalente envolve compartilhamento de elétrons."
+  },
+  {
+    "caseId": "HG22",
+    "probableErrorType": "KNOWLEDGE_GAP",
+    "recommendedAction": "Revise o papel e a função das principais organelas celulares, destacando a síntese proteica associada aos ribossomos."
+  },
+  {
+    "caseId": "HG23",
+    "probableErrorType": "INSUFFICIENT_INFORMATION",
+    "recommendedAction": "Revise as principais cidades e a capital da Nova Zelândia para memorizar a distinção entre Auckland e Wellington."
+  },
+  {
+    "caseId": "HG24",
+    "probableErrorType": "READING_ERROR",
+    "recommendedAction": "Sublinhe ou destaque palavras-chave de comando como 'FALSA', 'INCORRETA' ou 'EXCETO' durante a leitura do enunciado para evitar inverter o objetivo da questão."
+  }
+]

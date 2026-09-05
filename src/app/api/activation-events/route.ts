@@ -19,6 +19,12 @@ export async function POST(request: NextRequest) {
   const { data: { user }, error: authError } = await supabase.auth.getUser();
   if (authError || !user) return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
 
+  // Eventos de página não referenciam análise: registra sem checagem de posse.
+  if (parsed.data.eventName === 'history_summary_viewed') {
+    await recordActivationEvent(user.id, parsed.data.eventName);
+    return new NextResponse(null, { status: 204 });
+  }
+
   const analysisId = parsed.data.analysisId as string;
   const { data: owned } = await createAdminClient()
     .from('analyses').select('id').eq('id', analysisId).eq('user_id', user.id).maybeSingle();

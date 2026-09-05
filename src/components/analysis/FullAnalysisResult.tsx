@@ -9,6 +9,7 @@ import {
   trackActivationEvent,
 } from '@/lib/analysis-api-client';
 import {
+  buildActionableRecommendation,
   formatAnalysisDate,
   getCardDecisionLabel,
   getConfidenceLabel,
@@ -19,6 +20,12 @@ import type { AnalysisView } from '@/types/analysis';
 import { SimpleExplanation } from './SimpleExplanation';
 
 export function FullAnalysisResult({ analysis }: { analysis: AnalysisView }) {
+  // Camada de apresentação: não altera nem persiste a recomendação da IA.
+  const presentedRecommendation = buildActionableRecommendation({
+    recommendedAction: analysis.recommendedAction,
+    fallbackAction: 'Refaça esta questão sem consultar a resolução e compare cada etapa com o gabarito.',
+    probableErrorType: analysis.probableErrorType,
+  });
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'failed'>('idle');
   const viewedTracked = useRef(false);
   const [confirmedDiscipline, setConfirmedDiscipline] = useState(
@@ -122,16 +129,21 @@ export function FullAnalysisResult({ analysis }: { analysis: AnalysisView }) {
         <p className="mt-3 text-sm leading-relaxed">{toConservativeLanguage(analysis.reasoningSummary)}</p>
       </div>
 
+      {/* NEXT ACTION — uma única ação principal, em destaque. O conteúdo vem do
+          recommendedAction que o v2.5 já produz; aqui só mudou a apresentação. */}
       <div className="rounded-xl border-2 border-success/30 bg-success/10 p-5 text-foreground">
         <div className="flex items-center gap-2">
           <ListChecks className="h-5 w-5 text-success" aria-hidden="true" />
-          <h3 className="text-sm font-extrabold uppercase tracking-wide">O que fazer agora</h3>
+          <h3 className="text-sm font-extrabold uppercase tracking-wide">Próxima ação</h3>
         </div>
-        <p className="mt-3 text-base font-semibold leading-relaxed">
-          {analysis.recommendedAction
-            ? toConservativeLanguage(analysis.recommendedAction)
-            : 'Revise a questão e compare cada etapa da sua resposta com o gabarito comentado.'}
+        <p className="mt-3 text-lg font-bold leading-snug">
+          {toConservativeLanguage(presentedRecommendation.action)}
         </p>
+        {presentedRecommendation.followUp ? (
+          <p className="mt-2 text-base font-semibold leading-snug">
+            {presentedRecommendation.followUp}
+          </p>
+        ) : null}
       </div>
 
       <SimpleExplanation
@@ -171,10 +183,13 @@ export function FullAnalysisResult({ analysis }: { analysis: AnalysisView }) {
         </section>
 
         <section className="rounded-xl border p-5" aria-labelledby={`feedback-${analysis.id}`}>
-          <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Feedback</p>
-          <h3 id={`feedback-${analysis.id}`} className="mt-1 text-lg font-bold">Isto ajudou você?</h3>
+          <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Confirmação</p>
+          <h3 id={`feedback-${analysis.id}`} className="mt-1 text-lg font-bold">Isso descreve o que aconteceu?</h3>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Um clique. Sua resposta não altera a análise acima.
+          </p>
           <div className="mt-3 flex flex-wrap gap-2">
-            {([['YES', 'Sim'], ['PARTIALLY', 'Parcialmente'], ['NO', 'Não']] as const).map(([value, label]) => (
+            {([['YES', 'Sim'], ['PARTIALLY', 'Mais ou menos'], ['NO', 'Não']] as const).map(([value, label]) => (
               <button
                 key={value}
                 type="button"
@@ -186,15 +201,24 @@ export function FullAnalysisResult({ analysis }: { analysis: AnalysisView }) {
               </button>
             ))}
           </div>
-          <label htmlFor={`feedback-comment-${analysis.id}`} className="mt-4 block text-sm font-semibold">Comentário <span className="font-normal text-muted-foreground">(opcional)</span></label>
-          <textarea
-            id={`feedback-comment-${analysis.id}`}
-            maxLength={500}
-            rows={2}
-            value={feedbackComment}
-            onChange={(event) => { setFeedbackComment(event.target.value); setFeedbackState('idle'); }}
-            className="mt-1.5 w-full rounded-lg border bg-background px-3 py-2 text-sm"
-          />
+          {/* Campo curto só aparece quando o diagnóstico não bateu — e segue
+              opcional: não é necessário para concluir e não reexecuta a análise. */}
+          {feedbackRating === 'PARTIALLY' || feedbackRating === 'NO' ? (
+            <>
+              <label htmlFor={`feedback-comment-${analysis.id}`} className="mt-4 block text-sm font-semibold">
+                Quer contar rapidamente o que aconteceu?{' '}
+                <span className="font-normal text-muted-foreground">(opcional)</span>
+              </label>
+              <textarea
+                id={`feedback-comment-${analysis.id}`}
+                maxLength={500}
+                rows={2}
+                value={feedbackComment}
+                onChange={(event) => { setFeedbackComment(event.target.value); setFeedbackState('idle'); }}
+                className="mt-1.5 w-full rounded-lg border bg-background px-3 py-2 text-sm"
+              />
+            </>
+          ) : null}
           <button type="button" onClick={saveFeedback} disabled={!feedbackRating || feedbackState === 'saving'} className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-primary-foreground disabled:opacity-60">
             {feedbackState === 'saving' ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : null}
             Enviar feedback

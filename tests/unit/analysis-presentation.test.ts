@@ -88,7 +88,7 @@ describe('camada de apresentação da Sprint 4', () => {
   it('mostra studentReasoning opcional e remove officialExplanation da interface de entrada', () => {
     const html = renderToStaticMarkup(createElement(AnalysisForm, { mode: 'authenticated' }));
     expect(html).toContain('Como você chegou a essa resposta?');
-    expect(html).toContain('Conte o cálculo, a regra ou a ideia que você usou.');
+    expect(html).toContain('Ajuda a análise a distinguir a causa do erro.');
     expect(html).toContain('maxLength="2000"');
     expect(html).not.toContain('Explicação oficial');
     expect(html).not.toContain('officialExplanation');
@@ -96,12 +96,12 @@ describe('camada de apresentação da Sprint 4', () => {
 
   it('destaca ação recomendada e explica NO_CARD', () => {
     const html = renderToStaticMarkup(createElement(FullAnalysisResult, { analysis: baseAnalysis }));
-    expect(html).toContain('O que fazer agora');
+    expect(html).toContain('Próxima ação');
     expect(html).toContain(baseAnalysis.recommendedAction);
     expect(html).toContain('criar um flashcard não é a melhor ação');
     expect(getCardDecisionLabel('NO_CARD')).toBe('Sem flashcard recomendado');
     expect(html).toContain('Qual é a disciplina?');
-    expect(html).toContain('Isto ajudou você?');
+    expect(html).toContain('Isso descreve o que aconteceu?');
     expect(html).toContain('não altera a saída original');
   });
 

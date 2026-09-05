@@ -218,7 +218,10 @@ export async function submitAnalysisFeedback(
   );
 }
 
-export function trackActivationEvent(eventName: 'auth_gate_shown' | 'full_result_viewed', analysisId?: string) {
+export function trackActivationEvent(
+  eventName: 'auth_gate_shown' | 'full_result_viewed' | 'history_summary_viewed',
+  analysisId?: string
+) {
   void fetch('/api/activation-events', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

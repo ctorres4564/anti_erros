@@ -8,6 +8,7 @@ import type { AnalysisHistoryItem, AnalysisView } from '@/types/analysis';
 import { AnalysisForm } from './AnalysisForm';
 import { AnalysisHistory } from './AnalysisHistory';
 import { FullAnalysisResult } from './FullAnalysisResult';
+import { HistorySignals } from './HistorySignals';
 
 interface AuthenticatedAnalysisExperienceProps {
   firstName: string;
@@ -132,11 +133,17 @@ export function AuthenticatedAnalysisExperience({
       <section className="rounded-2xl border bg-card p-5 shadow-sm sm:p-7" aria-labelledby="new-analysis-title">
         <div className="mb-6">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">Nova análise</p>
-          <h2 id="new-analysis-title" className="mt-1 text-2xl font-bold tracking-tight">Registre um erro recente</h2>
-          <p className="mt-2 text-sm text-muted-foreground">A ação recomendada terá mais destaque que o rótulo causal.</p>
+          <h2 id="new-analysis-title" className="mt-1 text-2xl font-bold tracking-tight">
+            Onde você está perdendo pontos?
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Analise um erro para começar a descobrir. Bastam a questão, sua resposta e o gabarito.
+          </p>
         </div>
         <AnalysisForm mode="authenticated" onAnalysis={revealAnalysis} />
       </section>
+
+      <HistorySignals items={history} />
 
       <AnalysisHistory items={history} unavailable={historyUnavailable} />
     </div>

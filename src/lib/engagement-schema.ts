@@ -23,6 +23,8 @@ export const analysisFeedbackSchema = z
 export const ACTIVATION_EVENTS = [
   'auth_gate_shown',
   'full_result_viewed',
+  // Evento de página: não pertence a uma análise específica, por isso NÃO exige analysisId.
+  'history_summary_viewed',
 ] as const;
 
 export const activationEventSchema = z

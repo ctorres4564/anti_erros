@@ -54,9 +54,11 @@ export const anonymousAnalysisInputSchema = z
     question: sanitizedText(5, 4000, 'A questão é obrigatória.'),
     userAnswer: sanitizedText(1, 2000, 'A resposta dada é obrigatória.'),
     correctAnswer: sanitizedText(1, 2000, 'O gabarito/resposta correta é obrigatório.'),
-    userAttribution: z.enum(USER_ATTRIBUTIONS, {
-      required_error: 'A autopercepção da causa do erro é obrigatória.',
-    }),
+    // Opcional para reduzir atrito no primeiro registro: quando o estudante não
+    // informa, assume-se 'NAO_SEI' — mesmo default já usado na rota autenticada.
+    // Não altera o diagnóstico: este campo NUNCA é enviado ao modelo, serve só
+    // para a comparação de divergência posterior.
+    userAttribution: z.enum(USER_ATTRIBUTIONS).default('NAO_SEI'),
     studentReasoning: optionalSanitizedText(
       2000,
       'O raciocínio do estudante não pode exceder 2000 caracteres.'

@@ -221,20 +221,6 @@ export function AnalysisForm({ mode, onPreview, onAnalysis }: AnalysisFormProps)
       />
 
       <TextField
-        id="studentReasoning"
-        label="Como você chegou a essa resposta?"
-        value={values.studentReasoning ?? ''}
-        placeholder="Descreva seu raciocínio, se lembrar."
-        helpText="Conte o cálculo, a regra ou a ideia que você usou. Se não lembrar, pode deixar em branco."
-        error={fieldErrors.studentReasoning}
-        disabled={isSubmitting}
-        required={false}
-        rows={3}
-        maxLength={2000}
-        onChange={(value) => updateField('studentReasoning', value)}
-      />
-
-      <TextField
         id="correctAnswer"
         label="Resposta correta"
         value={values.correctAnswer}
@@ -244,27 +230,51 @@ export function AnalysisForm({ mode, onPreview, onAnalysis }: AnalysisFormProps)
         onChange={(value) => updateField('correctAnswer', value)}
       />
 
-      <div className="space-y-1.5">
-        <label htmlFor="userAttribution" className="block text-sm font-semibold text-foreground">
-          Por que você acha que errou? <span className="text-destructive">*</span>
-        </label>
-        <select
-          id="userAttribution"
-          value={values.userAttribution}
-          disabled={isSubmitting}
-          onChange={(event) => updateField('userAttribution', event.target.value)}
-          className="min-h-12 w-full rounded-xl border bg-background px-3.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-60"
-        >
-          {USER_ATTRIBUTIONS.map((attribution) => (
-            <option key={attribution} value={attribution}>
-              {USER_ATTRIBUTION_LABELS[attribution]}
-            </option>
-          ))}
-        </select>
-        <p className="text-xs leading-relaxed text-muted-foreground">
-          Sua percepção é comparada depois, mas não é enviada ao modelo durante a análise.
-        </p>
-      </div>
+      {/* Campos opcionais fora do caminho principal: o estudante consegue enviar
+          com apenas os três campos essenciais. Nada aqui altera o diagnóstico. */}
+      <details className="rounded-xl border bg-muted/30 p-4">
+        <summary className="cursor-pointer text-sm font-semibold text-foreground">
+          Adicionar detalhes (opcional)
+        </summary>
+        <div className="mt-4 space-y-5">
+          <TextField
+            id="studentReasoning"
+            label="Como você chegou a essa resposta?"
+            value={values.studentReasoning ?? ''}
+            placeholder="Descreva seu raciocínio, se lembrar."
+            helpText="Ajuda a análise a distinguir a causa do erro. Se não lembrar, pode deixar em branco."
+            error={fieldErrors.studentReasoning}
+            disabled={isSubmitting}
+            required={false}
+            rows={3}
+            maxLength={2000}
+            onChange={(value) => updateField('studentReasoning', value)}
+          />
+
+          <div className="space-y-1.5">
+            <label htmlFor="userAttribution" className="block text-sm font-semibold text-foreground">
+              Por que você acha que errou?{' '}
+              <span className="font-normal text-muted-foreground">(opcional)</span>
+            </label>
+            <select
+              id="userAttribution"
+              value={values.userAttribution}
+              disabled={isSubmitting}
+              onChange={(event) => updateField('userAttribution', event.target.value)}
+              className="min-h-12 w-full rounded-xl border bg-background px-3.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-60"
+            >
+              {USER_ATTRIBUTIONS.map((attribution) => (
+                <option key={attribution} value={attribution}>
+                  {USER_ATTRIBUTION_LABELS[attribution]}
+                </option>
+              ))}
+            </select>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Sua percepção é comparada depois, mas não é enviada ao modelo durante a análise.
+            </p>
+          </div>
+        </div>
+      </details>
 
       {mode === 'anonymous' ? (
         <TurnstileWidget onChange={handleTurnstileChange} resetSignal={turnstileResetSignal} />
