@@ -1,117 +1,35 @@
 import { NextRequest } from 'next/server';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { POST } from '@/app/api/analyses/preview/route';
-import { createAnonymousPendingAnalysis } from '@/services/pending-analysis';
 
-vi.mock('@/lib/ai/resolve-client', () => ({
-  resolveAIClient: vi.fn(() => ({ analyze: vi.fn() })),
-}));
-
-vi.mock('@/lib/security/claim-token', async (importOriginal) => ({
-  ...(await importOriginal<typeof import('@/lib/security/claim-token')>()),
-  generateAnonymousId: vi.fn(() => 'anonymous-review-id'),
-}));
+const mocks = vi.hoisted(() => ({ createAnonymousPendingAnalysis: vi.fn() }));
 
 vi.mock('@/services/pending-analysis', () => ({
-  createAnonymousPendingAnalysis: vi.fn(),
+  createAnonymousPendingAnalysis: mocks.createAnonymousPendingAnalysis,
 }));
 
-const claimToken = 'a'.repeat(64);
-const pendingId = '6607bfb7-cf9a-40d3-a406-a50291dc4f22';
-const claimReference = `${pendingId}.${'b'.repeat(43)}`;
-
 describe('POST /api/analyses/preview', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    vi.mocked(createAnonymousPendingAnalysis).mockResolvedValue({
-      kind: 'SUCCESS',
-      preview: {
-        anonymousId: 'anonymous-review-id',
-        claimToken,
-        claimReference,
-        probableErrorType: 'KNOWLEDGE_GAP',
-        concept: 'Capital federal',
-        discipline: 'Atualidades',
-        divergenceMessage: 'As classificações foram comparadas de forma independente.',
-        isAligned: true,
-        aiUserAgreement: true,
-      },
-    });
-  });
-
-  it('retorna somente o preview público e transporta o claim token em cookie HttpOnly', async () => {
+  it('rejeita novas análises anônimas sem processar conteúdo nem criar cookies', async () => {
     const request = new NextRequest('http://localhost/api/analyses/preview', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        question: 'Qual é a capital do Brasil?',
-        userAnswer: 'Rio de Janeiro',
-        correctAnswer: 'Brasília',
-        studentReasoning: 'Associei a capital à cidade mais conhecida.',
-        userAttribution: 'NAO_SABIA_CONTEUDO',
+        question: 'Questão que não deve ser processada',
+        userAnswer: 'Resposta',
+        correctAnswer: 'Gabarito',
       }),
     });
 
-    const response = await POST(request);
+    const response = await POST();
     const payload = await response.json();
-    const setCookie = response.headers.get('set-cookie') ?? '';
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(410);
     expect(payload).toEqual({
-      success: true,
-      preview: {
-        claimReference,
-        probableErrorType: 'KNOWLEDGE_GAP',
-        concept: 'Capital federal',
-        discipline: 'Atualidades',
-        divergenceMessage: 'As classificações foram comparadas de forma independente.',
-        isAligned: true,
-      },
+      error: 'ANONYMOUS_ANALYSIS_DISCONTINUED',
+      message: 'A análise de questões próprias agora exige autenticação.',
     });
-    expect(payload).not.toHaveProperty('claimToken');
-    const cookieName = `claim_token_${pendingId.replaceAll('-', '')}`;
-    expect(response.cookies.get(cookieName)?.value).toBe(claimToken);
-    expect(setCookie).toContain(`${cookieName}=${claimToken}`);
-    expect(setCookie.toLowerCase()).toContain('httponly');
-    expect(setCookie.toLowerCase()).toContain('samesite=lax');
-    expect(setCookie.toLowerCase()).toContain('max-age=86400');
-    expect(createAnonymousPendingAnalysis).toHaveBeenCalledWith(expect.objectContaining({
-      input: expect.objectContaining({
-        studentReasoning: 'Associei a capital à cidade mais conhecida.',
-        userAttribution: 'NAO_SABIA_CONTEUDO',
-      }),
-    }));
-  });
-
-  it('registra pending_preview_created com o pendingAnalysisId, sem token/claim_ref/e-mail/conteúdo da questão', async () => {
-    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
-
-    const request = new NextRequest('http://localhost/api/analyses/preview', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        question: 'Qual é a capital do Brasil?',
-        userAnswer: 'Rio de Janeiro',
-        correctAnswer: 'Brasília',
-        studentReasoning: 'Associei a capital à cidade mais conhecida.',
-        userAttribution: 'NAO_SABIA_CONTEUDO',
-      }),
-    });
-
-    await POST(request);
-
-    const events = logSpy.mock.calls
-      .map(([line]) => JSON.parse(line as string))
-      .filter((entry) => entry.event === 'pending_preview_created');
-
-    expect(events).toHaveLength(1);
-    expect(events[0].pendingAnalysisId).toBe(pendingId);
-
-    const allLoggedText = logSpy.mock.calls.map(([line]) => line).join('\n');
-    expect(allLoggedText).not.toContain(claimToken);
-    expect(allLoggedText).not.toContain(claimReference);
-    expect(allLoggedText.toLowerCase()).not.toContain('capital do brasil');
-
-    logSpy.mockRestore();
+    expect(response.headers.get('set-cookie')).toBeNull();
+    expect(mocks.createAnonymousPendingAnalysis).not.toHaveBeenCalled();
+    expect(request.bodyUsed).toBe(false);
   });
 });

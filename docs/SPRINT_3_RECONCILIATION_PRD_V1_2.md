@@ -1,5 +1,17 @@
 # Documentação Técnica: Reconciliação da Sprint 3 com o PRD v1.2
 
+## Decisão posterior — prévia pública estática (2026-09-05)
+
+Esta decisão substitui o fluxo de aquisição anônimo descrito abaixo, sem remover a infraestrutura legada necessária para resgatar análises pendentes ainda válidas:
+
+- **Antes:** o visitante enviava uma questão própria, passava pelo Turnstile e executava uma inferência real de IA antes do cadastro. O resultado completo era armazenado em `pending_analyses`, e uma projeção parcial era mostrada na home.
+- **Agora:** a home exibe somente uma demonstração estática, com uma questão e um diagnóstico de exemplo mantidos no código. Abrir a demonstração não chama IA, API ou banco de dados, não usa Turnstile e não cria cookies nem `pending_analysis`.
+- O CTA **“Analisar meu próprio erro”** direciona para `/login`, sem `claim_ref`. A análise de questões próprias exige autenticação e onboarding completo e continua usando exclusivamente `POST /api/analyses`.
+- `POST /api/analyses/preview` permanece como rota de compatibilidade, mas responde `410 Gone` e não aceita novas submissões.
+- A infraestrutura de `pending_analyses`, o endpoint de claim e o transporte de `claim_ref` permanecem disponíveis apenas para resgatar pendências criadas antes desta decisão durante seu TTL normal.
+
+As seções históricas abaixo documentam a implementação anterior e devem ser interpretadas à luz desta decisão posterior.
+
 ## 1. Objetivo e Escopo da Reconciliação
 Esta etapa integrou os requisitos consolidados do **PRD v1.2 Consolidado** ao motor de IA e ao ciclo de vida da análise pedagógica, preservando integralmente todas as fundações, RLS, RPCs, quotas e migrações 0001–0007 já homologadas.
 

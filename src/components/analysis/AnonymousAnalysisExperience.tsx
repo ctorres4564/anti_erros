@@ -2,25 +2,23 @@
 
 import { useRef, useState } from 'react';
 import { ArrowDown, ShieldCheck, Target } from 'lucide-react';
-import type { AnalysisPreview } from '@/types/analysis';
-import { AnalysisForm } from './AnalysisForm';
-import { PartialAnalysisResult } from './PartialAnalysisResult';
-import { trackActivationEvent } from '@/lib/analysis-api-client';
+import { StaticProductPreview } from './StaticProductPreview';
 
 export function AnonymousAnalysisExperience() {
-  const [preview, setPreview] = useState<AnalysisPreview | null>(null);
-  const resultRef = useRef<HTMLDivElement>(null);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const previewRef = useRef<HTMLDivElement>(null);
 
-  const handlePreview = (nextPreview: AnalysisPreview) => {
-    setPreview(nextPreview);
-    trackActivationEvent('auth_gate_shown');
-    window.requestAnimationFrame(() => resultRef.current?.focus());
+  const togglePreview = () => {
+    setIsPreviewOpen((current) => {
+      if (!current) window.requestAnimationFrame(() => previewRef.current?.focus());
+      return !current;
+    });
   };
 
   return (
     <div className="space-y-10 pb-8 sm:space-y-14">
-      <section className="grid items-start gap-8 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:py-12">
-        <div className="space-y-6 lg:pt-7">
+      <section className="py-8 lg:py-16">
+        <div className="mx-auto max-w-3xl space-y-7 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
             <Target className="h-3.5 w-3.5" aria-hidden="true" />
             Método Aprender
@@ -29,37 +27,32 @@ export function AnonymousAnalysisExperience() {
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
               Entenda seu erro. Corrija o próximo passo.
             </h1>
-            <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Cole uma questão que você errou e receba uma causa provável, com linguagem cuidadosa e uma orientação prática para estudar melhor.
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Descubra a causa provável dos seus erros e receba uma orientação prática sobre o que estudar ou fazer depois.
             </p>
           </div>
-          <div className="grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+          <div className="grid gap-3 text-left text-sm sm:grid-cols-2">
             <p className="flex items-start gap-2 rounded-xl border bg-card p-3.5">
               <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
               Sua autopercepção não influencia a inferência do modelo.
             </p>
-            <p className="flex items-start gap-2 rounded-xl border bg-card p-3.5">
+            <button
+              type="button"
+              aria-expanded={isPreviewOpen}
+              aria-controls="product-preview"
+              onClick={togglePreview}
+              className="flex min-h-12 items-start gap-2 rounded-xl border bg-card p-3.5 text-left font-semibold transition hover:border-primary/40 hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
               <ArrowDown className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
               Veja uma prévia antes de criar seu acesso gratuito.
-            </p>
+            </button>
           </div>
-        </div>
-
-        <div className="rounded-2xl border bg-card p-5 shadow-sm sm:p-7">
-          <div className="mb-6">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">Nova análise</p>
-            <h2 className="mt-1 text-2xl font-bold tracking-tight">Conte o que aconteceu</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Preencha os dados observáveis da questão. Campos marcados com * são obrigatórios.
-            </p>
-          </div>
-          <AnalysisForm mode="anonymous" onPreview={handlePreview} />
         </div>
       </section>
 
-      {preview ? (
-        <div ref={resultRef} tabIndex={-1} className="scroll-mt-24 outline-none">
-          <PartialAnalysisResult preview={preview} />
+      {isPreviewOpen ? (
+        <div ref={previewRef} tabIndex={-1} className="scroll-mt-24 outline-none">
+          <StaticProductPreview />
         </div>
       ) : null}
     </div>

@@ -20,13 +20,13 @@ describe('HomePage', () => {
     vi.clearAllMocks();
   });
 
-  it('redireciona usuário autenticado para /app em vez de entrar no fluxo anônimo', async () => {
+  it('redireciona usuário autenticado para /app em vez de entrar na home pública', async () => {
     mocks.getUser.mockResolvedValue({ data: { user: { id: 'user-1' } } });
 
     await expect(HomePage()).rejects.toThrow('NEXT_REDIRECT:/app');
   });
 
-  it('mantém o fluxo anônimo quando não há sessão', async () => {
+  it('mostra a experiência pública quando não há sessão', async () => {
     mocks.getUser.mockResolvedValue({ data: { user: null } });
 
     const result = await HomePage();

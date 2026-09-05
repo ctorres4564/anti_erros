@@ -1,9 +1,12 @@
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { FullAnalysisResult } from '@/components/analysis/FullAnalysisResult';
 import { AnalysisForm } from '@/components/analysis/AnalysisForm';
 import { PartialAnalysisResult } from '@/components/analysis/PartialAnalysisResult';
+import { AnonymousAnalysisExperience } from '@/components/analysis/AnonymousAnalysisExperience';
+import { StaticProductPreview } from '@/components/analysis/StaticProductPreview';
+import { DEMO_ANALYSIS } from '@/lib/demo-analysis';
 import {
   getAlignmentMessage,
   getCardDecisionLabel,
@@ -32,6 +35,40 @@ const baseAnalysis: AnalysisView = {
 };
 
 describe('camada de apresentação da Sprint 4', () => {
+  it('oferece a prévia por botão e não renderiza formulário anônimo na home', () => {
+    const html = renderToStaticMarkup(createElement(AnonymousAnalysisExperience));
+
+    expect(html).toContain('Veja uma prévia antes de criar seu acesso gratuito.');
+    expect(html).toContain('<button');
+    expect(html).toContain('aria-expanded="false"');
+    expect(html).toContain('aria-controls="product-preview"');
+    expect(html).not.toContain('<form');
+    expect(html).not.toContain('Conte o que aconteceu');
+    expect(html).not.toContain('/api/analyses/preview');
+  });
+
+  it('renderiza a demonstração estática completa sem executar fetch', () => {
+    const fetchSpy = vi.fn();
+    vi.stubGlobal('fetch', fetchSpy);
+
+    const html = renderToStaticMarkup(createElement(StaticProductPreview));
+
+    expect(html).toContain('Exemplo de análise');
+    expect(html).toContain(DEMO_ANALYSIS.question);
+    expect(html).toContain(DEMO_ANALYSIS.userAnswer);
+    expect(html).toContain(DEMO_ANALYSIS.correctAnswer);
+    expect(html).toContain(DEMO_ANALYSIS.probableErrorType);
+    expect(html).toContain(DEMO_ANALYSIS.probableCause);
+    expect(html).toContain('Próxima ação');
+    expect(html).toContain(DEMO_ANALYSIS.nextAction);
+    expect(html).toContain('Analisar meu próprio erro');
+    expect(html).toContain('href="/login"');
+    expect(html).not.toContain('claim_ref');
+    expect(fetchSpy).not.toHaveBeenCalled();
+
+    vi.unstubAllGlobals();
+  });
+
   it('traduz enums sem expor código técnico', () => {
     expect(getErrorTypeLabel('KNOWLEDGE_GAP')).toBe('Lacuna de Conhecimento');
     expect(getErrorTypeLabel('UNKNOWN')).toBe('Causa ainda não identificada');
